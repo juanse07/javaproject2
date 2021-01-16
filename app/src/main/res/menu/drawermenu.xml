@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">>
+    <item
+        android:id="@+id/pymename"
+        android:title="PyMESoft"
+        android:enabled="true"
+
+        >
+    </item>
+
+    <item android:title="Configuraciones">
+        <menu>
+            <item
+                android:id="@+id/confempresa"
+                android:enabled="true"
+                android:icon="@drawable/ic_baseline_settings_applications_24"
+
+
+                app:showAsAction="ifRoom"
+                android:title="Configurar Empresa">
+
+            </item>
+            <item
+                android:id="@+id/confcuenta"
+                android:enabled="true"
+
+                android:icon="@drawable/ic_baseline_account_circle_24"
+                app:showAsAction="ifRoom"
+                android:title="Configurar Cuenta">
+            </item>
+            <item
+                android:id="@+id/confapp"
+                android:enabled="true"
+                android:icon="@drawable/ic_baseline_format_color_fill_24"
+
+
+                app:showAsAction="ifRoom"
+                android:title="Configurar App">
+
+            </item>
+
+
+
+        </menu>
+    </item>
+
+    <item
+        android:title="Sesión">
+        <menu>
+
+            <item
+                android:id="@+id/logout1"
+                android:enabled="true"
+                android:title="LogOut"
+                android:icon="@drawable/ic_baseline_exit_to_app_24"
+                app:showAsAction="ifRoom">
+
+            </item>
+        </menu>
+
+    </item>
+
+
+
+
+
+</menu>

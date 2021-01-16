@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "459629817667",
+    "firebase_url": "https://calculadora-cueros.firebaseio.com",
+    "project_id": "calculadora-cueros",
+    "storage_bucket": "calculadora-cueros.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459629817667:android:6fe0be42f0968b493dc9f6",
+        "android_client_info": {
+          "package_name": "com.example.calculadorainventario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459629817667-viop5s5415scsvsgqden3a8ln4qd6c8a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.calculadorainventario",
+            "certificate_hash": "981478de080636e7a6354e9d5b8f6db685c8aa8e"
+          }
+        },
+        {
+          "client_id": "459629817667-gvpmq3pijf7np0jjaliiu5e0q549uh5b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPrKAiHkv1-wFqbvaq9IH3vVmG4CFUVcg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459629817667-gvpmq3pijf7np0jjaliiu5e0q549uh5b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

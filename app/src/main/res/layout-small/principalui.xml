@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="*" >
+
+    //android:stretchColumns="*"
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="67dp">
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_span="1"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:text="Suma total"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_span="1"
+            android:layout_weight="1"
+            android:text="Unidades"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_span="1"
+            android:layout_weight="1"
+            android:text="Precio"
+            android:textSize="10sp" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <EditText
+            android:id="@+id/txsuma"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:ems="10"
+
+            android:hint="Total"
+            android:inputType="numberDecimal"
+            android:shadowColor="#d900b9"
+            android:shadowRadius="10"
+            android:textAlignment="center" />
+
+
+        <EditText
+            android:id="@+id/txcuenta"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Unidades"
+
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+
+            android:textColor="#636363" />
+
+        <EditText
+            android:id="@+id/txprecio"
+
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="5dp"
+
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="Promedio"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:text="Ingreso de Datos"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:text="Valor Mercancía"
+            android:textSize="10sp" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/txultimo"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:ems="10"
+
+            android:hint="Promedio"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:textColor="#636363" />
+
+
+        <EditText
+            android:id="@+id/txactual"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+
+
+            android:layout_weight="1"
+            android:autoText="false"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
+            android:shadowColor="@color/colorPrimaryDark"
+            android:shadowRadius="10"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/txvalor"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="5dp"
+
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="$"
+            android:inputType="number"
+            android:shadowColor="#05f735"
+            android:shadowRadius="10" />
+
+
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+
+        <Button
+            android:id="@+id/bt1"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:soundEffectsEnabled="false"
+            android:text="@string/_1">
+
+        </Button>
+
+        <Button
+            android:id="@+id/bt2"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:text="@string/_2" />
+
+        <Button
+            android:id="@+id/bt3"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:text="@string/_3" />
+
+        <Button
+            android:id="@+id/btborrar"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorAccent"
+            android:text="ELIMINAR!"
+
+
+            android:textColor="#ffffff" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/bt4"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="@string/_4" />
+
+        <Button
+            android:id="@+id/bt5"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:text="@string/_5" />
+
+        <Button
+            android:id="@+id/bt6"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:text="@string/_6" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:onClick="Enviardatos"
+            android:text="Button" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/bt7"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="@string/_7" />
+
+        <Button
+            android:id="@+id/bt8"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:text="@string/_8" />
+
+        <Button
+            android:id="@+id/bt9"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:text="@string/_9" />
+
+        <Button
+            android:id="@+id/btcalcular"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="#039c91"
+            android:text="Limpiar"
+            android:textColor="#ffffff" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btpunto"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="@string/_punto" />
+
+        <Button
+            android:id="@+id/btcero"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:text="@string/_0" />
+
+        <Button
+            android:id="@+id/btadd"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="2"
+            android:backgroundTint="#039c91"
+            android:text="@string/_add"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_span="4"
+            android:background="?android:attr/listDivider" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_span="4"
+            android:background="?android:attr/listDivider" />
+    </TableRow>
+
+    <RelativeLayout>
+
+        <GridView
+            android:id="@+id/grid3"
+            style="@android:style/Widget.Holo.Light.GridView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/navigation"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="0dp"
+            android:layout_span="4"
+            android:background="#ebedec"
+            android:cacheColorHint="@color/colorPrimary"
+            android:columnWidth="5dp"
+            android:drawSelectorOnTop="true"
+            android:horizontalSpacing="2dp"
+            android:numColumns="6"
+            android:textAlignment="textEnd"
+            android:textDirection="inherit"
+            android:verticalSpacing="1dp">
+
+        </GridView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end|bottom"
+            android:layout_marginTop="85dp"
+            android:layout_marginRight="15dp"
+            android:clickable="true"
+            android:onClick="Enviardatos"
+            app:layout_anchor="@+id/grid3"
+            app:layout_anchorGravity="bottom|end"
+            app:srcCompat="@drawable/ic_check_w" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="?android:attr/windowBackground"
+            app:menu="@menu/bottom_menu"
+             />
+        />
+
+    </RelativeLayout>
+</TableLayout>

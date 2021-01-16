@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".calc_fragment">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1.9"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:id="@+id/grupo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/Pies"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:text="Pies"
+                        android:textAlignment="center" />
+
+                    <RadioButton
+                        android:id="@+id/Decimetros"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:text="Decímetros"
+                        android:textAlignment="center" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/bt1"
+                    style="@style/App_ButtonCalc"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    android:layout_weight="1"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_1"
+                    android:textSize="34sp"
+                    app:backgroundTint="@null">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/bt2"
+                    style="@style/App_ButtonCalc"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:text="@string/_2"
+                    android:textSize="34sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/bt3"
+                    style="@style/App_ButtonCalc"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:text="@string/_3"
+                    android:textSize="34sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/btborrar"
+                    style="@style/App_ButtonCalc"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    android:layout_weight="1"
+
+
+                    android:text="ELIMINAR!"
+                    android:textSize="12dp"
+
+
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+
+                android:layout_weight="1"
+
+                android:background="#ffffff"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/bt4"
+                    style="@style/App_ButtonCalc"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:text="@string/_4"
+                    android:textSize="34sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/bt5"
+                    style="@style/App_ButtonCalc"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:text="@string/_5"
+                    android:textSize="34sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/bt6"
+                    style="@style/App_ButtonCalc"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/_6"
+                    android:textSize="34sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/dcmbutton"
+                    style="@style/App_ButtonCalc"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:text="Shift"
+                    android:textSize="12dp"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+
+                android:layout_weight="1"
+
+                android:background="#ffffff"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/bt7"
+                    style="@style/App_ButtonCalc"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:text="@string/_7"
+                    android:textSize="34sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/bt8"
+                    style="@style/App_ButtonCalc"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:text="@string/_8"
+                    android:textSize="34sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/bt9"
+                    style="@style/App_ButtonCalc"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:text="@string/_9"
+                    android:textSize="34sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/btcalcular"
+                    style="@style/App_ButtonCalc"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:text="Limpiar"
+
+                    android:textSize="12dp"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+
+                android:layout_weight="1"
+
+                android:background="#ffffff"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <Button
+                    android:id="@+id/btpunto"
+                    style="@style/App_ButtonCalc"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:text="@string/_punto"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/btcero"
+                    style="@style/App_ButtonCalc"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:text="@string/_0"
+                    android:textSize="34sp"
+                    app:backgroundTint="@null" />
+
+
+                <Button
+                    android:id="@+id/btadd"
+                    style="@style/App_ButtonCalc"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:backgroundTint="#f5f5f5"
+
+
+                    android:text="@string/_add"
+                    android:textColor="@color/colorAccent"
+
+                    app:backgroundTint="@null"
+
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>

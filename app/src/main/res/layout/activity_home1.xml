@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context=".home1">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentBottom="true"
+
+
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+
+            android:layout_marginBottom="80dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:clickable="true"
+            android:onClick="iniciarhome"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_add_or_24dp"
+            app:tint="@color/colorAccent" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinatorLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+
+            app:layout_constraintBottom_toTopOf="@+id/navigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/barhome1"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="@style/AppTheme.AppBarOverlay"
+                    app:collapseIcon="@drawable/ic_arrow_back_black_24dp"
+                    app:layout_scrollFlags="scroll|enterAlways|snap"
+
+                    app:titleMargin="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:orientation="horizontal">
+
+
+                        <RelativeLayout
+                            android:layout_width="159dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1.5">
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/card_opciones"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+
+                                android:layout_centerVertical="true"
+
+                                app:cardCornerRadius="30dp">
+
+                                <ImageView
+                                    android:id="@+id/IMAGEHOME"
+                                    android:layout_width="42dp"
+                                    android:layout_height="65dp"
+                                    android:layout_gravity="center_vertical|center_horizontal"
+
+                                    android:layout_weight="5">
+
+                                </ImageView>
+                            </androidx.cardview.widget.CardView>
+
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/title2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="start|center_vertical"
+                            android:minHeight="?actionBarSize"
+
+                            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                            android:textColor="@color/colorAccent" />
+
+
+                    </LinearLayout>
+
+
+                </androidx.appcompat.widget.Toolbar>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:minHeight="?actionBarSize">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/RecyclerBusqueda"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+
+                        tools:listitem="@layout/buscartarjetas">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipehome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layout_constraintTop_toBottomOf="@id/appbar1">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:reverseLayout="true"
+                    app:stackFromEnd="true"
+                    tools:listitem="@layout/vistatar2">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigation"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            app:backgroundTint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout">
+
+
+            android:layout_weight="11"
+            android:background="?android:attr/windowBackground"
+            app:backgroundTint="#F1F1F1"
+            app:itemIconTint="@drawable/item_color"
+            app:itemTextColor="@drawable/item_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+            android:background=
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/edtbuscar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal|center_vertical"
+
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:minHeight="?actionBarSize"
+                app:queryBackground="@android:color/transparent" />
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navdrawer"
+
+        android:layout_width="230dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/drawermenu" />
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
+
+
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="Perfil_Usuario">
+        <item>Credenciales</item>
+        <item>Contraseña</item>
+        <item>Cerrar Sesión</item>
+
+    </array>
+    <array name="Medida">
+        <item> Pies </item>
+        <item> Decímetro</item>
+    </array>
+    <array name="Empresa">
+        <item>Datos de Empresa</item>
+        <item>Logo</item>
+        <item>Firma</item>
+
+    </array>
+</resources>

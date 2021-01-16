@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constlay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments3">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toTopOf="@+id/navcat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.AppBarOverlay"
+
+                app:layout_scrollFlags="scroll|enterAlways|snap">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/back2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="0dp"
+                        app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+
+                    <TextView
+                        android:id="@+id/title4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:minHeight="?actionBarSize"
+                        android:padding="@dimen/appbar_padding"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                        android:textColor="@color/colorAccent" />
+
+                    <RelativeLayout
+                        android:id="@+id/relativigilancia"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/arrowchange"
+                            android:layout_width="30dp"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/ic_baseline_arrow_drop_down_24" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/card_vigilancia"
+                            android:layout_width="55dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+
+                            android:layout_marginEnd="40dp"
+                            app:cardCornerRadius="20dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="fill"
+                                android:layout_margin="1dp">
+
+
+                                <TextView
+                                    android:id="@+id/textovigilancia"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:inputType="number"
+                                    android:textAlignment="center"
+                                    android:textColor="#ffffff"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+                >
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#F2F2F2"
+                app:layout_constraintTop_toBottomOf="@id/appbar"
+                app:tabIndicatorColor="#ff9d5c"
+                app:tabIndicatorGravity="bottom"
+
+                app:tabIndicatorHeight="1dp"
+                app:tabMode="fixed"
+                app:tabPaddingBottom="8dp"
+                app:tabPaddingTop="10dp"
+                app:tabSelectedTextColor="#1F1F1F"
+                app:tabTextColor="#9E9E9E"></com.google.android.material.tabs.TabLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viepag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tablayout">
+
+        </androidx.viewpager2.widget.ViewPager2>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navcat"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_weight="9"
+        android:background="#f1f1f1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="95dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btncliente"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="230dp"
+                android:layout_marginRight="230dp"
+                android:layout_marginBottom="22dp"
+                android:background="@drawable/btnnaranja"
+                android:text="Nuevo Cliente"
+                android:textSize="12sp"
+                android:visibility="visible"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cardcli"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="190dp"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="22dp"
+                android:layout_weight="1"
+                android:background="@drawable/btnblanco"
+                android:text="Seleccionar"
+                android:textColor="@color/colorGris"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+            </com.google.android.material.button.MaterialButton>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cardprod"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="190dp"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="22dp"
+
+                android:layout_weight="1"
+                android:background="@drawable/btnblanco"
+                android:text="Seleccionar"
+                android:textColor="@color/colorGris"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+            </com.google.android.material.button.MaterialButton>
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|top"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="170dp"
+                android:layout_marginRight="170dp"
+                android:layout_weight="1"
+                android:text="Producto:"
+                android:textAlignment="gravity"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|top"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="170dp"
+                android:layout_marginRight="170dp"
+                android:layout_weight="1"
+                android:text="Cliente"
+                android:textAlignment="gravity"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btcompra"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginStart="190dp"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="22dp"
+
+                android:layout_weight="1"
+                android:background="@drawable/btnblanco"
+                android:text="Siguiente"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                app:backgroundTint="@null"
+                app:icon="@drawable/ic_baseline_arrow_forward_24"
+                app:iconGravity="end"
+                app:iconTint="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnproducto"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+
+
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="230dp"
+                android:layout_marginRight="230dp"
+                android:layout_marginBottom="22dp"
+                android:background="@drawable/btnnaranja"
+                android:text="Nuevo Producto"
+                android:textSize="12sp"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

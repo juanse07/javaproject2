@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="20dp"
+    android:layout_margin="8dp"
+    android:elevation="300dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:padding="4dp"
+        android:background="#FFFFFF">>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/cardcliente"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textColor="#1f1f1f"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/cardfecha"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textStyle="italic" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carddias"
+                app:cardCornerRadius="20dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:cardBackgroundColor="@color/semiTransparentverdeColor"
+                app:cardElevation="0dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="5dp">
+
+                <TextView
+                    android:id="@+id/txdias"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_operacionhome"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="3dp"
+                app:cardElevation="0dp"
+
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                app:cardCornerRadius="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="fill"
+                    android:layout_margin="1dp">
+
+
+                    <TextView
+                        android:id="@+id/cardhora"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:text="Producto"
+                android:textColor="#003152"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:text="Color"
+                android:textColor="#003152"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:text="Precio"
+                android:textColor="#003152"
+                android:textSize="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/cardproducto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textAlignment="viewEnd"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/cardestado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textAlignment="viewEnd" />
+
+                <TextView
+                    android:id="@+id/cardprecio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+
+                    android:layout_marginRight="8dp"
+                    android:textAlignment="viewEnd" />
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="Unidades"
+                android:textAlignment="viewStart"
+                android:textColor="#003152"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Medida"
+                android:textAlignment="viewStart"
+                android:textColor="#003152"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Valor"
+                android:textAlignment="viewStart"
+                android:textColor="#003152"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/cardunidades"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textAlignment="viewEnd" />
+
+            <TextView
+                android:id="@+id/cardmedida"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textAlignment="viewEnd" />
+
+            <TextView
+                android:id="@+id/cardvalor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textAlignment="viewEnd" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
