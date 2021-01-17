@@ -8,6 +8,8 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "TablasqlHome")
 
+/////hola este es el nuevo archivo github
+
 public class HomeNote implements Serializable {
 
 
