@@ -25,8 +25,5 @@ public interface HomeNoteDao {
     void deleteallHome();
     @Query("SELECT*FROM TablasqlHome")
             LiveData<List<HomeNote>> getallventas();
-    @Query("SELECT COUNT(*) FROM TablasqlHome WHERE Estado LIKE '%Venta%'")
-    public [] getFooSearch(String searchTerm);
-    LiveData<Integer>getCountVenta();
-    //String query = "SELECT * FROM " + TABLE_HIGHLIGHTS+ " WHERE " + KEY_BOOKNAME + " = '" + bookname + "'";
+
 }
