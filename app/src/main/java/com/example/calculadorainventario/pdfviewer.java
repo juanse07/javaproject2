@@ -90,6 +90,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
     ImageView back1;
     private File file;
     TextView title6;
+    BaseFont baseFont=null;
     Uri pdfUri;
     PdfPTable tableFooter;
     List<Note>Listadobles2;
@@ -610,17 +611,17 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
         ///////////////////////
     }
     private void savepdf() throws DocumentException {
-        BaseFont baseFont=null;
-        try {
-
-            baseFont = BaseFont.createFont("res/font/montserratregular.ttf", "UTF-8", BaseFont.EMBEDDED);
-        } catch (IOException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Fallo d1", Toast.LENGTH_SHORT).show();
-        } catch (DocumentException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Fallo d2", Toast.LENGTH_SHORT).show();
-        }
+//        BaseFont baseFont=null;
+//        try {
+//
+//            baseFont = BaseFont.createFont("res/font/montserratregular.ttf", "UTF-8", BaseFont.EMBEDDED);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            Toast.makeText(this, "Fallo d1", Toast.LENGTH_SHORT).show();
+//        } catch (DocumentException e) {
+//            e.printStackTrace();
+//            Toast.makeText(this, "Fallo d2", Toast.LENGTH_SHORT).show();
+//        }
         BaseColor orangedark = new BaseColor(255, 79, 0);
         Font regularHead = new Font(baseFont, 15, Font.BOLD, BaseColor.WHITE);
         Font regularReport = new Font(baseFont, 12, Font.BOLD, new BaseColor(254, 114, 0));
@@ -629,7 +630,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
         Font regularName = new Font(Font.FontFamily.HELVETICA, 15, Font.BOLD, BaseColor.BLACK);
         Font regularAddress = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL, BaseColor.BLACK);
         Font regularSub = new Font(Font.FontFamily.COURIER, 6, Font.ITALIC, BaseColor.RED);
-        Font regularTotal = new Font(baseFont, 14, Font.ITALIC, BaseColor.BLACK);
+        Font regularTotal = new Font(Font.FontFamily.HELVETICA, 14, Font.ITALIC, BaseColor.BLACK);
         Font regularTotalBold = new Font(baseFont, 16, Font.BOLD, new BaseColor(128,128,128));
         Font regularSub2 = new Font(Font.FontFamily.HELVETICA, 7, Font.NORMAL, BaseColor.GRAY);
         //Font footerN = new Font(baseFont, 15,Font.BOLD,printAccent);
@@ -1205,7 +1206,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
                 Paragraph p = new Paragraph();
 
                 Paragraph q1 = new Paragraph(String.valueOf(aw + 1),regularSub );
-                Paragraph q2 = new Paragraph(List1.get(aw),regularTotal);
+                Paragraph q2 = new Paragraph(List1.get(aw));
 
 
 
@@ -1233,103 +1234,112 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
             Atable.completeRow();
 
            mDoc.add(Atable);
-            mDoc.close();
+//            mDoc.close();
+
+        } catch (Exception e) {
+
+        }
+
+try {
+            Paragraph Terminos = new Paragraph("TÉRMINOS DE PAGO", regularReport2);
+            Terminos.setAlignment(Element.ALIGN_LEFT);
+            Terminos.setSpacingAfter(10);
+            Terminos.setSpacingBefore(10);
+
+            Paragraph Txterminos = new Paragraph();
+            Txterminos.add("El Cliente se compromete a pagar en un plazo no superior a");
+            if(diaspago.equals("0")){
+                Txterminos.add(" "+"Contado ");}else{
+
+                Txterminos.add(" "+diaspago+ " "+"días");}
+            Txterminos.setAlignment(Element.ALIGN_LEFT);
+            Txterminos.setSpacingAfter(10);
+            Txterminos.setSpacingBefore(3);
+
+            PdfPTable pdflinea = new PdfPTable(1);
+            pdflinea.setWidthPercentage(100);
+            pdflinea.setHorizontalAlignment(Element.ALIGN_CENTER);
+            PdfPCell cellg = new PdfPCell();
+            cellg.setBackgroundColor(new BaseColor(114,133,165));
+            cellg.setFixedHeight(2);
+            cellg.setBorderColor(new BaseColor(114,133,165));
+            pdflinea.addCell(cellg);
+            pdflinea.setSpacingAfter(5);
+            mDoc.add(Terminos);
+            mDoc.add(pdflinea);
+            mDoc.add(Txterminos);
+           // mDoc.add(tableFooter);
+            String imgsign = "/storage/emulated/0/PyMESoft/Signature/signaturepng";
+            image = Image.getInstance(imgsign);
+            image.scaleAbsolute(180f,150f);
+            image.setAlignment(Image.ALIGN_CENTER|Image.ALIGN_BOTTOM);
+            PdfPTable pdfPtablesign = new PdfPTable(1);
+            pdfPtablesign.setWidthPercentage(20);
+
+            pdfPtablesign.setHorizontalAlignment(Element.ALIGN_RIGHT);
 
 
-//        Paragraph Terminos = new Paragraph("TÉRMINOS DE PAGO", regularReport2);
-//            Terminos.setAlignment(Element.ALIGN_LEFT);
-//            Terminos.setSpacingAfter(10);
-//            Terminos.setSpacingBefore(10);
-//
-//            Paragraph Txterminos = new Paragraph();
-//            Txterminos.add("El Cliente se compromete a pagar en un plazo no superior a");
-//            if(diaspago.equals("0")){
-//                Txterminos.add(" "+"Contado ");}else{
-//
-//                Txterminos.add(" "+diaspago+ " "+"días");}
-//            Txterminos.setAlignment(Element.ALIGN_LEFT);
-//            Txterminos.setSpacingAfter(10);
-//            Txterminos.setSpacingBefore(3);
-//
-//            PdfPTable pdflinea = new PdfPTable(1);
-//            pdflinea.setWidthPercentage(100);
-//            pdflinea.setHorizontalAlignment(Element.ALIGN_CENTER);
-//            PdfPCell cellg = new PdfPCell();
-//            cellg.setBackgroundColor(new BaseColor(114,133,165));
-//            cellg.setFixedHeight(2);
-//            cellg.setBorderColor(new BaseColor(114,133,165));
-//            pdflinea.addCell(cellg);
-//            pdflinea.setSpacingAfter(5);
-//            mDoc.add(Terminos);
-//            mDoc.add(pdflinea);
-//            mDoc.add(Txterminos);
-//           // mDoc.add(tableFooter);
-//            String imgsign = "/storage/emulated/0/PyMESoft/Signature/signaturepng";
-//            image = Image.getInstance(imgsign);
-//            image.scaleAbsolute(180f,150f);
-//            image.setAlignment(Image.ALIGN_CENTER|Image.ALIGN_BOTTOM);
-//            PdfPTable pdfPtablesign = new PdfPTable(1);
-//            pdfPtablesign.setWidthPercentage(20);
-//
-//            pdfPtablesign.setHorizontalAlignment(Element.ALIGN_RIGHT);
-//
-//
-//            PdfPCell signcell = new PdfPCell();
-//            PdfPCell CCcell = new PdfPCell();
-//            PdfPCell Nomsigncell=new PdfPCell();
-//            signcell.addElement(image);
-//            signcell.setBorder(Rectangle.BOTTOM);
-//            signcell.setVerticalAlignment(Element.ALIGN_BOTTOM);
-//            signcell.setBorderColorBottom((new BaseColor(114,133,165)));
-//            signcell.setBorderWidthBottom(1);
-//            signcell.setBorderColor(new BaseColor(255,255,255));
-//            CCcell.addElement(new Phrase("cc."+" "+"1018429410",footerE));
-//            CCcell.setBorderColor(new BaseColor(255,255,255));
-//            CCcell.setVerticalAlignment(Element.ALIGN_TOP);
-//            Nomsigncell.addElement(new Phrase("Juan Sebastián Gómez",footerE));
-//           Nomsigncell.setBorderColor(new BaseColor(255,255,255));
-//           Nomsigncell.setVerticalAlignment(Element.ALIGN_TOP);
-//            pdfPtablesign.getDefaultCell().setVerticalAlignment(Element.ALIGN_BOTTOM);
-//
-//            pdfPtablesign.addCell(signcell);
-//            pdfPtablesign.addCell(Nomsigncell);
-//            pdfPtablesign.addCell(CCcell);
-//            //pdfPtablesign.setExtendLastRow(true);
-//            //pdfPtablesign.setTotalWidth((mDoc.right()-mDoc.left())*pdfPtablesign.getWidthPercentage()/100f);
-//            //pdfPtablesign.writeSelectedRows(0, -1, mDoc.left(), mDoc.bottom()+pdfPtablesign.getTotalHeight(),writer1.getDirectContent());
-//           // pdfPtablesign.setSpacingBefore(120);
-//            //pdfPtablesign.setTotalWidth(mDoc.right(40)
-//                   // - mDoc.left(60));
-//           //mDoc.add(pdfPtablesign);
-//            //mDoc.left(mDoc.leftMargin())
-//            pdfPtablesign.setTotalWidth(90);
-//            int intetable1=pdfPtablesign.getRows().size();
-//            int numbpage=mDoc.getPageNumber();
-//
-//
-//
-//
-//
-//
-//            pdfPtablesign.writeSelectedRows(0, -1,
-//                            mDoc.left(420)
-//                    ,
-//                    pdfPtablesign.getTotalHeight() + mDoc.bottom(mDoc.bottomMargin()),
-//                    writer1.getDirectContent());
+            PdfPCell signcell = new PdfPCell();
+            PdfPCell CCcell = new PdfPCell();
+            PdfPCell Nomsigncell=new PdfPCell();
+            signcell.addElement(image);
+            signcell.setBorder(Rectangle.BOTTOM);
+            signcell.setVerticalAlignment(Element.ALIGN_BOTTOM);
+            signcell.setBorderColorBottom((new BaseColor(114,133,165)));
+            signcell.setBorderWidthBottom(1);
+            signcell.setBorderColor(new BaseColor(255,255,255));
+            CCcell.addElement(new Phrase("cc."+" "+"1018429410",footerE));
+            CCcell.setBorderColor(new BaseColor(255,255,255));
+            CCcell.setVerticalAlignment(Element.ALIGN_TOP);
+            Nomsigncell.addElement(new Phrase("Juan Sebastián Gómez",footerE));
+           Nomsigncell.setBorderColor(new BaseColor(255,255,255));
+           Nomsigncell.setVerticalAlignment(Element.ALIGN_TOP);
+            pdfPtablesign.getDefaultCell().setVerticalAlignment(Element.ALIGN_BOTTOM);
+
+            pdfPtablesign.addCell(signcell);
+            pdfPtablesign.addCell(Nomsigncell);
+            pdfPtablesign.addCell(CCcell);
+            //pdfPtablesign.setExtendLastRow(true);
+            //pdfPtablesign.setTotalWidth((mDoc.right()-mDoc.left())*pdfPtablesign.getWidthPercentage()/100f);
+            //pdfPtablesign.writeSelectedRows(0, -1, mDoc.left(), mDoc.bottom()+pdfPtablesign.getTotalHeight(),writer1.getDirectContent());
+           // pdfPtablesign.setSpacingBefore(120);
+            //pdfPtablesign.setTotalWidth(mDoc.right(40)
+                   // - mDoc.left(60));
+           //mDoc.add(pdfPtablesign);
+            //mDoc.left(mDoc.leftMargin())
+            pdfPtablesign.setTotalWidth(90);
+            int intetable1=pdfPtablesign.getRows().size();
+            int numbpage=mDoc.getPageNumber();
+
+
+
+
+
+
+            pdfPtablesign.writeSelectedRows(0, -1,
+                            mDoc.left(420)
+                    ,
+                    pdfPtablesign.getTotalHeight() + mDoc.bottom(mDoc.bottomMargin()),
+                    writer1.getDirectContent());
 //            pdfPtablesign.writeSelectedRows(0, -1,
 //                    mDoc.left(420)
 //                    ,
 //                    pdfPtablesign.getTotalHeight() + mDoc.bottom(mDoc.bottomMargin()),
 //                    writer2.getDirectContent());
-//            PdfContentByte canvas = writer1.getDirectContent();
-//            canvas.setColorStroke(BaseColor.GRAY);
-//            canvas.setColorFill(BaseColor.WHITE);
-//            canvas.setLineWidth(0f);
-//            canvas.roundRectangle(487, 665,90, 30, 10);
-//            canvas.stroke();
-//
-//                mDoc.close();
-//
+            PdfContentByte canvas = writer1.getDirectContent();
+            canvas.setColorStroke(BaseColor.GRAY);
+            canvas.setColorFill(BaseColor.WHITE);
+            canvas.setLineWidth(0f);
+            canvas.roundRectangle(487, 665,90, 30, 10);
+            canvas.stroke();
+
+                mDoc.close();
+   // Toast.makeText(VistaAA.this, mFilename + "guardado" + mFilepath, Toast.LENGTH_SHORT).show();
+
+
+}catch (Exception e){
+    Toast.makeText(this, "Fallo firma y otros", Toast.LENGTH_SHORT).show();
+}
 
 
 
@@ -1338,12 +1348,10 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
 
 
-            // Toast.makeText(VistaAA.this, mFilename + "guardado" + mFilepath, Toast.LENGTH_SHORT).show();
 
 
-        } catch (Exception e) {
-            Toast.makeText(this, "Fallo a", Toast.LENGTH_SHORT).show();
-        }
+
+
 
 
     }
