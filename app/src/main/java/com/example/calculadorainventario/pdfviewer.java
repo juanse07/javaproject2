@@ -89,6 +89,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
     private PDFView pdfView;
     ImageView back1;
     private File file;
+
     TextView title6;
     BaseFont baseFont=null;
     Uri pdfUri;
@@ -132,14 +133,16 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
     String pattern = "EEEEE MMMMM yyyy HH:mm:ss.SSSZ";
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "US"));
     String mFilename = simpleDateFormat.format(System.currentTimeMillis());
+
+
+
     Calendar calendar = Calendar.getInstance();
     SimpleDateFormat hora1 = new SimpleDateFormat("HH:mm:ss");
     String hora2 = hora1.format(calendar.getTime());
-
-
-
-
-    String mFilepath = Environment.getExternalStorageDirectory() + "/" + mFilename + ".pdf";
+ String mFilepath = Environment.getExternalStorageDirectory() +   File.separator+ "PyMESoft"+
+  File.separator+"invoices"+File.separator +mFilename.toString().replaceAll(":",".");
+ File filepath2;
+    File file2;
 
    // byte[] outputStream = new ByteArrayOutputStream();
     byte[] outputStream2;
@@ -178,6 +181,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
        // gnombre2.setText(getIntent().getExtras().getString("Nombre1"));
         nombreventas2=getIntent().getExtras().getString("Nombre1");
+
 
          fechaventas2= getIntent().getExtras().getString("Fecha1").trim();
 
@@ -354,7 +358,8 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
         }
 
-        File file=new File(mFilepath);
+
+        File file=new File(file2.getAbsolutePath());
         Uri pdfUri = Uri.fromFile(file);
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
@@ -433,7 +438,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
             }
 
         }
-        File file=new File(mFilepath);
+        File file=new File(file2.getAbsolutePath());
 
         Uri pdfUri = Uri.fromFile(file);
         Intent shareIntent = new Intent();
@@ -643,12 +648,20 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
 
         file = new File(mFilepath);
+        if (!file.exists()) {
+            file.mkdirs();
+
+        }
+        filepath2= new File(file.getAbsolutePath());
+        filepath2.mkdir();
+         file2=new File(filepath2,"inv-"+nombreventas2+".pdf");
+
 
         try {
 
            // PdfWriter writer1, writer2;
 
-//           writer2= PdfWriter.getInstance(mDoc, new FileOutputStream(mFilepath));
+           writer2= PdfWriter.getInstance(mDoc, new FileOutputStream(file2));
             //PdfWriter.getInstance(mDoc, new FileOutputStream(mFilepath));
            writer1= PdfWriter.getInstance(mDoc, outputStream);
 
@@ -717,7 +730,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
             HeaderFooter event = new HeaderFooter(tableFooter);
             writer1.setPageEvent(event);
-//            writer2.setPageEvent(event);
+         writer2.setPageEvent(event);
 
 
 
@@ -1321,17 +1334,23 @@ try {
                     ,
                     pdfPtablesign.getTotalHeight() + mDoc.bottom(mDoc.bottomMargin()),
                     writer1.getDirectContent());
-//            pdfPtablesign.writeSelectedRows(0, -1,
-//                    mDoc.left(420)
-//                    ,
-//                    pdfPtablesign.getTotalHeight() + mDoc.bottom(mDoc.bottomMargin()),
-//                    writer2.getDirectContent());
+            pdfPtablesign.writeSelectedRows(0, -1,
+                    mDoc.left(420)
+                    ,
+                    pdfPtablesign.getTotalHeight() + mDoc.bottom(mDoc.bottomMargin()),
+                    writer2.getDirectContent());
             PdfContentByte canvas = writer1.getDirectContent();
+          PdfContentByte canvas2 = writer2.getDirectContent();
             canvas.setColorStroke(BaseColor.GRAY);
             canvas.setColorFill(BaseColor.WHITE);
             canvas.setLineWidth(0f);
             canvas.roundRectangle(487, 665,90, 30, 10);
             canvas.stroke();
+    canvas2.setColorStroke(BaseColor.GRAY);
+    canvas2.setColorFill(BaseColor.WHITE);
+    canvas2.setLineWidth(0f);
+    canvas2.roundRectangle(487, 665,90, 30, 10);
+    canvas2.stroke();
 
                 mDoc.close();
    // Toast.makeText(VistaAA.this, mFilename + "guardado" + mFilepath, Toast.LENGTH_SHORT).show();
