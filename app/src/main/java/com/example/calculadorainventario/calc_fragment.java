@@ -111,6 +111,8 @@ public class calc_fragment extends Fragment implements ClickInterface1 {
     ShareViewModel2 shareViewModel2;
     NoteViewModel noteViewModel;
     ArrayList<Note>ListaPdf;
+    arrayconstructor const2=new arrayconstructor();
+    //ArrayList<Double>ListaPdf;
     int position2;
     RadioButton Pies,Decimetros;
     String Cuentacompartir,Promediocompartir,Preciocompartir,Valorcompartir;
@@ -475,13 +477,16 @@ dcmbutton.setOnClickListener(new View.OnClickListener() {
                         sharedViewModel.addMaterial(array1);
 
 
-                        ListaCuero.add(getinput);
+                        ListaCuero.add(getinput);//HALLAR PARA PDF
                         Double Valor_Medida=Double.parseDouble(ingreso);
                         Note note=new Note(Valor_Medida);
                         //note.setValor_Medida(Valor_Medida);
                        noteViewModel.Insert(note);
-                       ListaPdf=new ArrayList<>();
-                       ListaPdf.add(note);
+
+
+
+//                       ListaPdf=new ArrayList<>();
+//                       ListaPdf.add(note);
 
 
 
@@ -663,9 +668,9 @@ dcmbutton.setOnClickListener(new View.OnClickListener() {
     public void Enviardatos(View view) {
 
 
-        Intent i = new Intent(ClientesView2.getContext(), VistaAA.class);
+        Intent i = new Intent(ClientesView2.getContext(), pdfviewer.class);
 
-        //i.putExtra("WLTP_list", ListaCuero);
+        i.putExtra("WLTP_list", ListaCuero);
         i.putExtra("sumatotal2", sumacompartir);
         i.putExtra("uds2", Cuentacompartir);
         i.putExtra("precio2", Preciocompartir);

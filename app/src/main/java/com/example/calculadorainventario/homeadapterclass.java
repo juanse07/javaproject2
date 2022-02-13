@@ -129,7 +129,7 @@ public class homeadapterclass extends RecyclerView.Adapter<homeadapterclass.View
         String Fechaparapago=listhome.get(position).getFechaparapago();*/
          homeNote.setMedida(Double.parseDouble(holder.cardmedida.getText().toString()));
       homeNote.setCliente(holder.cardcliente.getText().toString());
-      homeNote.setValor(Double.parseDouble(holder.cardvalor.getText().toString()));
+//      homeNote.setValor(Double.parseDouble(holder.cardvalor.getText().toString()));
         homeNote.setPrecio(Integer.parseInt(holder.cardprecio.getText().toString()));
       homeNote.setProducto(holder.cardproducto.getText().toString());
         homeNote.setEstado(holder.cardhora.getText().toString());

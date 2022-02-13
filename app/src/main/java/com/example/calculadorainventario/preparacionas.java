@@ -26,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Environment;
 import android.os.Parcelable;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -69,16 +70,18 @@ public class preparacionas extends AppCompatActivity {
     TextView gdate, gprecio, gvalor, gmedida, gcantidad, gnombre, gproducto, ghora, gopcion, txtotalbottom,textoprepa,title5;
     Button btpdf;
     ShareViewModel2 shareViewModel2;
+    SharedViewModel shareViewModel;
     ImageView back3,arrowchange2;
     ArrayList<Double> ListaCuero,Listathis;
+    ArrayList<String> Listapdf,Listapasar;;
     ArrayList<List<Note>> all3=new ArrayList<>();
     //ArrayList<Note>ListaPdf;
     NoteViewModel noteViewModel;
     RelativeLayout relativprepa;
     List<Note>allnotes3,allnotes4;
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    List<Double>Listadobles;
-    MutableLiveData<List<Double>>Listadobles2;
+    ArrayList<arrayconstructor>Listadobles;
+    List<Note>Listadobles2;
     ByteArrayOutputStream outputStreamnext = new ByteArrayOutputStream();
 
     private File file;
@@ -169,6 +172,7 @@ public class preparacionas extends AppCompatActivity {
        // String end_date = df.format(c.getTime());
        // showtoast("end Time : "+end_date);
         shareViewModel2 = new ViewModelProvider(this).get(ShareViewModel2.class);
+        shareViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
 
         //if(savedInstanceState!=null) {
 
@@ -242,10 +246,31 @@ public class preparacionas extends AppCompatActivity {
             @Override
             public void onChanged(List<Double> doubles) {
 
-                Listadobles=doubles;
+//                Listadobles=doubles;
+
+
 
             }
         });
+        shareViewModel.getUnidadesLista2().observe(this, new Observer<ArrayList<arrayconstructor>>() {
+            @Override
+            public void onChanged(ArrayList<arrayconstructor> arrayconstructors) {
+                Listadobles=arrayconstructors;
+            }
+        });
+        noteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
+            @Override
+            public void onChanged(List<Note> notes) {
+                Listadobles2=notes;
+
+            }
+        });
+
+
+
+
+
+
 
 
 
@@ -254,6 +279,7 @@ public class preparacionas extends AppCompatActivity {
            @Override
          public void onClick(View v) {
                        Intent intent = new Intent(preparacionas.this, pdfviewer.class);
+
                        //  ArrayList<Note> Lista78;
                        //Lista78=(ArrayList<Note>)allnotes3;
                        Bundle bundle = new Bundle();
@@ -270,9 +296,24 @@ public class preparacionas extends AppCompatActivity {
          bundle.putSerializable("Nombre1",gnombre.getText().toString());
          bundle.putSerializable("Producto1",gproducto.getText().toString());
          bundle.putSerializable("Estado1",textoprepa.getText().toString());
-               ArrayList<Double>Listapasar=(ArrayList<Double>)Listadobles;
 
-         bundle.putSerializable("Listapdf",Listapasar);
+         Listapasar=new ArrayList<>();
+
+
+               for (int i = 0 ; i <Listadobles2.size() ; i++){
+
+//                   Log.d("value is" , Listadobles2.get(i).valor_Medida.toString());}
+//                   Listapdf.add(Listadobles2.get(i).getValor_Medida().toString());
+                   String pdfvalor1=Listadobles2.get(i).valor_Medida.toString();
+               Listapasar.add(pdfvalor1);}
+//
+//
+//
+
+         bundle.putSerializable("listapdf1",Listapasar);
+
+//
+//         bundle.putSerializable("Listapdf",Listapasar);
         // bundle.putByteArray("wpa",outputStream.toByteArray());
 
 
@@ -581,7 +622,7 @@ public class preparacionas extends AppCompatActivity {
 
 
 
-        allnotes4=allnotes3;
+//        ListaCuero=Listadobles;
 
 
         file = new File(mFilepath);
@@ -1013,32 +1054,29 @@ public class preparacionas extends AppCompatActivity {
 
 
 
-            for (int aw = 0; aw <adpt.getItemCount(); aw++) {
+             for (int aw = 0; aw < ListaCuero.size(); aw++) {
+                 //PdfReader reader = new PdfReader(outputStream.toByteArray());
+                 //PdfStamper stamper = new PdfStamper(reader, outputStream);
+                 Paragraph p = new Paragraph();
 
+                 Paragraph q1 = new Paragraph(String.valueOf(aw + 1), regularSub);
+                 Paragraph q2 = new Paragraph(String.valueOf(ListaCuero.get(aw)));
+                 Chunk gumble = new Chunk(new VerticalPositionMark());
 
-                Paragraph p = new Paragraph();
+                 p.add(q1);
+                 p.add(gumble);
+                 p.add(q2);
 
-                Paragraph q1 = new Paragraph(String.valueOf(aw + 1),regularSub );
+                 PdfPCell cell = new PdfPCell(p);
+                 cell.setPaddingBottom(8);
+                 cell.setPaddingTop(5);
+                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                 cell.setBorderColor(BaseColor.LIGHT_GRAY);
+                 cell.setFixedHeight(30);
 
-                Paragraph q2 = new Paragraph(String.valueOf(adpt.getmedida(aw)));
-
-
-
-                Chunk gumble = new Chunk(new VerticalPositionMark());
-
-                p.add(q1);
-                p.add(gumble);
-                p.add(q2);
-
-                PdfPCell cell = new PdfPCell(p);
-                cell.setPaddingBottom(8);
-                cell.setPaddingTop(5);
-                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-                cell.setBorderColor(BaseColor.LIGHT_GRAY);
-                cell.setFixedHeight(30);
-
-                Atable.addCell(cell);
-                //stamper.close();
+                 Atable.addCell(cell);
+                 //stamper.close();
+                 //stamper.close();
 
             }
 

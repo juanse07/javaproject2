@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -91,15 +92,19 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
     TextView title6;
     Uri pdfUri;
     PdfPTable tableFooter;
-    List<Double>Listadobles;
-    ArrayList<Double>Listadobles3;
+    List<Note>Listadobles2;
+    ArrayList<arrayconstructor>Listadobles3;
+    ArrayList<Double> ListaCuero;
+    ArrayList<Double> listacuero3;
     AdaptadorProductoGuardado adpt1=new AdaptadorProductoGuardado();
+
+
     PdfWriter writer1, writer2;
 
     FirebaseDatabase mydatabase = FirebaseDatabase.getInstance();
 
     //ShareViewModel2 shareViewModel2;
-    //byte[] outputStream2 = new ByteArrayOutputStream();
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
     //String fechaventas2;
     Document mDoc = new Document(PageSize.LETTER,36,36,53,56);
@@ -119,7 +124,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
     FirebaseAuth mAuth;
     NoteViewModel noteViewModel;
     ArrayList<Note>noteArralist=new ArrayList<>();
-    ArrayList<Double>List1;
+    ArrayList<String>List1;
     byte[] outputstream2;
     //Button btactualizarpdf;
    String nombreventas2;
@@ -135,7 +140,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
     String mFilepath = Environment.getExternalStorageDirectory() + "/" + mFilename + ".pdf";
 
-    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+   // byte[] outputStream = new ByteArrayOutputStream();
     byte[] outputStream2;
     private static final int REQUEST_CODE_ASK_PERMISSIONS = 111;
     private static final int REQUEST_CODE_ASK_PERMISSIONS_2 = 112;
@@ -160,6 +165,15 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
                 onBackPressed();
             }
         });
+//        noteViewModel=new ViewModelProvider(this).get(NoteViewModel.class);
+//        noteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
+//            @Override
+//            public void onChanged(List<Note> notes) {
+//                Listadobles2=notes;
+//            }
+//        });
+
+        listacuero3= (ArrayList<Double>) getIntent().getSerializableExtra("WLTP_list");
 
        // gnombre2.setText(getIntent().getExtras().getString("Nombre1"));
         nombreventas2=getIntent().getExtras().getString("Nombre1");
@@ -169,7 +183,8 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
          horaventas2=getIntent().getExtras().getString("Hora1");
 
         productoventas2=getIntent().getExtras().getString("Producto1");
-        Listadobles3= (ArrayList<Double>) getIntent().getExtras().getSerializable("Listapdf");
+
+        List1= (ArrayList<String>) getIntent().getSerializableExtra("listapdf1");
 
 
 
@@ -185,7 +200,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
         estadoventas2=getIntent().getExtras().getString("Estado1");
         Fecha2=getIntent().getExtras().getString("Fecha2").trim();
-        outputStream2=getIntent().getExtras().getByteArray("wpa");
+        //outputStream2=getIntent().getExtras().getByteArray("wpa");
 
 
         horareal2=hora2;
@@ -209,25 +224,33 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
 
             } else {
-                outputStream = new ByteArrayOutputStream();
-
-
                 try {
+
                     savepdf();
                 } catch (DocumentException e) {
-                    e.printStackTrace();
+                    Toast.makeText(this, "no inicia", Toast.LENGTH_SHORT).show();
                 }
+//                Toast.makeText(this, "Fallo permiso", Toast.LENGTH_SHORT).show();
+
+
+//                try {
+//                    savepdf();
+//                } catch (DocumentException e) {
+//                    e.printStackTrace();
+//                    Toast.makeText(this, "Fallo a1", Toast.LENGTH_SHORT).show();
+//                }
 
             }
         } else {
 
-            outputStream = new ByteArrayOutputStream();
-
-            try {
-                savepdf();
-            } catch (DocumentException e) {
-                e.printStackTrace();
-            }
+//            outputStream = new ByteArrayOutputStream();
+//
+//            try {
+//                savepdf();
+//            } catch (DocumentException e) {
+//                e.printStackTrace();
+//                Toast.makeText(this, "Fallo a2", Toast.LENGTH_SHORT).show();
+//            }
 
 
 
@@ -461,18 +484,18 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
 
                     //new PdfSave().execute();
-                  /* try {
-                       // savepdf();
+                  try {
+                       savepdf();
                     } catch (DocumentException e) {
                         e.printStackTrace();
-                    }*/
+                    }
 
 
                     Toast.makeText(this, "Permiso concedido", Toast.LENGTH_SHORT).show();
 
 
                 } else {
-                    Toast.makeText(this, "Permiso negado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Permiso no apto para mayores", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -483,7 +506,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
 
                 } else {
-                    Toast.makeText(pdfviewer.this, "Permiso negado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(pdfviewer.this, "Permiso negado para adultos", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -593,8 +616,10 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
             baseFont = BaseFont.createFont("res/font/montserratregular.ttf", "UTF-8", BaseFont.EMBEDDED);
         } catch (IOException e) {
             e.printStackTrace();
+            Toast.makeText(this, "Fallo d1", Toast.LENGTH_SHORT).show();
         } catch (DocumentException e) {
             e.printStackTrace();
+            Toast.makeText(this, "Fallo d2", Toast.LENGTH_SHORT).show();
         }
         BaseColor orangedark = new BaseColor(255, 79, 0);
         Font regularHead = new Font(baseFont, 15, Font.BOLD, BaseColor.WHITE);
@@ -608,6 +633,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
         Font regularTotalBold = new Font(baseFont, 16, Font.BOLD, new BaseColor(128,128,128));
         Font regularSub2 = new Font(Font.FontFamily.HELVETICA, 7, Font.NORMAL, BaseColor.GRAY);
         //Font footerN = new Font(baseFont, 15,Font.BOLD,printAccent);
+
         Font footerE = new Font(baseFont, 8, Font.NORMAL, BaseColor.BLACK);
         Image image;
 
@@ -621,9 +647,11 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
            // PdfWriter writer1, writer2;
 
-           writer2= PdfWriter.getInstance(mDoc, new FileOutputStream(mFilepath));
+//           writer2= PdfWriter.getInstance(mDoc, new FileOutputStream(mFilepath));
             //PdfWriter.getInstance(mDoc, new FileOutputStream(mFilepath));
            writer1= PdfWriter.getInstance(mDoc, outputStream);
+
+            mDoc.open();
 
 
 
@@ -688,13 +716,13 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
             HeaderFooter event = new HeaderFooter(tableFooter);
             writer1.setPageEvent(event);
-            writer2.setPageEvent(event);
+//            writer2.setPageEvent(event);
 
 
 
 
 
-            mDoc.open();
+
            // mDoc.setMargins(36, 36, 55, 150);
 
 
@@ -904,14 +932,20 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
+            Toast.makeText(this, "Fallo c1", Toast.LENGTH_SHORT).show();
         } catch (MalformedURLException ex) {
             ex.printStackTrace();
+            Toast.makeText(this, "Fallo c2", Toast.LENGTH_SHORT).show();
         } catch (IOException ex) {
             ex.printStackTrace();
+            Toast.makeText(this, "Fallo c3", Toast.LENGTH_SHORT).show();
         } catch (BadElementException ex) {
+
             ex.printStackTrace();
+            Toast.makeText(this, "Fallo c4", Toast.LENGTH_SHORT).show();
         } catch (DocumentException ex) {
             ex.printStackTrace();
+            Toast.makeText(this, "Fallo c5", Toast.LENGTH_SHORT).show();
         }
         try{
             Paragraph pcompany = new Paragraph("PyMESoft®", regularReport);
@@ -1144,13 +1178,15 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
             pdfPtable2.addCell(cell2);
             pdfPtable2.setSpacingAfter(5);
             mDoc.add(pdfPtable2);
+//            mDoc.close();
+
 
 
 
             // Toast.makeText(VistaAA.this, mFilename + "guardado" + mFilepath, Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
-            // Toast.makeText(PdfFragmentView.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Fallo b", Toast.LENGTH_SHORT).show();
         }
         try {
             PdfPTable Atable = new PdfPTable(12);
@@ -1159,17 +1195,17 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
            // ArrayList<Double> ListaMed=new ArrayList<>();
 
 
-
-            for (int aw = 0; aw <Listadobles3.size(); aw++) {
+//
+           for (int aw = 0; aw <List1.size(); aw++) {
                 // for (adpt.setNotes(allnotes3);;) {
-                adpt1.notifyDataSetChanged();
+                //adpt1.notifyDataSetChanged();
 
                 //ListaMed.add(adpt.getmedida(aw));
 
                 Paragraph p = new Paragraph();
 
                 Paragraph q1 = new Paragraph(String.valueOf(aw + 1),regularSub );
-                Paragraph q2 = new Paragraph(String.valueOf(Listadobles3.get(aw)),regularAddress);
+                Paragraph q2 = new Paragraph(List1.get(aw),regularTotal);
 
 
 
@@ -1178,7 +1214,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
                 p.add(q1);
                 p.add(gumble);
-                p.add(q2);
+               p.add(q2);
 
                 PdfPCell cell = new PdfPCell(p);
                 cell.setPaddingBottom(8);
@@ -1196,102 +1232,104 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
             Atable.getDefaultCell().setBorderColor(BaseColor.LIGHT_GRAY);
             Atable.completeRow();
 
-            mDoc.add(Atable);
-
-           /* Paragraph Terminos = new Paragraph("TÉRMINOS DE PAGO", regularReport2);
-            Terminos.setAlignment(Element.ALIGN_LEFT);
-            Terminos.setSpacingAfter(10);
-            Terminos.setSpacingBefore(10);
-
-            Paragraph Txterminos = new Paragraph();
-            Txterminos.add("El Cliente se compromete a pagar en un plazo no superior a");
-            if(diaspago.equals("0")){
-                Txterminos.add(" "+"Contado ");}else{
-
-                Txterminos.add(" "+diaspago+ " "+"días");}
-            Txterminos.setAlignment(Element.ALIGN_LEFT);
-            Txterminos.setSpacingAfter(10);
-            Txterminos.setSpacingBefore(3);
-
-            PdfPTable pdflinea = new PdfPTable(1);
-            pdflinea.setWidthPercentage(100);
-            pdflinea.setHorizontalAlignment(Element.ALIGN_CENTER);
-            PdfPCell cellg = new PdfPCell();
-            cellg.setBackgroundColor(new BaseColor(114,133,165));
-            cellg.setFixedHeight(2);
-            cellg.setBorderColor(new BaseColor(114,133,165));
-            pdflinea.addCell(cellg);
-            pdflinea.setSpacingAfter(5);
-            mDoc.add(Terminos);
-            mDoc.add(pdflinea);
-            mDoc.add(Txterminos);*/
-           // mDoc.add(tableFooter);
-            String imgsign = "/storage/emulated/0/PyMESoft/Signature/signaturepng";
-            image = Image.getInstance(imgsign);
-            image.scaleAbsolute(180f,150f);
-            image.setAlignment(Image.ALIGN_CENTER|Image.ALIGN_BOTTOM);
-            PdfPTable pdfPtablesign = new PdfPTable(1);
-            pdfPtablesign.setWidthPercentage(20);
-
-            pdfPtablesign.setHorizontalAlignment(Element.ALIGN_RIGHT);
+           mDoc.add(Atable);
+            mDoc.close();
 
 
-            PdfPCell signcell = new PdfPCell();
-            PdfPCell CCcell = new PdfPCell();
-            PdfPCell Nomsigncell=new PdfPCell();
-            signcell.addElement(image);
-            signcell.setBorder(Rectangle.BOTTOM);
-            signcell.setVerticalAlignment(Element.ALIGN_BOTTOM);
-            signcell.setBorderColorBottom((new BaseColor(114,133,165)));
-            signcell.setBorderWidthBottom(1);
-            signcell.setBorderColor(new BaseColor(255,255,255));
-            CCcell.addElement(new Phrase("cc."+" "+"1018429410",footerE));
-            CCcell.setBorderColor(new BaseColor(255,255,255));
-            CCcell.setVerticalAlignment(Element.ALIGN_TOP);
-            Nomsigncell.addElement(new Phrase("Juan Sebastián Gómez",footerE));
-           Nomsigncell.setBorderColor(new BaseColor(255,255,255));
-           Nomsigncell.setVerticalAlignment(Element.ALIGN_TOP);
-            pdfPtablesign.getDefaultCell().setVerticalAlignment(Element.ALIGN_BOTTOM);
-
-            pdfPtablesign.addCell(signcell);
-            pdfPtablesign.addCell(Nomsigncell);
-            pdfPtablesign.addCell(CCcell);
-            //pdfPtablesign.setExtendLastRow(true);
-            //pdfPtablesign.setTotalWidth((mDoc.right()-mDoc.left())*pdfPtablesign.getWidthPercentage()/100f);
-            //pdfPtablesign.writeSelectedRows(0, -1, mDoc.left(), mDoc.bottom()+pdfPtablesign.getTotalHeight(),writer1.getDirectContent());
-           // pdfPtablesign.setSpacingBefore(120);
-            //pdfPtablesign.setTotalWidth(mDoc.right(40)
-                   // - mDoc.left(60));
-           //mDoc.add(pdfPtablesign);
-            //mDoc.left(mDoc.leftMargin())
-            pdfPtablesign.setTotalWidth(90);
-            int intetable1=pdfPtablesign.getRows().size();
-            int numbpage=mDoc.getPageNumber();
-
-
-
-
-
-
-            pdfPtablesign.writeSelectedRows(0, -1,
-                            mDoc.left(420)
-                    ,
-                    pdfPtablesign.getTotalHeight() + mDoc.bottom(mDoc.bottomMargin()),
-                    writer1.getDirectContent());
-            pdfPtablesign.writeSelectedRows(0, -1,
-                    mDoc.left(420)
-                    ,
-                    pdfPtablesign.getTotalHeight() + mDoc.bottom(mDoc.bottomMargin()),
-                    writer2.getDirectContent());
-            PdfContentByte canvas = writer1.getDirectContent();
-            canvas.setColorStroke(BaseColor.GRAY);
-            canvas.setColorFill(BaseColor.WHITE);
-            canvas.setLineWidth(0f);
-            canvas.roundRectangle(487, 665,90, 30, 10);
-            canvas.stroke();
-
-                mDoc.close();
-
+//        Paragraph Terminos = new Paragraph("TÉRMINOS DE PAGO", regularReport2);
+//            Terminos.setAlignment(Element.ALIGN_LEFT);
+//            Terminos.setSpacingAfter(10);
+//            Terminos.setSpacingBefore(10);
+//
+//            Paragraph Txterminos = new Paragraph();
+//            Txterminos.add("El Cliente se compromete a pagar en un plazo no superior a");
+//            if(diaspago.equals("0")){
+//                Txterminos.add(" "+"Contado ");}else{
+//
+//                Txterminos.add(" "+diaspago+ " "+"días");}
+//            Txterminos.setAlignment(Element.ALIGN_LEFT);
+//            Txterminos.setSpacingAfter(10);
+//            Txterminos.setSpacingBefore(3);
+//
+//            PdfPTable pdflinea = new PdfPTable(1);
+//            pdflinea.setWidthPercentage(100);
+//            pdflinea.setHorizontalAlignment(Element.ALIGN_CENTER);
+//            PdfPCell cellg = new PdfPCell();
+//            cellg.setBackgroundColor(new BaseColor(114,133,165));
+//            cellg.setFixedHeight(2);
+//            cellg.setBorderColor(new BaseColor(114,133,165));
+//            pdflinea.addCell(cellg);
+//            pdflinea.setSpacingAfter(5);
+//            mDoc.add(Terminos);
+//            mDoc.add(pdflinea);
+//            mDoc.add(Txterminos);
+//           // mDoc.add(tableFooter);
+//            String imgsign = "/storage/emulated/0/PyMESoft/Signature/signaturepng";
+//            image = Image.getInstance(imgsign);
+//            image.scaleAbsolute(180f,150f);
+//            image.setAlignment(Image.ALIGN_CENTER|Image.ALIGN_BOTTOM);
+//            PdfPTable pdfPtablesign = new PdfPTable(1);
+//            pdfPtablesign.setWidthPercentage(20);
+//
+//            pdfPtablesign.setHorizontalAlignment(Element.ALIGN_RIGHT);
+//
+//
+//            PdfPCell signcell = new PdfPCell();
+//            PdfPCell CCcell = new PdfPCell();
+//            PdfPCell Nomsigncell=new PdfPCell();
+//            signcell.addElement(image);
+//            signcell.setBorder(Rectangle.BOTTOM);
+//            signcell.setVerticalAlignment(Element.ALIGN_BOTTOM);
+//            signcell.setBorderColorBottom((new BaseColor(114,133,165)));
+//            signcell.setBorderWidthBottom(1);
+//            signcell.setBorderColor(new BaseColor(255,255,255));
+//            CCcell.addElement(new Phrase("cc."+" "+"1018429410",footerE));
+//            CCcell.setBorderColor(new BaseColor(255,255,255));
+//            CCcell.setVerticalAlignment(Element.ALIGN_TOP);
+//            Nomsigncell.addElement(new Phrase("Juan Sebastián Gómez",footerE));
+//           Nomsigncell.setBorderColor(new BaseColor(255,255,255));
+//           Nomsigncell.setVerticalAlignment(Element.ALIGN_TOP);
+//            pdfPtablesign.getDefaultCell().setVerticalAlignment(Element.ALIGN_BOTTOM);
+//
+//            pdfPtablesign.addCell(signcell);
+//            pdfPtablesign.addCell(Nomsigncell);
+//            pdfPtablesign.addCell(CCcell);
+//            //pdfPtablesign.setExtendLastRow(true);
+//            //pdfPtablesign.setTotalWidth((mDoc.right()-mDoc.left())*pdfPtablesign.getWidthPercentage()/100f);
+//            //pdfPtablesign.writeSelectedRows(0, -1, mDoc.left(), mDoc.bottom()+pdfPtablesign.getTotalHeight(),writer1.getDirectContent());
+//           // pdfPtablesign.setSpacingBefore(120);
+//            //pdfPtablesign.setTotalWidth(mDoc.right(40)
+//                   // - mDoc.left(60));
+//           //mDoc.add(pdfPtablesign);
+//            //mDoc.left(mDoc.leftMargin())
+//            pdfPtablesign.setTotalWidth(90);
+//            int intetable1=pdfPtablesign.getRows().size();
+//            int numbpage=mDoc.getPageNumber();
+//
+//
+//
+//
+//
+//
+//            pdfPtablesign.writeSelectedRows(0, -1,
+//                            mDoc.left(420)
+//                    ,
+//                    pdfPtablesign.getTotalHeight() + mDoc.bottom(mDoc.bottomMargin()),
+//                    writer1.getDirectContent());
+//            pdfPtablesign.writeSelectedRows(0, -1,
+//                    mDoc.left(420)
+//                    ,
+//                    pdfPtablesign.getTotalHeight() + mDoc.bottom(mDoc.bottomMargin()),
+//                    writer2.getDirectContent());
+//            PdfContentByte canvas = writer1.getDirectContent();
+//            canvas.setColorStroke(BaseColor.GRAY);
+//            canvas.setColorFill(BaseColor.WHITE);
+//            canvas.setLineWidth(0f);
+//            canvas.roundRectangle(487, 665,90, 30, 10);
+//            canvas.stroke();
+//
+//                mDoc.close();
+//
 
 
 
@@ -1304,7 +1342,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
 
         } catch (Exception e) {
-            Toast.makeText(this, "Fallo conocido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Fallo a", Toast.LENGTH_SHORT).show();
         }
 
 

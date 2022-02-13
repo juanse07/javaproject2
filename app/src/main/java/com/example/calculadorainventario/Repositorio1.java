@@ -61,7 +61,7 @@ public class Repositorio1 {
         NoteHomeDataBase homeDataBase = NoteHomeDataBase.getInstance(application);
         homeNoteDao = homeDataBase.HomenoteDao();
         getallventas=homeNoteDao.getallventas();
-        countVentas=homeNoteDao.getCountVenta();
+       // countVentas=homeNoteDao.getCountVenta();
 
     }
 

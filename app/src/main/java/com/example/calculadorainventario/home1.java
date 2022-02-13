@@ -274,7 +274,7 @@ public class home1 extends AppCompatActivity implements ClickInterface1 {
         sharedViewModel = new ViewModelProvider(home1.this).get(SharedViewModel.class);
        // sharedViewModel.DeleteAllhomeNotes();
        sharedViewModel.Insert(homeNote);
-        sharedViewModel.getCountVentas().observe(home1.this, new Observer<Integer>() {
+       /* sharedViewModel.getCountVentas().observe(home1.this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
                // Toast.makeText(home1.this, String.valueOf(integer), Toast.LENGTH_SHORT).show();
@@ -288,7 +288,7 @@ public class home1 extends AppCompatActivity implements ClickInterface1 {
                 Toast.makeText(home1.this, String.valueOf(listahomenotes.size()), Toast.LENGTH_SHORT).show();
 
             }
-        });
+        });*/
               sharedViewModel.getSearchTipo().observe(home1.this, new Observer<CharSequence>() {
                    @Override
                    public void onChanged(CharSequence charSequence) {

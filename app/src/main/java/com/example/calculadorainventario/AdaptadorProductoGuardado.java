@@ -39,6 +39,9 @@ public class AdaptadorProductoGuardado extends RecyclerView.Adapter<AdaptadorPro
     public int getItemCount() {
         return notes.size();
     }
+    public int getItemCount2() {
+        return Medida.size();
+    }
     class myClass extends RecyclerView.ViewHolder{
         TextView txserial, txmedidaproducto;
         public myClass(@NonNull View itemView) {
