@@ -529,7 +529,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
 
        // pdfUri = Uri.fromFile(new File(pdfFile.getAbsolutePath()))
-        pdfUri = Uri.fromFile(file);
+        pdfUri = Uri.fromFile(file2);
         StorageReference storageReference = mystorage.getReference();
 
 
@@ -577,7 +577,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
                                 datosventa.put("Dias_plazo",diaspago);
 
 
-                                //datosventa.put("Id_usuario",id);
+                                datosventa.put("Id_usuario",id);
                                 newref.setValue(datosventa);
                                 Toast.makeText(pdfviewer.this   , "Se ha registrado la Venta", Toast.LENGTH_SHORT).show();
                             }
