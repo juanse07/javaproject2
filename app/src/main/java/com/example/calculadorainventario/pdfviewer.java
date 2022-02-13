@@ -100,6 +100,8 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
     ArrayList<Double> listacuero3;
     AdaptadorProductoGuardado adpt1=new AdaptadorProductoGuardado();
 
+    StorageReference storageReference;
+
 
     PdfWriter writer1, writer2;
 
@@ -212,8 +214,9 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
         diaspago=Constants.getSP(this).getDIAS();
 
         myrootDbaseref5 = FirebaseDatabase.getInstance().getReference();
-        mAuth=FirebaseAuth.getInstance();
+
         mystorage= FirebaseStorage.getInstance();
+        storageReference=mystorage.getReference();
 
         String first = "PyMESoft";
         String next = "<font color='#1D2E4A'>FActuras</font>";
@@ -527,13 +530,18 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
 
     public void uploadpdf(Uri pdfUri) {
 
+        mAuth=FirebaseAuth.getInstance();
+        String id=mAuth.getCurrentUser().getUid();
+
+
 
        // pdfUri = Uri.fromFile(new File(pdfFile.getAbsolutePath()))
         pdfUri = Uri.fromFile(file2);
-        StorageReference storageReference = mystorage.getReference();
 
 
-        storageReference.child("pdfcloud").child(mFilename).putFile(pdfUri)
+
+
+        storageReference.child("pdfcloud2").child(mFilename).child(id).putFile(pdfUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(final UploadTask.TaskSnapshot taskSnapshot) {
@@ -544,6 +552,8 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
                                 Uri downloadurl=uri;
 
                                 String url2=String.valueOf(downloadurl);
+                                mAuth=FirebaseAuth.getInstance();
+                                String id=mAuth.getCurrentUser().getUid();
 
 
                                 String nombreventas = nombreventas2;
@@ -556,8 +566,10 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
                                 String medidaventas = medidaventas2;
                                 String valorventas = valorventas2;
                                 String estado=estadoventas2;
-                                String id= mAuth.getCurrentUser().getUid();
+
+
                                 DatabaseReference newref=  myrootDbaseref5.child("VENTAS").child(id).push();
+
 
 
 
@@ -636,7 +648,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
         Font regularAddress = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL, BaseColor.BLACK);
         Font regularSub = new Font(Font.FontFamily.COURIER, 6, Font.ITALIC, BaseColor.RED);
         Font regularTotal = new Font(Font.FontFamily.HELVETICA, 14, Font.ITALIC, BaseColor.BLACK);
-        Font regularTotalBold = new Font(baseFont, 16, Font.BOLD, new BaseColor(128,128,128));
+        Font regularTotalBold = new Font(baseFont, 8, Font.BOLD, new BaseColor(128,128,128));
         Font regularSub2 = new Font(Font.FontFamily.HELVETICA, 7, Font.NORMAL, BaseColor.GRAY);
         //Font footerN = new Font(baseFont, 15,Font.BOLD,printAccent);
 
@@ -754,7 +766,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
                 image.setAlignment(Image.LEFT);
                 Paragraph factu=new Paragraph("Factura de Venta",regularReportA);
                 factu.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo1=new Paragraph("Términos de pago",regularTotalBold);
+                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
                 Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
                 Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
@@ -785,7 +797,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
                 image.setAlignment(Image.LEFT);
                 Paragraph factu=new Paragraph("Factura de Venta",regularReportA);
                 factu.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo1=new Paragraph("Términos de pago",regularTotalBold);
+                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
                 Plazo1.setAlignment(Element.ALIGN_RIGHT);
                 Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
                 Plazo.setAlignment(Element.ALIGN_RIGHT);
@@ -817,8 +829,12 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
                 image.scaleAbsolute(160f,70f);
                 image.setAlignment(Image.LEFT);
                 Paragraph factu=new Paragraph("Factura de Compra",regularReportA);
-                factu.setAlignment(Element.ALIGN_RIGHT);
+                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
+                Plazo1.setAlignment(Element.ALIGN_RIGHT);
                 Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
+                Plazo.setAlignment(Element.ALIGN_RIGHT);
+                factu.setAlignment(Element.ALIGN_RIGHT);
+
                 Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
                 pdfPtableimage.setWidthPercentage(100);
@@ -1203,7 +1219,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
             Toast.makeText(this, "Fallo b", Toast.LENGTH_SHORT).show();
         }
         try {
-            PdfPTable Atable = new PdfPTable(12);
+            PdfPTable Atable = new PdfPTable(15);
             Atable.setHorizontalAlignment(Element.ALIGN_CENTER);
             Atable.setWidthPercentage(95);
            // ArrayList<Double> ListaMed=new ArrayList<>();
@@ -1278,9 +1294,9 @@ try {
             cellg.setBorderColor(new BaseColor(114,133,165));
             pdflinea.addCell(cellg);
             pdflinea.setSpacingAfter(5);
-            mDoc.add(Terminos);
-            mDoc.add(pdflinea);
-            mDoc.add(Txterminos);
+//            mDoc.add(Terminos);
+//            mDoc.add(pdflinea);
+//            mDoc.add(Txterminos);
            // mDoc.add(tableFooter);
             String imgsign = "/storage/emulated/0/PyMESoft/Signature/signaturepng";
             image = Image.getInstance(imgsign);
@@ -1339,18 +1355,18 @@ try {
                     ,
                     pdfPtablesign.getTotalHeight() + mDoc.bottom(mDoc.bottomMargin()),
                     writer2.getDirectContent());
-            PdfContentByte canvas = writer1.getDirectContent();
-          PdfContentByte canvas2 = writer2.getDirectContent();
-            canvas.setColorStroke(BaseColor.GRAY);
-            canvas.setColorFill(BaseColor.WHITE);
-            canvas.setLineWidth(0f);
-            canvas.roundRectangle(487, 665,90, 30, 10);
-            canvas.stroke();
-    canvas2.setColorStroke(BaseColor.GRAY);
-    canvas2.setColorFill(BaseColor.WHITE);
-    canvas2.setLineWidth(0f);
-    canvas2.roundRectangle(487, 665,90, 30, 10);
-    canvas2.stroke();
+//            PdfContentByte canvas = writer1.getDirectContent();
+//          PdfContentByte canvas2 = writer2.getDirectContent();
+//            canvas.setColorStroke(BaseColor.GRAY);
+//            canvas.setColorFill(BaseColor.WHITE);
+//            canvas.setLineWidth(0f);
+//            canvas.roundRectangle(487, 665,90, 30, 10);
+//            canvas.stroke();
+//    canvas2.setColorStroke(BaseColor.GRAY);
+//    canvas2.setColorFill(BaseColor.WHITE);
+//    canvas2.setLineWidth(0f);
+//    canvas2.roundRectangle(487, 665,90, 30, 10);
+//    canvas2.stroke();
 
                 mDoc.close();
    // Toast.makeText(VistaAA.this, mFilename + "guardado" + mFilepath, Toast.LENGTH_SHORT).show();
