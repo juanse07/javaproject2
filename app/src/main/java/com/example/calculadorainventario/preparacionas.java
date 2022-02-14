@@ -13,6 +13,7 @@ import android.os.Bundle;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
+
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.lifecycle.LifecycleOwner;
@@ -60,12 +61,16 @@ import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
 
+
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class preparacionas extends AppCompatActivity {
     TextView gdate, gprecio, gvalor, gmedida, gcantidad, gnombre, gproducto, ghora, gopcion, txtotalbottom,textoprepa,title5;
     Button btpdf;
@@ -83,6 +88,7 @@ public class preparacionas extends AppCompatActivity {
     ArrayList<arrayconstructor>Listadobles;
     List<Note>Listadobles2;
     ByteArrayOutputStream outputStreamnext = new ByteArrayOutputStream();
+
 
     private File file;
     CardView card_prepa;
@@ -107,6 +113,10 @@ public class preparacionas extends AppCompatActivity {
     String diaspago,Fecha2;
     String nombreventas2;
     AdaptadorProductoGuardado adpt=new AdaptadorProductoGuardado();
+
+
+
+
 
     private static final int REQUEST_CODE_ASK_PERMISSIONS = 111;
     private static final int REQUEST_CODE_ASK_PERMISSIONS_2 = 112;
@@ -440,9 +450,13 @@ public class preparacionas extends AppCompatActivity {
             }
         });
         shareViewModel2.getTxValor().observe(this, new Observer<String>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onChanged(String s) {
-                txtotalbottom.setText(s);
+                DecimalFormat formatter = new DecimalFormat("###,###,##0");
+
+                    txtotalbottom.setText(String.valueOf( formatter.format(Double.parseDouble(s))));
+
             }
         });
 
@@ -452,10 +466,15 @@ public class preparacionas extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onChanged(Double aDouble) {
-                if(aDouble!=null){
-                   // DecimalFormat df = new DecimalFormat("##.#");
-                   // gmedida.setText(Double.toString(Double.parseDouble(df.format(aDouble))).trim());}
-                    gmedida.setText(Double.toString(Double.parseDouble(String.valueOf(aDouble))).trim());}
+                if(aDouble!=null) {
+                    //  DecimalFormat formatter = new DecimalFormat("###,###,##0");
+
+//                    txtotalbottom.setText(String.valueOf( formatter.format(Double.parseDouble(s))));
+                    DecimalFormat df = new DecimalFormat("##.#");
+                    // gmedida.setText(Double.toString(Double.parseDouble(df.format(aDouble))).trim());}
+                    gmedida.setText(String.valueOf(df.format(aDouble)));
+//                    gmedida.setText(Double.toString(Double.parseDouble(String.valueOf(aDouble))).trim());}
+                }
                 NumberFormat dc = NumberFormat.getCurrencyInstance(Locale.US);
                 dc.setMaximumFractionDigits(0);
                 if(gmedida.getText().length()!=0){

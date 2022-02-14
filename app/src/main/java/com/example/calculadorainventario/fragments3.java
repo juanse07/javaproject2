@@ -263,7 +263,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                         tab.setText("Prefactura");
                         badgeDrawable = tab.getOrCreateBadge();
                         badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorRappi));
-                        badgeDrawable.setVisible(true);
+                        badgeDrawable.setVisible(false);
+
 
                         //badgeDrawable.setNumber();
                         break;
@@ -292,13 +293,19 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
             public void onChanged(@Nullable String resultado) {
                 int i=Integer.parseInt(resultado);
                 if(badgeDrawable.hasNumber()){
+                    badgeDrawable.setVisible(true);
                     badgeDrawable.setNumber(i+i);
+                    badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolor));
+
+                    badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolor));
 
 
                 }else {
 
-
+                    badgeDrawable.setVisible(true);
                     badgeDrawable.setNumber(i);
+                    badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolotransparentr));
+                    badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolotransparentr));
                 }
 
 

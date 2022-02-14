@@ -648,6 +648,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
         Font regularAddress = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL, BaseColor.BLACK);
         Font regularSub = new Font(Font.FontFamily.COURIER, 6, Font.ITALIC, BaseColor.RED);
         Font regularTotal = new Font(Font.FontFamily.HELVETICA, 14, Font.ITALIC, BaseColor.BLACK);
+        Font regularTotal2 = new Font(Font.FontFamily.HELVETICA, 11, Font.ITALIC, BaseColor.BLACK);
         Font regularTotalBold = new Font(baseFont, 8, Font.BOLD, new BaseColor(128,128,128));
         Font regularSub2 = new Font(Font.FontFamily.HELVETICA, 7, Font.NORMAL, BaseColor.GRAY);
         //Font footerN = new Font(baseFont, 15,Font.BOLD,printAccent);
@@ -1235,7 +1236,7 @@ public class pdfviewer extends AppCompatActivity  implements Interface2 {
                 Paragraph p = new Paragraph();
 
                 Paragraph q1 = new Paragraph(String.valueOf(aw + 1),regularSub );
-                Paragraph q2 = new Paragraph(List1.get(aw));
+                Paragraph q2 = new Paragraph(String.valueOf(List1.get(aw)),regularTotal2);
 
 
 
