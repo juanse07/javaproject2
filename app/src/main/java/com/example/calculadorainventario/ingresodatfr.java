@@ -17,6 +17,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.lifecycle.ViewModelStoreOwner;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
@@ -39,6 +41,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.itextpdf.text.List;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -58,11 +61,16 @@ public class ingresodatfr extends Fragment implements ClickInterface1 {
     TextView txcliente1, tx_cliente, tx_producto;
     // Spinner listaclientes, listaclientes2,listacueros,spoperacion,spmetodo;
     EditText precio1, pagotext,txtterminos;
+    RecyclerView.Adapter madapter;
+    NoteProdViewModel noteProdViewModel;
 
     String opcion, Producto;
     ArrayList<String> ritmo = new ArrayList<String>();
     ArrayList<String> metodo = new ArrayList<String>();
     ImageView restarprecio, sumarprecio;
+
+    List lista;
+    RecyclerView.LayoutManager Lmanager;
 
 
     RadioGroup grupotipo;
@@ -72,6 +80,7 @@ public class ingresodatfr extends Fragment implements ClickInterface1 {
     View ingresoview;
     DatabaseReference ref;
     private SharedViewModel sharedViewModel;
+    RecyclerView RecyProd;
     ClickInterface1 listener;
 
 
@@ -115,9 +124,12 @@ public class ingresodatfr extends Fragment implements ClickInterface1 {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         ingresoview = inflater.inflate(R.layout.fragment_ingresodatfr, container, false);
         //spoperacion = ingresoview.findViewById(R.id.spoperacion);
-        precio1 = (EditText) ingresoview.findViewById(R.id.precio1);
+        RecyProd=(RecyclerView)ingresoview.findViewById(R.id.RecyProd);
+
+                precio1 = (EditText) ingresoview.findViewById(R.id.precio1);
         restarprecio = (ImageView) ingresoview.findViewById(R.id.restarprecio);
         sumarprecio = (ImageView) ingresoview.findViewById(R.id.sumarprecio);
         tx_cliente = ingresoview.findViewById(R.id.tx_cliente);
@@ -134,6 +146,21 @@ public class ingresodatfr extends Fragment implements ClickInterface1 {
         txtterminos=ingresoview.findViewById(R.id.txtterminos);
         imgSignature11=ingresoview.findViewById(R.id.imgSignature11);
         imgSignature22=ingresoview.findViewById(R.id.imgSignature22);
+
+        lista = new List();
+        RecyProd.setHasFixedSize(true);
+        Lmanager=new LinearLayoutManager(ingresoview.getContext(),LinearLayoutManager.VERTICAL, false);
+        RecyProd.setLayoutManager(Lmanager);
+       final AdaptadorNoteProd adaptadorNoteProd=new AdaptadorNoteProd();
+        RecyProd.setAdapter(adaptadorNoteProd);
+        noteProdViewModel=new ViewModelProvider(getActivity()).get(NoteProdViewModel.class);
+        noteProdViewModel.getAllNotes().observe(getViewLifecycleOwner(), new Observer<java.util.List<NoteProducto>>() {
+            @Override
+            public void onChanged(java.util.List<NoteProducto> noteProductos) {
+                adaptadorNoteProd.setNotes(noteProductos);
+            }
+        });
+
 
         //card_operacion = ingresoview.findViewById(R.id.card_operacion);
         pagotext.setText("0");

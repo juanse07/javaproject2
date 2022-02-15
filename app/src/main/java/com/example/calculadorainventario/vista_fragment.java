@@ -86,6 +86,7 @@ public class vista_fragment extends Fragment implements ClickInterface1 {
     CardView card_view;
     View ClientesView2;
 
+
     private File pdfFile;
     private Paragraph paragraph;
     ShareViewModel2 shareViewModel2;
