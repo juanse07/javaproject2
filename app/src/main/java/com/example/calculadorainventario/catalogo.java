@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,11 @@ public class catalogo extends Fragment implements ClickInterface1 {
     TextView txproductobottom;
     SearchView edtbuscarproducto;
     Context ctx;
+    NoteProdViewModel noteProdViewModel;
+    NoteProducto noteProducto;
+    String Nombre_Prod;
+    String Cant_Prod;
+    String Precio_prod;
 
 
     RecyclerView Recyclercatalogo;
@@ -121,6 +127,8 @@ public class catalogo extends Fragment implements ClickInterface1 {
 
         Recyclercatalogo.setLayoutManager(linearLayoutManager);
 
+
+        noteProdViewModel=new ViewModelProvider(getActivity()).get(NoteProdViewModel.class);
 
         sharedViewModel = new ViewModelProvider((ViewModelStoreOwner) getActivity()).get(SharedViewModel.class);
         sharedViewModel.init();
@@ -258,11 +266,20 @@ public class catalogo extends Fragment implements ClickInterface1 {
     }
 
     @Override
-    public void passingproductoClick(int position, CharSequence Producto) {
+    public void passingproductoClick(int position, CharSequence Producto, CharSequence Precio, CharSequence Cantidad) {
         sharedViewModel.setText(Producto);
+        String Nombre_Prod=Producto.toString();
+        String Cant_Prod=Precio.toString();
+        String  Precio_prod=Cantidad.toString();
+
+        noteProducto=new NoteProducto(Nombre_Prod,Cant_Prod,Precio_prod);
+        noteProdViewModel.Insert(noteProducto);
+        Log.d("el valor es", String.valueOf(noteProducto.Nombre_prod+noteProducto.Precio_prod+noteProducto.Cant_prod));
 
 
     }
+
+
 
     @Override
     public void passingprecio1Click(int position, CharSequence Precio) {

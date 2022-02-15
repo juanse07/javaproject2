@@ -74,16 +74,51 @@
             android:layout_marginEnd="0dp"
             android:layout_marginRight="2dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/colorBlancox"
             android:layout_weight="1"
+            android:background="@color/colorBlancox"
             android:gravity="bottom"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="100">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="33.3" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <ImageView
+                        android:id="@+id/cantmas2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="20"
+                        app:srcCompat="@drawable/ic_add_black_18dp" />
+
+                    <TextView
+                        android:id="@+id/canttext2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="60"
+                        android:text="TextView" />
+
+                    <ImageView
+                        android:id="@+id/cantmenos2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="20"
+                        app:srcCompat="@drawable/ic_remove_black_18dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_margin="12dp"
-                android:layout_weight="1"
+                android:layout_weight="33.3"
                 app:cardCornerRadius="15dp">
 
                 <LinearLayout
@@ -123,7 +158,7 @@
             <Button
                 android:id="@+id/buttonaddproducto"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
 
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_marginStart="7dp"
@@ -131,18 +166,16 @@
                 android:layout_marginEnd="7dp"
                 android:layout_marginBottom="3dp"
 
-                android:layout_weight="1.5"
+                android:layout_weight="33.3"
 
                 android:text="Agregar"
                 android:textColor="@color/colorAccent"
                 android:textSize="12dp"
 
 
-                android:visibility="visible"/>
+                android:visibility="visible" />
             android:background="@drawable/btn2"
             app:backgroundTint="@color/colorGris"
-
-
 
 
         </LinearLayout>

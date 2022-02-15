@@ -508,9 +508,11 @@ pagomas.setOnClickListener(new View.OnClickListener() {
     }
 
     @Override
-    public void passingproductoClick(int position, CharSequence Producto) {
+    public void passingproductoClick(int position, CharSequence Producto, CharSequence Precio, CharSequence Cantidad) {
 
     }
+
+
 
     @Override
     public void passingprecio1Click(int position, CharSequence Precio) {

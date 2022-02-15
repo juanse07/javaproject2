@@ -427,9 +427,10 @@ public class home1 extends AppCompatActivity implements ClickInterface1 {
     }
 
     @Override
-    public void passingproductoClick(int position, CharSequence Producto) {
+    public void passingproductoClick(int position, CharSequence Producto, CharSequence Precio, CharSequence Cantidad) {
 
     }
+
 
     @Override
     public void passingprecio1Click(int position, CharSequence Precio) {

@@ -1,21 +1,15 @@
 package com.example.calculadorainventario;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.os.Build;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,7 +17,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
@@ -38,6 +31,8 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
 
     private ArrayList<cuerospinner>productos;
     private ArrayList<cuerospinner>productosfull;
+    NoteProducto noteProducto;
+    NoteProdViewModel noteProdViewModel;
 
 
     private  ClickInterface1 clickInterface1;
@@ -47,6 +42,8 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
     SharedViewModel sharedViewModel;
     DatabaseReference ref;
     FirebaseAuth mAuth;
+
+
 
 
 
@@ -72,6 +69,7 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
     @Override
     public void onBindViewHolder(@NonNull final adaptadorcatalogo.ViewHolder holder, final int position) {
         holder.preciotext.setText("1000");
+        holder.canttext2.setText("1");
 
         //DataProcessor dataProcessor = new DataProcessor();
        // holder.itemView.setTag(productos.get(position));
@@ -137,12 +135,17 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
 
 
 
+
+
                 //cuerospinner current = productos.get(position);
              CharSequence Producto= holder.nombreproducto.getText();
              CharSequence Precio=holder.preciotext.getText();
+
+                CharSequence Cantidad=holder.canttext2.getText();
                 clickInterface1.onButtonAddClick(position);
-                clickInterface1.passingproductoClick(position,Producto);
+                clickInterface1.passingproductoClick(position,Producto,Precio,Cantidad);
                 clickInterface1.passingprecio1Click(position,Precio);
+
                 row_index=position;
                 notifyDataSetChanged();
 
@@ -217,9 +220,9 @@ private Filter FiltroProducto=new Filter() {
 };
 
     public class ViewHolder extends RecyclerView.ViewHolder  {
-        TextView nombreproducto;
+        TextView nombreproducto,canttext2;
         Button buttonaddproducto;
-        ImageView preciomas, preciomenos,configcrear;
+        ImageView preciomas, preciomenos,configcrear,cantmenos2,cantmas2;
         CheckBox checkIVA;
 
 
@@ -237,6 +240,9 @@ private Filter FiltroProducto=new Filter() {
             super(itemView);
             nombreproducto = itemView.findViewById(R.id.nombreproducto);
             buttonaddproducto = itemView.findViewById(R.id.buttonaddproducto);
+            cantmenos2=itemView.findViewById(R.id.cantmenos2);
+            canttext2=itemView.findViewById(R.id.canttext2);
+            cantmas2=itemView.findViewById(R.id.cantmas2);
             preciomas=itemView.findViewById(R.id.preciomas);
             preciomenos=itemView.findViewById(R.id.preciomenos);
             preciotext=itemView.findViewById(R.id.preciotext);

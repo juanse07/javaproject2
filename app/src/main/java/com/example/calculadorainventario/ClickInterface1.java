@@ -4,7 +4,7 @@ public interface ClickInterface1 {
     void onItemClick(int position);
     void onButtonAddClick(int position);
     void onButtonclienteClick(int position);
-    void passingproductoClick(int position, CharSequence Producto);
+    void passingproductoClick(int position, CharSequence Producto, CharSequence Precio,CharSequence Cantidad);
     void passingprecio1Click(int position, CharSequence Precio);
     void passingcliente2Click(int position, CharSequence Cliente);
     void preferenciasacalculadora();
