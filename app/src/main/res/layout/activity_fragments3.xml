@@ -180,6 +180,29 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnpdf"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="230dp"
+                android:layout_marginRight="230dp"
+                android:layout_marginBottom="22dp"
+                android:background="@drawable/btnnaranja"
+                android:text="Open Pdf"
+                android:textSize="12sp"
+                android:visibility="visible"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/cardcli"
                 android:layout_width="0dp"
                 android:layout_height="0dp"

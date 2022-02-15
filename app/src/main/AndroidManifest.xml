@@ -62,6 +62,9 @@
             android:name=".pdfviewer"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".pdfviewer2"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".reminderAc"
             android:windowSoftInputMode="adjustResize" />
         <activity

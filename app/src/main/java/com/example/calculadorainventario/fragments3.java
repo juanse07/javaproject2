@@ -40,19 +40,25 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     ViewPager2 viepag;
     TabLayout tabLayout;
     BadgeDrawable badgeDrawable;
     ImageView back2,arrowchange;
-    Button btnproducto, btncliente,btcompra;
+    Button btnproducto, btncliente,btcompra,btnpdf;
     MaterialButton cardprod,cardcli;
     RelativeLayout relativev,Relative2,relativigilancia;
     ConstraintLayout constlay;
     BottomNavigationView navcat;
     LinearLayout linprod, lincli;
     String PrecioL,ProductoL,ClienteL;
+    ArrayList<String> Listapdf,ListaProd,ListaCant,ListaPre;
+
+    NoteProdViewModel noteProdViewModel;
+    List<NoteProducto>ListaProd1;
 
 
     TextView txclientebotton, txproductobttom,txpreciobottom,title4,textView38,textview30;
@@ -84,6 +90,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
        // Relative2=findViewById(R.id.Relative2);
         title4=findViewById(R.id.title4);
         btcompra=findViewById(R.id.btcompra);
+        btnpdf=findViewById(R.id.btnpdf);
 
         arrowchange=findViewById(R.id.arrowchange);
         //txproductobttom=findViewById(R.id.txproductobttom);
@@ -97,6 +104,15 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         cardprod=findViewById(R.id.cardprod);
         textView38=findViewById(R.id.textView38);
         textview30=findViewById(R.id.textView30);
+
+        noteProdViewModel=new ViewModelProvider(this).get(NoteProdViewModel.class);
+        noteProdViewModel.getAllNotes().observe(this, new Observer<List<NoteProducto>>() {
+            @Override
+            public void onChanged(List<NoteProducto> noteProductos) {
+                ListaProd1=noteProductos;
+
+            }
+        });
 
 
 
@@ -196,7 +212,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
 
                 }else {
-
+                    btnpdf.bringToFront();
+                    btnpdf.setVisibility(View.VISIBLE);
                     btcompra.bringToFront();
                     btncliente.setVisibility(View.GONE);
                     btnproducto.setVisibility(View.GONE);
@@ -235,6 +252,76 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             intent.putExtras(bundle);
 
                             startActivity(intent);
+                        }
+                    });
+                    btnpdf.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(fragments3.this,pdfviewer2.class);
+
+                            //  ArrayList<Note> Lista78;
+                            //Lista78=(ArrayList<Note>)allnotes3;
+                            Bundle bundle = new Bundle();
+                            //intent.putExtra("Lista6", (Parcelable) allnotes3);
+
+                            bundle.putSerializable("Diasdepago2",dias1);
+//                            bundle.putSerializable("Fecha2",gopcion.getText().toString());
+//                            bundle.putSerializable("Unidades1",gcantidad.getText().toString());
+//                            bundle.putSerializable("Medida1",gmedida.getText().toString());
+//                            bundle.putSerializable("Total1",txtotalbottom.getText().toString());
+//                            bundle.putSerializable("Fecha1",gdate.getText().toString());
+//                            bundle.putSerializable("Hora1",ghora.getText().toString());
+                            bundle.putSerializable("Precio1", PrecioL);
+                            bundle.putSerializable("Nombre1",ClienteL);
+                            bundle.putSerializable("Producto1",ProductoL);
+//                            bundle.putSerializable("Estado1",textoprepa.getText().toString());
+
+                            ListaProd=new ArrayList<>();
+                            ListaCant=new ArrayList<>();
+                            ListaPre=new ArrayList<>();
+
+
+                            for (int i = 0 ; i <ListaProd1.size() ; i++){
+
+//                   Log.d("value is" , Listadobles2.get(i).valor_Medida.toString());}
+//                   Listapdf.add(Listadobles2.get(i).getValor_Medida().toString());
+                                String pdfprod1=ListaProd1.get(i).Nombre_prod;
+                                String pdfcant1=ListaProd1.get(i).Cant_prod;
+                                String pdfpre1=ListaProd1.get(i).Precio_prod;
+                                ListaCant.add(pdfcant1);
+                                ListaProd.add(pdfprod1);
+                                ListaPre.add(pdfpre1);}
+
+//
+//
+//
+
+                            bundle.putSerializable("listaProd1",ListaProd);
+                            bundle.putSerializable("listaCant1",ListaProd);
+                            bundle.putSerializable("listaPre1",ListaProd);
+
+//
+//         bundle.putSerializable("Listapdf",Listapasar);
+                            // bundle.putByteArray("wpa",outputStream.toByteArray());
+
+
+                            intent.putExtras(bundle);
+                            // pdfviewer pdfviewer2=new pdfviewer();
+
+
+
+
+
+                            startActivity(intent);
+
+
+
+
+
+
+
+
+
                         }
                     });
                 }
