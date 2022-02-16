@@ -40,10 +40,10 @@ public class NoteProductoRep {
 //            new com.example.calculadorainventario.NoteRepository.DeleteNotesProdAsynk(noteProdDao).execute(note);
 //
 //        }
-//        public void DeleteAllNotes(){
-//            new com.example.calculadorainventario.NoteRepository.DeleteAllNotesProdAsynk(noteProdDao).execute();
-//
-//        }
+        public void DeleteAllNotes(){
+            new com.example.calculadorainventario.NoteProductoRep.DeleteAllNotesProdAsynk(noteProdDao).execute();
+
+        }
 //        /* public void SumAllNotes(){
 //             new SumNotesAsynk(noteProdDao).execute();
 //
@@ -101,9 +101,9 @@ public class NoteProductoRep {
                 return null;
             }
         }
-        private static class DeleteAllNotesAsynk extends AsyncTask<Void,Void,Void>{
+        private static class DeleteAllNotesProdAsynk extends AsyncTask<Void,Void,Void>{
             private NoteProdDao noteProdDao;
-            private DeleteAllNotesAsynk(NoteProdDao noteProdDao){
+            private DeleteAllNotesProdAsynk(NoteProdDao noteProdDao){
                 this.noteProdDao=noteProdDao;
             }
 

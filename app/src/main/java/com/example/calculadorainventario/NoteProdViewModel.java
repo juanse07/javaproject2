@@ -38,9 +38,9 @@ public class NoteProdViewModel extends AndroidViewModel {
 //        public void Delete(NoteProducto noteProducto){
 //            noteProductoRep.Delete(noteProducto);
 //        }
-//        public void DeleteAll(){
-//            noteProductoRep.DeleteAllNotes();
-//        }
+        public void DeleteAll(){
+            noteProductoRep.DeleteAllNotes();
+        }
 //        public void getallnotes2(){noteProductoRep.getallNotes2();}
         public LiveData<List<Double>>getAllDoubleNotes(){
 

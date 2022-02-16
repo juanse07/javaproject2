@@ -297,8 +297,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 //
 
                             bundle.putSerializable("listaProd1",ListaProd);
-                            bundle.putSerializable("listaCant1",ListaProd);
-                            bundle.putSerializable("listaPre1",ListaProd);
+                            bundle.putSerializable("listaCant1",ListaCant);
+                            bundle.putSerializable("listaPre1",ListaPre);
 
 //
 //         bundle.putSerializable("Listapdf",Listapasar);

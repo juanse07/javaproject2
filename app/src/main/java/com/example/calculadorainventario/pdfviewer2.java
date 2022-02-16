@@ -79,6 +79,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     ArrayList<Double> ListaCuero;
     ArrayList<Double> listacuero3;
     AdaptadorProductoGuardado adpt1=new AdaptadorProductoGuardado();
+    NoteProdViewModel noteProdViewModel;
 
     StorageReference storageReference;
 
@@ -374,8 +375,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
         Intent i = new Intent(pdfviewer2.this, home1.class);
         startActivity(i);
-        noteViewModel=new ViewModelProvider(this).get(NoteViewModel.class);
-        noteViewModel.DeleteAll();
+        noteProdViewModel=new ViewModelProvider(this).get(NoteProdViewModel.class);
+        noteProdViewModel.DeleteAll();
 
     }
 
@@ -1203,10 +1204,46 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             Toast.makeText(this, "Fallo b", Toast.LENGTH_SHORT).show();
         }
         try {
-            PdfPTable Atable = new PdfPTable(1);
-            Atable.setHorizontalAlignment(Element.ALIGN_CENTER);
-            Atable.setWidthPercentage(95);
-           // ArrayList<Double> ListaMed=new ArrayList<>();
+            PdfPTable Atable = new PdfPTable(3);
+            Atable.setHorizontalAlignment(Element.ALIGN_LEFT);
+            Atable.setWidthPercentage(70);
+            PdfPTable Atable2 = new PdfPTable(1);
+            Atable2.setHorizontalAlignment(Element.ALIGN_CENTER);
+            Atable2.setWidthPercentage(30);
+            PdfPTable Atable3 = new PdfPTable(1);
+            Atable3.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            Atable3.setWidthPercentage(21);
+            ArrayList<Double> ListaMed=new ArrayList<>();
+            Paragraph Product_name=new Paragraph("Product Name",regularTotalBold);
+            Paragraph Quantity=new Paragraph("Quantity",regularTotalBold);
+            Paragraph Price=new Paragraph("Price",regularTotalBold);
+            PdfPCell cellP = new PdfPCell();
+            cellP.setPaddingBottom(8);
+            cellP.setPaddingTop(5);
+            cellP.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellP.setBorderColor(BaseColor.WHITE);
+            cellP.setFixedHeight(25);
+            cellP.addElement(Product_name);
+            PdfPCell cellQ = new PdfPCell();
+            cellQ.setPaddingBottom(8);
+            cellQ.setPaddingTop(5);
+            cellQ.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellQ.setBorderColor(BaseColor.WHITE);
+            cellQ.setFixedHeight(25);
+            cellQ.addElement(Quantity);
+            PdfPCell cellP2 = new PdfPCell();
+            cellP2.setPaddingBottom(8);
+            cellP2.setPaddingTop(5);
+            cellP2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellP2.setBorderColor(BaseColor.WHITE);
+            cellP2.setFixedHeight(25);
+            cellP2.addElement(Price);
+
+
+            Atable.addCell(cellP);
+            Atable.addCell(cellQ);
+            Atable.addCell(cellP2);
+            Atable.setHeaderRows(1);
 
 
 //
@@ -1217,36 +1254,65 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 //ListaMed.add(adpt.getmedida(aw));
 
                 Paragraph p = new Paragraph();
+                Paragraph p1=new Paragraph();
+                Paragraph p2=new Paragraph();
 
                 Paragraph q1 = new Paragraph(String.valueOf(aw + 1),regularSub );
                 Paragraph q2 = new Paragraph(String.valueOf(List1.get(aw)),regularTotal2);
+               Paragraph q3 = new Paragraph(String.valueOf(List2.get(aw)),regularTotal2);
+               Paragraph q4 = new Paragraph(String.valueOf(List3.get(aw)),regularTotal2);
 
 
 
 
-                Chunk gumble = new Chunk(new VerticalPositionMark());
 
-                p.add(q1);
-                p.add(gumble);
-               p.add(q2);
+
+               Chunk gumble = new Chunk(new VerticalPositionMark());
+
+                p.add(q2);
+//                p.add(gumble);
+                p1.add(q3);
+                p2.add(q4);
+
 
                 PdfPCell cell = new PdfPCell(p);
                 cell.setPaddingBottom(8);
                 cell.setPaddingTop(5);
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-                cell.setBorderColor(BaseColor.LIGHT_GRAY);
+                cell.setBorderColor(BaseColor.WHITE);
                 cell.setFixedHeight(25);
+               PdfPCell cell1 = new PdfPCell(p1);
+               cell1.setPaddingBottom(8);
+               cell1.setPaddingTop(5);
+               cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+               cell1.setBorderColor(BaseColor.WHITE);
+               cell1.setFixedHeight(25);
+               PdfPCell cell2 = new PdfPCell(p2);
+               cell2.setPaddingBottom(8);
+               cell2.setPaddingTop(5);
+               cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+               cell2.setBorderColor(BaseColor.WHITE);
+               cell2.setFixedHeight(25);
+
+
 
                 Atable.addCell(cell);
+                Atable.addCell(cell1);
+                Atable.addCell(cell2);
                 //stamper.close();
 
             }
 
 
-            Atable.getDefaultCell().setBorderColor(BaseColor.LIGHT_GRAY);
+
+
+            Atable.getDefaultCell().setBorderColor(BaseColor.WHITE);
+
+
             Atable.completeRow();
 
            mDoc.add(Atable);
+
 //            mDoc.close();
 
         } catch (Exception e) {
