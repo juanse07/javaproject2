@@ -3,6 +3,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="45dp"
     android:layout_marginStart="5dp"
@@ -21,88 +22,29 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_weight="25"
+        android:layout_weight="40"
         android:gravity="center_vertical"
         android:text="TextView" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardcant"
+    <TextView
+        android:id="@+id/textm2"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="32.5">
+        android:layout_weight="30"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="TextView" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="100">
-
-            <ImageView
-                android:id="@+id/min1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="20"
-                app:srcCompat="@drawable/ic_add_black_18dp" />
-
-            <TextView
-                android:id="@+id/text1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="60"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="TextView" />
-
-            <ImageView
-                android:id="@+id/mas1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="20"
-                app:srcCompat="@drawable/ic_remove_black_18dp" />
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardpre"
+    <TextView
+        android:id="@+id/text1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="32.5">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="100">
-
-            <ImageView
-                android:id="@+id/min2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="20"
-                app:srcCompat="@drawable/ic_remove_black_18dp" />
-
-            <TextView
-                android:id="@+id/textm2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="60"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="TextView" />
-
-            <ImageView
-                android:id="@+id/mas2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="20"
-                app:srcCompat="@drawable/ic_add_black_18dp" />
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+        android:layout_gravity="center_vertical"
+        android:layout_weight="20"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="TextView" />
 
     <ImageView
-        android:id="@+id/configcrear"
+        android:id="@+id/deletesym"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"

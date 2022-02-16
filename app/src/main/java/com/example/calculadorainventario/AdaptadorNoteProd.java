@@ -22,11 +22,74 @@ public class AdaptadorNoteProd extends RecyclerView.Adapter<AdaptadorNoteProd.my
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdaptadorNoteProd.myClass holder, int position) {
-        NoteProducto currentnote= notesProd.get(position);
+    public void onBindViewHolder(@NonNull final AdaptadorNoteProd.myClass holder, int position) {
+        final NoteProducto currentnote= notesProd.get(position);
         holder.nombreproducto00.setText(currentnote.getNombre_prod());
         holder.text1.setText(currentnote.getCant_Prod());
         holder.textm2.setText(currentnote.getPrecio_prod());
+        holder.deletesym.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+//        holder.mas2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int valorprecio = Integer.parseInt(holder.textm2.getText().toString());
+//                //               int valorritmo = Integer.parseInt(Ritmo1);
+//                int valorritmo = 1;
+//                int valornuevosuma = valorprecio + valorritmo;
+//                holder.textm2.setText(valornuevosuma + "");
+//
+//
+//
+//
+//
+//
+//
+//            }
+//        });
+//        holder.min2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int valorprecio = Integer.parseInt(holder.textm2.getText().toString());
+//                //               int valorritmo = Integer.parseInt(Ritmo1);
+//                int valorritmo = 1;
+//                int valornuevosuma = valorprecio - valorritmo;
+//                holder.textm2.setText(valornuevosuma + "");
+//
+//            }
+//        });
+//
+//        holder.mas3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int valorcant = Integer.parseInt(holder.text1.getText().toString());
+//                int valorritmo = 50;
+//                int valornuevosuma = valorcant + valorritmo;
+//                holder.text1.setText(valornuevosuma + "");
+//
+//
+//
+//
+//
+//
+//
+//            }
+//        });
+//        holder.min3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int valorcant = Integer.parseInt(holder.text1.getText().toString());
+//                int valorritmo = 50;
+//                int valornuevosuma = valorcant - valorritmo;
+//                holder.text1.setText(valornuevosuma + "");
+//
+//            }
+//        });
+//
 
 
     }
@@ -39,17 +102,18 @@ public class AdaptadorNoteProd extends RecyclerView.Adapter<AdaptadorNoteProd.my
 
     class myClass extends RecyclerView.ViewHolder{
         TextView nombreproducto00,text1,textm2;
-        ImageView min1,min2,mas1,mas2;
+        ImageView min3,min2,mas3,mas2,deletesym;
         public myClass(@NonNull View itemView) {
 
             super(itemView);
             nombreproducto00 = itemView.findViewById(R.id.nobreproducto00);
             text1 = itemView.findViewById(R.id.text1);
             textm2=itemView.findViewById(R.id.textm2);
-            min1=itemView.findViewById(R.id.min1);
-            min2=itemView.findViewById(R.id.min2);
-            mas1=itemView.findViewById(R.id.mas1);
-            mas2=itemView.findViewById(R.id.mas2);
+            deletesym=itemView.findViewById(R.id.deletesym);
+//            mas3=itemView.findViewById(R.id.mas3);
+//            min2=itemView.findViewById(R.id.min2);
+//            min3=itemView.findViewById(R.id.min3);
+//            mas2=itemView.findViewById(R.id.mas2);
         }
 
 }

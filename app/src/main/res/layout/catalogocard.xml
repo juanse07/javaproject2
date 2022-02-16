@@ -32,7 +32,7 @@
                 android:weightSum="100">
 
                 <ImageView
-                    android:id="@+id/configcrear"
+                    android:id="@+id/deletesym"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"

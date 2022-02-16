@@ -103,7 +103,8 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
            @Override
            public void onClick(View v) {
                int valorprecio = Integer.parseInt(holder.preciotext.getText().toString());
-               int valorritmo = Integer.parseInt(Ritmo1);
+
+               int valorritmo = 50;
                int valornuevosuma = valorprecio + valorritmo;
                holder.preciotext.setText(valornuevosuma + "");
 
@@ -119,21 +120,46 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
            @Override
            public void onClick(View v) {
                int valorprecio = Integer.parseInt(holder.preciotext.getText().toString());
-               int valorritmo = Integer.parseInt(Ritmo1);
+//               int valorritmo = Integer.parseInt(Ritmo1);
+               int valorritmo = 50;
+
                int valornuevosuma = valorprecio - valorritmo;
                holder.preciotext.setText(valornuevosuma + "");
 
            }
        });
 
+        holder.cantmas2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int valorcant = Integer.parseInt(holder.canttext2.getText().toString());
+                int valorritmo = 1;
+                int valornuevosuma = valorcant + valorritmo;
+                holder.canttext2.setText(valornuevosuma + "");
+
+
+
+
+
+
+
+            }
+        });
+        holder.cantmenos2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int valorcant = Integer.parseInt(holder.canttext2.getText().toString());
+                int valorritmo = 1;
+                int valornuevosuma = valorcant - valorritmo;
+                holder.canttext2.setText(valornuevosuma + "");
+
+            }
+        });
+
         holder.buttonaddproducto.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
-
-
-
-
 
 
 
@@ -246,7 +272,7 @@ private Filter FiltroProducto=new Filter() {
             preciomas=itemView.findViewById(R.id.preciomas);
             preciomenos=itemView.findViewById(R.id.preciomenos);
             preciotext=itemView.findViewById(R.id.preciotext);
-            configcrear=itemView.findViewById(R.id.configcrear);
+            configcrear=itemView.findViewById(R.id.deletesym);
             checkIVA=itemView.findViewById(R.id.checkIVA);
 
 
