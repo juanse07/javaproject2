@@ -100,8 +100,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     String precioventas2;
 //    String medidaventas2;
 //    String valorventas2;
-//    String fechaventas2;
-//    String estadoventas2;
+  String fechaventas2;
+   String estadoventas2;
 //    String horareal2;
 //    String diaspago,Fecha2;
     DatabaseReference myrootDbaseref5;
@@ -189,7 +189,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 //
 //      valorventas2=getIntent().getExtras().getString("Total1");
 
-//        estadoventas2=getIntent().getExtras().getString("Estado1");
+    estadoventas2=getIntent().getExtras().getString("Estado1");
 //        Fecha2=getIntent().getExtras().getString("Fecha2").trim();
         //outputStream2=getIntent().getExtras().getByteArray("wpa");
 
@@ -744,197 +744,197 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
             String radiotipo= logopreference2.getString("logocheck2","no hay datos");
 
-//            if (radiotipo.equals("Rectangular")&&estadoventas2.equals("Venta")){
-//                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
-//                image = Image.getInstance(imFile);
-//                image.scaleAbsolute(160f,70f);
-//                image.setAlignment(Image.LEFT);
-//                Paragraph factu=new Paragraph("Factura de Venta",regularReportA);
-//                factu.setAlignment(Element.ALIGN_RIGHT);
-//                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
+            if (radiotipo.equals("Rectangular")&&estadoventas2.equals("Venta")){
+                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
+                image = Image.getInstance(imFile);
+                image.scaleAbsolute(160f,70f);
+                image.setAlignment(Image.LEFT);
+                Paragraph factu=new Paragraph("Factura de Venta",regularReportA);
+                factu.setAlignment(Element.ALIGN_RIGHT);
+                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
 //                Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
 //                Plazo.setAlignment(Element.ALIGN_RIGHT);
-//                PdfPTable pdfPtableimage = new PdfPTable(2);
-//                pdfPtableimage.setWidthPercentage(100);
-//                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
-//                PdfPCell imagecell = new PdfPCell();
-//                PdfPCell factucell = new PdfPCell();
-//                imagecell.addElement(image);
-//                imagecell.setBorderColor(new BaseColor(255,255,255));
-//                factucell.addElement(factu);
-//                factucell.setBorderColor(new BaseColor(255,255,255));
-//                factucell.addElement(Plazo1);
+                PdfPTable pdfPtableimage = new PdfPTable(2);
+                pdfPtableimage.setWidthPercentage(100);
+                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
+                PdfPCell imagecell = new PdfPCell();
+                PdfPCell factucell = new PdfPCell();
+                imagecell.addElement(image);
+                imagecell.setBorderColor(new BaseColor(255,255,255));
+                factucell.addElement(factu);
+                factucell.setBorderColor(new BaseColor(255,255,255));
+                factucell.addElement(Plazo1);
 //                factucell.addElement(Plazo);
-//
-//
-//
-//
-//                pdfPtableimage.addCell(imagecell);
-//                pdfPtableimage.addCell(factucell);
-//
-//                pdfPtableimage.setSpacingAfter(25);
-//                mDoc.add(pdfPtableimage);
-//                System.setProperty("http.agent", "Chrome");
-//            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals("Venta")) {
-//                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
-//                image = Image.getInstance(imFile);
-//                image.scaleAbsolute(100f,100f);
-//                image.setAlignment(Image.LEFT);
-//                Paragraph factu=new Paragraph("Factura de Venta",regularReportA);
-//                factu.setAlignment(Element.ALIGN_RIGHT);
-//                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
-//                Plazo1.setAlignment(Element.ALIGN_RIGHT);
+
+
+
+
+                pdfPtableimage.addCell(imagecell);
+                pdfPtableimage.addCell(factucell);
+
+                pdfPtableimage.setSpacingAfter(25);
+                mDoc.add(pdfPtableimage);
+                System.setProperty("http.agent", "Chrome");
+            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals("Venta")) {
+                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
+                image = Image.getInstance(imFile);
+                image.scaleAbsolute(100f,100f);
+                image.setAlignment(Image.LEFT);
+                Paragraph factu=new Paragraph("Factura de Venta",regularReportA);
+                factu.setAlignment(Element.ALIGN_RIGHT);
+                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
+                Plazo1.setAlignment(Element.ALIGN_RIGHT);
 //                Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
 //                Plazo.setAlignment(Element.ALIGN_RIGHT);
-//                PdfPTable pdfPtableimage = new PdfPTable(2);
-//                pdfPtableimage.setWidthPercentage(100);
-//                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
-//                PdfPCell imagecell = new PdfPCell();
-//                PdfPCell factucell = new PdfPCell();
-//                imagecell.addElement(image);
-//                imagecell.setBorderColor(new BaseColor(255,255,255));
-//                factucell.addElement(factu);
-//                factucell.setBorderColor(new BaseColor(255,255,255));
-//                factucell.addElement(Plazo1);
+                PdfPTable pdfPtableimage = new PdfPTable(2);
+                pdfPtableimage.setWidthPercentage(100);
+                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
+                PdfPCell imagecell = new PdfPCell();
+                PdfPCell factucell = new PdfPCell();
+                imagecell.addElement(image);
+                imagecell.setBorderColor(new BaseColor(255,255,255));
+                factucell.addElement(factu);
+                factucell.setBorderColor(new BaseColor(255,255,255));
+                factucell.addElement(Plazo1);
 //                factucell.addElement(Plazo);
-//
-//
-//
-//
-//                pdfPtableimage.addCell(imagecell);
-//                pdfPtableimage.addCell(factucell);
-//
-//                pdfPtableimage.setSpacingAfter(25);
-//                mDoc.add(pdfPtableimage);
-//                System.setProperty("http.agent", "Chrome");
-//            }
-//            if (radiotipo.equals("Rectangular")&&estadoventas2.equals("Compra")){
-//                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
-//                image = Image.getInstance(imFile);
-//                image.scaleAbsolute(160f,70f);
-//                image.setAlignment(Image.LEFT);
-//                Paragraph factu=new Paragraph("Factura de Compra",regularReportA);
-//                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
-//                Plazo1.setAlignment(Element.ALIGN_RIGHT);
+
+
+
+
+                pdfPtableimage.addCell(imagecell);
+                pdfPtableimage.addCell(factucell);
+
+                pdfPtableimage.setSpacingAfter(25);
+                mDoc.add(pdfPtableimage);
+                System.setProperty("http.agent", "Chrome");
+            }
+            if (radiotipo.equals("Rectangular")&&estadoventas2.equals("Compra")){
+                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
+                image = Image.getInstance(imFile);
+                image.scaleAbsolute(160f,70f);
+                image.setAlignment(Image.LEFT);
+                Paragraph factu=new Paragraph("Factura de Compra",regularReportA);
+                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
+                Plazo1.setAlignment(Element.ALIGN_RIGHT);
 //                Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
 //                Plazo.setAlignment(Element.ALIGN_RIGHT);
-//                factu.setAlignment(Element.ALIGN_RIGHT);
-//
+                factu.setAlignment(Element.ALIGN_RIGHT);
+
 //                Plazo.setAlignment(Element.ALIGN_RIGHT);
-//                PdfPTable pdfPtableimage = new PdfPTable(2);
-//                pdfPtableimage.setWidthPercentage(100);
-//                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
-//                PdfPCell imagecell = new PdfPCell();
-//                PdfPCell factucell = new PdfPCell();
-//                imagecell.addElement(image);
-//                imagecell.setBorderColor(new BaseColor(255,255,255));
-//                factucell.addElement(factu);
-//
-//                factucell.setBorderColor(new BaseColor(255,255,255));
+                PdfPTable pdfPtableimage = new PdfPTable(2);
+                pdfPtableimage.setWidthPercentage(100);
+                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
+                PdfPCell imagecell = new PdfPCell();
+                PdfPCell factucell = new PdfPCell();
+                imagecell.addElement(image);
+                imagecell.setBorderColor(new BaseColor(255,255,255));
+                factucell.addElement(factu);
+
+                factucell.setBorderColor(new BaseColor(255,255,255));
 //                factucell.addElement(Plazo);
-//
-//
-//
-//
-//                pdfPtableimage.addCell(imagecell);
-//                pdfPtableimage.addCell(factucell);
-//
-//                pdfPtableimage.setSpacingAfter(25);
-//                mDoc.add(pdfPtableimage);
-//                System.setProperty("http.agent", "Chrome");
-//            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals("Compra")) {
-//                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
-//                image = Image.getInstance(imFile);
-//                image.scaleAbsolute(100f,100f);
-//                image.setAlignment(Image.LEFT);
-//                Paragraph factu=new Paragraph("Factura de Compra",regularReportA);
-//                factu.setAlignment(Element.ALIGN_RIGHT);
+
+
+
+
+                pdfPtableimage.addCell(imagecell);
+                pdfPtableimage.addCell(factucell);
+
+                pdfPtableimage.setSpacingAfter(25);
+                mDoc.add(pdfPtableimage);
+                System.setProperty("http.agent", "Chrome");
+            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals("Compra")) {
+                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
+                image = Image.getInstance(imFile);
+                image.scaleAbsolute(100f,100f);
+                image.setAlignment(Image.LEFT);
+                Paragraph factu=new Paragraph("Factura de Compra",regularReportA);
+                factu.setAlignment(Element.ALIGN_RIGHT);
 //                Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
 //                Plazo.setAlignment(Element.ALIGN_RIGHT);
-//                PdfPTable pdfPtableimage = new PdfPTable(2);
-//                pdfPtableimage.setWidthPercentage(100);
-//                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
-//                PdfPCell imagecell = new PdfPCell();
-//                PdfPCell factucell = new PdfPCell();
-//                imagecell.addElement(image);
-//                imagecell.setBorderColor(new BaseColor(255,255,255));
-//                factucell.addElement(factu);
-//
+                PdfPTable pdfPtableimage = new PdfPTable(2);
+                pdfPtableimage.setWidthPercentage(100);
+                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
+                PdfPCell imagecell = new PdfPCell();
+                PdfPCell factucell = new PdfPCell();
+                imagecell.addElement(image);
+                imagecell.setBorderColor(new BaseColor(255,255,255));
+                factucell.addElement(factu);
+
 //                factucell.setBorderColor(new BaseColor(255,255,255));
 //                factucell.addElement(Plazo);
-//
-//
-//
-//
-//                pdfPtableimage.addCell(imagecell);
-//                pdfPtableimage.addCell(factucell);
-//
-//                pdfPtableimage.setSpacingAfter(25);
-//                mDoc.add(pdfPtableimage);
-//                System.setProperty("http.agent", "Chrome");
-//            }
-//            if (radiotipo.equals("Rectangular")&&estadoventas2.equals("Borrador")){
-//                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
-//                image = Image.getInstance(imFile);
-//                image.scaleAbsolute(160f,70f);
-//                image.setAlignment(Image.LEFT);
-//                Paragraph factu=new Paragraph("Cotización",regularReportA);
-//                factu.setAlignment(Element.ALIGN_RIGHT);
+
+
+
+
+                pdfPtableimage.addCell(imagecell);
+                pdfPtableimage.addCell(factucell);
+
+                pdfPtableimage.setSpacingAfter(25);
+                mDoc.add(pdfPtableimage);
+                System.setProperty("http.agent", "Chrome");
+            }
+            if (radiotipo.equals("Rectangular")&&estadoventas2.equals("Borrador")){
+                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
+                image = Image.getInstance(imFile);
+                image.scaleAbsolute(160f,70f);
+                image.setAlignment(Image.LEFT);
+                Paragraph factu=new Paragraph("Cotización",regularReportA);
+                factu.setAlignment(Element.ALIGN_RIGHT);
 //                Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
 //                Plazo.setAlignment(Element.ALIGN_RIGHT);
-//                PdfPTable pdfPtableimage = new PdfPTable(2);
-//                pdfPtableimage.setWidthPercentage(100);
-//                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
-//                PdfPCell imagecell = new PdfPCell();
-//                PdfPCell factucell = new PdfPCell();
-//                imagecell.addElement(image);
-//                imagecell.setBorderColor(new BaseColor(255,255,255));
-//                factucell.addElement(factu);
-//
-//                factucell.setBorderColor(new BaseColor(255,255,255));
+                PdfPTable pdfPtableimage = new PdfPTable(2);
+                pdfPtableimage.setWidthPercentage(100);
+                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
+                PdfPCell imagecell = new PdfPCell();
+                PdfPCell factucell = new PdfPCell();
+                imagecell.addElement(image);
+                imagecell.setBorderColor(new BaseColor(255,255,255));
+                factucell.addElement(factu);
+
+                factucell.setBorderColor(new BaseColor(255,255,255));
 //                factucell.addElement(Plazo);
-//
-//
-//
-//
-//                pdfPtableimage.addCell(imagecell);
-//                pdfPtableimage.addCell(factucell);
-//
-//                pdfPtableimage.setSpacingAfter(25);
-//                mDoc.add(pdfPtableimage);
-//                System.setProperty("http.agent", "Chrome");
-//            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals("Borrador")) {
-//                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
-//                image = Image.getInstance(imFile);
-//                image.scaleAbsolute(100f,100f);
-//                image.setAlignment(Image.LEFT);
-//                Paragraph factu=new Paragraph("Cotización",regularReportA);
-//                factu.setAlignment(Element.ALIGN_RIGHT);
+
+
+
+
+                pdfPtableimage.addCell(imagecell);
+                pdfPtableimage.addCell(factucell);
+
+                pdfPtableimage.setSpacingAfter(25);
+                mDoc.add(pdfPtableimage);
+                System.setProperty("http.agent", "Chrome");
+            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals("Borrador")) {
+                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
+                image = Image.getInstance(imFile);
+                image.scaleAbsolute(100f,100f);
+                image.setAlignment(Image.LEFT);
+                Paragraph factu=new Paragraph("Cotización",regularReportA);
+                factu.setAlignment(Element.ALIGN_RIGHT);
 //                Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
 //                Plazo.setAlignment(Element.ALIGN_RIGHT);
-//                PdfPTable pdfPtableimage = new PdfPTable(2);
-//                pdfPtableimage.setWidthPercentage(100);
-//                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
-//                PdfPCell imagecell = new PdfPCell();
-//                PdfPCell factucell = new PdfPCell();
-//                imagecell.addElement(image);
-//                imagecell.setBorderColor(new BaseColor(255,255,255));
-//                factucell.addElement(factu);
-//
-//                factucell.setBorderColor(new BaseColor(255,255,255));
+                PdfPTable pdfPtableimage = new PdfPTable(2);
+                pdfPtableimage.setWidthPercentage(100);
+                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
+                PdfPCell imagecell = new PdfPCell();
+                PdfPCell factucell = new PdfPCell();
+                imagecell.addElement(image);
+                imagecell.setBorderColor(new BaseColor(255,255,255));
+                factucell.addElement(factu);
+
+                factucell.setBorderColor(new BaseColor(255,255,255));
 //                factucell.addElement(Plazo);
-//
-//
-//
-//
-//                pdfPtableimage.addCell(imagecell);
-//                pdfPtableimage.addCell(factucell);
-//
-//                pdfPtableimage.setSpacingAfter(40);
-//                mDoc.add(pdfPtableimage);
-//                System.setProperty("http.agent", "Chrome");
-//            }
-//
+
+
+
+
+                pdfPtableimage.addCell(imagecell);
+                pdfPtableimage.addCell(factucell);
+
+                pdfPtableimage.setSpacingAfter(40);
+                mDoc.add(pdfPtableimage);
+                System.setProperty("http.agent", "Chrome");
+            }
+
 
 
 
@@ -948,10 +948,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
             Toast.makeText(this, "Fallo c1", Toast.LENGTH_SHORT).show();
-//        } catch (MalformedURLException ex) {
-//            ex.printStackTrace();
-//            Toast.makeText(this, "Fallo c2", Toast.LENGTH_SHORT).show();
-//        } catch (IOException ex) {
+        } catch (MalformedURLException ex) {
+            ex.printStackTrace();
+            Toast.makeText(this, "Fallo c2", Toast.LENGTH_SHORT).show();
+        } catch (IOException ex) {
             ex.printStackTrace();
             Toast.makeText(this, "Fallo c3", Toast.LENGTH_SHORT).show();
         } catch (BadElementException ex) {
@@ -1260,7 +1260,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 Paragraph q1 = new Paragraph(String.valueOf(aw + 1),regularSub );
                 Paragraph q2 = new Paragraph(String.valueOf(List1.get(aw)),regularTotal2);
                Paragraph q3 = new Paragraph(String.valueOf(List2.get(aw)),regularTotal2);
-               Paragraph q4 = new Paragraph(String.valueOf(List3.get(aw)),regularTotal2);
+               Paragraph q4 = new Paragraph(String.valueOf(List3.get(aw))+" "+"USD",regularTotal2);
 
 
 
@@ -1273,6 +1273,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 //                p.add(gumble);
                 p1.add(q3);
                 p2.add(q4);
+
 
 
                 PdfPCell cell = new PdfPCell(p);

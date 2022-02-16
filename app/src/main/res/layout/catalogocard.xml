@@ -20,32 +20,44 @@
             android:layout_marginBottom="0dp"
             android:layout_weight="1"
             android:background="@color/colorBlancox"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="100">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:layout_weight="50"
 
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="100">
 
                 <ImageView
                     android:id="@+id/configcrear"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="8dp"
 
+                    android:layout_weight="15"
                     app:iconTint="#E5E5E5"
                     app:srcCompat="@drawable/ic_baseline_settings_24" />
 
+                <CheckBox
+                    android:id="@+id/checkIVA"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom|start"
+                    android:layout_weight="15"
+                    android:text="I.V.A" />
+
                 <TextView
                     android:id="@+id/nombreproducto"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
 
                     android:layout_marginTop="9dp"
+                    android:layout_weight="70"
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textColor="#1F1F1F"
@@ -53,13 +65,25 @@
 
             </LinearLayout>
 
-            <CheckBox
-                android:id="@+id/checkIVA"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|start"
-                android:layout_weight="1"
-                android:text="I.V.A" />
+            <Button
+                android:id="@+id/buttonaddproducto"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginBottom="3dp"
+
+                android:layout_weight="50"
+
+                android:text="Agregar"
+                android:textColor="@color/colorAccent"
+                android:textSize="12dp"
+
+
+                android:visibility="visible" />
 
         </LinearLayout>
 
@@ -83,7 +107,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="33.3" >
+                android:layout_margin="8dp"
+                android:layout_weight="50"
+                app:cardCornerRadius="15dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -92,33 +118,38 @@
                     android:weightSum="100">
 
                     <ImageView
-                        android:id="@+id/cantmas2"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/cantmenos2"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="20"
-                        app:srcCompat="@drawable/ic_add_black_18dp" />
+                        app:srcCompat="@drawable/ic_remove_black_18dp" />
 
                     <TextView
                         android:id="@+id/canttext2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="60"
+                        android:gravity="center_horizontal"
                         android:text="TextView" />
 
                     <ImageView
-                        android:id="@+id/cantmenos2"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/cantmas2"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="20"
-                        app:srcCompat="@drawable/ic_remove_black_18dp" />
+                        app:srcCompat="@drawable/ic_add_black_18dp" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_margin="12dp"
-                android:layout_weight="33.3"
+                android:layout_margin="8dp"
+                android:layout_weight="50"
                 app:cardCornerRadius="15dp">
 
                 <LinearLayout
@@ -155,25 +186,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <Button
-                android:id="@+id/buttonaddproducto"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginStart="7dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="7dp"
-                android:layout_marginBottom="3dp"
-
-                android:layout_weight="33.3"
-
-                android:text="Agregar"
-                android:textColor="@color/colorAccent"
-                android:textSize="12dp"
-
-
-                android:visibility="visible" />
             android:background="@drawable/btn2"
             app:backgroundTint="@color/colorGris"
 

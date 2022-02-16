@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.renderscript.ScriptGroup;
 import android.text.Html;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -39,7 +40,9 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -104,12 +107,25 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         cardprod=findViewById(R.id.cardprod);
         textView38=findViewById(R.id.textView38);
         textview30=findViewById(R.id.textView30);
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat fecc = new SimpleDateFormat("dd/MMM/yyyy");
+
+        final String fechacComplString = fecc.format(calendar.getTime());
 
         noteProdViewModel=new ViewModelProvider(this).get(NoteProdViewModel.class);
         noteProdViewModel.getAllNotes().observe(this, new Observer<List<NoteProducto>>() {
             @Override
             public void onChanged(List<NoteProducto> noteProductos) {
                 ListaProd1=noteProductos;
+                if(ListaProd1.size()!=0){
+               badgeDrawable.setVisible(true);
+               badgeDrawable.setNumber(ListaProd1.size());
+                badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getApplicationContext(), R.color.mdtp_white));
+
+                badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolor));
+                }else {
+                    badgeDrawable.setVisible(false);
+                }
 
             }
         });
@@ -182,6 +198,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                         @Override
                         public void onClick(View v) {
                             Intent intent2=new Intent(fragments3.this,Crearproducto.class);
+                            Log.d("array:",String.valueOf(ListaProd1.size()));
 
                             startActivity(intent2);
                         }
@@ -265,16 +282,16 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             //intent.putExtra("Lista6", (Parcelable) allnotes3);
 
                             bundle.putSerializable("Diasdepago2",dias1);
-//                            bundle.putSerializable("Fecha2",gopcion.getText().toString());
+//                      bundle.putSerializable("Fecha2",gopcion.getText().toString());
 //                            bundle.putSerializable("Unidades1",gcantidad.getText().toString());
 //                            bundle.putSerializable("Medida1",gmedida.getText().toString());
 //                            bundle.putSerializable("Total1",txtotalbottom.getText().toString());
-//                            bundle.putSerializable("Fecha1",gdate.getText().toString());
-//                            bundle.putSerializable("Hora1",ghora.getText().toString());
-                            bundle.putSerializable("Precio1", PrecioL);
+                         bundle.putSerializable("Fecha1",fechacComplString.toString());
+//                        bundle.putSerializable("Hora1",ghora.getText().toString());
+ //                           bundle.putSerializable("Precio1", PrecioL);
                             bundle.putSerializable("Nombre1",ClienteL);
                             bundle.putSerializable("Producto1",ProductoL);
-//                            bundle.putSerializable("Estado1",textoprepa.getText().toString());
+                         bundle.putSerializable("Estado1",textovigilancia.getText().toString());
 
                             ListaProd=new ArrayList<>();
                             ListaCant=new ArrayList<>();
@@ -379,22 +396,23 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
             @Override
             public void onChanged(@Nullable String resultado) {
                 int i=Integer.parseInt(resultado);
-                if(badgeDrawable.hasNumber()){
-                    badgeDrawable.setVisible(true);
-                    badgeDrawable.setNumber(i+i);
-                    badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolor));
-
-                    badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolor));
-
-
-                }else {
-
-                    badgeDrawable.setVisible(true);
-                    badgeDrawable.setNumber(i);
-                    badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolotransparentr));
-                    badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolotransparentr));
-                }
-
+//                if(badgeDrawable.hasNumber()) {
+//
+//                    badgeDrawable.setVisible(true);
+//                    badgeDrawable.setNumber(ListaProd.size());
+//                    badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getApplicationContext(), R.color.mdtp_white));
+//
+//                    badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolor));
+//
+//
+//               }else {
+//
+//                    badgeDrawable.setVisible(false);
+////                    badgeDrawable.setNumber(i);
+////                    badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolotransparentr));
+////                    badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolotransparentr));
+//             }
+//
 
 
 
