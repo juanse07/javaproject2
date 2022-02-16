@@ -1,5 +1,6 @@
 package com.example.calculadorainventario;
 
+import java.security.Key;
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
@@ -18,9 +19,11 @@ public interface NoteProdDao {
     void Update(NoteProducto noteProducto);
     @Delete
     void Delete(NoteProducto noteProducto);
-    @Query("DELETE   FROM Tabla_Lista_Productos WHERE `Key`=(SELECT MAX(`Key`)FROM Tabla_Lista_Productos)" )
+//    @Query("DELETE   FROM Tabla_Lista_Productos WHERE `Key`=(SELECT MAX(`Key`)FROM Tabla_Lista_Productos)" )
+//    @Query("DELETE FROM Tabla_Lista_Productos  WHERE " +
+//            Key + " = " + position + ";")
 
-    void DeleteLast();
+//    void DeleteLast();
     //@Query("SELECT SUM(valor_Medida)FROM TABLA_LISTA_MEDIDAS")
 //int SumTablaMedida();
     @Query("SELECT * FROM Tabla_Lista_Productos ORDER BY `Key` DESC LIMIT 1")

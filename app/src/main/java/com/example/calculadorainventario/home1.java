@@ -469,6 +469,12 @@ public class home1 extends AppCompatActivity implements ClickInterface1 {
 
     }
 
+    @Override
+    public void PassnoteprodPosition(int position, String Producto, String Cantidad, String Precio, NoteProducto currentnote) {
+
+    }
+
+
 
 
     public void iniciarhome(View view) {

@@ -63,11 +63,13 @@ public class ingresodatfr extends Fragment implements ClickInterface1 {
     EditText precio1, pagotext,txtterminos;
     RecyclerView.Adapter madapter;
     NoteProdViewModel noteProdViewModel;
+    ClickInterface1 clickInterface1;
 
     String opcion, Producto;
     ArrayList<String> ritmo = new ArrayList<String>();
     ArrayList<String> metodo = new ArrayList<String>();
     ImageView restarprecio, sumarprecio;
+ArrayList<NoteProducto>notesProd;
 
     List lista;
     RecyclerView.LayoutManager Lmanager;
@@ -151,13 +153,16 @@ public class ingresodatfr extends Fragment implements ClickInterface1 {
         RecyProd.setHasFixedSize(true);
         Lmanager=new LinearLayoutManager(ingresoview.getContext(),LinearLayoutManager.VERTICAL, false);
         RecyProd.setLayoutManager(Lmanager);
-       final AdaptadorNoteProd adaptadorNoteProd=new AdaptadorNoteProd();
+       final AdaptadorNoteProd adaptadorNoteProd=new AdaptadorNoteProd(ingresodatfr.this);
+
         RecyProd.setAdapter(adaptadorNoteProd);
         noteProdViewModel=new ViewModelProvider(getActivity()).get(NoteProdViewModel.class);
         noteProdViewModel.getAllNotes().observe(getViewLifecycleOwner(), new Observer<java.util.List<NoteProducto>>() {
             @Override
             public void onChanged(java.util.List<NoteProducto> noteProductos) {
+
                 adaptadorNoteProd.setNotes(noteProductos);
+
             }
         });
 
@@ -569,6 +574,11 @@ pagomas.setOnClickListener(new View.OnClickListener() {
 
     @Override
     public void PassTipoDoc(int position, CharSequence tipoDoc) {
+
+    }
+
+    @Override
+    public void PassnoteprodPosition(int position, String Producto, String Cantidad, String Precio, NoteProducto currentnote) {
 
     }
 

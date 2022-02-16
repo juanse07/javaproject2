@@ -1,5 +1,6 @@
 package com.example.calculadorainventario;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +11,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdaptadorNoteProd extends RecyclerView.Adapter<AdaptadorNoteProd.myClass> {
+    NoteProdViewModel noteProdViewModel;
     List<NoteProducto>notesProd= new ArrayList<>();
+    private ClickInterface1 clickInterface1;
+    public AdaptadorNoteProd(ClickInterface1 clickInterface1) {
+
+
+
+//       this.notesProd = notesProd;
+//        notesProdfull=notesProd;
+        this.clickInterface1=clickInterface1;
+    }
+
     @NonNull
     @Override
     public AdaptadorNoteProd.myClass onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -22,14 +36,36 @@ public class AdaptadorNoteProd extends RecyclerView.Adapter<AdaptadorNoteProd.my
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final AdaptadorNoteProd.myClass holder, int position) {
-        final NoteProducto currentnote= notesProd.get(position);
+    public void onBindViewHolder(@NonNull final AdaptadorNoteProd.myClass holder, final int position) {
+
+        NoteProducto currentnote= notesProd.get(position);
+        final String Producto=currentnote.getNombre_prod();
+        final String Cantidad=currentnote.getCant_Prod();
+        final String Precio=currentnote.getPrecio_prod();
         holder.nombreproducto00.setText(currentnote.getNombre_prod());
         holder.text1.setText(currentnote.getCant_Prod());
         holder.textm2.setText(currentnote.getPrecio_prod());
         holder.deletesym.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                noteProdViewModel=new ViewModelProvider((ViewModelStoreOwner) v.getContext()).get(NoteProdViewModel.class);
+                NoteProducto currentnote= notesProd.get(position);
+
+                int currentkey2=currentnote.Key;
+                 String Producto=holder.nombreproducto00.getText().toString();
+                String Cantidad=holder.text1.getText().toString();
+                 String Precio=holder.textm2.getText().toString();
+                clickInterface1.PassnoteprodPosition(position,Producto,Cantidad,Precio,currentnote);
+                Log.d("values:",String.valueOf(position));
+                Log.d("values:",String.valueOf(currentnote.Key));
+                Log.d("values:",String.valueOf(Producto));
+                Log.d("values:",String.valueOf(Cantidad));
+                Log.d("values:",String.valueOf(Precio));
+
+
+
+//                clickInterface1.PassnoteprodPosition(position,Producto,Cantidad,Precio);
+
 
             }
         });
@@ -110,6 +146,7 @@ public class AdaptadorNoteProd extends RecyclerView.Adapter<AdaptadorNoteProd.my
             text1 = itemView.findViewById(R.id.text1);
             textm2=itemView.findViewById(R.id.textm2);
             deletesym=itemView.findViewById(R.id.deletesym);
+
 //            mas3=itemView.findViewById(R.id.mas3);
 //            min2=itemView.findViewById(R.id.min2);
 //            min3=itemView.findViewById(R.id.min3);

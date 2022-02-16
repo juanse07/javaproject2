@@ -36,10 +36,10 @@ public class NoteProductoRep {
             new NoteProductoRep.UpdateNotesProdAsynk(noteProdDao).execute(noteProducto);
 
         }
-//        public void  Delete(NoteProducto noteProducto){
-//            new com.example.calculadorainventario.NoteRepository.DeleteNotesProdAsynk(noteProdDao).execute(note);
-//
-//        }
+        public void  Delete(NoteProducto noteProducto){
+            new com.example.calculadorainventario.NoteProductoRep.DeleteNotesProdAsynk(noteProdDao).execute(noteProducto);
+
+        }
         public void DeleteAllNotes(){
             new com.example.calculadorainventario.NoteProductoRep.DeleteAllNotesProdAsynk(noteProdDao).execute();
 
@@ -123,7 +123,7 @@ public class NoteProductoRep {
 
             @Override
             protected Void doInBackground(Void... voids) {
-                noteProdDao.DeleteLast();
+//                noteProdDao.DeleteLast();
                 return null;
             }
         }

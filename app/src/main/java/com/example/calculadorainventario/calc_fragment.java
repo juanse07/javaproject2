@@ -891,4 +891,11 @@ dcmbutton.setOnClickListener(new View.OnClickListener() {
 
     }
 
+    @Override
+    public void PassnoteprodPosition(int position, String Producto, String Cantidad, String Precio, NoteProducto currentnote) {
+
+    }
+
+
+
 }

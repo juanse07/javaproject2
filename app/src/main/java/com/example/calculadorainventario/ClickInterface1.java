@@ -11,6 +11,9 @@ public interface ClickInterface1 {
     void Preferenciasingreo(int estado, String dias, String Tipo);
     void passingpositionk(int position);
     void PassTipoDoc(int position,CharSequence tipoDoc);
+    void PassnoteprodPosition(int position,String Producto,String Cantidad,String Precio,NoteProducto currentnote);
+
+
 
 
 }

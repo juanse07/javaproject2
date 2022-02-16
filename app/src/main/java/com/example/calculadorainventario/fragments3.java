@@ -34,6 +34,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.material.animation.Positioning;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
@@ -589,6 +590,15 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     @Override
     public void PassTipoDoc(int position, CharSequence tipoDoc) {
 
+    }
+
+    @Override
+    public void PassnoteprodPosition(int position, String Producto, String Cantidad, String Precio, NoteProducto currentnote) {
+        Log.d("values:",String.valueOf(position));
+        Log.d("values:",String.valueOf(currentnote));
+        Log.d("values:",String.valueOf(Producto));
+        Log.d("values:",String.valueOf(Cantidad));
+        Log.d("values:",String.valueOf(Precio));
     }
 
 

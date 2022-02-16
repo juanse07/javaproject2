@@ -239,6 +239,12 @@ public class carrito_fragment extends Fragment implements ClickInterface1  {
 
     }
 
+    @Override
+    public void PassnoteprodPosition(int position, String Producto, String Cantidad, String Precio, NoteProducto currentnote) {
+
+    }
+
+
 
 
     @Override
