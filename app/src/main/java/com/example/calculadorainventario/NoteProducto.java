@@ -20,13 +20,15 @@ public class NoteProducto implements Serializable {
     public String Nombre_prod;
     public String Cant_prod;
     public String Precio_prod;
+    public String Resultado_valor;
 
 
 
-public NoteProducto(String Nombre_prod, String Cant_prod, String Precio_prod) {
+public NoteProducto(String Nombre_prod, String Cant_prod, String Precio_prod,String Resultado_valor) {
      this.Nombre_prod = Nombre_prod;
      this.Precio_prod=Precio_prod;
      this.Cant_prod=Cant_prod;
+     this.Resultado_valor=Resultado_valor;
 }
 
 
@@ -45,6 +47,11 @@ public NoteProducto(String Nombre_prod, String Cant_prod, String Precio_prod) {
     public String getPrecio_prod() {
         return Precio_prod;
     }
-    //ya lo modifique
+
+
+    public java.lang.String getResultado_valor() {
+        return Resultado_valor;
+    }
+//ya lo modifique
 
 }

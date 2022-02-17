@@ -2,6 +2,7 @@ package com.example.calculadorainventario;
 
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -160,6 +163,7 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
+                noteProdViewModel=new ViewModelProvider((ViewModelStoreOwner) v.getContext()).get(NoteProdViewModel.class);
 
 
 
@@ -174,6 +178,8 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
 
                 row_index=position;
                 notifyDataSetChanged();
+                noteProdViewModel.getSumTotal();
+                Log.d("values:",String.valueOf(noteProdViewModel.getSumTotal()));
 
                 final String id = mAuth.getCurrentUser().getUid();
                 ref = FirebaseDatabase.getInstance().getReference().child("PRODUCTOS").child(id).child(productos.get(position).getKey());

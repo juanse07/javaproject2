@@ -18,7 +18,11 @@ public class NoteProductoRep {
         private LiveData<Double>calcPromed;
         private LiveData<Integer>CalcCount;
 
-        public NoteProductoRep(Application application){
+    private LiveData<Integer> getsumProdnom() {
+        return null;
+    }
+
+    public NoteProductoRep(Application application){
             NoteProdDataBase dataBase=NoteProdDataBase.getInstance(application);
             noteProdDao=dataBase.noteProdDao();
             allNotes=noteProdDao.getallnotes();

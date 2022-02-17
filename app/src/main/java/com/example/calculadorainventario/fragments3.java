@@ -59,7 +59,10 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     BottomNavigationView navcat;
     LinearLayout linprod, lincli;
     String PrecioL,ProductoL,ClienteL;
-    ArrayList<String> Listapdf,ListaProd,ListaCant,ListaPre;
+    ArrayList<String> Listapdf,ListaProd,ListaCant,ListaPre,Listavalor;
+    ArrayList<Double>listaVal2;
+    String pdfval;
+    double sum;
 
     NoteProdViewModel noteProdViewModel;
     List<NoteProducto>ListaProd1;
@@ -297,26 +300,42 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             ListaProd=new ArrayList<>();
                             ListaCant=new ArrayList<>();
                             ListaPre=new ArrayList<>();
+                            Listavalor=new ArrayList<>();
+                            listaVal2=new ArrayList<>();
+//                            double sum = 0;
+//                            for(int i = 0; i < m.size(); i++)
+//                                sum += m.get(i);
+//                            return sum;
 
 
-                            for (int i = 0 ; i <ListaProd1.size() ; i++){
+                            for (int i = 0 ; i <ListaProd1.size() ; i++) {
 
 //                   Log.d("value is" , Listadobles2.get(i).valor_Medida.toString());}
 //                   Listapdf.add(Listadobles2.get(i).getValor_Medida().toString());
-                                String pdfprod1=ListaProd1.get(i).Nombre_prod;
-                                String pdfcant1=ListaProd1.get(i).Cant_prod;
-                                String pdfpre1=ListaProd1.get(i).Precio_prod;
+                                String pdfprod1 = ListaProd1.get(i).Nombre_prod;
+                                String pdfcant1 = ListaProd1.get(i).Cant_prod;
+                                String pdfpre1 = ListaProd1.get(i).Precio_prod;
+                                pdfval = ListaProd1.get(i).Resultado_valor;
+
+
                                 ListaCant.add(pdfcant1);
                                 ListaProd.add(pdfprod1);
-                                ListaPre.add(pdfpre1);}
+                                ListaPre.add(pdfpre1);
+                                Listavalor.add(pdfval);
+                                listaVal2.add(Double.parseDouble(pdfval));
+                            }
+                            sumarRe();
 
+                            String sumaResultado= String.valueOf(sum);
 //
 //
 //
-
+//
+                            bundle.putSerializable("Total1",sumaResultado);
                             bundle.putSerializable("listaProd1",ListaProd);
                             bundle.putSerializable("listaCant1",ListaCant);
                             bundle.putSerializable("listaPre1",ListaPre);
+                            bundle.putSerializable("listaResultado",Listavalor);
 
 //
 //         bundle.putSerializable("Listapdf",Listapasar);
@@ -534,6 +553,15 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
 
     }
+    public double sumarRe()
+    {
+         sum = 0;
+        for(int i = 0; i < listaVal2.size(); i++)
+            sum += listaVal2.get(i);
+        Log.d("TT:",String.valueOf(sum));
+        return sum;
+
+    }
 
 
     @Override
@@ -594,6 +622,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
     @Override
     public void PassnoteprodPosition(int position, String Producto, String Cantidad, String Precio, NoteProducto currentnote) {
+
         Log.d("values:",String.valueOf(position));
         Log.d("values:",String.valueOf(currentnote));
         Log.d("values:",String.valueOf(Producto));
@@ -611,6 +640,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
 
 }
+
 
 
 

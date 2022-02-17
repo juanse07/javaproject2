@@ -45,22 +45,32 @@ public class AdaptadorNoteProd extends RecyclerView.Adapter<AdaptadorNoteProd.my
         holder.nombreproducto00.setText(currentnote.getNombre_prod());
         holder.text1.setText(currentnote.getCant_Prod());
         holder.textm2.setText(currentnote.getPrecio_prod());
+        int price = Integer.parseInt(currentnote.getPrecio_prod());
+        int qt = Integer.parseInt(currentnote.getCant_Prod());
+//                int valorritmo = 1;
+        int valornuevosuma = price * qt;
+       Log.d("Total:",String.valueOf(Producto));
+        Log.d("values:",String.valueOf(Cantidad));
+        Log.d("values:",String.valueOf(Precio));
+        Log.d("Tottal2:",String.valueOf(valornuevosuma));
+
         holder.deletesym.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                noteProdViewModel=new ViewModelProvider((ViewModelStoreOwner) v.getContext()).get(NoteProdViewModel.class);
+                noteProdViewModel=new ViewModelProvider((ViewModelStoreOwner) v.getContext()).get(NoteProdViewModel.class);
                 NoteProducto currentnote= notesProd.get(position);
 
-                int currentkey2=currentnote.Key;
-                 String Producto=holder.nombreproducto00.getText().toString();
-                String Cantidad=holder.text1.getText().toString();
-                 String Precio=holder.textm2.getText().toString();
-                clickInterface1.PassnoteprodPosition(position,Producto,Cantidad,Precio,currentnote);
-                Log.d("values:",String.valueOf(position));
-                Log.d("values:",String.valueOf(currentnote.Key));
-                Log.d("values:",String.valueOf(Producto));
-                Log.d("values:",String.valueOf(Cantidad));
-                Log.d("values:",String.valueOf(Precio));
+//                int currentkey2=currentnote.Key;
+//                 String Producto=holder.nombreproducto00.getText().toString();
+//                String Cantidad=holder.text1.getText().toString();
+//                 String Precio=holder.textm2.getText().toString();
+//                clickInterface1.PassnoteprodPosition(position,Producto,Cantidad,Precio,currentnote);
+//                Log.d("values:",String.valueOf(position));
+//                Log.d("values:",String.valueOf(currentnote.Key));
+//                Log.d("values:",String.valueOf(Producto));
+//                Log.d("values:",String.valueOf(Cantidad));
+//                Log.d("values:",String.valueOf(Precio));
+                noteProdViewModel.Delete(currentnote);
 
 
 
