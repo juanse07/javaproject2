@@ -53,7 +53,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     BadgeDrawable badgeDrawable;
     ImageView back2,arrowchange;
     Button btnproducto, btncliente,btcompra,btnpdf;
-    MaterialButton cardprod,cardcli;
+    MaterialButton cardprod,cardcli,cardprod3;
     RelativeLayout relativev,Relative2,relativigilancia;
     ConstraintLayout constlay;
     BottomNavigationView navcat;
@@ -68,7 +68,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     List<NoteProducto>ListaProd1;
 
 
-    TextView txclientebotton, txproductobttom,txpreciobottom,title4,textView38,textview30;
+    TextView txclientebotton, txproductobttom,txpreciobottom,title4,textView38,textview30,textView50;
     String Radiob;
     TextView textovigilancia;
     CardView card_vigilancia;
@@ -98,6 +98,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         title4=findViewById(R.id.title4);
         btcompra=findViewById(R.id.btcompra);
         btnpdf=findViewById(R.id.btnpdf);
+        cardprod3=findViewById(R.id.cardprod3);
+        textView50=findViewById(R.id.textView50);
 
         arrowchange=findViewById(R.id.arrowchange);
         //txproductobttom=findViewById(R.id.txproductobttom);
@@ -189,10 +191,12 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                 if(position==1){
                     btnproducto.bringToFront();
                     btnproducto.setVisibility(View.VISIBLE);
+                    cardprod3.setVisibility(View.GONE);
                     cardprod.setVisibility(View.VISIBLE);
                     cardcli.setVisibility(View.GONE);
                     textView38.setVisibility(View.VISIBLE);
                     textview30.setVisibility(View.GONE);
+                    textView50.setVisibility(View.GONE);
                     //linprod.setVisibility(View.VISIBLE);
                     //lincli.setVisibility(View.INVISIBLE);
                     //Relative2.setVisibility(View.VISIBLE);
@@ -214,8 +218,10 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                     btncliente.setVisibility(View.VISIBLE);
                     cardprod.setVisibility(View.GONE);
                     cardcli.setVisibility(View.VISIBLE);
+                    cardprod3.setVisibility(View.GONE);
                     textView38.setVisibility(View.GONE);
                     textview30.setVisibility(View.VISIBLE);
+                    textView50.setVisibility(View.GONE);
                     //linprod.setVisibility(View.INVISIBLE);
                     //lincli.setVisibility(View.VISIBLE);
 
@@ -235,15 +241,19 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                 }else {
                     btnpdf.bringToFront();
                     btnpdf.setVisibility(View.VISIBLE);
-                    btcompra.bringToFront();
+//                    btcompra.bringToFront();
+                    cardprod3.bringToFront();
                     btncliente.setVisibility(View.GONE);
                     btnproducto.setVisibility(View.GONE);
                     cardprod.setVisibility(View.GONE);
                     textView38.setVisibility(View.GONE);
+                    textView50.setVisibility(View.VISIBLE);
                     textview30.setVisibility(View.GONE);
                     cardcli.setVisibility(View.GONE);
-                    btcompra.setVisibility(View.VISIBLE);
+                    btcompra.setVisibility(View.GONE);
+                    cardprod3.setVisibility(View.VISIBLE);
                     //Relative2.setVisibility(View.GONE);
+                    cardprod3.setText(String.valueOf(sum));
                     btcompra.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -327,6 +337,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             sumarRe();
 
                             String sumaResultado= String.valueOf(sum);
+
 //
 //
 //

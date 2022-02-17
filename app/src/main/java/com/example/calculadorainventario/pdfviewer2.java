@@ -1038,9 +1038,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             Paragraph valor1 = new Paragraph("Valor:", regularSub2);
             DecimalFormat formatter = new DecimalFormat("###,###,##0");
 
-          Paragraph vvalor = new Paragraph(formatter.format(Double.parseDouble(valorventas2)),regularAddress);
+          Paragraph vvalor = new Paragraph(formatter.format(Double.parseDouble(valorventas2))+" USD",regularAddress);
             valor1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
             vvalor.setAlignment(Element.ALIGN_RIGHT);
+
 
 
             Paragraph unidades1 = new Paragraph("Unidades - Promedio:", regularSub2);
@@ -1138,6 +1139,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             cellvalor.setVerticalAlignment(Element.ALIGN_TOP);
             cellvalor2.setBorderColor(BaseColor.WHITE);
             cellvalor2.setUseAscender(true);
+            cellvalor2.setBackgroundColor(BaseColor.YELLOW);
             cellvalor2.setVerticalAlignment(Element.ALIGN_CENTER);
             cellprecio.setBorderColor(BaseColor.WHITE);
             cellprecio.setUseAscender(true);
@@ -1153,19 +1155,22 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             table1.addCell(cellnombre);
             table1.addCell(cellproducto);
             table1.addCell(cellfecha);
-            table1.addCell(cellhora);
+
+            table1.addCell(cellvalor);
             table1.addCell(cellnombre2);
             table1.addCell(cellproducto2);
             table1.addCell(cellfecha2);
-            table1.addCell(cellhora2);
-            table1.addCell(cellmedida);
-            table1.addCell(cellunidades);
-            table1.addCell(cellprecio);
-            table1.addCell(cellvalor);
-            table1.addCell(cellmedida2);
-            table1.addCell(cellunidades2);
-            table1.addCell(cellprecio2);
             table1.addCell(cellvalor2);
+//            table1.addCell(cellhora2);
+//            table1.addCell(cellmedida);
+//            table1.addCell(cellunidades);
+//            table1.addCell(cellprecio);
+//            table1.addCell(cellhora);
+//
+//            table1.addCell(cellmedida2);
+//            table1.addCell(cellunidades2);
+//            table1.addCell(cellprecio2);
+
 
 
 

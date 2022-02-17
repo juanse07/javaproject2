@@ -249,6 +249,30 @@
 
             </com.google.android.material.button.MaterialButton>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cardprod3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="190dp"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="22dp"
+
+                android:layout_weight="1"
+                android:background="@drawable/btnblanco"
+                android:text="Seleccionar"
+                android:textColor="@color/colorGris"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+            </com.google.android.material.button.MaterialButton>
+
             <TextView
                 android:id="@+id/textView38"
                 android:layout_width="wrap_content"
@@ -274,6 +298,21 @@
                 android:layout_marginRight="170dp"
                 android:layout_weight="1"
                 android:text="Cliente"
+                android:textAlignment="gravity"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|top"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="170dp"
+                android:layout_marginRight="170dp"
+                android:layout_weight="1"
+                android:text="Total"
                 android:textAlignment="gravity"
                 android:textSize="8sp"
                 app:layout_constraintEnd_toEndOf="parent"
