@@ -70,6 +70,9 @@
         <activity
             android:name=".home1"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".homeinvoice2"
+            android:screenOrientation="portrait" />
         <activity android:name=".activitybotonesing" />
         <activity android:name=".ingresodat" />
         <activity android:name=".InclientActivity" />

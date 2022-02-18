@@ -134,7 +134,7 @@ public class loginactivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // User is signed in
-            Intent i = new Intent(loginactivity.this, home1.class);
+            Intent i = new Intent(loginactivity.this, homeinvoice2.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
         } else {

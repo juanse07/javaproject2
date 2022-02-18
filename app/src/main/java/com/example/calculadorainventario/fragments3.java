@@ -393,9 +393,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                 switch (position) {
                     case 1:
                         tab.setText("Catálogo");
-                        badgeDrawable2 = tab.getOrCreateBadge();
-                        
-                        badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorRappi));
+
 
 
                         break;

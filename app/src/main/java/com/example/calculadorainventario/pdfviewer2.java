@@ -517,105 +517,105 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
     }
 
-//    public void uploadpdf(Uri pdfUri) {
-//
-//        mAuth=FirebaseAuth.getInstance();
-//        String id=mAuth.getCurrentUser().getUid();
-//
-//
-//
-//       // pdfUri = Uri.fromFile(new File(pdfFile.getAbsolutePath()))
-//        pdfUri = Uri.fromFile(file2);
-//
-//
-//
-//
-//        storageReference.child("pdfcloud2").child(mFilename).child(id).putFile(pdfUri)
-//                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onSuccess(final UploadTask.TaskSnapshot taskSnapshot) {
-//                        // String url = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
-//                        taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                            @Override
-//                            public void onSuccess(Uri uri) {
-//                                Uri downloadurl=uri;
-//
-//                                String url2=String.valueOf(downloadurl);
-//                                mAuth=FirebaseAuth.getInstance();
-//                                String id=mAuth.getCurrentUser().getUid();
-//
-//
-//                                String nombreventas = nombreventas2;
-//                                String fechaventas = fechaventas2;
-//                                String horaventas = horaventas2;
-//                                String productoventas = productoventas2;
-//                                //String colorventas = ghora.getText().toString();
+    public void uploadpdf(Uri pdfUri) {
+
+        mAuth=FirebaseAuth.getInstance();
+        String id=mAuth.getCurrentUser().getUid();
+
+
+
+       // pdfUri = Uri.fromFile(new File(pdfFile.getAbsolutePath()))
+        pdfUri = Uri.fromFile(file2);
+
+
+
+
+        storageReference.child("pdfcloud2").child(mFilename).child(id).putFile(pdfUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(final UploadTask.TaskSnapshot taskSnapshot) {
+                        // String url = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
+                        taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Uri downloadurl=uri;
+
+                                String url2=String.valueOf(downloadurl);
+                                mAuth=FirebaseAuth.getInstance();
+                                String id=mAuth.getCurrentUser().getUid();
+
+
+                                String nombreventas = nombreventas2;
+                                String fechaventas = fechaventas2;
+                               String horaventas = "n/a";//horaventas2;
+                                String productoventas = productoventas2;
+                                //String colorventas = ghora.getText().toString();
 //                                String unidadesventas = unidadesventas2;
-//                                String precioventas = precioventas2;
-//                                String medidaventas = medidaventas2;
-//                                String valorventas = valorventas2;
-//                                String estado=estadoventas2;
-//
-//
-//                                DatabaseReference newref=  myrootDbaseref5.child("VENTAS").child(id).push();
-//
-//
-//
-//
-//                                Map<String, Object> datosventa = new HashMap<>();
-//                                datosventa.put("Fecha", fechaventas);
-//                                datosventa.put("Hora", horaventas);
-//                                datosventa.put("Cliente", nombreventas);
-//                                datosventa.put("Producto", productoventas);
-//                                datosventa.put("Medida", medidaventas);
-//                                datosventa.put("Precio", precioventas);
+                                String precioventas = precioventas2;
+                                String medidaventas = "n/a"; //medidaventas2;
+                                String valorventas = valorventas2;
+                                String estado=estadoventas2;
+
+
+                                DatabaseReference newref=  myrootDbaseref5.child("VENTAS").child(id).push();
+
+
+
+
+                                Map<String, Object> datosventa = new HashMap<>();
+                                datosventa.put("Fecha", fechaventas);
+                                datosventa.put("Hora", horaventas);
+                                datosventa.put("Cliente", nombreventas);
+                                datosventa.put("Producto", productoventas);
+                                datosventa.put("Medida", medidaventas);
+                                datosventa.put("Precio", precioventas);
 //                                datosventa.put("Unidades", unidadesventas);
-//                                datosventa.put("Valor", valorventas);
-//                                datosventa.put("Estado",estado);
-//                                datosventa.put("pdfurl", url2);
-//                                datosventa.put("Key",newref.getKey());
+                                datosventa.put("Valor", valorventas);
+                                datosventa.put("Estado",estado);
+                                datosventa.put("pdfurl", url2);
+                                datosventa.put("Key",newref.getKey());
 //                                datosventa.put("Fechaparapago",Fecha2);
 //                                datosventa.put("Dias_plazo",diaspago);
-//
-//
-//                                datosventa.put("Id_usuario",id);
-//                                newref.setValue(datosventa);
-//                                Toast.makeText(pdfviewer2.this   , "Se ha registrado la Venta", Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
-//
-//                    }
-//                });
-//
-
-        // Instruct the user to install a PDF reader here, or something
 
 
-//    }
-//    public void guardarbdventas() {
-//        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-//            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
-//                    PackageManager.PERMISSION_DENIED) {
-//                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
-//                requestPermissions(permissions, REQUEST_CODE_ASK_PERMISSIONS_2);
-//
-//            } else {
-//                uploadpdf(pdfUri);
-//
-//            }
-//
-//
-//        } else {
-//            uploadpdf(pdfUri);
-//        }
+                                datosventa.put("Id_usuario",id);
+                                newref.setValue(datosventa);
+                                Toast.makeText(pdfviewer2.this   , "Se ha registrado la Venta", Toast.LENGTH_SHORT).show();
+                            }
+                        });
 
-//
-//        Toast.makeText(pdfviewer2.this, "Se ha registrado la Venta", Toast.LENGTH_SHORT).show();
-//        //Intent i = new Intent(VistaAA.this, home1.class);
-//        //startActivity(i);
-//
-//        ///////////////////////
-//    }
+                    }
+                });
+
+
+//         Instruct the user to install a PDF reader here, or something
+
+
+    }
+    public void guardarbdventas() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                    PackageManager.PERMISSION_DENIED) {
+                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                requestPermissions(permissions, REQUEST_CODE_ASK_PERMISSIONS_2);
+
+            } else {
+                uploadpdf(pdfUri);
+
+            }
+
+
+        } else {
+            uploadpdf(pdfUri);
+        }
+
+
+        Toast.makeText(pdfviewer2.this, "Se ha registrado la Venta", Toast.LENGTH_SHORT).show();
+        //Intent i = new Intent(VistaAA.this, home1.class);
+        //startActivity(i);
+
+        ///////////////////////
+    }
     private void savepdf() throws DocumentException {
 //        BaseFont baseFont=null;
 //        try {

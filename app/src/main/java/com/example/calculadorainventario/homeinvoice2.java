@@ -84,7 +84,7 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
     ActionBarDrawerToggle mdrawer;
     LinearLayout gridmenu;
     private SharedViewModel sharedViewModel;
-    private homeadapterclass myadaptador2;
+    private homeinvoiceadapterclass myadaptador2;
     ArrayList<String> Busquedas;
     ArrayList<constcards> listhome;
     FirebaseRecyclerAdapter firebaseRecyclerAdapter, firebaseRecyclerAdapter2;
@@ -299,7 +299,7 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 
                     }
                 });
-                myadaptador2 = new homeadapterclass(sharedViewModel.getdato().getValue());
+                myadaptador2 = new homeinvoiceadapterclass(sharedViewModel.getdato().getValue());
                 recyclerview1.setAdapter(myadaptador2);
 
                 swipehome.setRefreshing(false);
@@ -328,7 +328,7 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 
             }
         });
-        myadaptador2 = new homeadapterclass(sharedViewModel.getdato().getValue());
+        myadaptador2 = new homeinvoiceadapterclass(sharedViewModel.getdato().getValue());
         recyclerview1.setAdapter(myadaptador2);
 
         navdrawer.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
