@@ -32,11 +32,11 @@ public interface NoteProdDao {
     void DeleteAll();
     @Query("SELECT * FROM tabla_lista_Productos")
     LiveData<List<NoteProducto>> getallnotes();
-//    @Query("SELECT valor_Medida FROM Tabla_Lista_Productos")
-//    LiveData<List<Double>>getallDoublenotes();
+  @Query("SELECT Resultado_valor FROM Tabla_Lista_Productos")
+    LiveData<List<Double>>getallDoublenotes();
 //
 //    //@Query("SELECT COALESCE(sum(COALESCE(valor_Medida,0)), 0) From Tabla_Lista_Medidas")
-   @Query("SELECT SUM(Cant_prod)FROM Tabla_Lista_Productos")
+   @Query("SELECT SUM(Resultado_valor)FROM Tabla_Lista_Productos")
     LiveData<Double> getTotal();
     @Query("SELECT SUM(Cant_prod)FROM Tabla_Lista_Productos WHERE `Nombre_prod`= 'Bonyourt'")
     LiveData<Integer> getsumProdnom();

@@ -26,10 +26,10 @@ public class NoteProductoRep {
             NoteProdDataBase dataBase=NoteProdDataBase.getInstance(application);
             noteProdDao=dataBase.noteProdDao();
             allNotes=noteProdDao.getallnotes();
-//            getTotal=noteProdDao.getTotal();
+            getTotal=noteProdDao.getTotal();
 //            calcPromed=noteProdDao.getPromed();
 //            CalcCount=noteProdDao.getCount();
-//            allDoubleNotes=noteProdDao.getallDoublenotes();
+           allDoubleNotes=noteProdDao.getallDoublenotes();
 
         }
         public void Insert(NoteProducto noteProducto){
@@ -48,10 +48,7 @@ public class NoteProductoRep {
             new com.example.calculadorainventario.NoteProductoRep.DeleteAllNotesProdAsynk(noteProdDao).execute();
 
         }
-//        /* public void SumAllNotes(){
-//             new SumNotesAsynk(noteProdDao).execute();
-//
-//         }*/
+
 //        public void DeleteLastNotes(){
 //            new com.example.calculadorainventario.NoteRepository.DeleteLastNotesAsynk(noteProdDao).execute();
 //

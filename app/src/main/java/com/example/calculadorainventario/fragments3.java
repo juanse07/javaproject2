@@ -6,12 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -22,11 +18,8 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.renderscript.ScriptGroup;
 import android.text.Html;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -34,23 +27,22 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.android.material.animation.Positioning;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
 
 public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     ViewPager2 viepag;
     TabLayout tabLayout;
-    BadgeDrawable badgeDrawable;
+    BadgeDrawable badgeDrawable, badgeDrawable2;
     ImageView back2,arrowchange;
     Button btnproducto, btncliente,btcompra,btnpdf;
     MaterialButton cardprod,cardcli,cardprod3;
@@ -59,9 +51,13 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     BottomNavigationView navcat;
     LinearLayout linprod, lincli;
     String PrecioL,ProductoL,ClienteL;
-    ArrayList<String> Listapdf,ListaProd,ListaCant,ListaPre,Listavalor;
+    ArrayList<String> Listapdf;
+    ArrayList<String> ListaProd;
+    ArrayList<String> ListaCant;
+    ArrayList<String> ListaPre;
+    ArrayList<Double> Listavalor;
     ArrayList<Double>listaVal2;
-    String pdfval;
+    Double pdfval;
     double sum;
 
     NoteProdViewModel noteProdViewModel;
@@ -119,6 +115,17 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         final String fechacComplString = fecc.format(calendar.getTime());
 
         noteProdViewModel=new ViewModelProvider(this).get(NoteProdViewModel.class);
+
+        noteProdViewModel.getSumTotal().observe(this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                DecimalFormat formatter = new DecimalFormat("###,###,##0");
+                String totalfac=String.valueOf(formatter.format(aDouble));
+
+                cardprod3.setText(totalfac+ " USD");
+
+            }
+        });
         noteProdViewModel.getAllNotes().observe(this, new Observer<List<NoteProducto>>() {
             @Override
             public void onChanged(List<NoteProducto> noteProductos) {
@@ -253,7 +260,6 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                     btcompra.setVisibility(View.GONE);
                     cardprod3.setVisibility(View.VISIBLE);
                     //Relative2.setVisibility(View.GONE);
-                    cardprod3.setText(String.valueOf(sum));
                     btcompra.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -310,7 +316,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             ListaProd=new ArrayList<>();
                             ListaCant=new ArrayList<>();
                             ListaPre=new ArrayList<>();
-                            Listavalor=new ArrayList<>();
+                            Listavalor=new ArrayList<Double>();
                             listaVal2=new ArrayList<>();
 //                            double sum = 0;
 //                            for(int i = 0; i < m.size(); i++)
@@ -332,7 +338,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                                 ListaProd.add(pdfprod1);
                                 ListaPre.add(pdfpre1);
                                 Listavalor.add(pdfval);
-                                listaVal2.add(Double.parseDouble(pdfval));
+                                listaVal2.add(pdfval);
                             }
                             sumarRe();
 
@@ -387,6 +393,9 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                 switch (position) {
                     case 1:
                         tab.setText("Catálogo");
+                        badgeDrawable2 = tab.getOrCreateBadge();
+                        
+                        badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorRappi));
 
 
                         break;

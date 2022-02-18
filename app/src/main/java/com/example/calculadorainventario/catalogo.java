@@ -271,11 +271,11 @@ public class catalogo extends Fragment implements ClickInterface1 {
         String Nombre_Prod=Producto.toString();
         String Cant_Prod=Precio.toString();
         String  Precio_prod=Cantidad.toString();
-        int price = Integer.parseInt(Cant_Prod);
-        int qt = Integer.parseInt(Precio_prod);
+        Double price = Double.parseDouble(Cant_Prod);
+        Double qt = Double.parseDouble(Precio_prod);
 //                int valorritmo = 1;
-        int valornuevosuma = price * qt;
-        String Resultado_valor=String.valueOf(valornuevosuma);
+        Double valornuevosuma = price * qt;
+        Double Resultado_valor=valornuevosuma;
 
         noteProducto=new NoteProducto(Nombre_Prod,Cant_Prod,Precio_prod,Resultado_valor);
         noteProdViewModel.Insert(noteProducto);
