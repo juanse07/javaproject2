@@ -1,8 +1,11 @@
 package com.example.calculadorainventario;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -10,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +31,7 @@ public class Crearproducto extends AppCompatActivity {
     String VarProducto, VarPrecio, VarEstado, VarRitmo,VarKey,VarImpuesto;
     FirebaseAuth mAuth;
     DatabaseReference ref;
+    BottomNavigationView navclientenuevo;
 
 
 
@@ -42,6 +47,7 @@ public class Crearproducto extends AppCompatActivity {
 
 
         btmaterialinput = (Button) findViewById(R.id.btmaterialinput);
+        navclientenuevo=findViewById(R.id.navclientenuevo);
         back5 = findViewById(R.id.back5);
         txmaterialinput = findViewById(R.id.txmaterialinput);
         cajaprecioproducto = findViewById(R.id.cajaprecioproducto);
@@ -62,6 +68,38 @@ public class Crearproducto extends AppCompatActivity {
 
         cajaimpuestoprod.setText("0");
         Recibirintents();
+        navclientenuevo.setSelectedItemId(R.id.action_add);
+        navclientenuevo.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+//                    case R.id.listaclientes2:
+//
+//                        startActivity(new Intent(getApplicationContext(), ingresodat.class));
+//                        overridePendingTransition(0, 0);
+//                        return true;
+                    case R.id.action_home:
+                        startActivity(new Intent(getApplicationContext(), homeinvoice2.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.action_more:
+                        startActivity(new Intent(getApplicationContext(), InclientActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.action_add:
+                        startActivity(new Intent(getApplicationContext(), Crearproducto.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    // case R.id.action_Pdf:
+                    //   startActivity(new Intent(getApplicationContext(), pdfviewer.class));
+                    // overridePendingTransition(0, 0);
+                    //return true;
+                }
+                return false;
+            }
+        });
+
         if (VarProducto == null) {
             txmaterialinput.setText("".trim());
             cajaprecioproducto.setText("".trim());

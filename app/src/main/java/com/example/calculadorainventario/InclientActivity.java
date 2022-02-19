@@ -1,5 +1,6 @@
 package com.example.calculadorainventario;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,12 +10,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.provider.ContactsContract;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +36,7 @@ public class InclientActivity extends AppCompatActivity {
     RecyclerView Recyclercliente;
     View ClientesView;
     FirebaseAuth mAuth;
+    BottomNavigationView navigationView;
 
 
     @Override
@@ -44,6 +48,7 @@ public class InclientActivity extends AppCompatActivity {
         txinputnombre = (TextInputEditText) findViewById(R.id.txinputnombre);
         back4=findViewById(R.id.back4);
         checkcliente=findViewById(R.id.checkcliente);
+        navigationView = (BottomNavigationView) findViewById(R.id.navigation);
 
 
         txinputtel1 = (TextInputEditText) findViewById(R.id.txinputtel1);
@@ -57,6 +62,38 @@ public class InclientActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        navigationView.setSelectedItemId(R.id.action_more);
+        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+//                    case R.id.listaclientes2:
+//
+//                        startActivity(new Intent(getApplicationContext(), ingresodat.class));
+//                        overridePendingTransition(0, 0);
+//                        return true;
+                    case R.id.action_home:
+                        startActivity(new Intent(getApplicationContext(), homeinvoice2.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.action_more:
+                        startActivity(new Intent(getApplicationContext(), InclientActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.action_add:
+                        startActivity(new Intent(getApplicationContext(), Crearproducto.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    // case R.id.action_Pdf:
+                    //   startActivity(new Intent(getApplicationContext(), pdfviewer.class));
+                    // overridePendingTransition(0, 0);
+                    //return true;
+                }
+                return false;
+            }
+        });
+
 
 
 

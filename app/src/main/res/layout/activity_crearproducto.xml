@@ -12,37 +12,15 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navclientenuevo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_weight="1.8"
-        android:background="#f1f1f1"
+        android:background="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@id/navclientenuevo"
-            app:layout_constraintTop_toBottomOf="@id/appbar">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btmaterialinput"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/btnnaranja"
-                android:text="Guardar"
-                app:backgroundTint="@null"
-                app:icon="@drawable/ic_baseline_save_24"
-                app:iconGravity="end"
-                app:iconTint="@color/colorBlancox" />
-        </LinearLayout>
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_menuup"
+        app:itemIconTint="@drawable/item_color"
+        app:itemTextColor="@drawable/item_color"/>
 
     <LinearLayout
         android:id="@+id/lay2"
@@ -50,6 +28,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.3"
         android:orientation="vertical"
+        android:weightSum="100"
         app:layout_constraintBottom_toTopOf="@+id/navclientenuevo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,8 +36,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:layout_weight="18"
             android:orientation="horizontal">
 
             <TextView
@@ -88,8 +67,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:layout_weight="18"
             android:orientation="horizontal">
 
             <TextView
@@ -118,8 +97,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:layout_weight="18"
             android:orientation="horizontal">
 
             <TextView
@@ -177,8 +156,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:layout_weight="18"
             android:orientation="horizontal">
 
             <TextView
@@ -235,7 +214,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="18"
             android:orientation="horizontal">
 
             <TextView
@@ -255,6 +235,22 @@
                 android:button="@null"
                 android:drawableRight="?android:attr/listChoiceIndicatorMultiple" />
         </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btmaterialinput"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="8"
+            android:background="@drawable/btnnaranja"
+            android:text="Guardar"
+            app:backgroundTint="@null"
+            app:icon="@drawable/ic_baseline_save_24"
+            app:iconGravity="end"
+            app:iconTint="@color/colorBlancox" />
 
     </LinearLayout>
 
