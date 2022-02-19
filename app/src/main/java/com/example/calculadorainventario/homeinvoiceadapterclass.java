@@ -1,7 +1,16 @@
 package com.example.calculadorainventario;
 
+import android.Manifest;
+import android.app.DownloadManager;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +19,14 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
+import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
@@ -26,6 +38,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
 
     Repositorio1 repositorio1;
     //SharedViewModel sharedViewModel;
+ Downloadpdfclass downloadpdfclass;
 
 
     ArrayList<constcards> listhome;
@@ -79,6 +92,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
 //        holder.cardproducto.setText(listhome.get(position).getProducto());
 //        holder.cardprecio.setText(listhome.get(position).getPrecio());
         holder.Fechapago = listhome.get(position).getFechaparapago();
+//        holder.txurl.setText(listhome.get(position).getPdfurl());
 
 
         Calendar calendar = Calendar.getInstance();
@@ -87,6 +101,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
         String inputString1 = fecc.format(calendar.getTimeInMillis());
         String inputString2 = listhome.get(position).getFechaparapago();
         String inputString3 = listhome.get(position).getFecha();
+
        // NumberFormat dc = NumberFormat.getCurrencyInstance(Locale.US);
         //dc.setMaximumFractionDigits(0);
        // DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance();
@@ -182,13 +197,112 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
             }
         });
 
+        holder.imgvpdf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listhome.get(position).getKey();
+
+
+
+
+                if (Build.VERSION.SDK_INT >= 24) {
+
+                    try {
+
+                        //For API's > 24, runtime exception occurs when a URI is exposed BEYOND this particular app that you are writing (AKA when user attempts to open in device/emulator
+
+                        Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
+
+                        m.invoke(null);
+
+                    } catch (Exception e) {
+
+                        e.printStackTrace();
+
+                    }
+
+                }
+
+                String pattern = "EEEEE MMMMM yyyy HH:mm:ss.SSSZ";
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "US"));
+                String mFilename = simpleDateFormat.format(System.currentTimeMillis());
+                File file;
+
+              //  mFilename.toString().replaceAll(":",".")
+                pdfurl=String.valueOf(listhome.get(position).getPdfurl());
+
+
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat hora1 = new SimpleDateFormat("HH:mm:ss");
+                String hora2 = hora1.format(calendar.getTime());
+                String mFilepath = Environment.getExternalStorageDirectory() +   File.separator+ "PyMESoft"+
+                        File.separator+"down"+mFilename.toString().replaceAll(":",".");
+                File filepath2;
+                File file2;
+
+                file = new File(mFilepath);
+                if (!file.exists()) {
+                    file.mkdirs();
+
+                }
+                filepath2= new File(file.getAbsolutePath());
+                filepath2.mkdir();
+                file2=new File(filepath2,"inv-"+holder.txinvname.getText().toString()+".pdf");
+
+
+
+
+//                    String mFilename2 = holder.txinvname.getText().toString() + System.currentTimeMillis();
+
+
+
+
+
+
+
+                    // File desf = new File(mFilepath);
+                    DownloadManager downloadManager = (DownloadManager) v.getContext().getSystemService(v.getContext().DOWNLOAD_SERVICE);
+                    Uri uri = Uri.parse(pdfurl);
+//                Log.d("a:",String.valueOf(uri));
+                    DownloadManager.Request request = new DownloadManager.Request(uri);
+
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                    //request.setDestinationUri(Uri.fromFile(new File(mFilepath)));
+                    request.setDestinationUri(Uri.fromFile(file2));
+                    //request.setDestinationInExternalFilesDir(context,destinationDirectory,file+fileExtension);
+                    // request.setDestinationUri(Uri.parse(mFilepath));
+                downloadManager.enqueue(request);
+
+
+    Intent target = new Intent(Intent.ACTION_VIEW);
+        target.setDataAndType(Uri.fromFile(file2),"application/pdf");
+        target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
+
+        Intent intent = Intent.createChooser(target, "Open File");
+        try {
+            v.getContext().startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+
+        }
+
+
+
+
+
+
+
+
+            }
+        });
+
 
     }
 
     @Override
     public int getItemCount() {
-        return listhome.size();
-       //return listhome != null ? listhome.size() : 0;
+       return listhome.size();
+//       return listhome != null ? listhome.size() : 0;
     }
 
     @Override
@@ -207,11 +321,11 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
                 String filterHomePattern= constraint.toString().toLowerCase().trim();
                 for(constcards item:listhomefull){
                     if(item.getCliente().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
-                            item.getProducto().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
+//                            item.getProdu.toLowerCase().contains(constraint.toString().toLowerCase().trim())||
                             item.getValor().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
-                            item.getMedida().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
-                            item.getUnidades().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
-                            item.getPrecio().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
+//                            item.getMedida().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
+//                            item.getUnidades().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
+//                            item.getPrecio().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
                             item.getFecha().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
                             item.getEstado().toLowerCase().contains(constraint.toString().toLowerCase().trim())
 
@@ -273,13 +387,15 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txinvname,txinvdate,txinvdate2,txinvtotal,txinvstate;
+        TextView txinvname,txinvdate,txinvdate2,txinvtotal,txinvstate,txurl;
         ImageView imgvpdf;
         CardView cvdate2,cvstate;
         String Fechapago,Fechaventa,tipodoc;
 
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            txurl=itemView.findViewById(R.id.textView58);
             txinvname=itemView.findViewById(R.id.txinvname);
             txinvdate=itemView.findViewById(R.id.txinvdate);
             txinvdate2=itemView.findViewById(R.id.txinvdate2);
@@ -288,6 +404,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
             cvdate2=itemView.findViewById(R.id.cvdate2);
             cvstate=itemView.findViewById(R.id.cvstate);
             imgvpdf=itemView.findViewById(R.id.imgvpdf);
+
 
 
 

@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
@@ -69,14 +71,17 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
     RecyclerView RecyclerBusqueda;
     RecyclerView.Adapter madapter;
     CharSequence tipodoc,tipodoc2;
+
     Context context;
     int contarventas;
     HomeNote homeNote = new HomeNote();
     List<HomeNote>listahomenotes=new ArrayList<>();
+    List<NoteProducto>ListaProd1;
+    ArrayList<String>ListaProductos;
 
     RecyclerView.LayoutManager Lmanager;
     String Start, EndDate;
-
+    NoteProdViewModel noteProdViewModel;
     TextView title2;
     AppBarLayout appbar1;
     ArrayList<CalendarContract.Events> eventsLists,filterevents;
@@ -86,8 +91,11 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
     private SharedViewModel sharedViewModel;
     private homeinvoiceadapterclass myadaptador2;
     ArrayList<String> Busquedas;
-    ArrayList<constcards> listhome;
+    ArrayList<constcards> Listahomesql;
     FirebaseRecyclerAdapter firebaseRecyclerAdapter, firebaseRecyclerAdapter2;
+
+    ArrayList<String>listaproductos;
+    ArrayList<String>getListaNombres;
     View cartas1;
 
 
@@ -100,23 +108,30 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         navigationView = (BottomNavigationView) findViewById(R.id.navigation);
         mAuth = FirebaseAuth.getInstance();
         String id = mAuth.getCurrentUser().getUid();
+        navigationView = (BottomNavigationView) findViewById(R.id.navigation);
 
         drawer1 = findViewById(R.id.drawer1);
-        title2=findViewById(R.id.title2);
+        title2 = findViewById(R.id.title2);
         swipehome = findViewById(R.id.swipehome);
-        appbar1=findViewById(R.id.appbar1);
+        appbar1 = findViewById(R.id.appbar1);
         edtbuscar = findViewById(R.id.edtbuscar);
         IMAGEHOME = findViewById(R.id.IMAGEHOME);
-        navdrawer=findViewById(R.id.navdrawer);
+        navdrawer = findViewById(R.id.navdrawer);
         card_opciones = findViewById(R.id.card_opciones);
-        RecyclerBusqueda=findViewById(R.id.RecyclerBusqueda);
+        RecyclerBusqueda = findViewById(R.id.RecyclerBusqueda);
+        noteProdViewModel = new ViewModelProvider(this).get(NoteProdViewModel.class);
+        noteProdViewModel.getAllNotes().observe(this, new Observer<List<NoteProducto>>() {
+            @Override
+            public void onChanged(List<NoteProducto> noteProductos) {
+                ListaProd1 = noteProductos;
+            }
+        });
+
 
         //mdrawer = new ActionBarDrawerToggle(this, drawer1, R.string.Open, R.string.Close);
         //drawer1.setDrawerListener(mdrawer);
-       //
+        //
         //getSupportActionBar().hide();//Ocultar ActivityBar anterior
-
-
 
 
         setSupportActionBar(barhome1);
@@ -128,9 +143,6 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
                 }
             }
         });*/
-
-
-
 
 
         //mdrawer.syncState();
@@ -149,8 +161,6 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
                 s.setSpan(new TextAppearanceSpan(homeinvoice2.this, R.style.titledrawer), 0, s.length(), 0);
                 item.setTitle(s);
                 //new ForegroundColorSpan(getResources().getColor(R.color.colorAccent))
-
-
 
 
                 // open drawer here
@@ -182,7 +192,7 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         }
 
         myDatabasehome = FirebaseDatabase.getInstance().getReference().child("VENTAS").child(id);
-       // edtbuscar.setBackgroundColor(getResources().getColor(R.color.colorBlancox));
+        // edtbuscar.setBackgroundColor(getResources().getColor(R.color.colorBlancox));
 
         /*edtbuscar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,7 +203,7 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         });*/
         edtbuscar.setVisibility(View.INVISIBLE);
 
-        if(edtbuscar!=null){
+        if (edtbuscar != null) {
             edtbuscar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
@@ -205,33 +215,35 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
                 public boolean onQueryTextChange(String newText) {
                     myadaptador2.getFilter().filter(newText);
                     return false;
-                   // newText = edtbuscar.getQuery().toString();
+                    // newText = edtbuscar.getQuery().toString();
 
 
-                   // firebaseUserSearch (newText);
-                   // return true;
+                    // firebaseUserSearch (newText);
+                    // return true;
                 }
             });
         }
 
-        Busquedas=new ArrayList<>();
+
+        Busquedas = new ArrayList<>();
         Busquedas.add("Venta");
         Busquedas.add("Compra");
         Busquedas.add("Borrador");
-        Busquedas.add("Hoy");
-        Busquedas.add("Semana");
-        Busquedas.add("Enero");
-        Busquedas.add("Febrero");
-        Busquedas.add("Marzo");
-        Busquedas.add("Abril");
-        Busquedas.add("Mayo");
-        Busquedas.add("Junio");
-        Busquedas.add("Julio");
-        Busquedas.add("Agosto");
-        Busquedas.add("Septiembre");
-        Busquedas.add("Octubre");
-        Busquedas.add("Noviembre");
-        Busquedas.add("Diciembre");
+
+//    /        Busquedas.add("Hoy");
+//        Busquedas.add("Semana");
+//        Busquedas.add("Enero");
+//        Busquedas.add("Febrero");
+//        Busquedas.add("Marzo");
+//        Busquedas.add("Abril");
+//        Busquedas.add("Mayo");
+//        Busquedas.add("Junio");
+//        Busquedas.add("Julio");
+//        Busquedas.add("Agosto");
+//        Busquedas.add("Septiembre");
+//        Busquedas.add("Octubre");
+//        Busquedas.add("Noviembre");
+//        Busquedas.add("Diciembre");
 
 
         RecyclerBusqueda.setHasFixedSize(true);
@@ -243,6 +255,13 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         RecyclerBusqueda.setAdapter(madapter);
         sharedViewModel = new ViewModelProvider(homeinvoice2.this).get(SharedViewModel.class);
        // sharedViewModel.DeleteAllhomeNotes();
+//        sharedViewModel.getdato().observe(this, new Observer<ArrayList<constcards>>() {
+//            @Override
+//            public void onChanged(ArrayList<constcards> constcards) {
+//                Listahomesql=constcards;
+//
+//            }
+//        });
        sharedViewModel.Insert(homeNote);
        /* sharedViewModel.getCountVentas().observe(home1.this, new Observer<Integer>() {
             @Override
@@ -331,6 +350,38 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         myadaptador2 = new homeinvoiceadapterclass(sharedViewModel.getdato().getValue());
         recyclerview1.setAdapter(myadaptador2);
 
+        navigationView.setSelectedItemId(R.id.home);
+        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+//                    case R.id.listaclientes2:
+//
+//                        startActivity(new Intent(getApplicationContext(), ingresodat.class));
+//                        overridePendingTransition(0, 0);
+//                        return true;
+                    case R.id.action_home:
+                        startActivity(new Intent(getApplicationContext(), homeinvoice2.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.action_more:
+                        startActivity(new Intent(getApplicationContext(), InclientActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.action_add:
+                        startActivity(new Intent(getApplicationContext(), Crearproducto.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    // case R.id.action_Pdf:
+                    //   startActivity(new Intent(getApplicationContext(), pdfviewer.class));
+                    // overridePendingTransition(0, 0);
+                    //return true;
+                }
+                return false;
+            }
+        });
+
         navdrawer.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -348,35 +399,8 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         });
 
 
-        navigationView.setSelectedItemId(R.id.action_home);
-        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.cardcliente:
-                        startActivity(new Intent(getApplicationContext(), homeinvoice2.class));
-                        //overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.action_home:
-                        startActivity(new Intent(getApplicationContext(), homeinvoice2.class));
-                        //overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.action_calc:
-                        startActivity(new Intent(getApplicationContext(), fragments3.class));
-                        // overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.action_add:
-                        startActivity(new Intent(getApplicationContext(), PreferenceActivity.class));
-                        // overridePendingTransition(0, 0);
-                        return true;
-                    //case R.id.action_Pdf:
-                    //  startActivity(new Intent(getApplicationContext(), pdfviewer.class));
-                    //overridePendingTransition(0, 0);
-                    //return true;
-                }
-                return false;
-            }
-        });
+
+
 
 
     }
@@ -450,6 +474,9 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
     public void iniciarhome(View view) {
 
 
+
+
+
         Intent i = new Intent(this, fragments3.class);
         startActivity(i);
     }
@@ -460,17 +487,17 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
     }
 
 
-    public void downloadpdf(Context context, String file, String fileExtension, String destinationDirectory, String url) {
-        // url = .getText().toString().trim();
-
-        DownloadManager downloadManager = (DownloadManager) context.getSystemService(context.DOWNLOAD_SERVICE);
-        Uri uri = Uri.parse(url);
-        DownloadManager.Request request = new DownloadManager.Request(uri);
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalFilesDir(context, destinationDirectory, file + fileExtension);
-        downloadManager.enqueue(request);
-
-    }
+//    public void downloadpdf(Context context, String file, String fileExtension, String destinationDirectory, String url) {
+//        // url = .getText().toString().trim();
+//
+//        DownloadManager downloadManager = (DownloadManager) context.getSystemService(context.DOWNLOAD_SERVICE);
+//        Uri uri = Uri.parse(url);
+//        DownloadManager.Request request = new DownloadManager.Request(uri);
+//        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+//        request.setDestinationInExternalFilesDir(context, destinationDirectory, file + fileExtension);
+//        downloadManager.enqueue(request);
+//
+//    }
 
     @Override
     protected void onResume() {
@@ -489,6 +516,7 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.bottom_menuup, menu);
         MenuItem Buscador=menu.findItem(R.id.edtbuscar2);
         MenuInflater inflater=getMenuInflater();
         inflater.inflate(R.menu.top_menu,menu);
@@ -574,6 +602,8 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 
         }
     }
+
+
 }
 
 

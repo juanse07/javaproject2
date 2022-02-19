@@ -169,7 +169,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout">
+            app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout"
+            app:menu="@menu/bottom_menuup"
+            app:itemIconTint="@drawable/item_color"
+            app:itemTextColor="@drawable/item_color"
+            >
 
 
             android:layout_weight="11"

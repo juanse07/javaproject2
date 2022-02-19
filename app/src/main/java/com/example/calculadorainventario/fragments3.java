@@ -119,10 +119,14 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         noteProdViewModel.getSumTotal().observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
+                if(aDouble==null){
+                    cardprod3.setText("0");
+                }else{
                 DecimalFormat formatter = new DecimalFormat("###,###,##0");
                 String totalfac=String.valueOf(formatter.format(aDouble));
 
-                cardprod3.setText(totalfac+ " USD");
+                cardprod3.setText(String.valueOf(aDouble));
+                }
 
             }
         });

@@ -133,6 +133,9 @@ public class Repositorio1 {
 
         // if(productos.size()==-1) {
         loadDatos();
+
+
+
         //}
 
 

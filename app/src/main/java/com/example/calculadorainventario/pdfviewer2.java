@@ -105,7 +105,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
   String fechaventas2;
    String estadoventas2;
 //    String horareal2;
-//    String diaspago,Fecha2;
+  String diaspago,Fecha2;
     DatabaseReference myrootDbaseref5;
     FirebaseStorage mystorage;
     FirebaseAuth mAuth;
@@ -195,12 +195,13 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
    valorventas2=getIntent().getExtras().getString("Total1");
 
     estadoventas2=getIntent().getExtras().getString("Estado1");
-//        Fecha2=getIntent().getExtras().getString("Fecha2").trim();
+//     Fecha2 =getIntent().getExtras().getString("Fecha2").trim();
         //outputStream2=getIntent().getExtras().getByteArray("wpa");
 
 
+
 //        horareal2=hora2;
-//        diaspago=Constants.getSP(this).getDIAS();
+   diaspago=Constants.getSP(this).getDIAS();
 
         myrootDbaseref5 = FirebaseDatabase.getInstance().getReference();
 
@@ -375,10 +376,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     }
 
     public void home1(View view) {
-//        guardarbdventas();
+   guardarbdventas();
         finish();
 
-        Intent i = new Intent(pdfviewer2.this, home1.class);
+        Intent i = new Intent(pdfviewer2.this, homeinvoice2.class);
         startActivity(i);
         noteProdViewModel=new ViewModelProvider(this).get(NoteProdViewModel.class);
         noteProdViewModel.DeleteAll();
@@ -574,8 +575,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                                 datosventa.put("Estado",estado);
                                 datosventa.put("pdfurl", url2);
                                 datosventa.put("Key",newref.getKey());
-//                                datosventa.put("Fechaparapago",Fecha2);
-//                                datosventa.put("Dias_plazo",diaspago);
+                                datosventa.put("Fechaparapago","...");
+                                datosventa.put("Dias_plazo",diaspago);
 
 
                                 datosventa.put("Id_usuario",id);

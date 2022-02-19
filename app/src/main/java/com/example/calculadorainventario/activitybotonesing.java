@@ -64,39 +64,39 @@ public class activitybotonesing extends AppCompatActivity {
 
 
     navigationView.setSelectedItemId(R.id.action_add);
-    navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
-
-    {
-        @Override
-        public boolean onNavigationItemSelected (@NonNull MenuItem item){
-        switch (item.getItemId()) {
-            case R.id.btnuevocolor:
-                startActivity(new Intent(getApplicationContext(), activitybotonesing.class));
-                overridePendingTransition(0, 0);
-                return true;
-            case R.id.action_home:
-                startActivity(new Intent(getApplicationContext(), home1.class));
-                overridePendingTransition(0, 0);
-                return true;
-            case R.id.action_calc:
-                startActivity(new Intent(getApplicationContext(), ingresodat.class));
-                overridePendingTransition(0, 0);
-                return true;
-            case R.id.action_add:
-                startActivity(new Intent(getApplicationContext(), activitybotonesing.class));
-                overridePendingTransition(0, 0);
-                return true;
-
-            case R.id.action_more:
-                startActivity(new Intent(getApplicationContext(), VistaAA.class));
-                overridePendingTransition(0, 0);
-                return true;
-
-        }
-        return false;
-        }
-
-    });
+//    navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
+//
+//    {
+//        @Override
+//        public boolean onNavigationItemSelected (@NonNull MenuItem item){
+//        switch (item.getItemId()) {
+//            case R.id.btnuevocolor:
+//                startActivity(new Intent(getApplicationContext(), activitybotonesing.class));
+//                overridePendingTransition(0, 0);
+//                return true;
+//            case R.id.action_home:
+//                startActivity(new Intent(getApplicationContext(), home1.class));
+//                overridePendingTransition(0, 0);
+//                return true;
+//            case R.id.action_more:
+//                startActivity(new Intent(getApplicationContext(), ingresodat.class));
+//                overridePendingTransition(0, 0);
+//                return true;
+//            case R.id.action_add:
+//                startActivity(new Intent(getApplicationContext(), activitybotonesing.class));
+//                overridePendingTransition(0, 0);
+//                return true;
+//
+//            case R.id.action_more:
+//                startActivity(new Intent(getApplicationContext(), VistaAA.class));
+//                overridePendingTransition(0, 0);
+//                return true;
+//
+//        }
+//        return false;
+//        }
+//
+//    });
 
 }
 

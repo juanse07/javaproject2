@@ -391,10 +391,10 @@ public class home1 extends AppCompatActivity implements ClickInterface1 {
                         startActivity(new Intent(getApplicationContext(), home1.class));
                         //overridePendingTransition(0, 0);
                         return true;
-                    case R.id.action_calc:
-                        startActivity(new Intent(getApplicationContext(), fragments3.class));
-                        // overridePendingTransition(0, 0);
-                        return true;
+//                    case R.id.action_calc:
+//                        startActivity(new Intent(getApplicationContext(), fragments3.class));
+//                        // overridePendingTransition(0, 0);
+//                        return true;
                     case R.id.action_add:
                         startActivity(new Intent(getApplicationContext(), PreferenceActivity.class));
                         // overridePendingTransition(0, 0);

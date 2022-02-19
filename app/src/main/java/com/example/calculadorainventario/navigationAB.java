@@ -37,11 +37,11 @@ TextView txhome;
                         startActivity(new Intent(getApplicationContext(),ingresodat.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.action_calc:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
+//                    case R.id.action_calc:
+//                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
+//
                 }
 
                 return false;

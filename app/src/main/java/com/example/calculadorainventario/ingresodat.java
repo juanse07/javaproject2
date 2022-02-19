@@ -195,7 +195,7 @@ restarprecio.setOnClickListener(new View.OnClickListener() {
         });
 
 
-        navigationView.setSelectedItemId(R.id.action_calc);
+//        navigationView.setSelectedItemId(R.id.action_calc);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -208,10 +208,10 @@ restarprecio.setOnClickListener(new View.OnClickListener() {
                         startActivity(new Intent(getApplicationContext(), home1.class));
                         overridePendingTransition(0, 0);
                         return true;
-                    case R.id.action_calc:
-                        startActivity(new Intent(getApplicationContext(), ingresodat.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+//                    case R.id.action_calc:
+//                        startActivity(new Intent(getApplicationContext(), ingresodat.class));
+//                        overridePendingTransition(0, 0);
+//                        return true;
                     case R.id.action_add:
                         startActivity(new Intent(getApplicationContext(), activitybotonesing.class));
                         overridePendingTransition(0, 0);
