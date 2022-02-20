@@ -21,6 +21,7 @@ public class AdaptadorNoteProd extends RecyclerView.Adapter<AdaptadorNoteProd.my
     List<NoteProducto> notesProd = new ArrayList<>();
     private ClickInterface1 clickInterface1;
 
+
     public AdaptadorNoteProd(ClickInterface1 clickInterface1) {
 
 
@@ -81,7 +82,10 @@ public class AdaptadorNoteProd extends RecyclerView.Adapter<AdaptadorNoteProd.my
                 final String Nombre_prod = currentnote.getNombre_prod();
                 final String Cant_prod=  String.valueOf(nuevacantidad);
                 final String Precio_prod = currentnote.getPrecio_prod();
-                final Double Resultado_valor = currentnote.getResultado_valor();
+                Double resultadoinicial=currentnote.getResultado_valor();
+                Double cantidad=Double.parseDouble(Cant_prod);
+                Double NuevoResultado=resultadoinicial*cantidad;
+                final Double Resultado_valor = NuevoResultado;
                 NoteProducto noteProducto=new NoteProducto(Nombre_prod,Cant_prod,Precio_prod,Resultado_valor);
 
 
@@ -102,7 +106,60 @@ public class AdaptadorNoteProd extends RecyclerView.Adapter<AdaptadorNoteProd.my
 
             }
         });
+holder.addsym.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        noteProdViewModel=new ViewModelProvider((ViewModelStoreOwner) v.getContext()).get(NoteProdViewModel.class);
+        NoteProducto currentnote= notesProd.get(position);
+        int cambiarcantidad=1;
 
+//                int currentkey2=currentnote.Key;
+//                 String Producto=holder.nombreproducto00.getText().toString();
+//                String Cantidad=holder.text1.getText().toString();
+//                 String Precio=holder.textm2.getText().toString();
+//                clickInterface1.PassnoteprodPosition(position,Producto,Cantidad,Precio,currentnote);
+//                Log.d("values:",String.valueOf(position));
+//                Log.d("values:",String.valueOf(currentnote.Key));
+//                Log.d("values:",String.valueOf(Producto));
+//                Log.d("values:",String.valueOf(Cantidad));
+//                Log.d("values:",String.valueOf(Precio));
+        int actualcantidad=Integer.parseInt(currentnote.getCant_Prod());
+
+        int nuevacantidad=actualcantidad+cambiarcantidad;
+
+
+        int key=currentnote.Key;
+        final String Nombre_prod = currentnote.getNombre_prod();
+        final String Cant_prod=  String.valueOf(nuevacantidad);
+        final String Precio_prod = currentnote.getPrecio_prod();
+        Double cantidad=Double.parseDouble(Cant_prod);
+        Double Precio=Double.parseDouble(Precio_prod);
+        Double NuevoRes=cantidad*Precio;
+
+        final Double Resultado_valor =NuevoRes;
+        NoteProducto noteProducto=new NoteProducto(Nombre_prod,Cant_prod,Precio_prod,Resultado_valor);
+
+
+        noteProducto.setKey(key);
+        if (Integer.parseInt(noteProducto.getCant_Prod())==0){
+            noteProdViewModel.Delete(noteProducto);
+        }else {
+
+            noteProdViewModel.Update(noteProducto);
+
+            holder.textm2.setText(String.valueOf(noteProducto.getCant_Prod()));
+
+        }
+
+
+//                clickInterface1.PassnoteprodPosition(position,Producto,Cantidad,Precio);
+
+
+    }
+
+
+
+});
 
 //        holder.mas2.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -172,7 +229,7 @@ public class AdaptadorNoteProd extends RecyclerView.Adapter<AdaptadorNoteProd.my
 
     class myClass extends RecyclerView.ViewHolder {
         TextView nombreproducto00, text1, textm2;
-        ImageView min3, min2, mas3, mas2, deletesym;
+        ImageView min3, min2, mas3, mas2, deletesym,addsym;
 
         public myClass(@NonNull View itemView) {
 
@@ -181,6 +238,7 @@ public class AdaptadorNoteProd extends RecyclerView.Adapter<AdaptadorNoteProd.my
             text1 = itemView.findViewById(R.id.text1);
             textm2 = itemView.findViewById(R.id.textm2);
             deletesym = itemView.findViewById(R.id.deletesym);
+            addsym=itemView.findViewById(R.id.addsym);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

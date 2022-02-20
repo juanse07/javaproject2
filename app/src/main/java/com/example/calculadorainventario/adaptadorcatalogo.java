@@ -163,6 +163,7 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
+
                 noteProdViewModel=new ViewModelProvider((ViewModelStoreOwner) v.getContext()).get(NoteProdViewModel.class);
 
 
@@ -189,9 +190,10 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
 
                // String Varposition2= Constants.getSP(holder.itemView.getContext()).getpositioncatalogo();
                 //holder.buttonaddproducto.setBackgroundTintList(holder.itemView.getResources().getColorStateList(R.color.colorGrisclaro));
-               
 
 
+                holder.buttonaddproducto.setBackgroundColor(holder.itemView.getResources().getColor(R.color.mdtp_white));
+      holder.buttonaddproducto.setEnabled(false);
 
 
             }

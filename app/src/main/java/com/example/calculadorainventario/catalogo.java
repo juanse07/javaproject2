@@ -276,6 +276,7 @@ public class catalogo extends Fragment implements ClickInterface1 {
 //                int valorritmo = 1;
         Double valornuevosuma = price * qt;
         Double Resultado_valor=valornuevosuma;
+        
 
         noteProducto=new NoteProducto(Nombre_Prod,Cant_Prod,Precio_prod,Resultado_valor);
         noteProdViewModel.Insert(noteProducto);

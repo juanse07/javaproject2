@@ -50,7 +50,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_weight="30"
                         android:gravity="start"
-                        android:text="Quantity" />
+                        android:text="Price" />
 
                     <TextView
                         android:id="@+id/textView47"
@@ -61,7 +61,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_weight="20"
                         android:gravity="start"
-                        android:text="Price" />
+                        android:text="Quantity" />
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView

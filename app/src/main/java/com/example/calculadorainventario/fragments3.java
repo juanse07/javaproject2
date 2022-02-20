@@ -125,7 +125,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                 DecimalFormat formatter = new DecimalFormat("###,###,##0");
                 String totalfac=String.valueOf(formatter.format(aDouble));
 
-                cardprod3.setText(String.valueOf(aDouble));
+                cardprod3.setText(totalfac);
                 }
 
             }
