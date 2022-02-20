@@ -38,6 +38,8 @@ public interface NoteProdDao {
 //    //@Query("SELECT COALESCE(sum(COALESCE(valor_Medida,0)), 0) From Tabla_Lista_Medidas")
    @Query("SELECT SUM(Resultado_valor)FROM Tabla_Lista_Productos")
     LiveData<Double> getTotal();
+    @Query("SELECT SUM(Cant_prod)FROM Tabla_Lista_Productos")
+    LiveData<Double> getcantTotal();
     @Query("SELECT SUM(Cant_prod)FROM Tabla_Lista_Productos WHERE `Nombre_prod`= 'Bonyourt'")
     LiveData<Integer> getsumProdnom();
 //    @Query("SELECT AVG(valor_Medida)FROM Tabla_Lista_Productos")

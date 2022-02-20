@@ -18,13 +18,13 @@ public class NoteProducto implements Serializable {
 
 
     public String Nombre_prod;
-    public String Cant_prod;
-    public String Precio_prod;
+    public Double Cant_prod;
+    public Double Precio_prod;
     public Double Resultado_valor;
 
 
 
-public NoteProducto(String Nombre_prod, String Cant_prod, String Precio_prod,Double Resultado_valor) {
+public NoteProducto(String Nombre_prod, Double Cant_prod, Double Precio_prod,Double Resultado_valor) {
      this.Nombre_prod = Nombre_prod;
      this.Precio_prod=Precio_prod;
      this.Cant_prod=Cant_prod;
@@ -41,10 +41,10 @@ public NoteProducto(String Nombre_prod, String Cant_prod, String Precio_prod,Dou
     public String getNombre_prod() {
         return Nombre_prod;
     }
-    public String getCant_Prod() {
+    public Double getCant_Prod() {
         return Cant_prod;
     }
-    public String getPrecio_prod() {
+    public Double getPrecio_prod() {
         return Precio_prod;
     }
 

@@ -42,26 +42,23 @@ public class AdaptadorNoteProd extends RecyclerView.Adapter<AdaptadorNoteProd.my
 
         NoteProducto currentnote = notesProd.get(position);
         final String Producto = currentnote.getNombre_prod();
-        final String Cantidad = currentnote.getCant_Prod();
-        final String Precio = currentnote.getPrecio_prod();
+        final Double Cantidad = currentnote.getCant_Prod();
+        final Double Precio = currentnote.getPrecio_prod();
         holder.nombreproducto00.setText(currentnote.getNombre_prod());
-        holder.text1.setText(currentnote.getCant_Prod());
-        holder.textm2.setText(currentnote.getPrecio_prod());
-        int price = Integer.parseInt(currentnote.getPrecio_prod());
-        int qt = Integer.parseInt(currentnote.getCant_Prod());
+        holder.text1.setText(currentnote.getCant_Prod().toString());
+        holder.textm2.setText(currentnote.getPrecio_prod().toString());
+        Double price = currentnote.getPrecio_prod();
+        Double qt = currentnote.getCant_Prod();
 //                int valorritmo = 1;
-        int valornuevosuma = price * qt;
-        Log.d("Total:", String.valueOf(Producto));
-        Log.d("values:", String.valueOf(Cantidad));
-        Log.d("values:", String.valueOf(Precio));
-        Log.d("Tottal2:", String.valueOf(valornuevosuma));
+        Double valornuevosuma = price * qt;
+
 
         holder.deletesym.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 noteProdViewModel=new ViewModelProvider((ViewModelStoreOwner) v.getContext()).get(NoteProdViewModel.class);
                 NoteProducto currentnote= notesProd.get(position);
-                int cambiarcantidad=1;
+                Double cambiarcantidad=1.0;
 
 //                int currentkey2=currentnote.Key;
 //                 String Producto=holder.nombreproducto00.getText().toString();
@@ -73,24 +70,25 @@ public class AdaptadorNoteProd extends RecyclerView.Adapter<AdaptadorNoteProd.my
 //                Log.d("values:",String.valueOf(Producto));
 //                Log.d("values:",String.valueOf(Cantidad));
 //                Log.d("values:",String.valueOf(Precio));
-                int actualcantidad=Integer.parseInt(currentnote.getCant_Prod());
+                Double actualcantidad=currentnote.getCant_Prod();
 
-                int nuevacantidad=actualcantidad-cambiarcantidad;
+                Double nuevacantidad=actualcantidad-cambiarcantidad;
 
 
                 int key=currentnote.Key;
                 final String Nombre_prod = currentnote.getNombre_prod();
-                final String Cant_prod=  String.valueOf(nuevacantidad);
-                final String Precio_prod = currentnote.getPrecio_prod();
-                Double resultadoinicial=currentnote.getResultado_valor();
-                Double cantidad=Double.parseDouble(Cant_prod);
-                Double NuevoResultado=resultadoinicial*cantidad;
-                final Double Resultado_valor = NuevoResultado;
+                final Double Cant_prod=  nuevacantidad;
+                final Double Precio_prod = currentnote.getPrecio_prod();
+                Double cantidad=Cant_prod;
+                Double Precio= Precio_prod;
+                Double NuevoRes=cantidad*Precio;
+
+                final Double Resultado_valor =NuevoRes;
                 NoteProducto noteProducto=new NoteProducto(Nombre_prod,Cant_prod,Precio_prod,Resultado_valor);
 
 
                 noteProducto.setKey(key);
-                if (Integer.parseInt(noteProducto.getCant_Prod())==0){
+                if (noteProducto.getCant_Prod()==0){
                     noteProdViewModel.Delete(noteProducto);
                 }else {
 
@@ -111,7 +109,7 @@ holder.addsym.setOnClickListener(new View.OnClickListener() {
     public void onClick(View v) {
         noteProdViewModel=new ViewModelProvider((ViewModelStoreOwner) v.getContext()).get(NoteProdViewModel.class);
         NoteProducto currentnote= notesProd.get(position);
-        int cambiarcantidad=1;
+        Double cambiarcantidad=1.0;
 
 //                int currentkey2=currentnote.Key;
 //                 String Producto=holder.nombreproducto00.getText().toString();
@@ -123,17 +121,17 @@ holder.addsym.setOnClickListener(new View.OnClickListener() {
 //                Log.d("values:",String.valueOf(Producto));
 //                Log.d("values:",String.valueOf(Cantidad));
 //                Log.d("values:",String.valueOf(Precio));
-        int actualcantidad=Integer.parseInt(currentnote.getCant_Prod());
+        Double actualcantidad=currentnote.getCant_Prod();
 
-        int nuevacantidad=actualcantidad+cambiarcantidad;
+        Double nuevacantidad=actualcantidad+cambiarcantidad;
 
 
         int key=currentnote.Key;
         final String Nombre_prod = currentnote.getNombre_prod();
-        final String Cant_prod=  String.valueOf(nuevacantidad);
-        final String Precio_prod = currentnote.getPrecio_prod();
-        Double cantidad=Double.parseDouble(Cant_prod);
-        Double Precio=Double.parseDouble(Precio_prod);
+        final Double Cant_prod=  nuevacantidad;
+        final Double Precio_prod = currentnote.getPrecio_prod();
+        Double cantidad=Cant_prod;
+        Double Precio= Precio_prod;
         Double NuevoRes=cantidad*Precio;
 
         final Double Resultado_valor =NuevoRes;
@@ -141,7 +139,7 @@ holder.addsym.setOnClickListener(new View.OnClickListener() {
 
 
         noteProducto.setKey(key);
-        if (Integer.parseInt(noteProducto.getCant_Prod())==0){
+        if (noteProducto.getCant_Prod()==0){
             noteProdViewModel.Delete(noteProducto);
         }else {
 
@@ -150,6 +148,9 @@ holder.addsym.setOnClickListener(new View.OnClickListener() {
             holder.textm2.setText(String.valueOf(noteProducto.getCant_Prod()));
 
         }
+
+
+//                clickInterface1.PassnoteprodPosition(position,Producto,Cantidad,Precio);
 
 
 //                clickInterface1.PassnoteprodPosition(position,Producto,Cantidad,Precio);

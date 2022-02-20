@@ -111,7 +111,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     FirebaseAuth mAuth;
     NoteViewModel noteViewModel;
     ArrayList<Note>noteArralist=new ArrayList<>();
-    ArrayList<String>List1,List2,List3,List4;
+    ArrayList<String>List1;
+    ArrayList<Double>List2,List3,List4;
     byte[] outputstream2;
     //Button btactualizarpdf;
    String nombreventas2;
@@ -176,9 +177,9 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
         productoventas2=getIntent().getExtras().getString("Producto1");
 
         List1= (ArrayList<String>) getIntent().getSerializableExtra("listaProd1");
-        List2= (ArrayList<String>) getIntent().getSerializableExtra("listaPre1");
-        List3= (ArrayList<String>) getIntent().getSerializableExtra("listaCant1");
-        List4= (ArrayList<String>) getIntent().getSerializableExtra("listaResultado");
+        List2= (ArrayList<Double>) getIntent().getSerializableExtra("listaPre1");
+        List3= (ArrayList<Double>) getIntent().getSerializableExtra("listaCant1");
+        List4= (ArrayList<Double>) getIntent().getSerializableExtra("listaResultado");
 //        SumaResultado=getIntent().getExtras().getString("Total1");
 
 

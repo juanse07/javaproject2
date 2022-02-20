@@ -53,11 +53,12 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     String PrecioL,ProductoL,ClienteL;
     ArrayList<String> Listapdf;
     ArrayList<String> ListaProd;
-    ArrayList<String> ListaCant;
-    ArrayList<String> ListaPre;
+    ArrayList<Double> ListaCant;
+    ArrayList<Double> ListaPre;
     ArrayList<Double> Listavalor;
-    ArrayList<Double>listaVal2;
+    ArrayList<Double>listaVal2,Listacantidades;
     Double pdfval;
+
     double sum;
 
     NoteProdViewModel noteProdViewModel;
@@ -130,19 +131,42 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
             }
         });
+        noteProdViewModel.getSumcantTotal().observe(this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                if(aDouble==null) {
+                    badgeDrawable.setVisible(false);
+
+                } else {
+                        Double sumacant=aDouble;
+
+                    Double newData = Double.valueOf(aDouble);
+                    int value = newData.intValue();
+
+                        badgeDrawable.setVisible(true);
+                        badgeDrawable.setNumber(value);
+
+                        badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getApplicationContext(), R.color.mdtp_white));
+
+                        badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolor));
+                    }
+
+
+            }
+        });
         noteProdViewModel.getAllNotes().observe(this, new Observer<List<NoteProducto>>() {
             @Override
             public void onChanged(List<NoteProducto> noteProductos) {
                 ListaProd1=noteProductos;
-                if(ListaProd1.size()!=0){
-               badgeDrawable.setVisible(true);
-               badgeDrawable.setNumber(ListaProd1.size());
-                badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getApplicationContext(), R.color.mdtp_white));
-
-                badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolor));
-                }else {
-                    badgeDrawable.setVisible(false);
-                }
+//                if(ListaProd1.size()!=0){
+//               badgeDrawable.setVisible(true);
+//               badgeDrawable.setNumber(ListaProd1.size());
+//                badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getApplicationContext(), R.color.mdtp_white));
+//
+//                badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolor));
+//                }else {
+//                    badgeDrawable.setVisible(false);
+//                }
 
             }
         });
@@ -332,9 +356,9 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
 //                   Log.d("value is" , Listadobles2.get(i).valor_Medida.toString());}
 //                   Listapdf.add(Listadobles2.get(i).getValor_Medida().toString());
-                                String pdfprod1 = ListaProd1.get(i).Nombre_prod;
-                                String pdfcant1 = ListaProd1.get(i).Cant_prod;
-                                String pdfpre1 = ListaProd1.get(i).Precio_prod;
+                             String pdfprod1 = ListaProd1.get(i).Nombre_prod;
+                                Double pdfcant1 = ListaProd1.get(i).Cant_prod;
+                                Double pdfpre1 = ListaProd1.get(i).Precio_prod;
                                 pdfval = ListaProd1.get(i).Resultado_valor;
 
 

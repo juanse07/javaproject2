@@ -268,20 +268,20 @@ public class catalogo extends Fragment implements ClickInterface1 {
     @Override
     public void passingproductoClick(int position, CharSequence Producto, CharSequence Precio, CharSequence Cantidad) {
         sharedViewModel.setText(Producto);
-        String Nombre_Prod=Producto.toString();
-        String Cant_Prod=Cantidad.toString();
-        String  Precio_prod=Precio.toString();
-        Double price = Double.parseDouble(Cant_Prod);
-        Double qt = Double.parseDouble(Precio_prod);
-//                int valorritmo = 1;
-        Double valornuevosuma = price * qt;
-        Double Resultado_valor=valornuevosuma;
-        
-
-        noteProducto=new NoteProducto(Nombre_Prod,Cant_Prod,Precio_prod,Resultado_valor);
-        noteProdViewModel.Insert(noteProducto);
-        Log.d("el valor es", String.valueOf(noteProducto.Nombre_prod+noteProducto.Precio_prod+noteProducto.Cant_prod));
-
+//        String Nombre_Prod=Producto.toString();
+//       Double Cant_Prod=Cantidad;
+//        String  Precio_prod=Precio.toString();
+//        Double price = Double.parseDouble(Cant_Prod);
+//        Double qt = Double.parseDouble(Precio_prod);
+////                int valorritmo = 1;
+//        Double valornuevosuma = price * qt;
+//        Double Resultado_valor=valornuevosuma;
+//
+//
+//        noteProducto=new NoteProducto(Nombre_Prod,Cant_Prod,Precio_prod,Resultado_valor);
+//        noteProdViewModel.Insert(noteProducto);
+//        Log.d("el valor es", String.valueOf(noteProducto.Nombre_prod+noteProducto.Precio_prod+noteProducto.Cant_prod));
+//
 
     }
 

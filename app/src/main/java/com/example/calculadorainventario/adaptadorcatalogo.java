@@ -169,18 +169,32 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
 
 
                 //cuerospinner current = productos.get(position);
-             CharSequence Producto= holder.nombreproducto.getText();
+             String Nombre_prod= holder.nombreproducto.getText().toString();
              CharSequence Precio=holder.preciotext.getText();
+             CharSequence Producto=holder.nombreproducto.getText();
+
+
 
                 CharSequence Cantidad=holder.canttext2.getText();
                 clickInterface1.onButtonAddClick(position);
                 clickInterface1.passingproductoClick(position,Producto,Precio,Cantidad);
                 clickInterface1.passingprecio1Click(position,Precio);
 
+                Double Precio_prod=Double.parseDouble(holder.preciotext.getText().toString());
+                Double Cant_Prod= Double.parseDouble(holder.canttext2.getText().toString());
+
+//                int valorritmo = 1;
+                Double valornuevosuma = Precio_prod * Cant_Prod;
+                Double Resultado_valor=valornuevosuma;
+
+
+                noteProducto=new NoteProducto(Nombre_prod,Cant_Prod,Precio_prod,Resultado_valor);
+                noteProdViewModel.Insert(noteProducto);
+
                 row_index=position;
                 notifyDataSetChanged();
-                noteProdViewModel.getSumTotal();
-                Log.d("values:",String.valueOf(noteProdViewModel.getSumTotal()));
+//                noteProdViewModel.getSumTotal();
+//                Log.d("values:",String.valueOf(noteProdViewModel.getSumTotal()));
 
                 final String id = mAuth.getCurrentUser().getUid();
                 ref = FirebaseDatabase.getInstance().getReference().child("PRODUCTOS").child(id).child(productos.get(position).getKey());
@@ -194,6 +208,8 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
 
                 holder.buttonaddproducto.setBackgroundColor(holder.itemView.getResources().getColor(R.color.mdtp_white));
       holder.buttonaddproducto.setEnabled(false);
+      holder.buttonaddproducto.setTextColor(holder.itemView.getResources().getColor(R.color.colorGrisoscuro));
+      holder.buttonaddproducto.setText("Added");
 
 
             }

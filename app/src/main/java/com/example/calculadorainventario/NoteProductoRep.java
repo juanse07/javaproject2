@@ -15,6 +15,7 @@ public class NoteProductoRep {
 
         private LiveData<List<NoteProducto>>LastNote;
         private LiveData<Double>getTotal;
+    private LiveData<Double>getcantTotal;
         private LiveData<Double>calcPromed;
         private LiveData<Integer>CalcCount;
 
@@ -27,6 +28,7 @@ public class NoteProductoRep {
             noteProdDao=dataBase.noteProdDao();
             allNotes=noteProdDao.getallnotes();
             getTotal=noteProdDao.getTotal();
+            getcantTotal=noteProdDao.getcantTotal();
 //            calcPromed=noteProdDao.getPromed();
 //            CalcCount=noteProdDao.getCount();
            allDoubleNotes=noteProdDao.getallDoublenotes();
@@ -64,6 +66,7 @@ public class NoteProductoRep {
             return LastNote;
         }
         public LiveData<Double>getGetTotal(){return getTotal;}
+        public LiveData<Double>getGetcantTotal(){return getcantTotal;}
         public LiveData<List<Double>>getAllDoubleNotes(){
             return allDoubleNotes;}
         public LiveData<Double>getCalcPromed(){return calcPromed;}

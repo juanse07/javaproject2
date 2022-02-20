@@ -83,7 +83,8 @@
                         android:id="@+id/checkBox2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="10" />
+                        android:layout_weight="10"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/textView27"
@@ -123,7 +124,8 @@
                         android:id="@+id/checkBox4"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="10" />
+                        android:layout_weight="10"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/textView35"
@@ -164,7 +166,8 @@
                         android:id="@+id/checkBox5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="10" />
+                        android:layout_weight="10"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/textView43"
@@ -196,13 +199,15 @@
 
                     android:background="#FFFFFF"
                     android:orientation="horizontal"
+                    android:visibility="gone"
                     android:weightSum="100">
 
                     <CheckBox
                         android:id="@+id/checkBox8"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="10" />
+                        android:layout_weight="10"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/textView46"
@@ -219,8 +224,8 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="end"
                         android:layout_weight="70"
-                        tools:src="@drawable/ic_account_box"
-                        android:foregroundGravity="right" />
+                        android:foregroundGravity="right"
+                        tools:src="@drawable/ic_account_box" />
 
                 </LinearLayout>
 
@@ -244,7 +249,8 @@
                             android:id="@+id/checkBox6"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="10" />
+                            android:layout_weight="10"
+                            android:visibility="gone" />
 
                         <TextView
                             android:id="@+id/notastx"
@@ -319,7 +325,8 @@
                         android:id="@+id/incluirimpuesto"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="10" />
+                        android:layout_weight="10"
+                        android:visibility="gone" />
                     android:button="@null"
                     //android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
 
