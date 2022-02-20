@@ -269,8 +269,8 @@ public class catalogo extends Fragment implements ClickInterface1 {
     public void passingproductoClick(int position, CharSequence Producto, CharSequence Precio, CharSequence Cantidad) {
         sharedViewModel.setText(Producto);
         String Nombre_Prod=Producto.toString();
-        String Cant_Prod=Precio.toString();
-        String  Precio_prod=Cantidad.toString();
+        String Cant_Prod=Cantidad.toString();
+        String  Precio_prod=Precio.toString();
         Double price = Double.parseDouble(Cant_Prod);
         Double qt = Double.parseDouble(Precio_prod);
 //                int valorritmo = 1;

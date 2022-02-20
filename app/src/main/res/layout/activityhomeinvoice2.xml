@@ -161,7 +161,8 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="8dp"
                 android:layout_weight="16"
-                app:cardCornerRadius="20dp">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp">
 
                 <TextView
                     android:id="@+id/txinvstate"

@@ -165,6 +165,7 @@ ArrayList<NoteProducto>notesProd;
 
             }
         });
+//        adaptadorNoteProd.setOnItemClickListener(ingresoview.getContext(),new AdaptadorNoteProd.onItemclickListener());
 
 
         //card_operacion = ingresoview.findViewById(R.id.card_operacion);

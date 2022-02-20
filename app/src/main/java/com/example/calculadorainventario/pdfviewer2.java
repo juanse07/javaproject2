@@ -1140,7 +1140,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             cellvalor.setVerticalAlignment(Element.ALIGN_TOP);
             cellvalor2.setBorderColor(BaseColor.WHITE);
             cellvalor2.setUseAscender(true);
-            cellvalor2.setBackgroundColor(BaseColor.YELLOW);
+            cellvalor2.setBackgroundColor(BaseColor.WHITE);
             cellvalor2.setVerticalAlignment(Element.ALIGN_CENTER);
             cellprecio.setBorderColor(BaseColor.WHITE);
             cellprecio.setUseAscender(true);

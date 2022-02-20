@@ -18,6 +18,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +38,7 @@ public class InclientActivity extends AppCompatActivity {
     View ClientesView;
     FirebaseAuth mAuth;
     BottomNavigationView navigationView;
+    FloatingActionButton floatingActionButton4;
 
 
     @Override
@@ -52,6 +54,7 @@ public class InclientActivity extends AppCompatActivity {
 
 
         txinputtel1 = (TextInputEditText) findViewById(R.id.txinputtel1);
+        floatingActionButton4=findViewById(R.id.floatingActionButton4);
         mAuth=FirebaseAuth.getInstance();
         String id= mAuth.getCurrentUser().getUid();
         myrootDbaseref2 = FirebaseDatabase.getInstance().getReference();
@@ -91,6 +94,13 @@ public class InclientActivity extends AppCompatActivity {
                     //return true;
                 }
                 return false;
+            }
+        });
+        floatingActionButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(InclientActivity.this,fragments3.class);
+                startActivity(i);
             }
         });
 

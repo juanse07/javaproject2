@@ -10,6 +10,8 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
+
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
@@ -120,7 +122,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
 
     class ViewHoldercliente extends RecyclerView.ViewHolder{
         TextView txnombre45;
-        Button btaddcliente;
+        MaterialButton btaddcliente;
 
         public ViewHoldercliente(@NonNull View itemView) {
             super(itemView);

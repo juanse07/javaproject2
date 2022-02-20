@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import java.io.File;
 import java.lang.reflect.Method;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -82,13 +83,14 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
     @Override
     public void onBindViewHolder(@NonNull final homeinvoiceadapterclass.ViewHolder holder, final int position) {
 
+        DecimalFormat formatter = new DecimalFormat("###,###,##0");
 
         holder.txinvname.setText(listhome.get(position).getCliente());
         holder.txinvdate.setText(listhome.get(position).getFecha());
         holder.txinvstate.setText(listhome.get(position).getEstado());
 //        holder.cardmedida.setText(listhome.get(position).getMedida());
 //        holder.cardunidades.setText(listhome.get(position).getUnidades());
-        holder.txinvtotal.setText(listhome.get(position).getValor());
+        holder.txinvtotal.setText(String.valueOf( formatter.format(Double.parseDouble(String.valueOf(listhome.get(position).getValor()))))+ " USD");
 //        holder.cardproducto.setText(listhome.get(position).getProducto());
 //        holder.cardprecio.setText(listhome.get(position).getPrecio());
         holder.Fechapago = listhome.get(position).getFechaparapago();

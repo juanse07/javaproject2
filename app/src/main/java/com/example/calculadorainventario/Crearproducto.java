@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +33,7 @@ public class Crearproducto extends AppCompatActivity {
     FirebaseAuth mAuth;
     DatabaseReference ref;
     BottomNavigationView navclientenuevo;
+    FloatingActionButton floatingActionButton5;
 
 
 
@@ -55,6 +57,7 @@ public class Crearproducto extends AppCompatActivity {
         ritmocajaprod = findViewById(R.id.ritmocajaprod);
         impuestomasprod = findViewById(R.id.impuestomasprod);
         impuestomenosprod = findViewById(R.id.impuestomenosprod);
+        floatingActionButton5=findViewById(R.id.floatingActionButton5);
         ritmomenosprod = findViewById(R.id.ritmomenosprod);
         ritmomasprod = findViewById(R.id.ritmomasprod);
         checkimp = findViewById(R.id.checkimp);
@@ -69,6 +72,13 @@ public class Crearproducto extends AppCompatActivity {
         cajaimpuestoprod.setText("0");
         Recibirintents();
         navclientenuevo.setSelectedItemId(R.id.action_add);
+        floatingActionButton5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Crearproducto.this, fragments3.class);
+                startActivity(i);
+            }
+        });
         navclientenuevo.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
