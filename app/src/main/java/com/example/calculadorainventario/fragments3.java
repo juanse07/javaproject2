@@ -188,14 +188,16 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
         textovigilancia.setText(Constants.getSP(fragments3.this).getRBBORRADOR());
         if (textovigilancia.getText().toString().equals("Venta")) {
-            card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorDarkBlue));
+            textovigilancia.setTextColor(getResources().getColor(R.color.bluecolor));
+            card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.blueTransparent));
         }
         else if(textovigilancia.getText().toString().equals("Compra")){
-            //card_operacion.setBackgroundColor(getResources().getColor(R.color.colorDarkRed));
-            card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorDarkRed));
+            textovigilancia.setTextColor(getResources().getColor(R.color.purplecolor));
+            card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.purplecolotransparentr));
 
         }else if(textovigilancia.getText().toString().equals("Borrador")){
-            card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+            textovigilancia.setTextColor(getResources().getColor(R.color.colorGrisoscuro));
+            card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorGrisoscurotransparent));
         }
 
 
@@ -204,13 +206,16 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
            public void onClick(View v) {
                if(textovigilancia.getText().toString().equals("Venta")){
                    textovigilancia.setText("Compra");
-                   card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorDarkRed));
+                   textovigilancia.setTextColor(getResources().getColor(R.color.purplecolor));
+                   card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.purplecolotransparentr));
                }else  if(textovigilancia.getText().toString().equals("Compra")){
                    textovigilancia.setText("Borrador");
-                   card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                   textovigilancia.setTextColor(getResources().getColor(R.color.colorGrisoscuro));
+                   card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorGrisoscurotransparent));
                }else  if(textovigilancia.getText().toString().equals("Borrador")){
                    textovigilancia.setText("Venta");
-                   card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorDarkBlue));
+                   textovigilancia.setTextColor(getResources().getColor(R.color.bluecolor));
+                   card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.blueTransparent));
                }
 
            }

@@ -263,7 +263,7 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 //
 //            }
 //        });
-       sharedViewModel.Insert(homeNote);
+     //  sharedViewModel.Insert(homeNote);
        /* sharedViewModel.getCountVentas().observe(home1.this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
@@ -294,14 +294,16 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 
                    }
                });
+        swipehome.setColorSchemeResources(R.color.colorAccent);
+        swipehome.hasNestedScrollingParent();
 
         swipehome.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 edtbuscar.setQuery("", false);
 
-                swipehome.setColorSchemeResources(R.color.colorAccent);
-                swipehome.hasNestedScrollingParent();
+
+
                 sharedViewModel = new ViewModelProvider(homeinvoice2.this).get(SharedViewModel.class);
                 /* sharedViewModel.getSearchTipo().observe(home1.this, new Observer<CharSequence>() {
                    @Override

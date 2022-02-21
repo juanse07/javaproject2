@@ -1219,47 +1219,86 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
         }
         try {
             PdfPTable Atable = new PdfPTable(4);
+            Atable.setTotalWidth(new float[] { 40, 20,20,20 });
             Atable.setHorizontalAlignment(Element.ALIGN_LEFT);
             Atable.setWidthPercentage(70);
-            PdfPTable Atable2 = new PdfPTable(1);
-            Atable2.setHorizontalAlignment(Element.ALIGN_CENTER);
-            Atable2.setWidthPercentage(30);
+            Atable.setSpacingAfter(10);
+            PdfPTable Atable2 = new PdfPTable(2);
+            Atable2.setHorizontalAlignment(Element.ALIGN_LEFT);
+            Atable2.setWidthPercentage(70);
+            Atable2.setSpacingAfter(20);
             PdfPTable Atable3 = new PdfPTable(1);
             Atable3.setHorizontalAlignment(Element.ALIGN_RIGHT);
             Atable3.setWidthPercentage(21);
 
             Paragraph Product_name=new Paragraph("Product Name",regularTotalBold);
+            Product_name.setAlignment(Element.ALIGN_LEFT);
             Paragraph Quantity=new Paragraph("Quantity",regularTotalBold);
+            Quantity.setAlignment(Element.ALIGN_RIGHT);
             Paragraph Price=new Paragraph("Price",regularTotalBold);
+            Price.setAlignment(Element.ALIGN_RIGHT);
+
             Paragraph Result=new Paragraph("Result",regularTotalBold);
+            Result.setAlignment(Element.ALIGN_RIGHT);
+
+            Paragraph Total=new Paragraph("Total",regularTotalBold);
+            String Valorfooter=valorventas2;
+
+
+            DecimalFormat formatter3 = new DecimalFormat("###,###,##0");
+            Paragraph Totalvalue=new Paragraph(String.valueOf(formatter3.format(Double.parseDouble(Valorfooter)))+" USD",regularTotalBold);
+            Totalvalue.setAlignment(Element.ALIGN_RIGHT);
+
             PdfPCell cellP = new PdfPCell();
             cellP.setPaddingBottom(8);
             cellP.setPaddingTop(5);
             cellP.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellP.setBorderColor(BaseColor.WHITE);
             cellP.setFixedHeight(25);
+
             cellP.addElement(Product_name);
             PdfPCell cellQ = new PdfPCell();
             cellQ.setPaddingBottom(8);
             cellQ.setPaddingTop(5);
             cellQ.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellQ.setHorizontalAlignment(Element.ALIGN_RIGHT);
             cellQ.setBorderColor(BaseColor.WHITE);
             cellQ.setFixedHeight(25);
-            cellQ.addElement(Quantity);
+            cellQ.addElement(Price);
             PdfPCell cellP2 = new PdfPCell();
             cellP2.setPaddingBottom(8);
             cellP2.setPaddingTop(5);
             cellP2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellP2.setHorizontalAlignment(Element.ALIGN_RIGHT);
             cellP2.setBorderColor(BaseColor.WHITE);
             cellP2.setFixedHeight(25);
-            cellP2.addElement(Price);
+            cellP2.addElement(Quantity);
             PdfPCell cellR = new PdfPCell();
             cellR.setPaddingBottom(8);
             cellR.setPaddingTop(5);
             cellR.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellR.setHorizontalAlignment(Element.ALIGN_RIGHT);
+
             cellR.setBorderColor(BaseColor.WHITE);
             cellR.setFixedHeight(25);
             cellR.addElement(Result);
+            PdfPCell cellTotal = new PdfPCell();
+            cellTotal.setPaddingBottom(8);
+            cellTotal.setPaddingTop(5);
+            cellTotal.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellTotal.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cellTotal.setBorderColor(BaseColor.WHITE);
+            cellTotal.setFixedHeight(25);
+            cellTotal.addElement(Total);
+            PdfPCell cellTotalV = new PdfPCell();
+            cellTotalV.setPaddingBottom(8);
+            cellTotalV.setPaddingTop(5);
+            cellTotalV.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellTotalV.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cellTotalV.setBorderColor(BaseColor.WHITE);
+            cellTotalV.setFixedHeight(25);
+            cellTotalV.addElement(Totalvalue);
+
 
 
             Atable.addCell(cellP);
@@ -1267,6 +1306,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             Atable.addCell(cellP2);
             Atable.addCell(cellR);
             Atable.setHeaderRows(1);
+
 
 
 //
@@ -1283,13 +1323,16 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
                 Paragraph q1 = new Paragraph(String.valueOf(aw + 1),regularSub );
                 Paragraph q2 = new Paragraph(String.valueOf(List1.get(aw)),regularTotal2);
+                q2.setAlignment(Element.ALIGN_LEFT);
                Paragraph q3 = new Paragraph(String.valueOf(List2.get(aw)),regularTotal2);
-
+               q3.setAlignment(Element.ALIGN_RIGHT);
                Paragraph q4 = new Paragraph(String.valueOf(List3.get(aw))+" "+"USD",regularTotal2);
-               DecimalFormat formatter = new DecimalFormat("###,###,##0");
-               formatter.format(Double.parseDouble(String.valueOf(aw)));
-               String par5=  formatter.format(Double.parseDouble(String.valueOf(List4.get(aw))));
+               q4.setAlignment(Element.ALIGN_RIGHT);
+               DecimalFormat formatter2 = new DecimalFormat("###,###,##0");
+               formatter2.format(Double.parseDouble(String.valueOf(aw)));
+               String par5=  formatter2.format(Double.parseDouble(String.valueOf(List4.get(aw))));
                Paragraph q5 = new Paragraph(par5,regularTotal2);
+               q5.setAlignment(Element.ALIGN_RIGHT);
 
 
 
@@ -1302,9 +1345,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 p1.add(q3);
                 p2.add(q4);
                 p3.add(q5);
-                p1.setAlignment(Element.ALIGN_LEFT);
-               p2.setAlignment(Element.ALIGN_LEFT);
-               p3.setAlignment(Element.ALIGN_LEFT);
+                p.setAlignment(Element.ALIGN_LEFT);
+                p1.setAlignment(Element.ALIGN_RIGHT);
+               p2.setAlignment(Element.ALIGN_RIGHT);
+               p3.setAlignment(Element.ALIGN_RIGHT);
 
 
 
@@ -1312,24 +1356,28 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 cell.setPaddingBottom(8);
                 cell.setPaddingTop(5);
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
                 cell.setBorderColor(BaseColor.WHITE);
                 cell.setFixedHeight(25);
                PdfPCell cell1 = new PdfPCell(p1);
                cell1.setPaddingBottom(8);
                cell1.setPaddingTop(5);
                cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+               cell1.setHorizontalAlignment(Element.ALIGN_RIGHT);
                cell1.setBorderColor(BaseColor.WHITE);
                cell1.setFixedHeight(25);
                PdfPCell cell2 = new PdfPCell(p2);
                cell2.setPaddingBottom(8);
                cell2.setPaddingTop(5);
                cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+               cell2.setHorizontalAlignment(Element.ALIGN_RIGHT);
                cell2.setBorderColor(BaseColor.WHITE);
                cell2.setFixedHeight(25);
                PdfPCell cell3 = new PdfPCell(p3);
                cell3.setPaddingBottom(8);
                cell3.setPaddingTop(5);
                cell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
+               cell3.setHorizontalAlignment(Element.ALIGN_RIGHT);
                cell3.setBorderColor(BaseColor.WHITE);
                cell3.setFixedHeight(25);
 
@@ -1343,6 +1391,11 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
             }
 
+           Atable2.addCell(cellTotal);
+           Atable2.addCell(cellTotalV);
+
+
+
 
 
 
@@ -1352,6 +1405,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             Atable.completeRow();
 
            mDoc.add(Atable);
+           mDoc.add(Atable2);
+
 
 //            mDoc.close();
 
@@ -1396,10 +1451,12 @@ try {
             pdfPtablesign.setWidthPercentage(20);
 
             pdfPtablesign.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            pdfPtablesign.setSpacingBefore(40);
 
 
             PdfPCell signcell = new PdfPCell();
             PdfPCell CCcell = new PdfPCell();
+
             PdfPCell Nomsigncell=new PdfPCell();
             signcell.addElement(image);
             signcell.setBorder(Rectangle.BOTTOM);
@@ -1427,24 +1484,25 @@ try {
            //mDoc.add(pdfPtablesign);
             //mDoc.left(mDoc.leftMargin())
             pdfPtablesign.setTotalWidth(90);
-            int intetable1=pdfPtablesign.getRows().size();
-            int numbpage=mDoc.getPageNumber();
-
-
-
-
-
-
-            pdfPtablesign.writeSelectedRows(0, -1,
-                            mDoc.left(420)
-                    ,
-                    pdfPtablesign.getTotalHeight() + mDoc.bottom(mDoc.bottomMargin()),
-                    writer1.getDirectContent());
-            pdfPtablesign.writeSelectedRows(0, -1,
-                    mDoc.left(420)
-                    ,
-                    pdfPtablesign.getTotalHeight() + mDoc.bottom(mDoc.bottomMargin()),
-                    writer2.getDirectContent());
+//            int intetable1=pdfPtablesign.getRows().size();
+//            int numbpage=mDoc.getPageNumber();
+//
+//
+//
+//
+//
+//
+//            pdfPtablesign.writeSelectedRows(0, -1,
+//                            mDoc.left(420)
+//                    ,
+//                    pdfPtablesign.getTotalHeight() + mDoc.bottom(mDoc.bottomMargin()),
+//                    writer1.getDirectContent());
+//            pdfPtablesign.writeSelectedRows(0, -1,
+//                    mDoc.left(420)
+//                    ,
+//                    pdfPtablesign.getTotalHeight() + mDoc.bottom(mDoc.bottomMargin()),
+//                    writer2.getDirectContent());
+    //////////////////////
 //            PdfContentByte canvas = writer1.getDirectContent();
 //          PdfContentByte canvas2 = writer2.getDirectContent();
 //            canvas.setColorStroke(BaseColor.GRAY);
@@ -1457,6 +1515,9 @@ try {
 //    canvas2.setLineWidth(0f);
 //    canvas2.roundRectangle(487, 665,90, 30, 10);
 //    canvas2.stroke();
+   mDoc.add(pdfPtablesign);
+//    pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer1.getDirectContent());
+//    pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer2.getDirectContent());
 
                 mDoc.close();
    // Toast.makeText(VistaAA.this, mFilename + "guardado" + mFilepath, Toast.LENGTH_SHORT).show();

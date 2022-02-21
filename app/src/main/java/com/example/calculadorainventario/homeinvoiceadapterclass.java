@@ -93,7 +93,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
         holder.txinvtotal.setText(String.valueOf( formatter.format(Double.parseDouble(String.valueOf(listhome.get(position).getValor()))))+ " USD");
 //        holder.cardproducto.setText(listhome.get(position).getProducto());
 //        holder.cardprecio.setText(listhome.get(position).getPrecio());
-        holder.Fechapago = listhome.get(position).getFechaparapago();
+//        holder.Fechapago.setText() listhome.get(position).getFechaparapago();
 //        holder.txurl.setText(listhome.get(position).getPdfurl());
 
 
@@ -304,7 +304,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
     @Override
     public int getItemCount() {
        return listhome.size();
-//       return listhome != null ? listhome.size() : 0;
+//  return listhome != null ? listhome.size() : 0;
     }
 
     @Override
@@ -324,7 +324,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
                 for(constcards item:listhomefull){
                     if(item.getCliente().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
 //                            item.getProdu.toLowerCase().contains(constraint.toString().toLowerCase().trim())||
-                            item.getValor().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
+                         item.getValor().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
 //                            item.getMedida().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
 //                            item.getUnidades().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
 //                            item.getPrecio().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
@@ -354,7 +354,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults homeresults) {
-            //listhome.clear();
+          //  listhome.clear();
             //listhome=((ArrayList<constcards>)homeresults.values);
             listhome=((ArrayList)homeresults.values);
 
