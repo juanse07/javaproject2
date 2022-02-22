@@ -14,6 +14,7 @@ public class NoteProdViewModel extends AndroidViewModel {
 
         private LiveData<Double> SumTotal;
     private LiveData<Double> SumcantTotal;
+    private LiveData<Double>SumResutadoImpuesto;
 
         private LiveData<List<Double>>allDoubleNotes;
         private LiveData<List<NoteProducto>>allnotes;
@@ -24,6 +25,7 @@ public class NoteProdViewModel extends AndroidViewModel {
             noteProductoRep=new NoteProductoRep(application);
 
             SumTotal=noteProductoRep.getGetTotal();
+            SumResutadoImpuesto=noteProductoRep.getGetsumResultadoImpuesto();
             SumcantTotal=noteProductoRep.getGetcantTotal();
             CalcPromed=noteProductoRep.getCalcPromed();
             CalcCount=noteProductoRep.getCalcCount();
@@ -60,6 +62,9 @@ public class NoteProdViewModel extends AndroidViewModel {
     public LiveData<Double>getSumcantTotal (){
         return SumcantTotal;
 
+    }
+    public LiveData<Double>getSumResutadoImpuesto(){
+            return SumResutadoImpuesto;
     }
         public LiveData<Double>getCalcPromed (){
             return CalcPromed ;

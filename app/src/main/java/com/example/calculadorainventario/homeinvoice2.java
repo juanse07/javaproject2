@@ -71,21 +71,21 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
     Toolbar barhome1;
     RecyclerView RecyclerBusqueda;
     RecyclerView.Adapter madapter;
-    CharSequence tipodoc,tipodoc2;
+    CharSequence tipodoc, tipodoc2;
 
     Context context;
     int contarventas;
     HomeNote homeNote = new HomeNote();
-    List<HomeNote>listahomenotes=new ArrayList<>();
-    List<NoteProducto>ListaProd1;
-    ArrayList<String>ListaProductos;
+    List<HomeNote> listahomenotes = new ArrayList<>();
+    List<NoteProducto> ListaProd1;
+    ArrayList<String> ListaProductos;
 
     RecyclerView.LayoutManager Lmanager;
     String Start, EndDate;
     NoteProdViewModel noteProdViewModel;
     TextView title2;
     AppBarLayout appbar1;
-    ArrayList<CalendarContract.Events> eventsLists,filterevents;
+    ArrayList<CalendarContract.Events> eventsLists, filterevents;
     DrawerLayout drawer1;
     ActionBarDrawerToggle mdrawer;
     LinearLayout gridmenu;
@@ -95,8 +95,8 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
     ArrayList<constcards> Listahomesql;
     FirebaseRecyclerAdapter firebaseRecyclerAdapter, firebaseRecyclerAdapter2;
 
-    ArrayList<String>listaproductos;
-    ArrayList<String>getListaNombres;
+    ArrayList<String> listaproductos;
+    ArrayList<String> getListaNombres;
     View cartas1;
 
 
@@ -249,13 +249,13 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 
         RecyclerBusqueda.setHasFixedSize(true);
 
-        Lmanager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false);
+        Lmanager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 
-        madapter=new BuscarAdaptador(Busquedas,this);
+        madapter = new BuscarAdaptador(Busquedas, this);
         RecyclerBusqueda.setLayoutManager(Lmanager);
         RecyclerBusqueda.setAdapter(madapter);
         sharedViewModel = new ViewModelProvider(homeinvoice2.this).get(SharedViewModel.class);
-       // sharedViewModel.DeleteAllhomeNotes();
+        // sharedViewModel.DeleteAllhomeNotes();
 //        sharedViewModel.getdato().observe(this, new Observer<ArrayList<constcards>>() {
 //            @Override
 //            public void onChanged(ArrayList<constcards> constcards) {
@@ -263,7 +263,7 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 //
 //            }
 //        });
-     //  sharedViewModel.Insert(homeNote);
+        //  sharedViewModel.Insert(homeNote);
        /* sharedViewModel.getCountVentas().observe(home1.this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
@@ -279,21 +279,25 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 
             }
         });*/
-              sharedViewModel.getSearchTipo().observe(homeinvoice2.this, new Observer<CharSequence>() {
-                   @Override
-                   public void onChanged(CharSequence charSequence) {
-                       tipodoc2=charSequence.toString();
-                       //FilterData();
+        sharedViewModel.getSearchTipo().observe(homeinvoice2.this, new Observer<CharSequence>() {
+            @Override
+            public void onChanged(CharSequence charSequence) {
+                tipodoc2 = charSequence.toString();
+                //FilterData();
 
-                      if(charSequence.equals("Venta") ||charSequence.equals("Compra")||charSequence.equals("Borrador")){
-                       edtbuscar.setQuery(charSequence, false);}else if(charSequence.equals("Noviembre")){
-                           edtbuscar.setQuery("nov",false);}else if(charSequence.equals("Octubre")){
-                               edtbuscar.setQuery("oct",false);}else if(charSequence.equals("Diciembre")){
-                           edtbuscar.setQuery("dic",false);}
+                if (charSequence.equals("Venta") || charSequence.equals("Compra") || charSequence.equals("Borrador")) {
+                    edtbuscar.setQuery(charSequence, false);
+                } else if (charSequence.equals("Noviembre")) {
+                    edtbuscar.setQuery("nov", false);
+                } else if (charSequence.equals("Octubre")) {
+                    edtbuscar.setQuery("oct", false);
+                } else if (charSequence.equals("Diciembre")) {
+                    edtbuscar.setQuery("dic", false);
+                }
 
 
-                   }
-               });
+            }
+        });
         swipehome.setColorSchemeResources(R.color.colorAccent);
         swipehome.hasNestedScrollingParent();
 
@@ -301,7 +305,6 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
             @Override
             public void onRefresh() {
                 edtbuscar.setQuery("", false);
-
 
 
                 sharedViewModel = new ViewModelProvider(homeinvoice2.this).get(SharedViewModel.class);
@@ -330,7 +333,6 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 
 
         //myDatabasehome.keepSynced(true);
-
 
 
         recyclerview1 = (RecyclerView) findViewById(R.id.recyclerview1);
@@ -389,21 +391,17 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.logout1:
                         FirebaseAuth.getInstance().signOut();
                         startActivity(new Intent(getApplicationContext(), loginactivity.class));
                         return true;
-                    
+
 
                 }
                 return false;
             }
         });
-
-
-
-
 
 
     }
@@ -456,7 +454,7 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 
     @Override
     public void PassTipoDoc(int position, CharSequence tipoDoc) {
-       // tipodoc2=tipoDoc.toString();
+        // tipodoc2=tipoDoc.toString();
         //FilterData();
 
         sharedViewModel = new ViewModelProvider(homeinvoice2.this).get(SharedViewModel.class);
@@ -472,12 +470,7 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
     }
 
 
-
-
     public void iniciarhome(View view) {
-
-
-
 
 
         Intent i = new Intent(this, fragments3.class);
@@ -514,15 +507,23 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
             IMAGEHOME.setImageBitmap(myBitmap);
 
         }
+        navigationView.setSelectedItemId(R.id.home);
 
+    }
+
+    @Override
+    protected void onRestart() {
+
+        super.onRestart();
+        navigationView.setSelectedItemId(R.id.home);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.bottom_menuup, menu);
-        MenuItem Buscador=menu.findItem(R.id.edtbuscar2);
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.top_menu,menu);
+        MenuItem Buscador = menu.findItem(R.id.edtbuscar2);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.top_menu, menu);
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //int positionOfMenuItem = 0; // or whatever...
@@ -552,16 +553,13 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         });
 
 
-
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
-       // this.menu = menu;  // this will copy menu values to upper defined menu so that we can change icon later akash
+        // this.menu = menu;  // this will copy menu values to upper defined menu so that we can change icon later akash
 
 
-
-
-       // menu.clear();
-       // SearchView searchView =(SearchView) MenuItemCompat.getActionView(Buscador);
+        // menu.clear();
+        // SearchView searchView =(SearchView) MenuItemCompat.getActionView(Buscador);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -577,35 +575,34 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
 
-
-
+        navigationView.setSelectedItemId(R.id.home);
 
 
         return super.onCreateOptionsMenu(menu);
 
     }
-    public void FilterData(){
-        int currentyr=Calendar.getInstance().get(Calendar.YEAR);
 
-        if(tipodoc.toString().equals("Enero"))
-         Start = String.valueOf(currentyr)+"-10-01";
-         EndDate =String.valueOf(currentyr)+"-10-31";
+    public void FilterData() {
+        int currentyr = Calendar.getInstance().get(Calendar.YEAR);
+
+        if (tipodoc.toString().equals("Enero"))
+            Start = String.valueOf(currentyr) + "-10-01";
+        EndDate = String.valueOf(currentyr) + "-10-31";
 
 
-        if(!Start.equals("")||!EndDate.equals("")||!Start.equals(null)||!EndDate.equals(null)){
+        if (!Start.equals("") || !EndDate.equals("") || !Start.equals(null) || !EndDate.equals(null)) {
             try {
-                DateFormat dateFormat =new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
                 Date strDate = dateFormat.parse(Start);
                 Date endDate = dateFormat.parse(EndDate);
                 //myadaptador2.filterDateRange(strDate,endDate);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-        }else {
+        } else {
 
         }
     }
-
 
 }
 

@@ -56,6 +56,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     ArrayList<Double> ListaCant;
     ArrayList<Double> ListaPre;
     ArrayList<Double> Listavalor;
+    ArrayList<Double>ListaimP;
+    ArrayList<Double>ListaRimp;
     ArrayList<Double>listaVal2,Listacantidades;
     Double pdfval;
 
@@ -120,13 +122,27 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         noteProdViewModel.getSumTotal().observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
+//                if(aDouble==null){
+//                    cardprod3.setText("0");
+//                }else{
+//                DecimalFormat formatter = new DecimalFormat("###,###,##0");
+//                String totalfac=String.valueOf(formatter.format(aDouble));
+//
+//                cardprod3.setText(totalfac);
+//                }
+
+            }
+        });
+        noteProdViewModel.getSumResutadoImpuesto().observe(this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
                 if(aDouble==null){
                     cardprod3.setText("0");
                 }else{
-                DecimalFormat formatter = new DecimalFormat("###,###,##0");
-                String totalfac=String.valueOf(formatter.format(aDouble));
+                    DecimalFormat formatter = new DecimalFormat("###,###,##0");
+                    String totalfac=String.valueOf(formatter.format(aDouble));
 
-                cardprod3.setText(totalfac);
+                    cardprod3.setText(totalfac);
                 }
 
             }
@@ -351,6 +367,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             ListaPre=new ArrayList<>();
                             Listavalor=new ArrayList<Double>();
                             listaVal2=new ArrayList<>();
+                            ListaRimp=new ArrayList<>();
+                            ListaimP=new ArrayList<>();
 //                            double sum = 0;
 //                            for(int i = 0; i < m.size(); i++)
 //                                sum += m.get(i);
@@ -364,6 +382,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                              String pdfprod1 = ListaProd1.get(i).Nombre_prod;
                                 Double pdfcant1 = ListaProd1.get(i).Cant_prod;
                                 Double pdfpre1 = ListaProd1.get(i).Precio_prod;
+                                Double pdfimp=ListaProd1.get(i).Impuesto;
+                                Double pdfRimp=ListaProd1.get(i).Resultado_Impuesto;
                                 pdfval = ListaProd1.get(i).Resultado_valor;
 
 
@@ -372,6 +392,10 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                                 ListaPre.add(pdfpre1);
                                 Listavalor.add(pdfval);
                                 listaVal2.add(pdfval);
+                                ListaimP.add(pdfimp);
+                                ListaRimp.add(pdfRimp);
+                                Log.d("values",String.valueOf(ListaimP));
+                                Log.d("v2",String.valueOf(ListaRimp));
                             }
                             sumarRe();
 
@@ -386,6 +410,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             bundle.putSerializable("listaCant1",ListaCant);
                             bundle.putSerializable("listaPre1",ListaPre);
                             bundle.putSerializable("listaResultado",Listavalor);
+                            bundle.putSerializable("ListaImp",ListaimP);
+                            bundle.putSerializable("ListaRimp",ListaRimp);
 
 //
 //         bundle.putSerializable("Listapdf",Listapasar);
@@ -607,8 +633,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     public double sumarRe()
     {
          sum = 0;
-        for(int i = 0; i < listaVal2.size(); i++)
-            sum += listaVal2.get(i);
+        for(int i = 0; i < ListaRimp.size(); i++)
+            sum += ListaRimp.get(i);
         Log.d("TT:",String.valueOf(sum));
         return sum;
 

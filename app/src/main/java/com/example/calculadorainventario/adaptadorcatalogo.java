@@ -164,6 +164,7 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
             @Override
             public void onClick(View v) {
 
+
                 noteProdViewModel=new ViewModelProvider((ViewModelStoreOwner) v.getContext()).get(NoteProdViewModel.class);
 
 
@@ -172,6 +173,7 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
              String Nombre_prod= holder.nombreproducto.getText().toString();
              CharSequence Precio=holder.preciotext.getText();
              CharSequence Producto=holder.nombreproducto.getText();
+             Double Impuesto=Double.parseDouble(productos.get(position).getImpuesto().toString());
 
 
 
@@ -186,9 +188,16 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
 //                int valorritmo = 1;
                 Double valornuevosuma = Precio_prod * Cant_Prod;
                 Double Resultado_valor=valornuevosuma;
+                Double Resultado_impuesto;
+                Double valImp=Impuesto/100;
+                Double valImps2=valornuevosuma*valImp;
+
+                Resultado_impuesto=valornuevosuma+valImps2;
 
 
-                noteProducto=new NoteProducto(Nombre_prod,Cant_Prod,Precio_prod,Resultado_valor);
+
+
+                noteProducto=new NoteProducto(Nombre_prod,Cant_Prod,Precio_prod,Resultado_valor,Impuesto,Resultado_impuesto);
                 noteProdViewModel.Insert(noteProducto);
 
                 row_index=position;

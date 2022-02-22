@@ -79,12 +79,19 @@ public class AdaptadorNoteProd extends RecyclerView.Adapter<AdaptadorNoteProd.my
                 final String Nombre_prod = currentnote.getNombre_prod();
                 final Double Cant_prod=  nuevacantidad;
                 final Double Precio_prod = currentnote.getPrecio_prod();
+                final Double Impuesto=currentnote.getImpuesto();
+
+
                 Double cantidad=Cant_prod;
                 Double Precio= Precio_prod;
                 Double NuevoRes=cantidad*Precio;
+                Double imp1=Impuesto/100;
 
                 final Double Resultado_valor =NuevoRes;
-                NoteProducto noteProducto=new NoteProducto(Nombre_prod,Cant_prod,Precio_prod,Resultado_valor);
+                Double resimp=Resultado_valor*imp1;
+
+                final Double Resultado_Impuesto=Resultado_valor+resimp;
+                NoteProducto noteProducto=new NoteProducto(Nombre_prod,Cant_prod,Precio_prod,Resultado_valor,Impuesto,Resultado_Impuesto);
 
 
                 noteProducto.setKey(key);
@@ -130,12 +137,19 @@ holder.addsym.setOnClickListener(new View.OnClickListener() {
         final String Nombre_prod = currentnote.getNombre_prod();
         final Double Cant_prod=  nuevacantidad;
         final Double Precio_prod = currentnote.getPrecio_prod();
+        final Double Impuesto=currentnote.getImpuesto();
+
+
         Double cantidad=Cant_prod;
         Double Precio= Precio_prod;
         Double NuevoRes=cantidad*Precio;
+        Double imp1=Impuesto/100;
 
         final Double Resultado_valor =NuevoRes;
-        NoteProducto noteProducto=new NoteProducto(Nombre_prod,Cant_prod,Precio_prod,Resultado_valor);
+        Double resimp=Resultado_valor*imp1;
+
+        final Double Resultado_Impuesto=Resultado_valor+resimp;
+        NoteProducto noteProducto=new NoteProducto(Nombre_prod,Cant_prod,Precio_prod,Resultado_valor,Impuesto,Resultado_Impuesto);
 
 
         noteProducto.setKey(key);

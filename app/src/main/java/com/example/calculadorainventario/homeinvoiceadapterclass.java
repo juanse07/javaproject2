@@ -19,6 +19,8 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.card.MaterialCardView;
+
 import java.io.File;
 import java.lang.reflect.Method;
 import java.text.DecimalFormat;
@@ -199,7 +201,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
             }
         });
 
-        holder.imgvpdf.setOnClickListener(new View.OnClickListener() {
+        holder.mtpdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 listhome.get(position).getKey();
@@ -393,6 +395,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
         ImageView imgvpdf;
         CardView cvdate2,cvstate;
         String Fechapago,Fechaventa,tipodoc;
+        MaterialCardView mtpdf;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -406,6 +409,8 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
             cvdate2=itemView.findViewById(R.id.cvdate2);
             cvstate=itemView.findViewById(R.id.cvstate);
             imgvpdf=itemView.findViewById(R.id.imgvpdf);
+            mtpdf=itemView.findViewById(R.id.mtpdf);
+
 
 
 

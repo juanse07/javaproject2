@@ -180,7 +180,33 @@
                 android:layout_weight="12"
                 android:background="@color/fui_transparent"
                 android:padding="8dp"
+                android:visibility="gone"
                 app:srcCompat="@drawable/ic_baseline_picture_as_pdf_24" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mtpdf"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="8dp"
+                android:layout_weight="10"
+
+
+                app:cardCornerRadius="5dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#b30c00"
+                app:strokeWidth="1dp">
+
+                <TextView
+                    android:id="@+id/textView51"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:text="PDF"
+                    android:textColor="#b30c00"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 

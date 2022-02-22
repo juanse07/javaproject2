@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -81,6 +82,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     ArrayList<Double> listacuero3;
     AdaptadorProductoGuardado adpt1=new AdaptadorProductoGuardado();
     NoteProdViewModel noteProdViewModel;
+    DecimalFormat format = new DecimalFormat("###,###,##0");
     String SumaResultado;
 
     StorageReference storageReference;
@@ -112,7 +114,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     NoteViewModel noteViewModel;
     ArrayList<Note>noteArralist=new ArrayList<>();
     ArrayList<String>List1;
-    ArrayList<Double>List2,List3,List4;
+    ArrayList<Double>List2,List3,List4,List5,List6;
     byte[] outputstream2;
     //Button btactualizarpdf;
    String nombreventas2;
@@ -180,6 +182,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
         List2= (ArrayList<Double>) getIntent().getSerializableExtra("listaPre1");
         List3= (ArrayList<Double>) getIntent().getSerializableExtra("listaCant1");
         List4= (ArrayList<Double>) getIntent().getSerializableExtra("listaResultado");
+        List5= (ArrayList<Double>) getIntent().getSerializableExtra("ListaImp");
+        List6=(ArrayList<Double>) getIntent().getSerializableExtra("ListaRimp");
 //        SumaResultado=getIntent().getExtras().getString("Total1");
 
 
@@ -1218,8 +1222,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             Toast.makeText(this, "Fallo b", Toast.LENGTH_SHORT).show();
         }
         try {
-            PdfPTable Atable = new PdfPTable(4);
-            Atable.setTotalWidth(new float[] { 40, 20,20,20 });
+            PdfPTable Atable = new PdfPTable(6);
+           Atable.setTotalWidth(new float[] { 30, 14,14,14,14,14 });
             Atable.setHorizontalAlignment(Element.ALIGN_LEFT);
             Atable.setWidthPercentage(70);
             Atable.setSpacingAfter(10);
@@ -1227,9 +1231,9 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             Atable2.setHorizontalAlignment(Element.ALIGN_LEFT);
             Atable2.setWidthPercentage(70);
             Atable2.setSpacingAfter(20);
-            PdfPTable Atable3 = new PdfPTable(1);
-            Atable3.setHorizontalAlignment(Element.ALIGN_RIGHT);
-            Atable3.setWidthPercentage(21);
+//            PdfPTable Atable3 = new PdfPTable(1);
+//            Atable3.setHorizontalAlignment(Element.ALIGN_RIGHT);
+//            Atable3.setWidthPercentage(21);
 
             Paragraph Product_name=new Paragraph("Product Name",regularTotalBold);
             Product_name.setAlignment(Element.ALIGN_LEFT);
@@ -1240,6 +1244,11 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
             Paragraph Result=new Paragraph("Result",regularTotalBold);
             Result.setAlignment(Element.ALIGN_RIGHT);
+
+            Paragraph Tax=new Paragraph("Tax",regularTotalBold);
+            Tax.setAlignment(Element.ALIGN_RIGHT);
+            Paragraph Netvalue=new Paragraph("Net Value",regularTotalBold);
+            Netvalue.setAlignment(Element.ALIGN_RIGHT);
 
             Paragraph Total=new Paragraph("Total",regularTotalBold);
             String Valorfooter=valorventas2;
@@ -1298,6 +1307,22 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             cellTotalV.setBorderColor(BaseColor.WHITE);
             cellTotalV.setFixedHeight(25);
             cellTotalV.addElement(Totalvalue);
+            PdfPCell celltax = new PdfPCell();
+            celltax.setPaddingBottom(8);
+            celltax.setPaddingTop(5);
+            celltax.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            celltax.setHorizontalAlignment(Element.ALIGN_LEFT);
+            celltax.setBorderColor(BaseColor.WHITE);
+            celltax.setFixedHeight(25);
+            celltax.addElement(Tax);
+            PdfPCell celltax2 = new PdfPCell();
+            celltax2.setPaddingBottom(8);
+            celltax2.setPaddingTop(5);
+            celltax2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            celltax2.setHorizontalAlignment(Element.ALIGN_LEFT);
+            celltax2.setBorderColor(BaseColor.WHITE);
+            celltax2.setFixedHeight(25);
+            celltax2.addElement(Netvalue);
 
 
 
@@ -1305,6 +1330,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             Atable.addCell(cellQ);
             Atable.addCell(cellP2);
             Atable.addCell(cellR);
+            Atable.addCell(celltax);
+            Atable.addCell(celltax2);
             Atable.setHeaderRows(1);
 
 
@@ -1320,18 +1347,28 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 Paragraph p1=new Paragraph();
                 Paragraph p2=new Paragraph();
                Paragraph p3=new Paragraph();
+               Paragraph p4=new Paragraph();
+               Paragraph p5=new Paragraph();
 
                 Paragraph q1 = new Paragraph(String.valueOf(aw + 1),regularSub );
                 Paragraph q2 = new Paragraph(String.valueOf(List1.get(aw)),regularTotal2);
                 q2.setAlignment(Element.ALIGN_LEFT);
                Paragraph q3 = new Paragraph(String.valueOf(List2.get(aw)),regularTotal2);
                q3.setAlignment(Element.ALIGN_RIGHT);
-               Paragraph q4 = new Paragraph(String.valueOf(List3.get(aw))+" "+"USD",regularTotal2);
+               Paragraph q4 = new Paragraph(String.valueOf(List3.get(aw)),regularTotal2);
                q4.setAlignment(Element.ALIGN_RIGHT);
                DecimalFormat formatter2 = new DecimalFormat("###,###,##0");
                formatter2.format(Double.parseDouble(String.valueOf(aw)));
                String par5=  formatter2.format(Double.parseDouble(String.valueOf(List4.get(aw))));
                Paragraph q5 = new Paragraph(par5,regularTotal2);
+               q5.setAlignment(Element.ALIGN_RIGHT);
+//               String par6=  format.format(Double.parseDouble(String.valueOf(List5.get(aw))));
+               String par6=String.valueOf(List5.get(aw));
+               Paragraph q6 = new Paragraph(par6,regularTotal2);
+               q5.setAlignment(Element.ALIGN_RIGHT);
+               String par7=String.valueOf(List6.get(aw));
+//               String par7=  format.format(Double.parseDouble(String.valueOf(List6.get(aw))));
+               Paragraph q7 = new Paragraph(par7,regularTotal2);
                q5.setAlignment(Element.ALIGN_RIGHT);
 
 
@@ -1345,10 +1382,14 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 p1.add(q3);
                 p2.add(q4);
                 p3.add(q5);
+                p4.add(q6);
+                p5.add(q7);
                 p.setAlignment(Element.ALIGN_LEFT);
                 p1.setAlignment(Element.ALIGN_RIGHT);
                p2.setAlignment(Element.ALIGN_RIGHT);
                p3.setAlignment(Element.ALIGN_RIGHT);
+               p4.setAlignment(Element.ALIGN_RIGHT);
+               p5.setAlignment(Element.ALIGN_RIGHT);
 
 
 
@@ -1380,6 +1421,20 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                cell3.setHorizontalAlignment(Element.ALIGN_RIGHT);
                cell3.setBorderColor(BaseColor.WHITE);
                cell3.setFixedHeight(25);
+               PdfPCell cell4 = new PdfPCell(p4);
+               cell4.setPaddingBottom(8);
+               cell4.setPaddingTop(5);
+               cell4.setVerticalAlignment(Element.ALIGN_MIDDLE);
+               cell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
+               cell4.setBorderColor(BaseColor.WHITE);
+               cell4.setFixedHeight(25);
+               PdfPCell cell5 = new PdfPCell(p5);
+               cell5.setPaddingBottom(8);
+               cell5.setPaddingTop(5);
+               cell5.setVerticalAlignment(Element.ALIGN_MIDDLE);
+               cell5.setHorizontalAlignment(Element.ALIGN_RIGHT);
+               cell5.setBorderColor(BaseColor.WHITE);
+               cell5.setFixedHeight(25);
 
 
 
@@ -1387,6 +1442,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 Atable.addCell(cell1);
                 Atable.addCell(cell2);
                 Atable.addCell(cell3);
+                Atable.addCell(cell4);
+                Atable.addCell(cell5);
                 //stamper.close();
 
             }
@@ -1411,6 +1468,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 //            mDoc.close();
 
         } catch (Exception e) {
+            Toast.makeText(this, "Fallo abc", Toast.LENGTH_SHORT).show();
 
         }
 

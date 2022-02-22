@@ -40,6 +40,8 @@ public interface NoteProdDao {
     LiveData<Double> getTotal();
     @Query("SELECT SUM(Cant_prod)FROM Tabla_Lista_Productos")
     LiveData<Double> getcantTotal();
+    @Query("SELECT SUM(Resultado_Impuesto)FROM Tabla_Lista_Productos")
+    LiveData<Double> getsumResultadoImpuesto();
     @Query("SELECT SUM(Cant_prod)FROM Tabla_Lista_Productos WHERE `Nombre_prod`= 'Bonyourt'")
     LiveData<Integer> getsumProdnom();
 //    @Query("SELECT AVG(valor_Medida)FROM Tabla_Lista_Productos")
