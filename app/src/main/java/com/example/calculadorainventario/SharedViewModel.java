@@ -1,18 +1,18 @@
 package com.example.calculadorainventario;
 
 import android.app.Application;
-import android.util.Log;
+
+import com.example.calculadorainventario.Constructores.arrayconstructor;
+import com.example.calculadorainventario.Constructores.constcards;
+import com.example.calculadorainventario.Constructores.cuerospinner;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 public class SharedViewModel extends AndroidViewModel  {
     private Repositorio1 repositorio1;

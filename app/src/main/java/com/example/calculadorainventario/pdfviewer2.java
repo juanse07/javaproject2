@@ -12,12 +12,13 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.calculadorainventario.Adapadores.AdaptadorProductoGuardado;
+import com.example.calculadorainventario.Constructores.arrayconstructor;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -580,7 +581,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                                 datosventa.put("Estado",estado);
                                 datosventa.put("pdfurl", url2);
                                 datosventa.put("Key",newref.getKey());
-                                datosventa.put("Fechaparapago","...");
+                                datosventa.put("Fechaparapago",Fecha2);
                                 datosventa.put("Dias_plazo",diaspago);
 
 
@@ -1604,11 +1605,25 @@ try {
  if(List1.size()>8&&List1.size()<=14){
      mDoc.add(pdfPtablesign);
 
- }else{
+ }else if(List1.size()<=8){
 
      pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer1.getDirectContent());
      pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer2.getDirectContent());
 
+
+ }else if(List1.size()>33&&List1.size()<=42){
+        mDoc.add(pdfPtablesign);
+
+    }else if(List1.size()>14&&List1.size()<=33){
+     pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer1.getDirectContent());
+     pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer2.getDirectContent());
+
+
+ }else if(List1.size()>42){
+     mDoc.add(pdfPtablesign);
+
+ }else {
+     mDoc.add(pdfPtablesign);
 
  }
 

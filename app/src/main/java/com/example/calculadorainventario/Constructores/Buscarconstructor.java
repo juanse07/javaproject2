@@ -1,4 +1,4 @@
-package com.example.calculadorainventario;
+package com.example.calculadorainventario.Constructores;
 
 public class Buscarconstructor {
     String TipoDocumento;

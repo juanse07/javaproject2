@@ -1,11 +1,15 @@
-package com.example.calculadorainventario;
+package com.example.calculadorainventario.Adapadores;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.calculadorainventario.ClickInterface1;
+import com.example.calculadorainventario.NoteProdViewModel;
+import com.example.calculadorainventario.NoteProducto;
+import com.example.calculadorainventario.R;
 
 import java.util.ArrayList;
 import java.util.List;

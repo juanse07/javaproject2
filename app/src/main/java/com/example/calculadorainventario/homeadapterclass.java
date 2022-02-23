@@ -1,11 +1,7 @@
 package com.example.calculadorainventario;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.icu.text.NumberFormat;
 import android.os.Build;
-import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,29 +10,19 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.text.DateFormat;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
+import com.example.calculadorainventario.Constructores.constcards;
+
 import java.text.ParseException;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.text.SimpleDateFormat;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class homeadapterclass extends RecyclerView.Adapter<homeadapterclass.ViewHolder>implements Filterable {

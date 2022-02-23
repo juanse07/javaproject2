@@ -1,14 +1,14 @@
-package com.example.calculadorainventario;
+package com.example.calculadorainventario.Adapadores;
 
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.calculadorainventario.ClickInterface1;
+import com.example.calculadorainventario.R;
+
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class BuscarAdaptador extends RecyclerView.Adapter<BuscarAdaptador.Viewholder> {
     ArrayList<String> Busquedas;
-    private  ClickInterface1 clickInterface1;
+    private ClickInterface1 clickInterface1;
 
   CharSequence Busq;
   int Position1;

@@ -1,8 +1,7 @@
-package com.example.calculadorainventario;
+package com.example.calculadorainventario.Adapadores;
 
 import android.content.Intent;
 import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,13 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.calculadorainventario.ClickInterface1;
+import com.example.calculadorainventario.Crearproducto;
+import com.example.calculadorainventario.NoteProdViewModel;
+import com.example.calculadorainventario.NoteProducto;
+import com.example.calculadorainventario.R;
+import com.example.calculadorainventario.SharedViewModel;
+import com.example.calculadorainventario.Constructores.cuerospinner;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -38,7 +44,7 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
     NoteProdViewModel noteProdViewModel;
 
 
-    private  ClickInterface1 clickInterface1;
+    private ClickInterface1 clickInterface1;
     int row_index=-1;
 
 
@@ -89,7 +95,7 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
         holder.configcrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(v.getContext(),Crearproducto.class);
+                Intent intent=new Intent(v.getContext(), Crearproducto.class);
 
                 intent.putExtra("producto",holder.nombreproducto.getText().toString());
                 intent.putExtra("key",productos.get(position).getKey());
