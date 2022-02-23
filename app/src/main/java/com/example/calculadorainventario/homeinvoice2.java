@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.CalendarContract;
 import android.text.Html;
 import android.text.SpannableString;
@@ -117,6 +118,7 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         navdrawer = findViewById(R.id.navdrawer);
         card_opciones = findViewById(R.id.card_opciones);
         RecyclerBusqueda = findViewById(R.id.RecyclerBusqueda);
+        PreferenceManager.setDefaultValues(this,R.xml.preference,false);
         noteProdViewModel = new ViewModelProvider(this).get(NoteProdViewModel.class);
         noteProdViewModel.getAllNotes().observe(this, new Observer<List<NoteProducto>>() {
             @Override
@@ -392,6 +394,9 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
                     case R.id.logout1:
                         FirebaseAuth.getInstance().signOut();
                         startActivity(new Intent(getApplicationContext(), loginactivity.class));
+                        return true;
+                    case  R.id.confempresa:
+                        startActivity(new Intent(getApplicationContext(), settingsAcivity.class));
                         return true;
 
 

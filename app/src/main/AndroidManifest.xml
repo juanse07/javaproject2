@@ -32,9 +32,10 @@
             android:name=".Signature1Activity"
             android:screenOrientation="landscape"></activity>
         <activity android:name=".logochoose" />
-        <activity android:name=".PreferenceActivity" />
+
         <activity android:name=".ClienteEdit" />
         <activity android:name=".Productoedit" />
+        <activity android:name=".settingsAcivity" />
         <activity
             android:name=".Crearproducto"
             android:windowSoftInputMode="adjustResize" />

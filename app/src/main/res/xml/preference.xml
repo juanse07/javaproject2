@@ -1,51 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Perfil">
-        <ListPreference
-            android:key="configperfil"
-            android:title="Configurar Perfil de Usuario"
-            android:entries="@array/Perfil_Usuario"
-            android:entryValues="@array/Perfil_Usuario">
+    <PreferenceCategory android:title="Company">
+        <EditTextPreference
+            android:title="Company Name"
+            android:key="companyname"
+            >
 
-        </ListPreference>
+        </EditTextPreference>
+        <EditTextPreference
+            android:title="Address"
+            android:key="companyname"
+            >
 
+        </EditTextPreference>
+        <EditTextPreference
+            android:title="Email"
+            android:key="companyemail"
+            >
 
-    </PreferenceCategory>
-    <PreferenceCategory android:title="Empresa">
+        </EditTextPreference>
+        <EditTextPreference
+            android:title="Phone"
+            android:key="companyphone"
+            >
 
-            <PreferenceScreen
-                android:title="Logo">
-                <intent
-                    android:action="android.intent.action.VIEW"
-                    android:targetPackage="com.example.calculadorainventario"
-                    android:targetClass="com.example.calculadorainventario.logochoose">
+        </EditTextPreference>
+        <PreferenceScreen
+            android:title="Logo">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="com.example.calculadorainventario"
+                android:targetClass="com.example.calculadorainventario.logochoose">
 
-                </intent>
-            </PreferenceScreen>
-
-
-          />/  android:title="Dirección">
-            <EditTextPreference
-                android:key="configdireccion"
-                android:title="Dirección">
-
-            </EditTextPreference>
-
-
-
-            android:title="Número telefonico">
-
-            <EditTextPreference
-                android:key="confignumtel1"
-                android:title="Teléfono "
-                android:inputType="text">
-
-
-            </EditTextPreference>
+            </intent>
+        </PreferenceScreen>
 
 
 
     </PreferenceCategory>
-
 
 </PreferenceScreen>

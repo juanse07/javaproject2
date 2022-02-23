@@ -34,6 +34,8 @@ public interface NoteProdDao {
     LiveData<List<NoteProducto>> getallnotes();
   @Query("SELECT Resultado_valor FROM Tabla_Lista_Productos")
     LiveData<List<Double>>getallDoublenotes();
+    @Query("SELECT Nombre_prod FROM Tabla_Lista_Productos WHERE`Nombre_prod`='VARIABLE'")
+    LiveData<String>getactualproduct();
 //
 //    //@Query("SELECT COALESCE(sum(COALESCE(valor_Medida,0)), 0) From Tabla_Lista_Medidas")
    @Query("SELECT SUM(Resultado_valor)FROM Tabla_Lista_Productos")

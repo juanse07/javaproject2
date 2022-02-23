@@ -23,6 +23,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.provider.CalendarContract;
 import android.text.Html;
 import android.text.SpannableString;
@@ -112,6 +114,7 @@ public class home1 extends AppCompatActivity implements ClickInterface1 {
         navdrawer=findViewById(R.id.navdrawer);
         card_opciones = findViewById(R.id.card_opciones);
         RecyclerBusqueda=findViewById(R.id.RecyclerBusqueda);
+
 
         //mdrawer = new ActionBarDrawerToggle(this, drawer1, R.string.Open, R.string.Close);
         //drawer1.setDrawerListener(mdrawer);
@@ -333,21 +336,24 @@ public class home1 extends AppCompatActivity implements ClickInterface1 {
         myadaptador2 = new homeadapterclass(sharedViewModel.getdato().getValue());
         recyclerview1.setAdapter(myadaptador2);
 
-        navdrawer.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()){
-                    case R.id.logout1:
-                        FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(getApplicationContext(), loginactivity.class));
-                        return true;
-                    
-
-                }
-                return false;
-            }
-        });
+//        navdrawer.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//
+//                switch (item.getItemId()){
+//                    case R.id.logout1:
+//                        FirebaseAuth.getInstance().signOut();
+//                        startActivity(new Intent(getApplicationContext(), loginactivity.class));
+//                        return true;
+//
+//                    case R.id.confempresa:
+//                        startActivity(new Intent(home1.this, settingsAcivity.class));
+//                        return true;
+//
+//                }
+//                return false;
+//            }
+//        });
 
 
         navigationView.setSelectedItemId(R.id.action_home);
@@ -554,6 +560,48 @@ public class home1 extends AppCompatActivity implements ClickInterface1 {
 
         return super.onCreateOptionsMenu(menu);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+
+////        int id = item.getItemId();
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.confempresa) {
+
+            Intent intent = new Intent(home1.this, settingsAcivity.class);
+            startActivity(intent);
+
+            return true;
+        }
+      //  navdrawer.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//
+//                switch (item.getItemId()){
+//                    case R.id.logout1:
+//                        FirebaseAuth.getInstance().signOut();
+//                        startActivity(new Intent(getApplicationContext(), loginactivity.class));
+//                        return true;
+//
+//                    case R.id.confempresa:
+//                        startActivity(new Intent(getApplicationContext(), SettingsFragment.class));
+//                        return true;
+//
+//                }
+//                return false;
+//            }
+//        });
+
+        //noinspection SimplifiableIfStatement
+
+
+        return super.onOptionsItemSelected(item);
     }
     public void FilterData(){
         int currentyr=Calendar.getInstance().get(Calendar.YEAR);
