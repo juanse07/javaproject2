@@ -10,6 +10,8 @@ public class Spreferences {
     protected final String RBVENTA="rbcompra";
     protected final String RBCOMPRA="rbventa";
     protected final String POSITIONCATALOGO="positioncatalogo";
+    protected final String COMPANYNAME="companyname";
+
 
 
 
@@ -47,6 +49,7 @@ public class Spreferences {
         return sp.getString(POSITIONCATALOGO, "n/a");
     }
 
-
+    public void setCompanyname(String companyname){sp.edit().putString(COMPANYNAME,companyname).commit();}
+    public String getCompanyname(){return sp.getString(COMPANYNAME,"PyMESoft2");}
 
 }

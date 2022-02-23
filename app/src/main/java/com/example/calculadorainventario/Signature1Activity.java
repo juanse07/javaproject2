@@ -100,19 +100,33 @@ public class Signature1Activity extends Activity implements View.OnTouchListener
     public boolean onTouch(View view,  MotionEvent event) {
         int action=event.getAction();
         switch (action){
-            case MotionEvent.ACTION_DOWN:
-                dx=event.getX();
-                dy=event.getY();
-                cldx=dx;
-                cldy=dy;
+//            case MotionEvent.ACTION_DOWN:
+//                dx=event.getX();
+//                dy=event.getY();
+//                cldx=dx;
+//                cldy=dy;
+//
+//            case MotionEvent.ACTION_MOVE:
+//                nx=event.getX();
+//                ny=event.getY();
+//                canvas.drawLine(cldx,cldy,nx,ny,paint);
+//                imgSignature1.invalidate();
+//                cldy=ny;
+//                cldx=nx;
+
+           case MotionEvent.ACTION_DOWN:
+            dx=event.getX();
+            dy=event.getY();
+            cldx=dx;
+            cldy=dy;
 
             case MotionEvent.ACTION_MOVE:
                 nx=event.getX();
                 ny=event.getY();
                 canvas.drawLine(cldx,cldy,nx,ny,paint);
-                imgSignature1.invalidate();
-                cldy=ny;
+               imgSignature1.invalidate();
                 cldx=nx;
+                cldy=ny;
 
         }
         return true;
@@ -140,7 +154,7 @@ public class Signature1Activity extends Activity implements View.OnTouchListener
     }
     public void BorrarSignature(){
 
-       //Bitmap mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+      // Bitmap mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 
 
         Path path = new Path();

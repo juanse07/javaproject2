@@ -20,6 +20,7 @@ public class SharedViewModel extends AndroidViewModel  {
     private MutableLiveData<CharSequence> precio = new MutableLiveData<>();
     private MutableLiveData<CharSequence> cliente = new MutableLiveData<>();
     private MutableLiveData<String> bottonradial = new MutableLiveData<>();
+    private MutableLiveData<String> companyname = new MutableLiveData<>();
     private MutableLiveData<String> resultado;
     private MutableLiveData<String> textcliente=new MutableLiveData<>();
     private MutableLiveData<String> dias=new MutableLiveData<>();
@@ -233,6 +234,12 @@ public LiveData<ArrayList<cuerospinner>>getproducto(){
     public void setDias(String input5) {
         dias.setValue(input5);
     }
+    public LiveData<String>getcompanyname(){return companyname;}
+    public void setCompanyname(String inputcompany) {
+        companyname.setValue(inputcompany);
+    }
+
+
 
     public LiveData<Integer> getdiasfinal() {
         return diasfinal;

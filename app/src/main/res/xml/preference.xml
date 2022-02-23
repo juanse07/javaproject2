@@ -4,24 +4,30 @@
         <EditTextPreference
             android:title="Company Name"
             android:key="companyname"
+            android:summary="Yeloo INC."
+            android:text="PyeSoft"
             >
 
         </EditTextPreference>
+
         <EditTextPreference
             android:title="Address"
             android:key="companyname"
+            android:summary="321 Sherman St.80202 Denver.CO"
             >
 
         </EditTextPreference>
         <EditTextPreference
             android:title="Email"
             android:key="companyemail"
+            android:summary="YELOO@YelooApps.com"
             >
 
         </EditTextPreference>
         <EditTextPreference
             android:title="Phone"
             android:key="companyphone"
+            android:summary="1-800-Yeloo"
             >
 
         </EditTextPreference>
@@ -35,8 +41,38 @@
             </intent>
         </PreferenceScreen>
 
+        <PreferenceScreen
+            android:title="Signature">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="com.example.calculadorainventario"
+                android:targetClass="com.example.calculadorainventario.Signature1Activity">
+
+            </intent>
+        </PreferenceScreen>
+
+
 
 
     </PreferenceCategory>
+    <PreferenceCategory android:title="Account info">
+        <EditTextPreference
+            android:title="account Email"
+            android:key="companyname"
+            android:summary="juan@gmail.com."
+            android:text="PyeSoft"
+            >
+        </EditTextPreference>
+        <EditTextPreference
+            android:title="Pasword"
+            android:key="companyname"
+            android:summary="abcdffof."
+            android:text="PyeSoft"
+            android:inputType="numberPassword"
+            >
+        </EditTextPreference>
+
+
+    </PreferenceCategory >
 
 </PreferenceScreen>

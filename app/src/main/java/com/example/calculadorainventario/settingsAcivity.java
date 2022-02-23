@@ -19,9 +19,9 @@ public class settingsAcivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-//    @Override
-//    public boolean onSupportNavigateUp() {
-//        onBackPressed();
-//        return super.onSupportNavigateUp();
-//    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return super.onSupportNavigateUp();
+    }
 }

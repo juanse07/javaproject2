@@ -1,165 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#F5F5F5"
-    android:orientation="vertical"
-    tools:context=".logochoose">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/mylogo"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/backchoose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="12dp"
-                app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:minHeight="?actionBarSize"
-                android:padding="10dp"
-                android:text="@string/app_name"
-                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-                android:textColor="@color/colorAccent" />
-
-        </LinearLayout>
-
-        //android:theme="@style/AppTheme.AppBarOverlay"
-
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-    <ImageView
-        android:id="@+id/mylogo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:layout_weight="0.7"
-        android:background="#ffffff">
-
-    </ImageView>
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#F5F5F5"
+        android:orientation="vertical"
+        android:weightSum="100"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".logochoose">
 
-        android:layout_weight="1.3"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/buttonchoose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/btnnaranja"
-            android:text="Seleccionar Imagen"
-            app:backgroundTint="@null" />
-
-        <Button
-            android:id="@+id/buttonupload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="20dp"
-            android:layout_weight="1.7"
-            android:background="@drawable/btnnaranja"
-            android:text="Guardar Imagen"
-            app:backgroundTint="@null" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <LinearLayout
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            app:layout_constraintBottom_toTopOf="@id/mylogo"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/textView36"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2.3"
-                android:background="#e9e9e9"
-                android:text="Selecciona la opción que mejor defina la orientación de tu Logotipo"
-                android:textAlignment="viewStart">
-
-            </TextView>
-
-            <RadioGroup
-                android:id="@+id/logogrupo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2.1"
                 android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/logoradioButton2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Cuadrado" />
 
-                <RadioButton
-                    android:id="@+id/logoradioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Rectangular" />
-            </RadioGroup>
+                <ImageView
+                    android:id="@+id/backchoose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="12dp"
+                    app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minHeight="?actionBarSize"
+                    android:padding="10dp"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                    android:textColor="@color/colorAccent" />
+
+            </LinearLayout>
+
+            //android:theme="@style/AppTheme.AppBarOverlay"
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="4dp"
+            android:layout_weight="40"
+            app:strokeColor="@color/colorNegrobrillante"
+            app:strokeWidth="2dp">
+
+            <ImageView
+                android:id="@+id/mylogo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="0.7"
+                android:background="#ffffff">
+
+            </ImageView>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="25"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageView3"
+                <TextView
+                    android:id="@+id/textView36"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_baseline_check_box_outline_blank_300" />
+                    android:layout_weight="2.3"
+                    android:background="#e9e9e9"
+                    android:text="Selecciona la opción que mejor defina la orientación de tu Logotipo"
+                    android:textAlignment="viewStart">
 
-                <ImageView
-                    android:id="@+id/imageView11"
+                </TextView>
+
+                <RadioGroup
+                    android:id="@+id/logogrupo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_baseline_crop_7_5_24" />
+                    android:layout_weight="2.1"
+                    android:orientation="horizontal">
 
+                    <RadioButton
+                        android:id="@+id/logoradioButton2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Cuadrado" />
+
+                    <RadioButton
+                        android:id="@+id/logoradioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Rectangular" />
+                </RadioGroup>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/ic_baseline_check_box_outline_blank_300" />
+
+                    <ImageView
+                        android:id="@+id/imageView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/ic_baseline_crop_7_5_24" />
+
+                </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+
+            android:layout_weight="25"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonchoose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/btnnaranja"
+                android:text="Seleccionar Imagen"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/buttonupload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1.7"
+                android:background="@drawable/btnnaranja"
+                android:text="Guardar Imagen"
+                app:backgroundTint="@null" />
+
+        </LinearLayout>
+
+
     </LinearLayout>
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
