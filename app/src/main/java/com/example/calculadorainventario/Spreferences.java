@@ -11,6 +11,9 @@ public class Spreferences {
     protected final String RBCOMPRA="rbventa";
     protected final String POSITIONCATALOGO="positioncatalogo";
     protected final String COMPANYNAME="companyname";
+    protected final String COMPANYPHONE="companyphone";
+    protected final String COMPANYEMAIL="companyemail";
+    protected final String ADDRESSNAME="addressname";
 
 
 
@@ -51,5 +54,12 @@ public class Spreferences {
 
     public void setCompanyname(String companyname){sp.edit().putString(COMPANYNAME,companyname).commit();}
     public String getCompanyname(){return sp.getString(COMPANYNAME,"PyMESoft2");}
+    public void setAddressname(String addressname){sp.edit().putString(ADDRESSNAME,addressname).commit();}
+    public String getAdressname(){return sp.getString(ADDRESSNAME,"Address");}
+
+    public void setCompanyphone(String companyphone){sp.edit().putString(COMPANYPHONE,companyphone).commit();}
+    public String getCompanyphone(){return sp.getString(COMPANYPHONE,"PyMESoft2");}
+    public void setCOMPANYEMAIL(String companyemail){sp.edit().putString(COMPANYEMAIL,companyemail).commit();}
+    public String getCOMPANYEMAIL(){return sp.getString(COMPANYEMAIL,"Address");}
 
 }

@@ -20,6 +20,9 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
 
 
     public static final String KEY_PREF_COMPANY = "companyname";
+    public static final String KEY_PREF_ADDRESS = "companyaddress";
+    public static final String KEY_PREF_PHONE = "companyphone";
+    public static final String KEY_PREF_EMAIL = "companyemail";
 
 
 //    private SharedPreferences.OnSharedPreferenceChangeListener preferenceChangeListener;
@@ -29,6 +32,17 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, final String rootKey) {
         setPreferencesFromResource(R.xml.preference, rootKey);
+        EditTextPreference pcompanypreference = findPreference(KEY_PREF_COMPANY);
+        pcompanypreference.setSummary(Constants.getSP(getContext()).getCompanyname());
+     EditTextPreference paddress = findPreference(KEY_PREF_ADDRESS);
+        paddress.setSummary(Constants.getSP(getContext()).getAdressname());
+
+        EditTextPreference pPHONE = findPreference(KEY_PREF_PHONE);
+        pPHONE.setSummary(Constants.getSP(getContext()).getCompanyphone());
+        EditTextPreference pEMAIL = findPreference(KEY_PREF_EMAIL);
+        pEMAIL.setSummary(Constants.getSP(getContext()).getCOMPANYEMAIL());
+
+
 
 
 
@@ -41,7 +55,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
 
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 
-//        Constants.getSP(getContext()).setCompanyname(pcompanypreference.getText());
+
 
 
         super.onResume();
@@ -61,7 +75,34 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
             EditTextPreference pcompanypreference = findPreference(key);
 
             pcompanypreference.getText();
-            pcompanypreference.setSummary(sharedPreferences.getString(key, ""));
+            pcompanypreference.setSummary(sharedPreferences.getString(key, "NO DATA"));
+            Constants.getSP(getContext()).setCompanyname(pcompanypreference.getSummary().toString());
+
+        }
+        if (key.equals(KEY_PREF_ADDRESS)) {
+            EditTextPreference paddress = findPreference(key);
+
+            paddress.getText();
+            paddress.setSummary(sharedPreferences.getString(key, "NO DATA"));
+            Constants.getSP(getContext()).setAddressname(paddress.getSummary().toString());
+
+        }
+
+        if (key.equals(KEY_PREF_PHONE)) {
+            EditTextPreference pPHONE = findPreference(key);
+
+            pPHONE.getText();
+            pPHONE.setSummary(sharedPreferences.getString(key, "NO DATA"));
+            Constants.getSP(getContext()).setCompanyphone(pPHONE.getSummary().toString());
+
+        }
+
+        if (key.equals(KEY_PREF_EMAIL)) {
+            EditTextPreference pEMAIL = findPreference(key);
+
+            pEMAIL.getText();
+            pEMAIL.setSummary(sharedPreferences.getString(key, "NO DATA"));
+            Constants.getSP(getContext()).setCOMPANYEMAIL(pEMAIL.getSummary().toString());
 
         }
     }}

@@ -12,7 +12,7 @@
 
         <EditTextPreference
             android:title="Address"
-            android:key="companyname"
+            android:key="companyaddress"
             android:summary="321 Sherman St.80202 Denver.CO"
             >
 
@@ -27,12 +27,15 @@
         <EditTextPreference
             android:title="Phone"
             android:key="companyphone"
+
             android:summary="1-800-Yeloo"
             >
 
         </EditTextPreference>
         <PreferenceScreen
-            android:title="Logo">
+            android:title="Logo"
+            android:key="companylogo"
+            android:summary="">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:targetPackage="com.example.calculadorainventario"
@@ -42,7 +45,9 @@
         </PreferenceScreen>
 
         <PreferenceScreen
-            android:title="Signature">
+            android:title="Signature"
+            android:key="companysignature"
+            >
             <intent
                 android:action="android.intent.action.VIEW"
                 android:targetPackage="com.example.calculadorainventario"
