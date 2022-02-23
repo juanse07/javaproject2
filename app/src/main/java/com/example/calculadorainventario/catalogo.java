@@ -116,6 +116,7 @@ public class catalogo extends Fragment implements ClickInterface1 {
         // btproduct=CatalogoView.findViewById(R.id.btproduct);
         Recyclercatalogo = (RecyclerView) CatalogoView.findViewById(R.id.Recyclercatalogo);
         ViewPager2 vp=(ViewPager2) getActivity().findViewById(R.id.viepag);
+        Recyclercatalogo.bringToFront();
         //Recyclercliente.setHasFixedSize(true);
 
 

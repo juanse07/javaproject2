@@ -100,6 +100,7 @@ public class carrito_fragment extends Fragment implements ClickInterface1  {
         Recyclerliente2=(RecyclerView) ClientesView2.findViewById(R.id.Recyclerliente2);
         edtbuscarcliente= ClientesView2.findViewById(R.id.edtbuscarcliente);
         swipecliente=ClientesView2.findViewById(R.id.swipecliente);
+        Recyclerliente2.bringToFront();
 
         //Recyclercliente.setHasFixedSize(true);
         Recyclerliente2.setLayoutManager(new LinearLayoutManager(Recyclerliente2.getContext()));

@@ -321,6 +321,7 @@ pagomas.setOnClickListener(new View.OnClickListener() {
 
         }
         sharedViewModel.setDias(pagotext.getText().toString());
+        Constants.getSP(ingresoview.getContext()).setDIAS(pagotext.getText().toString());
         sharedViewModel.setDiasfinal(Integer.parseInt(pagotext.getText().toString()));
 
 
@@ -359,6 +360,8 @@ pagomas.setOnClickListener(new View.OnClickListener() {
 
                 }
                 sharedViewModel.setDias(pagotext.getText().toString());
+                Constants.getSP(ingresoview.getContext()).setDIAS(pagotext.getText().toString());
+
                 sharedViewModel.setDiasfinal(Integer.parseInt(pagotext.getText().toString()));
 
 
@@ -440,6 +443,7 @@ pagomas.setOnClickListener(new View.OnClickListener() {
             public void onChanged(String s) {
                 if(s.equals("0")){
                     txtterminos.setText("El cliente se compromete a pagar en un plazo no superior a"+" "+ "contado");
+
 
                 }else {
                     txtterminos.setText("El cliente se compromete a pagar en un plazo no superior a" + " " + s + " " + "días");

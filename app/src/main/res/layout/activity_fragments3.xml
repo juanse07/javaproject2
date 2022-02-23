@@ -8,148 +8,177 @@
     android:layout_height="match_parent"
     tools:context=".fragments3">
 
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_undraw_road_sign_re_3kc3" />
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout2"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="#40F2F2F2"
         app:layout_constraintBottom_toTopOf="@+id/navcat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbar"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.appbar.MaterialToolbar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/AppTheme.AppBarOverlay"
-
-                app:layout_scrollFlags="scroll|enterAlways|snap">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/back2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="0dp"
-                        app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
-
-                    <TextView
-                        android:id="@+id/title4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:minHeight="?actionBarSize"
-                        android:padding="@dimen/appbar_padding"
-                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-                        android:textColor="@color/colorAccent" />
-
-                    <RelativeLayout
-                        android:id="@+id/relativigilancia"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <ImageView
-                            android:id="@+id/arrowchange"
-                            android:layout_width="30dp"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-
-                            android:layout_marginEnd="8dp"
-                            android:layout_weight="1"
-                            app:srcCompat="@drawable/ic_baseline_arrow_drop_down_24" />
-
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/card_vigilancia"
-                            android:layout_width="55dp"
-                            android:layout_height="20dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-
-                            android:layout_marginEnd="40dp"
-                            app:cardCornerRadius="20dp"
-                            app:cardElevation="0dp">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="fill"
-                                android:layout_margin="1dp">
-
-
-                                <TextView
-                                    android:id="@+id/textovigilancia"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:inputType="number"
-                                    android:textAlignment="center"
-                                    android:textColor="#ffffff"
-                                    android:textSize="10sp"
-                                    android:textStyle="bold" />
-
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-                >
-
-            </com.google.android.material.appbar.MaterialToolbar>
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tablayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#F2F2F2"
-                app:layout_constraintTop_toBottomOf="@id/appbar"
-                app:tabIndicatorColor="#ff9d5c"
-                app:tabIndicatorGravity="bottom"
-
-                app:tabIndicatorHeight="1dp"
-                app:tabMode="fixed"
-                app:tabPaddingBottom="8dp"
-                app:tabPaddingTop="10dp"
-                app:tabSelectedTextColor="#1F1F1F"
-                app:tabTextColor="#9E9E9E"></com.google.android.material.tabs.TabLayout>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viepag"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tablayout">
+            android:orientation="vertical"
+            android:weightSum="100">
 
-        </androidx.viewpager2.widget.ViewPager2>
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar"
+
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="13">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/AppTheme.AppBarOverlay"
+
+                    app:layout_scrollFlags="scroll|enterAlways|snap">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/back2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="0dp"
+                            app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+
+                        <TextView
+                            android:id="@+id/title4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:minHeight="?actionBarSize"
+                            android:padding="@dimen/appbar_padding"
+                            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                            android:textColor="@color/colorAccent" />
+
+                        <RelativeLayout
+                            android:id="@+id/relativigilancia"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/arrowchange"
+                                android:layout_width="30dp"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+
+                                android:layout_marginEnd="8dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_baseline_arrow_drop_down_24" />
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/card_vigilancia"
+                                android:layout_width="55dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+
+                                android:layout_marginEnd="40dp"
+                                app:cardCornerRadius="20dp"
+                                app:cardElevation="0dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="fill"
+                                    android:layout_margin="1dp">
+
+
+                                    <TextView
+                                        android:id="@+id/textovigilancia"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+
+                                        android:layout_weight="1"
+                                        android:ems="10"
+                                        android:inputType="number"
+                                        android:textAlignment="center"
+                                        android:textColor="#ffffff"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                    >
+
+                </com.google.android.material.appbar.MaterialToolbar>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tablayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#F2F2F2"
+                    app:layout_constraintTop_toBottomOf="@id/appbar"
+                    app:tabIndicatorColor="#ff9d5c"
+                    app:tabIndicatorGravity="bottom"
+
+                    app:tabIndicatorHeight="1dp"
+                    app:tabMode="fixed"
+                    app:tabPaddingBottom="8dp"
+                    app:tabPaddingTop="10dp"
+                    app:tabSelectedTextColor="#1F1F1F"
+                    app:tabTextColor="#9E9E9E"></com.google.android.material.tabs.TabLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viepag"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="87"
+                android:background="#40F2F2F2"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+                app:layout_constraintTop_toBottomOf="@+id/tablayout">
+
+            </androidx.viewpager2.widget.ViewPager2>
+
+        </LinearLayout>
+
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navcat"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="90dp"
         android:layout_weight="9"
+
         android:background="#f1f1f1"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/constlay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout2">

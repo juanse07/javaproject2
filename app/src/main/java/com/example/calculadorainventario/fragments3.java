@@ -72,9 +72,10 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     TextView textovigilancia;
     CardView card_vigilancia;
 
+
     private ClickInterface1 listener ;
     int Estado1;
-    String dias1;
+    String dias1,fechafinal;
     int diasq;
 
 
@@ -112,10 +113,17 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         cardprod=findViewById(R.id.cardprod);
         textView38=findViewById(R.id.textView38);
         textview30=findViewById(R.id.textView30);
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat fecc = new SimpleDateFormat("dd/MMM/yyyy");
 
-        final String fechacComplString = fecc.format(calendar.getTime());
+
+
+
+
+
+
+//        Calendar calendar = Calendar.getInstance();
+//        SimpleDateFormat fecc = new SimpleDateFormat("dd/MMM/yyyy");
+//
+//        final String fechacComplString = fecc.format(calendar.getTime());
 
         noteProdViewModel=new ViewModelProvider(this).get(NoteProdViewModel.class);
 
@@ -174,15 +182,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
             @Override
             public void onChanged(List<NoteProducto> noteProductos) {
                 ListaProd1=noteProductos;
-//                if(ListaProd1.size()!=0){
-//               badgeDrawable.setVisible(true);
-//               badgeDrawable.setNumber(ListaProd1.size());
-//                badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getApplicationContext(), R.color.mdtp_white));
 //
-//                badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolor));
-//                }else {
-//                    badgeDrawable.setVisible(false);
-//                }
 
             }
         });
@@ -223,6 +223,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                if(textovigilancia.getText().toString().equals("Venta")){
                    textovigilancia.setText("Compra");
                    textovigilancia.setTextColor(getResources().getColor(R.color.purplecolor));
+
                    card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.purplecolotransparentr));
                }else  if(textovigilancia.getText().toString().equals("Compra")){
                    textovigilancia.setText("Borrador");
@@ -317,8 +318,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                            // noteViewModel.DeleteAll();
 
                             guardarpreferencias3();
-                            Constants.getSP(fragments3.this).setDIAS(dias1);
-                            Constants.getSP(fragments3.this).setRBBORRADOR(textovigilancia.getText().toString());
+
 
 
 
@@ -343,6 +343,16 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                     btnpdf.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            Constants.getSP(fragments3.this).setDIAS(dias1);
+                            Constants.getSP(fragments3.this).setRBBORRADOR(textovigilancia.getText().toString());
+                            Calendar calendar = Calendar.getInstance();
+                            SimpleDateFormat fecc = new SimpleDateFormat("dd/MMM/yyyy");
+
+
+                            final String fechacComplString = fecc.format(calendar.getTime());
+                            calendar.add(Calendar.DATE, diasq);
+                            fechafinal= fecc.format(calendar.getTime());
+
                             Intent intent = new Intent(fragments3.this,pdfviewer2.class);
 
                             //  ArrayList<Note> Lista78;
@@ -351,7 +361,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             //intent.putExtra("Lista6", (Parcelable) allnotes3);
 
                             bundle.putSerializable("Diasdepago2",dias1);
-//                      bundle.putSerializable("Fecha2",gopcion.getText().toString());
+                      bundle.putSerializable("Fecha2",fechafinal);
 //                            bundle.putSerializable("Unidades1",gcantidad.getText().toString());
 //                            bundle.putSerializable("Medida1",gmedida.getText().toString());
 //                            bundle.putSerializable("Total1",txtotalbottom.getText().toString());

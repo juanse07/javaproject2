@@ -200,7 +200,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
    valorventas2=getIntent().getExtras().getString("Total1");
 
     estadoventas2=getIntent().getExtras().getString("Estado1");
-//     Fecha2 =getIntent().getExtras().getString("Fecha2").trim();
+     Fecha2 =getIntent().getExtras().getString("Fecha2").trim();
         //outputStream2=getIntent().getExtras().getByteArray("wpa");
 
 
@@ -763,8 +763,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 Paragraph factu=new Paragraph("Factura de Venta",regularReportA);
                 factu.setAlignment(Element.ALIGN_RIGHT);
                 Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
-//                Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
-//                Plazo.setAlignment(Element.ALIGN_RIGHT);
+              Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
+                Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
                 pdfPtableimage.setWidthPercentage(100);
                 pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -775,7 +775,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 factucell.addElement(factu);
                 factucell.setBorderColor(new BaseColor(255,255,255));
                 factucell.addElement(Plazo1);
-//                factucell.addElement(Plazo);
+             factucell.addElement(Plazo);
 
 
 
@@ -795,8 +795,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 factu.setAlignment(Element.ALIGN_RIGHT);
                 Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
                 Plazo1.setAlignment(Element.ALIGN_RIGHT);
-//                Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
-//                Plazo.setAlignment(Element.ALIGN_RIGHT);
+              Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
+                Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
                 pdfPtableimage.setWidthPercentage(100);
                 pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -807,7 +807,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 factucell.addElement(factu);
                 factucell.setBorderColor(new BaseColor(255,255,255));
                 factucell.addElement(Plazo1);
-//                factucell.addElement(Plazo);
+               factucell.addElement(Plazo);
 
 
 
@@ -827,11 +827,11 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 Paragraph factu=new Paragraph("Factura de Compra",regularReportA);
                 Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
                 Plazo1.setAlignment(Element.ALIGN_RIGHT);
-//                Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
-//                Plazo.setAlignment(Element.ALIGN_RIGHT);
+               Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
+                Plazo.setAlignment(Element.ALIGN_RIGHT);
                 factu.setAlignment(Element.ALIGN_RIGHT);
 
-//                Plazo.setAlignment(Element.ALIGN_RIGHT);
+                Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
                 pdfPtableimage.setWidthPercentage(100);
                 pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -842,7 +842,9 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 factucell.addElement(factu);
 
                 factucell.setBorderColor(new BaseColor(255,255,255));
-//                factucell.addElement(Plazo);
+                factucell.addElement(Plazo1);
+               factucell.addElement(Plazo);
+
 
 
 
@@ -860,8 +862,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 image.setAlignment(Image.LEFT);
                 Paragraph factu=new Paragraph("Factura de Compra",regularReportA);
                 factu.setAlignment(Element.ALIGN_RIGHT);
-//                Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
-//                Plazo.setAlignment(Element.ALIGN_RIGHT);
+                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
+                Plazo1.setAlignment(Element.ALIGN_RIGHT);
+               Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
+                Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
                 pdfPtableimage.setWidthPercentage(100);
                 pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -870,9 +874,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 imagecell.addElement(image);
                 imagecell.setBorderColor(new BaseColor(255,255,255));
                 factucell.addElement(factu);
+                factucell.addElement(Plazo1);
 
-//                factucell.setBorderColor(new BaseColor(255,255,255));
-//                factucell.addElement(Plazo);
+               factucell.setBorderColor(new BaseColor(255,255,255));
+              factucell.addElement(Plazo);
 
 
 
@@ -891,8 +896,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 image.setAlignment(Image.LEFT);
                 Paragraph factu=new Paragraph("Cotización",regularReportA);
                 factu.setAlignment(Element.ALIGN_RIGHT);
-//                Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
-//                Plazo.setAlignment(Element.ALIGN_RIGHT);
+                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
+                Plazo1.setAlignment(Element.ALIGN_RIGHT);
+                Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
+                Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
                 pdfPtableimage.setWidthPercentage(100);
                 pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -903,7 +910,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 factucell.addElement(factu);
 
                 factucell.setBorderColor(new BaseColor(255,255,255));
-//                factucell.addElement(Plazo);
+                factucell.addElement(Plazo1);
+                factucell.addElement(Plazo);
 
 
 
@@ -921,8 +929,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 image.setAlignment(Image.LEFT);
                 Paragraph factu=new Paragraph("Cotización",regularReportA);
                 factu.setAlignment(Element.ALIGN_RIGHT);
-//                Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
-//                Plazo.setAlignment(Element.ALIGN_RIGHT);
+                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
+                Plazo1.setAlignment(Element.ALIGN_RIGHT);
+              Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
+                Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
                 pdfPtableimage.setWidthPercentage(100);
                 pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -933,7 +943,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 factucell.addElement(factu);
 
                 factucell.setBorderColor(new BaseColor(255,255,255));
-//                factucell.addElement(Plazo);
+                factucell.addElement(Plazo1);
+               factucell.addElement(Plazo);
 
 
 
@@ -1012,6 +1023,13 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             Paragraph fecha1 = new Paragraph("Fecha", regularSub2);
           Paragraph vfecha1 = new Paragraph(fechaventas2,regularAddress);
 
+
+            Paragraph duefecha = new Paragraph("Due Date", regularSub2);
+            Paragraph duevfecha1 = new Paragraph(Fecha2,regularAddress);
+            duefecha.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
+            duevfecha1.setAlignment(Element.ALIGN_RIGHT);
+
+
             fecha1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
          vfecha1.setAlignment(Element.ALIGN_RIGHT);
 
@@ -1075,6 +1093,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             PdfPCell cellprecio2 = new PdfPCell();
             PdfPCell cellvalor = new PdfPCell();
             PdfPCell cellvalor2 = new PdfPCell();
+            PdfPCell duedate = new PdfPCell();
+            PdfPCell duedate2 = new PdfPCell();
 
             cellnombre.addElement(nombre1);
 
@@ -1094,6 +1114,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
            cellvalor2.addElement(vvalor);
             cellprecio.addElement(precio1);
             cellprecio2.addElement(vprecio);
+            duedate.addElement(duefecha);
+            duedate2.addElement(duevfecha1);
 
             cellnombre.setUseAscender(true);
             cellnombre.setVerticalAlignment(Element.ALIGN_TOP);
@@ -1108,11 +1130,17 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             cellfecha.setBorderColor(BaseColor.WHITE);
             cellfecha.setUseAscender(true);
             cellfecha.setVerticalAlignment(Element.ALIGN_TOP);
+            duedate.setBorderColor(BaseColor.WHITE);
+            duedate.setUseAscender(true);
+            duedate.setVerticalAlignment(Element.ALIGN_TOP);
 
 
             cellfecha2.setBorderColor(BaseColor.WHITE);
             cellfecha2.setUseAscender(true);
             cellfecha2.setVerticalAlignment(Element.ALIGN_CENTER);
+            duedate2.setBorderColor(BaseColor.WHITE);
+            duedate2.setUseAscender(true);
+            duedate2.setVerticalAlignment(Element.ALIGN_CENTER);
             cellhora.setBorderColor(BaseColor.WHITE);
             cellhora.setUseAscender(true);
             cellhora.setVerticalAlignment(Element.ALIGN_TOP);
@@ -1159,13 +1187,13 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
 
             table1.addCell(cellnombre);
-            table1.addCell(cellproducto);
             table1.addCell(cellfecha);
-
+            table1.addCell(duedate);
             table1.addCell(cellvalor);
+
             table1.addCell(cellnombre2);
-            table1.addCell(cellproducto2);
             table1.addCell(cellfecha2);
+            table1.addCell(duedate2);
             table1.addCell(cellvalor2);
 //            table1.addCell(cellhora2);
 //            table1.addCell(cellmedida);
@@ -1573,7 +1601,17 @@ try {
 //    canvas2.setLineWidth(0f);
 //    canvas2.roundRectangle(487, 665,90, 30, 10);
 //    canvas2.stroke();
-   mDoc.add(pdfPtablesign);
+ if(List1.size()>8&&List1.size()<=14){
+     mDoc.add(pdfPtablesign);
+
+ }else{
+
+     pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer1.getDirectContent());
+     pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer2.getDirectContent());
+
+
+ }
+
 //    pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer1.getDirectContent());
 //    pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer2.getDirectContent());
 

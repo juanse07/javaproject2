@@ -7,12 +7,13 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context=".home1">
+    tools:context=".homeinvoice2">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#40F2F2F2">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -57,6 +58,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
 
+            android:background="#40F2F2F2"
             app:layout_constraintBottom_toTopOf="@+id/navigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +68,8 @@
                 android:id="@+id/appbar1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                app:elevation="0dp">
 
 
                 <androidx.appcompat.widget.Toolbar
@@ -137,7 +140,9 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:minHeight="?actionBarSize">
+                    android:background="@color/colorPrimary"
+                    android:minHeight="?actionBarSize"
+                    app:cardBackgroundColor="@color/colorPrimary">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/RecyclerBusqueda"
@@ -148,7 +153,6 @@
                         tools:listitem="@layout/buscartarjetas">
 
                     </androidx.recyclerview.widget.RecyclerView>
-
                 </androidx.cardview.widget.CardView>
 
 
@@ -182,14 +186,13 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             app:backgroundTint="#FFFFFF"
+            app:itemIconTint="@drawable/item_color"
+            app:itemTextColor="@drawable/item_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout"
-            app:menu="@menu/bottom_menuup"
-            app:itemIconTint="@drawable/item_color"
-            app:itemTextColor="@drawable/item_color"
-            >
+            app:menu="@menu/bottom_menuup">
 
 
             android:layout_weight="11"
