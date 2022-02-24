@@ -181,6 +181,11 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
                 ((TextView) view.findViewById(R.id.txproducalert)).setText(holder.nombreproducto.getText().toString());
                 ((TextView) view.findViewById(R.id.txpricealert)).setText(holder.preciotext.getText().toString());
                 ((TextView) view.findViewById(R.id.txquantityalert)).setText(holder.canttext2.getText().toString());
+                if(holder.checkIVA.isChecked()){
+                ((TextView) view.findViewById(R.id.taxtview)).setText("*Tax is included");}else{
+                    ((TextView) view.findViewById(R.id.taxtview)).setText("");
+
+                }
                 final AlertDialog alertDialog=builder.create();
                 if(alertDialog.getWindow() !=null){
                     alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));

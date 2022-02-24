@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="122dp"
+    android:layout_height="170dp"
     android:layout_margin="4dp"
     android:elevation="300dp"
     android:orientation="vertical"
@@ -27,8 +27,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="50"
-
+                android:layout_weight="20"
                 android:orientation="horizontal"
                 android:weightSum="100">
 
@@ -40,9 +39,42 @@
                     android:layout_marginStart="8dp"
 
                     android:layout_weight="15"
-                    android:padding="5dp"
+                    android:padding="2dp"
                     app:iconTint="#E5E5E5"
                     app:srcCompat="@drawable/ic_baseline_settings_24" />
+
+                <TextView
+                    android:id="@+id/textView65"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="15"
+                    android:gravity="center_horizontal"
+                    android:text="Tax. "
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/textView64"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="70"
+                    android:gravity="center_horizontal"
+                    android:text="Product Name"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="40"
+
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <TextView
+                    android:id="@+id/textView67"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="17" />
 
                 <CheckBox
                     android:id="@+id/checkIVA"
@@ -50,6 +82,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="bottom|start"
                     android:layout_weight="15"
+                    android:gravity="top"
                     android:padding="5dp"
                     android:text="I.V.A" />
 
@@ -57,13 +90,14 @@
                     android:id="@+id/nombreproducto"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
 
                     android:layout_marginTop="9dp"
-                    android:layout_weight="70"
+                    android:layout_weight="68"
+                    android:gravity="top"
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textColor="#1F1F1F"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -83,7 +117,7 @@
                 android:layout_marginBottom="3dp"
 
 
-                android:layout_weight="50"
+                android:layout_weight="40"
 
 
                 android:text="Add"
@@ -112,11 +146,20 @@
             android:orientation="vertical"
             android:weightSum="100">
 
+            <TextView
+                android:id="@+id/textView54"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:gravity="start|top"
+                android:text="Qt."
+                android:textSize="13sp" />
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="8dp"
-                android:layout_weight="50"
+                android:layout_weight="40"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="0dp">
 
@@ -126,13 +169,28 @@
                     android:orientation="horizontal"
                     android:weightSum="100">
 
-                    <ImageView
-                        android:id="@+id/cantmenos2"
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_weight="20"
-                        app:srcCompat="@drawable/ic_remove_black_18dp" />
+                        app:cardCornerRadius="5dp"
+                        app:strokeColor="@color/colorDarkRed"
+                        app:strokeWidth="1dp">
+
+                        <ImageView
+                            android:id="@+id/cantmenos2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="20"
+                            app:srcCompat="@drawable/ic_remove_black_18dp" />
+
+                    </com.google.android.material.card.MaterialCardView>
 
                     <TextView
                         android:id="@+id/canttext2"
@@ -146,22 +204,45 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:id="@+id/cantmas2"
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_weight="20"
-                        app:srcCompat="@drawable/ic_add_black_18dp" />
+                        app:cardCornerRadius="5dp"
+                        app:strokeColor="@color/colorverdeesmeralda"
+                        app:strokeWidth="1dp">
+
+                        <ImageView
+                            android:id="@+id/cantmas2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="20"
+                            app:srcCompat="@drawable/ic_add_black_18dp" />
+
+                    </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView53"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:gravity="start|top"
+                android:text="Price"
+                android:textSize="13sp" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="8dp"
-                android:layout_weight="50"
+                android:layout_weight="40"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="0dp">
 
@@ -172,13 +253,26 @@
                     android:orientation="horizontal"
                     android:weightSum="100">
 
-                    <ImageView
-                        android:id="@+id/preciomenos"
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_weight="20"
-                        app:srcCompat="@drawable/ic_remove_black_18dp" />
+                        app:cardCornerRadius="5dp"
+                        app:strokeColor="@color/colorDarkRed"
+                        app:strokeWidth="1dp">
+
+                        <ImageView
+                            android:id="@+id/preciomenos"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="20"
+                            app:srcCompat="@drawable/ic_remove_black_18dp" />
+                    </com.google.android.material.card.MaterialCardView>
 
                     <EditText
                         android:id="@+id/preciotext"
@@ -193,13 +287,27 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:id="@+id/preciomas"
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_weight="20"
-                        app:srcCompat="@drawable/ic_add_black_18dp" />
+                        app:cardCornerRadius="5dp"
+                        app:strokeColor="@color/colorverdeesmeralda"
+                        app:strokeWidth="1dp">
+
+                        <ImageView
+                            android:id="@+id/preciomas"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="20"
+                            app:srcCompat="@drawable/ic_add_black_18dp" />
+                    </com.google.android.material.card.MaterialCardView>
+
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

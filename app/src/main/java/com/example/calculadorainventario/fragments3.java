@@ -170,6 +170,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                         badgeDrawable.setVisible(true);
                         badgeDrawable.setNumber(value);
 
+
                         badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getApplicationContext(), R.color.mdtp_white));
 
                         badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolor));

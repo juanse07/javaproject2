@@ -54,7 +54,7 @@
             android:id="@+id/materialCardView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
+            android:layout_margin="2dp"
             app:cardCornerRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="20"
-                    android:background="@color/colorGrisoscuro"
+                    android:background="@color/semitransparentAccent"
                     android:orientation="horizontal"
                     android:weightSum="100">
 
@@ -186,6 +186,23 @@
                         android:text="TextView"
                         android:textColor="@color/colorNegrobrillante"
                         android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="20"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/taxtview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textStyle="italic" />
                 </LinearLayout>
 
             </LinearLayout>
