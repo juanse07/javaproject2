@@ -1,5 +1,6 @@
 package com.example.calculadorainventario.Adapadores;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +45,7 @@ public class AdaptadorNoteProd extends RecyclerView.Adapter<AdaptadorNoteProd.my
     @Override
     public void onBindViewHolder(@NonNull final AdaptadorNoteProd.myClass holder, final int position) {
 
-        NoteProducto currentnote = notesProd.get(position);
+        final NoteProducto currentnote = notesProd.get(position);
         final String Producto = currentnote.getNombre_prod();
         final Double Cantidad = currentnote.getCant_Prod();
         final Double Precio = currentnote.getPrecio_prod();
@@ -61,56 +62,61 @@ public class AdaptadorNoteProd extends RecyclerView.Adapter<AdaptadorNoteProd.my
             @Override
             public void onClick(View v) {
                 noteProdViewModel=new ViewModelProvider((ViewModelStoreOwner) v.getContext()).get(NoteProdViewModel.class);
-                NoteProducto currentnote= notesProd.get(position);
-                Double cambiarcantidad=1.0;
-
-//                int currentkey2=currentnote.Key;
-//                 String Producto=holder.nombreproducto00.getText().toString();
-//                String Cantidad=holder.text1.getText().toString();
-//                 String Precio=holder.textm2.getText().toString();
-//                clickInterface1.PassnoteprodPosition(position,Producto,Cantidad,Precio,currentnote);
-//                Log.d("values:",String.valueOf(position));
-//                Log.d("values:",String.valueOf(currentnote.Key));
-//                Log.d("values:",String.valueOf(Producto));
-//                Log.d("values:",String.valueOf(Cantidad));
-//                Log.d("values:",String.valueOf(Precio));
-                Double actualcantidad=currentnote.getCant_Prod();
-
-                Double nuevacantidad=actualcantidad-cambiarcantidad;
-
-
+//                NoteProducto currentnote= notesProd.get(position);
                 int key=currentnote.Key;
-                final String Nombre_prod = currentnote.getNombre_prod();
-                final Double Cant_prod=  nuevacantidad;
-                final Double Precio_prod = currentnote.getPrecio_prod();
-                final Double Impuesto=currentnote.getImpuesto();
-
-
-                Double cantidad=Cant_prod;
-                Double Precio= Precio_prod;
-                Double NuevoRes=cantidad*Precio;
-                Double imp1=Impuesto/100;
-
-                final Double Resultado_valor =NuevoRes;
-                Double resimp=Resultado_valor*imp1;
-
-                final Double Resultado_Impuesto=Resultado_valor+resimp;
-                NoteProducto noteProducto=new NoteProducto(Nombre_prod,Cant_prod,Precio_prod,Resultado_valor,Impuesto,Resultado_Impuesto);
-
-
-                noteProducto.setKey(key);
-                if (noteProducto.getCant_Prod()==0){
-                    noteProdViewModel.Delete(noteProducto);
-                }else {
-
-                    noteProdViewModel.Update(noteProducto);
-
-                    holder.textm2.setText(String.valueOf(noteProducto.getCant_Prod()));
-
-                }
-
-
-//                clickInterface1.PassnoteprodPosition(position,Producto,Cantidad,Precio);
+                currentnote.setKey(key);
+                noteProdViewModel.Delete(currentnote);
+//
+//                Double cambiarcantidad=1.0;
+//
+////                int currentkey2=currentnote.Key;
+////                 String Producto=holder.nombreproducto00.getText().toString();
+////                String Cantidad=holder.text1.getText().toString();
+////                 String Precio=holder.textm2.getText().toString();
+////                clickInterface1.PassnoteprodPosition(position,Producto,Cantidad,Precio,currentnote);
+////                Log.d("values:",String.valueOf(position));
+////                Log.d("values:",String.valueOf(currentnote.Key));
+////                Log.d("values:",String.valueOf(Producto));
+////                Log.d("values:",String.valueOf(Cantidad));
+////                Log.d("values:",String.valueOf(Precio));
+//                Double actualcantidad=currentnote.getCant_Prod();
+//
+//                Double nuevacantidad=actualcantidad-cambiarcantidad;
+//
+//
+//                int key=currentnote.Key;
+//                Log.d("key2",String.valueOf(key));
+//                final String Nombre_prod = currentnote.getNombre_prod();
+//                final Double Cant_prod=  nuevacantidad;
+//                final Double Precio_prod = currentnote.getPrecio_prod();
+//                final Double Impuesto=currentnote.getImpuesto();
+//
+//
+//                Double cantidad=Cant_prod;
+//                Double Precio= Precio_prod;
+//                Double NuevoRes=cantidad*Precio;
+//                Double imp1=Impuesto/100;
+//
+//                final Double Resultado_valor =NuevoRes;
+//                Double resimp=Resultado_valor*imp1;
+//
+//                final Double Resultado_Impuesto=Resultado_valor+resimp;
+//                NoteProducto noteProducto=new NoteProducto(Nombre_prod,Cant_prod,Precio_prod,Resultado_valor,Impuesto,Resultado_Impuesto);
+//
+//
+//                noteProducto.setKey(key);
+//                if (noteProducto.getCant_Prod()==0){
+//                    noteProdViewModel.Delete(noteProducto);
+//                }else {
+//
+//                    noteProdViewModel.Update(noteProducto);
+//
+//                    holder.textm2.setText(String.valueOf(noteProducto.getCant_Prod()));
+//
+//                }
+//
+//
+////                clickInterface1.PassnoteprodPosition(position,Producto,Cantidad,Precio);
 
 
             }

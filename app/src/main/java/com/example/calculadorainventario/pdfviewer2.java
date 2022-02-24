@@ -680,11 +680,17 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
             tableFooter = new PdfPTable(1);
             tableFooter.setTotalWidth(523);
+            String empresa=Constants.getSP(pdfviewer2.this).getCompanyname();
+            String direccion=Constants.getSP(pdfviewer2.this).getAdressname();
+            String tel=Constants.getSP(pdfviewer2.this).getCompanyphone();
+            String email=Constants.getSP(pdfviewer2.this).getCOMPANYEMAIL();
             Paragraph p1=new Paragraph();
-            Phrase q1= new Phrase("PyMESoft®", regularReport) ;
-            Phrase q2 = new Phrase("www.pymesoft.com",footerE);
-            Phrase q3= new Phrase("POLYSIN   industriaquimica@polysin.com || 3103214617 - 3045250997 || cra 12 #2-61",footerE);
+            Phrase q1= new Phrase(empresa, regularReport) ;
+            Phrase q2 = new Phrase(direccion,footerE);
+            Phrase q3= new Phrase(tel,footerE);
+
             Phrase q4=new Phrase("Powered by",footerE);
+            Phrase q5= new Phrase(email,footerE);
 
 
 
@@ -698,6 +704,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             p1.add(q3);
             p1.add(gumble2);
             p1.add(q4);
+            p1.add(q5);
             p1.add(gumble3);
             p1.add(q1);
 
