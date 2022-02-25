@@ -166,14 +166,33 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
             public void onClick(View v) {
                 AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
                 ;
-                View view=LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
+                final View view=LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
                 builder.setView(view);
                 ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.Price));
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
                 final AlertDialog alertDialog=builder.create();
                 if(alertDialog.getWindow() !=null){
                     alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
                 }
                 alertDialog.show();
+                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        holder.txcatprice.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
+
+                        alertDialog.dismiss();
+
+                    }
+                });
 
             }
         });
@@ -394,6 +413,7 @@ private Filter FiltroProducto=new Filter() {
             builder.setView(view);
         }
     }
+
 
 
 }

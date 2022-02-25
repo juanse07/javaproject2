@@ -42,6 +42,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="60"
+                    android:gravity="center_horizontal|center_vertical"
                     android:inputType="number"
                     android:textStyle="bold">
 
@@ -72,6 +73,7 @@
                     </com.google.android.material.button.MaterialButton>
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/aceptedtx"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"

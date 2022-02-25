@@ -44,6 +44,8 @@
         <string name="Tax_included">el impuesto está incluido</string>
         <string name="Acept">Aceptar</string>
         <string name="Cancel">Cancelar</string>
+        <string name="Email">Correo Electrónico</string>
+        <string name="Mobile_phone">Teléfono Móvil</string>
 
 
         <string name="_1">1</string>

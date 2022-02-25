@@ -2,22 +2,30 @@ package com.example.calculadorainventario;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import android.provider.ContactsContract;
+import android.text.InputType;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +41,8 @@ public class InclientActivity extends AppCompatActivity {
     Button btnuevocliente;
     ImageView back4;
     CheckBox checkcliente;
+    MaterialCardView emailbtcl,phonebtcl,customerbtcl;
+    TextView emailtxcl,phonetxcl,customertxcl;
     TextInputEditText txinputnombre, txinputape, txinputtel1;
     RecyclerView Recyclercliente;
     View ClientesView;
@@ -51,6 +61,125 @@ public class InclientActivity extends AppCompatActivity {
         back4=findViewById(R.id.back4);
         checkcliente=findViewById(R.id.checkcliente);
         navigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        emailbtcl=findViewById(R.id.emailbtcl);
+        phonebtcl=findViewById(R.id.phonebtcl);
+        customerbtcl=findViewById(R.id.customerbtcl);
+        emailtxcl=findViewById(R.id.emailtxcl);
+        phonetxcl=findViewById(R.id.phonetxcl);
+        customertxcl=findViewById(R.id.customertxcl);
+
+        customerbtcl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
+                ;
+                final View view= LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
+                builder.setView(view);
+               ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_CLASS_TEXT);
+//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.Customer_Name));
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
+                final AlertDialog alertDialog=builder.create();
+                if(alertDialog.getWindow() !=null){
+                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+                }
+                alertDialog.show();
+                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        customertxcl.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
+
+                        alertDialog.dismiss();
+
+                    }
+                });
+
+
+            }
+        });
+        phonebtcl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
+                ;
+                final View view= LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
+                builder.setView(view);
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_CLASS_PHONE);
+//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.Mobile_phone));
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
+                final AlertDialog alertDialog=builder.create();
+                if(alertDialog.getWindow() !=null){
+                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+                }
+                alertDialog.show();
+                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        phonetxcl.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
+
+                        alertDialog.dismiss();
+
+                    }
+                });
+
+
+            }
+        });
+
+        emailbtcl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
+                ;
+                final View view= LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
+                builder.setView(view);
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.Email));
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
+                final AlertDialog alertDialog=builder.create();
+                if(alertDialog.getWindow() !=null){
+                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+                }
+                alertDialog.show();
+                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        emailtxcl.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
+
+                        alertDialog.dismiss();
+
+                    }
+                });
+
+
+            }
+        });
 
 
         txinputtel1 = (TextInputEditText) findViewById(R.id.txinputtel1);
