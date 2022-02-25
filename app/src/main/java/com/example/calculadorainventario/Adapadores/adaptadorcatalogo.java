@@ -169,6 +169,20 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
 
             }
         });
+        if(row_index==position){
+            holder.buttonaddproducto.setBackgroundColor(holder.itemView.getResources().getColor(R.color.colorAccent));
+
+            // holder.buttonaddproducto.setBackgroundColor(holder.itemView.getResources().getColor(R.color.colorAccent));
+            holder.buttonaddproducto.setTextColor(holder.itemView.getResources().getColor(R.color.colorBlancox));
+            //holder.textBusquedas.setTextColor(holder.itemView.getResources().getColor(R.color.colorBla));
+
+        }
+        else
+        {
+            holder.buttonaddproducto.setBackgroundColor(holder.itemView.getResources().getColor(R.color.colorGris));
+            holder.buttonaddproducto.setTextColor(holder.itemView.getResources().getColor(R.color.colorAccent));
+            // holder.textBusquedas.setTextColor(holder.itemView.getResources().getColor(R.color.colorGris));
+        }
 
         holder.buttonaddproducto.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -270,20 +284,7 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
 
             }
         });
-        if(row_index==position){
-            holder.buttonaddproducto.setBackgroundColor(holder.itemView.getResources().getColor(R.color.colorAccent));
 
-           // holder.buttonaddproducto.setBackgroundColor(holder.itemView.getResources().getColor(R.color.colorAccent));
-            holder.buttonaddproducto.setTextColor(holder.itemView.getResources().getColor(R.color.colorBlancox));
-            //holder.textBusquedas.setTextColor(holder.itemView.getResources().getColor(R.color.colorBla));
-
-        }
-        else
-        {
-            holder.buttonaddproducto.setBackgroundColor(holder.itemView.getResources().getColor(R.color.colorGris));
-            holder.buttonaddproducto.setTextColor(holder.itemView.getResources().getColor(R.color.colorAccent));
-           // holder.textBusquedas.setTextColor(holder.itemView.getResources().getColor(R.color.colorGris));
-        }
 
     }
 

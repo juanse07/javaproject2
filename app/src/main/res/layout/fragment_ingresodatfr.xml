@@ -91,7 +91,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
-                        android:layout_weight="20"
+                        android:layout_weight="30"
                         android:gravity="center_vertical"
                         android:text="@string/Customer_Name" />
 
@@ -99,9 +99,11 @@
                         android:id="@+id/tx_cliente"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
                         android:layout_weight="70"
-                        android:gravity="center_horizontal|center_vertical"
+                        android:gravity="right|center_vertical"
                         android:text="(No Name)"
                         android:textAlignment="gravity"
                         android:textColor="#1f1f1f"
@@ -132,21 +134,37 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
-                        android:layout_weight="20"
+                        android:layout_weight="30"
                         android:gravity="center_vertical"
                         android:text="@string/Logo" />
 
-                    <ImageView
-                        android:id="@+id/logomini"
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_gravity="end"
-                        android:layout_marginTop="1dp"
-                        android:layout_marginEnd="6dp"
-                        android:layout_marginBottom="1dp"
+                        android:layout_marginStart="250dp"
+                        android:layout_marginLeft="250dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
                         android:layout_weight="70"
-                        android:foregroundGravity="right"
-                        android:src="@drawable/botonadselec" />
+                        app:cardCornerRadius="10dp"
+                        app:strokeColor="#3F51B5"
+                        app:strokeWidth="1dp">>
+
+                        <ImageView
+                            android:id="@+id/logomini"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginEnd="6dp"
+                            android:layout_marginBottom="1dp"
+                            android:foregroundGravity="right"
+                            android:src="@drawable/botonadselec" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    /com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
 
@@ -174,18 +192,34 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
-                        android:layout_weight="20"
+                        android:layout_weight="30"
                         android:gravity="center_vertical"
-                        android:text="@string/Signature" />
+                        android:text="@string/Signature"></TextView>
 
-                    <ImageView
-                        android:id="@+id/imgSignature11"
+
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_gravity="end"
+                        android:layout_marginStart="250dp"
+                        android:layout_marginLeft="250dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
                         android:layout_weight="70"
-                        android:foregroundGravity="right"
-                        tools:src="@drawable/botonadselec" />
+                        app:cardCornerRadius="10dp"
+                        app:strokeColor="#3F51B5"
+                        app:strokeWidth="1dp">
+
+                        <ImageView
+                            android:id="@+id/imgSignature11"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            tools:src="@drawable/botonadselec" />
+                    </com.google.android.material.card.MaterialCardView>
 
 
                 </LinearLayout>
