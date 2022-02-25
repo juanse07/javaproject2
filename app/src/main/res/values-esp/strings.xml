@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <string name="app_name">PyMESoft</string>
+        <string name="app_name2"><font color='#1D2E4A'>Facturas</font>"</string>
+        <string name="Purchase">Compra</string>
+        <string name="Invoice">Venta</string>
+        <string name="Draft">Borrador</string>
+        <string name="Customer_Name">Nombre del Cliente</string>
+        <string name="Product_Name">Nombre del Producto</string>
+        <string name="Date">Fecha</string>
+        <string name="Total">Total</string>
+        <string name="Doc_list">Lista de Documentos</string>
+        <string name="New_Costumer">Nuevo Cliente</string>
+        <string name="New_Product">Nuevo Producto</string>
+        <string name="Costumers">Cliente</string>
+        <string name="Products">Productos</string>
+        <string name="Pre_order">Pre-orden</string>
+        <string name="Product_name">Nombre del Producto</string>
+        <string name="Quantity">Cantidad</string>
+        <string name="Price">Precio</string>
+        <string name="Add">Agregar</string>
+        <string name="Tax">Impuesto</string>
+        <string name="Logo">Logo</string>
+        <string name="Signature">Firma</string>
+        <string name="Due_Date">Fecha Límite para pago</string>
+        <string name="Subtotal">Subtotal</string>
+        <string name="Invoice_info">Información de la factura</string>
+        <string name="Products_Resume">Resumen de Productos</string>
+        <string name="Payment_Term">Término de Pago</string>
+        <string name="Days">Días</string>
+        <string name="Sales">Ventas</string>
+        <string name="Receipts">Compras</string>
+
+
+        <string name="_1">1</string>
+        <string name="_2">2</string>
+        <string name="q">q</string>
+        <string name="w">w</string>
+        <string name="e">e</string>
+        <string name="r">r</string>
+        <string name="_3">3</string>
+        <string name="_4">4</string>
+        <string name="_5">5</string>
+        <string name="_6">6</string>
+        <string name="_7">7</string>
+        <string name="_8">8</string>
+        <string name="_9">9</string>
+        <string name="_punto">.</string>
+        <string name="_0">0</string>
+        <string name="_add">+</string>
+        <string name="title_activity_navigate">navigate</string>
+        <string name="title_home">Home</string>
+        <string name="title_dashboard">Dashboard</string>
+        <string name="title_notifications">Notifications</string>
+        <string name="_Home">Home</string>
+        <string name="_Calculadora">Calculadora</string>
+        <string name="_Nuevo">Nuevo</string>
+        <string name="_home">_home</string>
+        <string name="more">more</string>
+        <string name="home">Home</string>
+        <string name="Nuevo">Nuevo</string>
+        <string name="Pdf">Pdf</string>
+        <string name="Open">Open</string>
+        <string name="Close">Close</string>
+        <string name="facebook_app_id">615672052643545</string>
+        <string name="fb_login_protocol_scheme">fb615672052643545</string>
+
+        <!-- TODO: Remove or change this placeholder text -->
+        <string name="hello_blank_fragment">Hello blank fragment</string>
+        <string name="title_activity_preparacion">Preparacion</string>
+        <string name="Catálogo">Catálogo</string>
+        <string name="Clientes">Cliente</string>
+        <string name="Calc">Calc</string>
+        <string name="Vista">Revisar</string>
+        <string name="title_activity_preparacionas">preparacionas</string>
+        <string name="title_activity_getdata_tab">getdata_tab</string>
+        <string name="tab_text_1">Tab 1</string>
+        <string name="tab_text_2">Tab 2</string>
+        <!-- Preference Titles -->
+        <string name="messages_header">Messages</string>
+        <string name="sync_header">Sync</string>
+
+        <!-- Messages Preferences -->
+        <string name="signature_title">Your signature</string>
+        <string name="reply_title">Default reply action</string>
+
+        <!-- Sync Preferences -->
+        <string name="sync_title">Sync email periodically</string>
+        <string name="attachment_title">Download incoming attachments</string>
+        <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+        <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+
+
+
+</resources>

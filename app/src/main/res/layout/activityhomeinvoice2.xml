@@ -29,7 +29,7 @@
                 android:layout_marginStart="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="24"
-                android:text="Customer Name"
+                android:text="@string/Customer_Name"
                 android:textSize="8sp" />
 
             <TextView
@@ -40,7 +40,7 @@
                 android:layout_marginStart="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="20"
-                android:text="Date:"
+                android:text="@string/Date"
                 android:textSize="8sp" />
 
             <TextView
@@ -51,7 +51,7 @@
                 android:layout_marginStart="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="20"
-                android:text="Total"
+                android:text="@string/Total"
                 android:textSize="8sp" />
 
             <TextView

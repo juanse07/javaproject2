@@ -14,6 +14,7 @@ public class Spreferences {
     protected final String COMPANYPHONE="companyphone";
     protected final String COMPANYEMAIL="companyemail";
     protected final String ADDRESSNAME="addressname";
+    protected final String LANG="lang";
 
 
 
@@ -42,7 +43,7 @@ public class Spreferences {
         sp.edit().putString(RBBORRADOR,rbborrador).commit();
     }
     public String getRBBORRADOR(){
-        return sp.getString(RBBORRADOR, "Venta");
+        return sp.getString(RBBORRADOR, "1");
 
     }
     public void setpositioncatalogo(String dias){
@@ -61,5 +62,8 @@ public class Spreferences {
     public String getCompanyphone(){return sp.getString(COMPANYPHONE,"PyMESoft2");}
     public void setCOMPANYEMAIL(String companyemail){sp.edit().putString(COMPANYEMAIL,companyemail).commit();}
     public String getCOMPANYEMAIL(){return sp.getString(COMPANYEMAIL,"Address");}
+    public void setLANG(String lang){sp.edit().putString(LANG,lang).commit();}
+    public String getLANG(){return sp.getString(LANG,"en");}
+
 
 }

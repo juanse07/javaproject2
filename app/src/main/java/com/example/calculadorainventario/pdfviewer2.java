@@ -763,7 +763,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
             String radiotipo= logopreference2.getString("logocheck2","no hay datos");
 
-            if (radiotipo.equals("Rectangular")&&estadoventas2.equals("Venta")){
+            if (radiotipo.equals("Rectangular")&&estadoventas2.equals("1")){
                 String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
                 image = Image.getInstance(imFile);
                 image.scaleAbsolute(160f,70f);
@@ -794,7 +794,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 pdfPtableimage.setSpacingAfter(25);
                 mDoc.add(pdfPtableimage);
                 System.setProperty("http.agent", "Chrome");
-            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals("Venta")) {
+            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals("1")) {
                 String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
                 image = Image.getInstance(imFile);
                 image.scaleAbsolute(100f,100f);
@@ -827,7 +827,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 mDoc.add(pdfPtableimage);
                 System.setProperty("http.agent", "Chrome");
             }
-            if (radiotipo.equals("Rectangular")&&estadoventas2.equals("Compra")){
+            if (radiotipo.equals("Rectangular")&&estadoventas2.equals("2")){
                 String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
                 image = Image.getInstance(imFile);
                 image.scaleAbsolute(160f,70f);
@@ -863,7 +863,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 pdfPtableimage.setSpacingAfter(25);
                 mDoc.add(pdfPtableimage);
                 System.setProperty("http.agent", "Chrome");
-            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals("Compra")) {
+            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals("2")) {
                 String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
                 image = Image.getInstance(imFile);
                 image.scaleAbsolute(100f,100f);
@@ -897,7 +897,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 mDoc.add(pdfPtableimage);
                 System.setProperty("http.agent", "Chrome");
             }
-            if (radiotipo.equals("Rectangular")&&estadoventas2.equals("Borrador")){
+            if (radiotipo.equals("Rectangular")&&estadoventas2.equals("3")){
                 String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
                 image = Image.getInstance(imFile);
                 image.scaleAbsolute(160f,70f);
@@ -930,7 +930,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 pdfPtableimage.setSpacingAfter(25);
                 mDoc.add(pdfPtableimage);
                 System.setProperty("http.agent", "Chrome");
-            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals("Borrador")) {
+            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals("3")) {
                 String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
                 image = Image.getInstance(imFile);
                 image.scaleAbsolute(100f,100f);

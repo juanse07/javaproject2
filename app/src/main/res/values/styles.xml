@@ -16,10 +16,10 @@
         <item name="android:textColor">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
+<!--    <style name="AppTheme.NoActionBar">-->
+<!--        <item name="windowActionBar">false</item>-->
+<!--        <item name="windowNoTitle">true</item>-->
+<!--    </style>-->
 
    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
@@ -37,7 +37,7 @@
         <item name="android:textColor">@color/colorBlancox</item>
         <item name="android:textSize">16dp</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textAlignment">center</item>
+<!--        <item name="android:textAlignment">center</item>-->
         <item name="android:textAppearance">@style/Widget.MaterialComponents.Button</item>
         <item name="android:minHeight">45dp</item>
         <item name="android:paddingRight">6dp</item>
@@ -47,7 +47,7 @@
         <item name="android:textColor">#1f1f1f</item>
         <item name="android:textSize">34sp</item>
 
-        <item name="android:textAlignment">center</item>
+<!--        <item name="android:textAlignment">center</item>-->
         <item name="android:fontFamily">sans-serif</item>
     </style>
     <style name="titledrawer">

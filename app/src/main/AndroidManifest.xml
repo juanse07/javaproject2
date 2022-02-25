@@ -17,25 +17,27 @@
         android:smallScreens="true" />
 
     <application
+        android:name=".PersistenciaDatosOffline"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
-        android:name=".PersistenciaDatosOffline"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Signature2"
-            android:screenOrientation="landscape">
-        </activity>
-
+        <activity
+            android:name=".SelectLanguaje"
+           ></activity>
+        <activity
+            android:name=".Signature2"
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".Signature1Activity"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
         <activity android:name=".logochoose" />
-
         <activity android:name=".ClienteEdit" />
         <activity android:name=".Productoedit" />
         <activity android:name=".settingsAcivity" />
+
         <activity
             android:name=".Crearproducto"
             android:windowSoftInputMode="adjustResize" />

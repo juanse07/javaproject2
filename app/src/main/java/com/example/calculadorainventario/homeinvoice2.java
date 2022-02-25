@@ -3,8 +3,10 @@ package com.example.calculadorainventario;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.CalendarContract;
@@ -41,6 +43,7 @@ import java.util.List;
 import java.util.Locale;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -70,6 +73,8 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
     RecyclerView RecyclerBusqueda;
     RecyclerView.Adapter madapter;
     CharSequence tipodoc, tipodoc2;
+    SelectLanguaje selectLanguaje;
+    String Lang;
 
     Context context;
     int contarventas;
@@ -98,8 +103,10 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
     View cartas1;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home1);
         barhome1 = findViewById(R.id.barhome1);
@@ -118,6 +125,7 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         navdrawer = findViewById(R.id.navdrawer);
         card_opciones = findViewById(R.id.card_opciones);
         RecyclerBusqueda = findViewById(R.id.RecyclerBusqueda);
+
         PreferenceManager.setDefaultValues(this,R.xml.preference,false);
         noteProdViewModel = new ViewModelProvider(this).get(NoteProdViewModel.class);
         noteProdViewModel.getAllNotes().observe(this, new Observer<List<NoteProducto>>() {
@@ -126,6 +134,9 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
                 ListaProd1 = noteProductos;
             }
         });
+        Lang=Constants.getSP(getApplicationContext()).getLANG();
+        SetLanguage(Lang);
+
 
 
         //mdrawer = new ActionBarDrawerToggle(this, drawer1, R.string.Open, R.string.Close);
@@ -148,8 +159,11 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         //mdrawer.syncState();
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String first = "PyMESoft";
-        String next = "<font color='#1D2E4A'>FActuras</font>";
-        title2.setText(Html.fromHtml(first + next));
+        String secondname=getResources().getString(R.string.app_name2);
+//        String next = getResources().getString(R.string.app_name2);
+//
+//        title2.setText(Html.fromHtml(first +" "+ next));
+        title2.setText(getResources().getString(R.string.app_name));
         IMAGEHOME.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -226,9 +240,12 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 
 
         Busquedas = new ArrayList<>();
-        Busquedas.add("Venta");
-        Busquedas.add("Compra");
-        Busquedas.add("Borrador");
+        String Invoice=getResources().getString(R.string.Sales);
+        String Receipts=getResources().getString(R.string.Receipts);
+        String Draft=getResources().getString(R.string.Draft);
+        Busquedas.add(Invoice);
+        Busquedas.add(Receipts);
+        Busquedas.add(Draft);
 
 //    /        Busquedas.add("Hoy");
 //        Busquedas.add("Semana");
@@ -497,9 +514,19 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 //
 //    }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onResume() {
         super.onResume();
+
+
+
+//        Locale locale = Constants.getSP(homeinvoice2.this).getLANG();
+//        Locale.setDefault(locale);
+//        Configuration config = getBaseContext().getResources().getConfiguration();
+//        config.locale = locale;
+//        getBaseContext().getResources().updateConfiguration(config,
+//                getBaseContext().getResources().getDisplayMetrics());
         File imgFile = new File("/storage/emulated/0/PyMESoft/Logotipo/logopng");
         if (imgFile.exists()) {
 
@@ -605,7 +632,24 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 
         }
     }
+    public void SetLanguage(String Lang) {
 
+        Locale locale = new Locale(Lang);
+
+        Locale.setDefault(locale);
+        Configuration configuration = new Configuration();
+
+        configuration.locale = locale;
+        getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
+
+//        Constants.getSP(getApplicationContext()).setLANG(Language);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    public void LoadLocale(String lang) {
+//        SetLanguage(lang);
+
+    }
 }
 
 

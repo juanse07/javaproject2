@@ -217,19 +217,20 @@ ArrayList<NoteProducto>notesProd;
                         sharedViewModel.setboton(rbborrador.getText().toString());
                         //getActivity().findViewById(R.id.card_vigilancia).setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
                         getActivity().findViewById(R.id.card_vigilancia).getBackground().setTint(getResources().getColor(R.color.colorPrimaryDark));
-                        Constants.getSP(getContext()).setRBBORRADOR(rbborrador.getText().toString());
+                        Constants.getSP(getContext()).setRBBORRADOR("3");
                         break;
                     case R.id.rbcompra:
                         sharedViewModel.setboton(rbcompra.getText().toString());
                        // getActivity().findViewById(R.id.card_vigilancia).setBackgroundColor(getResources().getColor(R.color.colorDarkRed));
-                        getActivity().findViewById(R.id.card_vigilancia).getBackground().setTint(getResources().getColor(R.color.colorDarkRed));
-                        Constants.getSP(getContext()).setRBBORRADOR(rbcompra.getText().toString());
+                        getActivity().findViewById(R.id.card_vigilancia).getBackground().setTint(getResources().getColor(R.color.purplecolotransparentr));
+                        Constants.getSP(getContext()).setRBBORRADOR("2");
                         break;
                     case R.id.rbventa:
                         sharedViewModel.setboton(rbventa.getText().toString());
                         //getActivity().findViewById(R.id.card_vigilancia).setBackgroundColor(getResources().getColor(R.color.colorDarkBlue));
-                        getActivity().findViewById(R.id.card_vigilancia).getBackground().setTint(getResources().getColor(R.color.colorDarkBlue));
-                        Constants.getSP(getContext()).setRBBORRADOR(rbventa.getText().toString());
+                        getActivity().findViewById(R.id.card_vigilancia).getBackground().setTint(getResources().getColor(R.color.blueTransparent));
+
+                        Constants.getSP(getContext()).setRBBORRADOR("1");
 
                         break;
 

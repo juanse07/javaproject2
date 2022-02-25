@@ -202,17 +202,24 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         String first = "PyMESoft";
         String next = "<font color='#1D2E4A'>FActuras</font>";
         title4.setText(Html.fromHtml(first + next));
+        String vigilaestado="1";
+
+      vigilaestado=Constants.getSP(fragments3.this).getRBBORRADOR();
+      Log.d("estado",vigilaestado);
 
         textovigilancia.setText(Constants.getSP(fragments3.this).getRBBORRADOR());
-        if (textovigilancia.getText().toString().equals("Venta")) {
+        if (vigilaestado.toString().equals("1")) {
+            textovigilancia.setText(getResources().getString(R.string.Sales));
             textovigilancia.setTextColor(getResources().getColor(R.color.bluecolor));
             card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.blueTransparent));
         }
-        else if(textovigilancia.getText().toString().equals("Compra")){
+        else if(vigilaestado.equals("2")){
+            textovigilancia.setText(getResources().getString(R.string.Receipts));
             textovigilancia.setTextColor(getResources().getColor(R.color.purplecolor));
             card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.purplecolotransparentr));
 
-        }else if(textovigilancia.getText().toString().equals("Borrador")){
+        }else if(vigilaestado.equals("3")){
+            textovigilancia.setText(getResources().getString(R.string.Draft));
             textovigilancia.setTextColor(getResources().getColor(R.color.colorGrisoscuro));
             card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorGrisoscurotransparent));
         }
@@ -221,17 +228,17 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
        arrowchange.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               if(textovigilancia.getText().toString().equals("Venta")){
-                   textovigilancia.setText("Compra");
+               if(textovigilancia.getText().toString().equals(getResources().getString(R.string.Sales))){
+                   textovigilancia.setText(getResources().getString(R.string.Receipts));
                    textovigilancia.setTextColor(getResources().getColor(R.color.purplecolor));
 
                    card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.purplecolotransparentr));
-               }else  if(textovigilancia.getText().toString().equals("Compra")){
-                   textovigilancia.setText("Borrador");
+               }else  if(textovigilancia.getText().toString().equals(getResources().getString(R.string.Receipts))){
+                   textovigilancia.setText(getResources().getString(R.string.Draft));
                    textovigilancia.setTextColor(getResources().getColor(R.color.colorGrisoscuro));
                    card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorGrisoscurotransparent));
-               }else  if(textovigilancia.getText().toString().equals("Borrador")){
-                   textovigilancia.setText("Venta");
+               }else  if(textovigilancia.getText().toString().equals(getResources().getString(R.string.Draft))){
+                   textovigilancia.setText(getResources().getString(R.string.Sales));
                    textovigilancia.setTextColor(getResources().getColor(R.color.bluecolor));
                    card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.blueTransparent));
                }
@@ -345,33 +352,53 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                         @Override
                         public void onClick(View v) {
                             Constants.getSP(fragments3.this).setDIAS(dias1);
-                            Constants.getSP(fragments3.this).setRBBORRADOR(textovigilancia.getText().toString());
+                            if(textovigilancia.getText().toString().equals(getResources().getString(R.string.Sales))){
+                            Constants.getSP(fragments3.this).setRBBORRADOR("1");
+                            }else if(textovigilancia.getText().toString().equals(getResources().getString(R.string.Receipts))){
+                                Constants.getSP(fragments3.this).setRBBORRADOR("2");
+
+                            }else if(textovigilancia.getText().toString().equals(getResources().getString(R.string.Draft))){
+                                Constants.getSP(fragments3.this).setRBBORRADOR("3");
+
+                            }
                             Calendar calendar = Calendar.getInstance();
                             SimpleDateFormat fecc = new SimpleDateFormat("dd/MMM/yyyy");
 
 
                             final String fechacComplString = fecc.format(calendar.getTime());
                             calendar.add(Calendar.DATE, diasq);
-                            fechafinal= fecc.format(calendar.getTime());
+                            fechafinal = fecc.format(calendar.getTime());
 
-                            Intent intent = new Intent(fragments3.this,pdfviewer2.class);
+                            Intent intent = new Intent(fragments3.this, pdfviewer2.class);
 
                             //  ArrayList<Note> Lista78;
                             //Lista78=(ArrayList<Note>)allnotes3;
                             Bundle bundle = new Bundle();
                             //intent.putExtra("Lista6", (Parcelable) allnotes3);
 
-                            bundle.putSerializable("Diasdepago2",dias1);
-                      bundle.putSerializable("Fecha2",fechafinal);
+                            bundle.putSerializable("Diasdepago2", dias1);
+                            bundle.putSerializable("Fecha2", fechafinal);
 //                            bundle.putSerializable("Unidades1",gcantidad.getText().toString());
 //                            bundle.putSerializable("Medida1",gmedida.getText().toString());
 //                            bundle.putSerializable("Total1",txtotalbottom.getText().toString());
-                         bundle.putSerializable("Fecha1",fechacComplString.toString());
+                            bundle.putSerializable("Fecha1", fechacComplString.toString());
 //                        bundle.putSerializable("Hora1",ghora.getText().toString());
- //                           bundle.putSerializable("Precio1", PrecioL);
-                            bundle.putSerializable("Nombre1",ClienteL);
-                            bundle.putSerializable("Producto1",ProductoL);
-                         bundle.putSerializable("Estado1",textovigilancia.getText().toString());
+                            //                           bundle.putSerializable("Precio1", PrecioL);
+                            bundle.putSerializable("Nombre1", ClienteL);
+                            bundle.putSerializable("Producto1", ProductoL);
+
+                            String comprobarestado = textovigilancia.getText().toString();
+                            if (comprobarestado.equals(getResources().getString(R.string.Receipts))) {
+                                bundle.putSerializable("Estado1", "2");
+                            } else if (comprobarestado.equals(getResources().getString(R.string.Sales))) {
+                                bundle.putSerializable("Estado1", "1");
+
+                            } else if (comprobarestado.equals(getResources().getString(R.string.Draft))) {
+                                bundle.putSerializable("Estado1", "3");
+
+                            }
+
+
 
                             ListaProd=new ArrayList<>();
                             ListaCant=new ArrayList<>();

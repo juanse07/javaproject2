@@ -1,5 +1,36 @@
 <resources>
     <string name="app_name">PyMESoft</string>
+    <string name="app_name2"><font color='#1D2E4A'>Invoices</font>"</string>
+    <string name="Purchase">Purchase</string>
+    <string name="Invoice">Invoice</string>
+    <string name="Draft">Draft</string>
+    <string name="Customer_Name">Customer Name</string>
+    <string name="Product_Name">Product Name</string>
+    <string name="Date">Date</string>
+    <string name="Total">Total</string>
+    <string name="Doc_list">Document List</string>
+    <string name="New_Costumer">New Costumer</string>
+    <string name="New_Product">New Product</string>
+    <string name="Costumers">Costumer</string>
+    <string name="Products">Products</string>
+    <string name="Pre_order">PreOrder</string>
+    <string name="Product_name">Product Name</string>
+    <string name="Quantity">Quantity</string>
+    <string name="Price">Price</string>
+    <string name="Add">Add</string>
+    <string name="Tax">Tax</string>
+    <string name="Logo">Logo</string>
+    <string name="Signature">Signature</string>
+    <string name="Due_Date">Due Date</string>
+    <string name="Subtotal">Subtotal</string>
+    <string name="Invoice_info">Invoice Info</string>
+    <string name="Products_Resume">Products Resume</string>
+    <string name="Payment_Term">Payment_term</string>
+    <string name="Days">Days</string>
+    <string name="Sales">Sales</string>
+    <string name="Receipts">Receipts</string>
+
+
     <string name="_1">1</string>
     <string name="_2">2</string>
     <string name="q">q</string>
@@ -58,6 +89,15 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_activity_select_languaje">SelectLanguaje</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 
 </resources>

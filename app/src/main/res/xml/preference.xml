@@ -55,6 +55,16 @@
 
             </intent>
         </PreferenceScreen>
+        <PreferenceScreen
+            android:title="Language"
+            android:key="applang">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="com.example.calculadorainventario"
+                android:targetClass="com.example.calculadorainventario.SelectLanguaje">
+
+            </intent>
+        </PreferenceScreen>
 
 
 

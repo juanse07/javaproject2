@@ -5,13 +5,13 @@
         android:id="@+id/action_home"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_view_list_24"
-        android:title="Invoices"
+        android:title="@string/Doc_list"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_more"
         android:enabled="true"
         android:icon="@drawable/ic_person_add"
-        android:title="New Costumer"
+        android:title="@string/New_Costumer"
         app:showAsAction="never" />
 <!--    <item-->
 <!--        android:id="@+id/action_calc"-->
@@ -25,7 +25,7 @@
         android:id="@+id/action_add"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_bookmark_add_24"
-        android:title="New Product"
+        android:title="@string/New_Product"
         app:showAsAction="never" />
 
 </menu>

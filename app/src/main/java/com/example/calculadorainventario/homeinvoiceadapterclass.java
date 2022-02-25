@@ -86,9 +86,25 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
 
         holder.txinvname.setText(listhome.get(position).getCliente());
         holder.txinvdate.setText(listhome.get(position).getFecha());
-        holder.txinvstate.setText(listhome.get(position).getEstado());
+
+        String comprobarestado;
+        comprobarestado=listhome.get(position).getEstado().toString();
+        if(comprobarestado.equals("1")){
+            holder.txinvstate.setText(holder.itemView.getResources().getString(R.string.Sales));
+            holder.cvstate.setCardBackgroundColor(holder.itemView.getResources().getColor(R.color.blueTransparent));
+            holder.txinvstate.setTextColor(holder.itemView.getResources().getColor(R.color.bluecolor));
+        }else if(comprobarestado.equals("3")){
+            holder.txinvstate.setText(holder.itemView.getResources().getString(R.string.Draft));
+            holder.cvstate.setCardBackgroundColor(holder.itemView.getResources().getColor(R.color.colorGrisoscurotransparent));
+            holder.txinvstate.setTextColor(holder.itemView.getResources().getColor(R.color.colorGrisoscuro));
+        }else if(comprobarestado.equals("2")){
+            holder.txinvstate.setText(holder.itemView.getResources().getString(R.string.Receipts));
+            holder.cvstate.setCardBackgroundColor(holder.itemView.getResources().getColor(R.color.purplecolotransparentr));
+            holder.txinvstate.setTextColor(holder.itemView.getResources().getColor(R.color.purplecolor));
+        }
 //        holder.cardmedida.setText(listhome.get(position).getMedida());
 //        holder.cardunidades.setText(listhome.get(position).getUnidades());
+//        holder.txinvstate.setText(listhome.get(position).getEstado());
         holder.txinvtotal.setText(String.valueOf( formatter.format(Double.parseDouble(String.valueOf(listhome.get(position).getValor()))))+ " USD");
 //        holder.cardproducto.setText(listhome.get(position).getProducto());
 //        holder.cardprecio.setText(listhome.get(position).getPrecio());
@@ -167,16 +183,16 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
         }
 
 
-        if (holder.txinvstate.getText().toString().equals("Venta")) {
-            holder.cvstate.setCardBackgroundColor(holder.itemView.getResources().getColor(R.color.blueTransparent));
-            holder.txinvstate.setTextColor(holder.itemView.getResources().getColor(R.color.bluecolor));
-        } else if (holder.txinvstate.getText().toString().equals("Compra")) {
-            holder.cvstate.setCardBackgroundColor(holder.itemView.getResources().getColor(R.color.purplecolotransparentr));
-            holder.txinvstate.setTextColor(holder.itemView.getResources().getColor(R.color.purplecolor));
-        } else if (holder.txinvstate.getText().toString().equals("Borrador")) {
-            holder.cvstate.setCardBackgroundColor(holder.itemView.getResources().getColor(R.color.colorGrisoscurotransparent));
-            holder.txinvstate.setTextColor(holder.itemView.getResources().getColor(R.color.colorGrisoscuro));
-        }//else{holder.card_operacionhome.setCardBackgroundColor(getResources().getColor(R.color.colorAccent));}
+//        if (holder.txinvstate.getText().toString().equals("Venta")) {
+//            holder.cvstate.setCardBackgroundColor(holder.itemView.getResources().getColor(R.color.blueTransparent));
+//            holder.txinvstate.setTextColor(holder.itemView.getResources().getColor(R.color.bluecolor));
+//        } else if (holder.txinvstate.getText().toString().equals("Compra")) {
+//            holder.cvstate.setCardBackgroundColor(holder.itemView.getResources().getColor(R.color.purplecolotransparentr));
+//            holder.txinvstate.setTextColor(holder.itemView.getResources().getColor(R.color.purplecolor));
+//        } else if (holder.txinvstate.getText().toString().equals("Borrador")) {
+//            holder.cvstate.setCardBackgroundColor(holder.itemView.getResources().getColor(R.color.colorGrisoscurotransparent));
+//            holder.txinvstate.setTextColor(holder.itemView.getResources().getColor(R.color.colorGrisoscuro));
+//        }//else{holder.card_operacionhome.setCardBackgroundColor(getResources().getColor(R.color.colorAccent));}
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
