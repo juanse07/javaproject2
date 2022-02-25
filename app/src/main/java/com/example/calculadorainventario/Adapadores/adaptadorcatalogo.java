@@ -24,6 +24,7 @@ import com.example.calculadorainventario.R;
 import com.example.calculadorainventario.SharedViewModel;
 import com.example.calculadorainventario.Constructores.cuerospinner;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -82,13 +83,13 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
 
     @Override
     public void onBindViewHolder(@NonNull final adaptadorcatalogo.ViewHolder holder, final int position) {
-        holder.preciotext.setText("1000");
+        holder.txcatprice.setText("1000");
         holder.canttext2.setText("1");
 
         //DataProcessor dataProcessor = new DataProcessor();
        // holder.itemView.setTag(productos.get(position));
-        //holder.preciotext.setText(dataProcessor.getStr("precio"));
-       holder.preciotext.setText(productos.get(position).getPrecio());
+        //holder.txcatprice.setText(dataProcessor.getStr("precio"));
+       holder.txcatprice.setText(productos.get(position).getPrecio());
         holder.nombreproducto.setText(productos.get(position).getTIPO_CUERO());
 
         final String Ritmo1=productos.get(position).getRitmo();
@@ -104,7 +105,7 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
 
                 intent.putExtra("producto",holder.nombreproducto.getText().toString());
                 intent.putExtra("key",productos.get(position).getKey());
-                intent.putExtra("precio",holder.preciotext.getText().toString());
+                intent.putExtra("precio",holder.txcatprice.getText().toString());
                 intent.putExtra("estado",estadoimp);
                 intent.putExtra("ritmo",Ritmo1);
                 intent.putExtra("impuesto",Impuesto1);
@@ -116,11 +117,11 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
         holder.preciomas.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               int valorprecio = Integer.parseInt(holder.preciotext.getText().toString());
+               int valorprecio = Integer.parseInt(holder.txcatprice.getText().toString());
 
                int valorritmo = 50;
                int valornuevosuma = valorprecio + valorritmo;
-               holder.preciotext.setText(valornuevosuma + "");
+               holder.txcatprice.setText(valornuevosuma + "");
 
 
 
@@ -133,12 +134,12 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
        holder.preciomenos.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               int valorprecio = Integer.parseInt(holder.preciotext.getText().toString());
+               int valorprecio = Integer.parseInt(holder.txcatprice.getText().toString());
 //               int valorritmo = Integer.parseInt(Ritmo1);
                int valorritmo = 50;
 
                int valornuevosuma = valorprecio - valorritmo;
-               holder.preciotext.setText(valornuevosuma + "");
+               holder.txcatprice.setText(valornuevosuma + "");
 
            }
        });
@@ -156,6 +157,23 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
 
 
 
+
+            }
+        });
+        holder.txcatprice.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
+                ;
+                View view=LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
+                builder.setView(view);
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
+                final AlertDialog alertDialog=builder.create();
+                if(alertDialog.getWindow() !=null){
+                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+                }
+                alertDialog.show();
 
             }
         });
@@ -193,7 +211,7 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
                 View view=LayoutInflater.from(v.getContext()).inflate(R.layout.confirmationdialog,(ConstraintLayout)v.findViewById(R.id.parental1));
                 builder.setView(view);
                 ((TextView) view.findViewById(R.id.txproducalert)).setText(holder.nombreproducto.getText().toString());
-                ((TextView) view.findViewById(R.id.txpricealert)).setText(holder.preciotext.getText().toString());
+                ((TextView) view.findViewById(R.id.txpricealert)).setText(holder.txcatprice.getText().toString());
                 ((TextView) view.findViewById(R.id.txquantityalert)).setText(holder.canttext2.getText().toString());
                 if(holder.checkIVA.isChecked()){
                 ((TextView) view.findViewById(R.id.taxtview)).setText(holder.itemView.getResources().getString(R.string.Tax_included));}else{
@@ -220,7 +238,7 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
 
                         //cuerospinner current = productos.get(position);
                         String Nombre_prod= holder.nombreproducto.getText().toString();
-                        CharSequence Precio=holder.preciotext.getText();
+                        CharSequence Precio=holder.txcatprice.getText();
                         CharSequence Producto=holder.nombreproducto.getText();
                         Double Impuesto=Double.parseDouble(productos.get(position).getImpuesto().toString());
 
@@ -231,7 +249,7 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
                         clickInterface1.passingproductoClick(position,Producto,Precio,Cantidad);
                         clickInterface1.passingprecio1Click(position,Precio);
 
-                        Double Precio_prod=Double.parseDouble(holder.preciotext.getText().toString());
+                        Double Precio_prod=Double.parseDouble(holder.txcatprice.getText().toString());
                         Double Cant_Prod= Double.parseDouble(holder.canttext2.getText().toString());
 
 //                int valorritmo = 1;
@@ -259,7 +277,7 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
 
                         final String id = mAuth.getCurrentUser().getUid();
                         ref = FirebaseDatabase.getInstance().getReference().child("PRODUCTOS").child(id).child(productos.get(position).getKey());
-                        ref.child("Precio").setValue(holder.preciotext.getText().toString());
+                        ref.child("Precio").setValue(holder.txcatprice.getText().toString());
                         if(holder.checkIVA.isChecked()){
                             ref.child("Estado_Imp").setValue("SI");}else { ref.child("Estado_Imp").setValue("NO");}
 
@@ -274,6 +292,7 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
                         alertDialog.dismiss();
                     }
                 });
+
 
 
 
@@ -327,7 +346,7 @@ private Filter FiltroProducto=new Filter() {
 };
 
     public class ViewHolder extends RecyclerView.ViewHolder  {
-        TextView nombreproducto,canttext2;
+        TextView nombreproducto,canttext2,txcatprice;
         Button buttonaddproducto;
         ImageView preciomas, preciomenos,configcrear,cantmenos2,cantmas2;
         CheckBox checkIVA;
@@ -355,6 +374,7 @@ private Filter FiltroProducto=new Filter() {
             preciotext=itemView.findViewById(R.id.preciotext);
             configcrear=itemView.findViewById(R.id.deletesym);
             checkIVA=itemView.findViewById(R.id.checkIVA);
+            txcatprice=itemView.findViewById(R.id.txcatprice);
 
 
             mAuth = FirebaseAuth.getInstance();

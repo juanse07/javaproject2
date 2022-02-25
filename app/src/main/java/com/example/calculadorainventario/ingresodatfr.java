@@ -46,7 +46,7 @@ public class ingresodatfr extends Fragment implements ClickInterface1 {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    TextView txcliente1, tx_cliente, tx_producto;
+    TextView txcliente1, tx_cliente, tx_producto,txdaysterm;
     // Spinner listaclientes, listaclientes2,listacueros,spoperacion,spmetodo;
     EditText precio1, pagotext,txtterminos;
     RecyclerView.Adapter madapter;
@@ -132,6 +132,7 @@ ArrayList<NoteProducto>notesProd;
         pagomenos = ingresoview.findViewById(R.id.pagomenos);
         pagomas = ingresoview.findViewById(R.id.pagomas);
         pagotext = ingresoview.findViewById(R.id.pagotext);
+        txdaysterm=ingresoview.findViewById(R.id.txdaysterm);
         imagefrase=ingresoview.findViewById(R.id.imagefrase);
         txtterminos=ingresoview.findViewById(R.id.txtterminos);
         imgSignature11=ingresoview.findViewById(R.id.imgSignature11);
@@ -157,11 +158,11 @@ ArrayList<NoteProducto>notesProd;
 
 
         //card_operacion = ingresoview.findViewById(R.id.card_operacion);
-        pagotext.setText("0");
+        txdaysterm.setText("0");
 
 
 
-        pagotext.setText( Constants.getSP(getContext()).getDIAS());
+        txdaysterm.setText( Constants.getSP(getContext()).getDIAS());
 
 
 
@@ -193,11 +194,11 @@ ArrayList<NoteProducto>notesProd;
 
             imgSignature11.setImageBitmap(myBitmap2);
         }
-        if(pagotext.getText().toString().equals("0")){
+        if(txdaysterm.getText().toString().equals("0")){
             txtterminos.setText("El cliente se compromete a pagar en un plazo no superior a"+" "+ "contado");
 
         }else {
-            txtterminos.setText("El cliente se compromete a pagar en un plazo no superior a" + " " + pagotext.getText().toString() + " " + "días");
+            txtterminos.setText("El cliente se compromete a pagar en un plazo no superior a" + " " + txdaysterm.getText().toString() + " " + "días");
         }
 
        // loadRadioButtons3();
@@ -284,34 +285,34 @@ ArrayList<NoteProducto>notesProd;
 pagomas.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        int getinput = Integer.parseInt(pagotext.getText().toString());
+        int getinput = Integer.parseInt(txdaysterm.getText().toString());
         //shareViewModel2.setHorapdf(txactual.getText().toString());
         if (getinput == 0) {
-            int valorprecio = Integer.parseInt(pagotext.getText().toString());
+            int valorprecio = Integer.parseInt(txdaysterm.getText().toString());
             int valorritmo = 8;
             int valornuevosuma = valorprecio + valorritmo;
-            pagotext.setText(valornuevosuma + "");
+            txdaysterm.setText(valornuevosuma + "");
 
 
 
         } else if (getinput == 8) {
-            int valorprecio = Integer.parseInt(pagotext.getText().toString());
+            int valorprecio = Integer.parseInt(txdaysterm.getText().toString());
             int valorritmo = 7;
             int valornuevosuma = valorprecio + valorritmo;
-            pagotext.setText(valornuevosuma + "");
+            txdaysterm.setText(valornuevosuma + "");
         } else if (getinput >= 15 && getinput < 120) {
-            int valorprecio = Integer.parseInt(pagotext.getText().toString());
+            int valorprecio = Integer.parseInt(txdaysterm.getText().toString());
             int valorritmo = 15;
             int valornuevosuma = valorprecio + valorritmo;
-            pagotext.setText(valornuevosuma + "");
+            txdaysterm.setText(valornuevosuma + "");
 
 
 
 
         }
-        sharedViewModel.setDias(pagotext.getText().toString());
-        Constants.getSP(ingresoview.getContext()).setDIAS(pagotext.getText().toString());
-        sharedViewModel.setDiasfinal(Integer.parseInt(pagotext.getText().toString()));
+        sharedViewModel.setDias(txdaysterm.getText().toString());
+        Constants.getSP(ingresoview.getContext()).setDIAS(txdaysterm.getText().toString());
+        sharedViewModel.setDiasfinal(Integer.parseInt(txdaysterm.getText().toString()));
 
 
 
@@ -325,33 +326,33 @@ pagomas.setOnClickListener(new View.OnClickListener() {
         pagomenos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int getinput = Integer.parseInt(pagotext.getText().toString());
+                int getinput = Integer.parseInt(txdaysterm.getText().toString());
                 //shareViewModel2.setHorapdf(txactual.getText().toString());
                 if (getinput == 8) {
-                    int valorprecio = Integer.parseInt(pagotext.getText().toString());
+                    int valorprecio = Integer.parseInt(txdaysterm.getText().toString());
                     int valorritmo = 8;
                     int valornuevosuma = valorprecio - valorritmo;
-                    pagotext.setText(valornuevosuma + "");
+                    txdaysterm.setText(valornuevosuma + "");
                 } else if (getinput > 15 && getinput <= 120) {
-                    int valorprecio = Integer.parseInt(pagotext.getText().toString());
+                    int valorprecio = Integer.parseInt(txdaysterm.getText().toString());
                     int valorritmo = 15;
                     int valornuevosuma = valorprecio - valorritmo;
-                    pagotext.setText(valornuevosuma + "");
+                    txdaysterm.setText(valornuevosuma + "");
 
 
 
                 } else if (getinput == 15) {
-                    int valorprecio = Integer.parseInt(pagotext.getText().toString());
+                    int valorprecio = Integer.parseInt(txdaysterm.getText().toString());
                     int valorritmo = 7;
                     int valornuevosuma = valorprecio - valorritmo;
-                    pagotext.setText(valornuevosuma + "");
+                    txdaysterm.setText(valornuevosuma + "");
 
 
                 }
-                sharedViewModel.setDias(pagotext.getText().toString());
-                Constants.getSP(ingresoview.getContext()).setDIAS(pagotext.getText().toString());
+                sharedViewModel.setDias(txdaysterm.getText().toString());
+                Constants.getSP(ingresoview.getContext()).setDIAS(txdaysterm.getText().toString());
 
-                sharedViewModel.setDiasfinal(Integer.parseInt(pagotext.getText().toString()));
+                sharedViewModel.setDiasfinal(Integer.parseInt(txdaysterm.getText().toString()));
 
 
             }
@@ -451,7 +452,7 @@ pagomas.setOnClickListener(new View.OnClickListener() {
         SharedPreferences.Editor editor = calcpreference2.edit();
         editor
                 .putInt("atributocheck2", grupotipo.indexOfChild(ingresoview.findViewById(grupotipo.getCheckedRadioButtonId())))
-                .putString("diasdepago", pagotext.getText().toString());
+                .putString("diasdepago", txdaysterm.getText().toString());
         if(rbborrador.isChecked()) {
                 editor.putString("Tipo", rbborrador.getText().toString());
         }else if(rbcompra.isChecked()){
@@ -475,7 +476,7 @@ pagomas.setOnClickListener(new View.OnClickListener() {
         int i = calcpreference2.getInt("atributocheck2", -1);
         if (i >= 0) {
             ((RadioButton) ((RadioGroup) ingresoview.findViewById(R.id.grupotipo)).getChildAt(i)).setChecked(true);
-            pagotext.setText(calcpreference2.getString("diasdepago", "0"));
+            txdaysterm.setText(calcpreference2.getString("diasdepago", "0"));
         }
 
 
@@ -489,7 +490,7 @@ pagomas.setOnClickListener(new View.OnClickListener() {
         int i = creacion.getInt("estado", -1);
         if (i >= 0) {
             ((RadioButton) ((RadioGroup) ingresoview.findViewById(R.id.grupotipo)).getChildAt(i)).setChecked(true);
-            pagotext.setText(creacion.getString("diasdepago1", "0"));
+            txdaysterm.setText(creacion.getString("diasdepago1", "0"));
         }
 
 
@@ -600,8 +601,8 @@ pagomas.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onStart() {
 
-        super.onStart();sharedViewModel.setDias(pagotext.getText().toString());
-        sharedViewModel.setDiasfinal(Integer.parseInt(pagotext.getText().toString()));
+        super.onStart();sharedViewModel.setDias(txdaysterm.getText().toString());
+        sharedViewModel.setDiasfinal(Integer.parseInt(txdaysterm.getText().toString()));
 
     }
 }

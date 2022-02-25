@@ -346,6 +346,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
                             item.getFecha().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
                             item.getEstado().toLowerCase().contains(constraint.toString().toLowerCase().trim())
 
+
                     )
                     {
                         filteredHomeList.add(item);

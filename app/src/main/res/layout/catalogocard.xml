@@ -274,6 +274,17 @@
                             app:srcCompat="@drawable/ic_remove_black_18dp" />
                     </com.google.android.material.card.MaterialCardView>
 
+                    <TextView
+                        android:id="@+id/txcatprice"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="60"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="TextView"
+                        android:textColor="@color/colorNegrobrillante"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
                     <EditText
                         android:id="@+id/preciotext"
                         android:layout_width="0dp"
@@ -285,7 +296,8 @@
                         android:inputType="number"
                         android:textColor="@color/colorNegrobrillante"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:visibility="gone" />
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"

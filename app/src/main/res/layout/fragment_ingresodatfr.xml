@@ -291,7 +291,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center_vertical"
-                            android:layout_weight="20"
+                            android:layout_weight="30"
                             android:gravity="center_vertical"
                             android:text="@string/Payment_Term" />
 
@@ -303,13 +303,6 @@
                             android:orientation="horizontal"
                             android:weightSum="100">
 
-                            <ImageView
-                                android:id="@+id/pagomenos"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="20"
-                                android:src="@drawable/ic_remove_black_18dp" />
 
                             <EditText
                                 android:id="@+id/pagotext"
@@ -318,15 +311,63 @@
                                 android:layout_weight="60"
                                 android:ems="10"
                                 android:inputType="number"
-                                android:textAlignment="center" />
+                                android:textAlignment="center"
+                                android:visibility="gone" />
 
-                            <ImageView
-                                android:id="@+id/pagomas"
+                            <com.google.android.material.card.MaterialCardView
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginBottom="5dp"
                                 android:layout_weight="20"
-                                android:src="@drawable/ic_add_black_18dp" />
+                                app:strokeColor="@color/colorRappi"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:id="@+id/pagomenos"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center_horizontal|center_vertical"
+                                    android:layout_weight="0"
+                                    android:src="@drawable/ic_remove_black_18dp" />
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <TextView
+                                android:id="@+id/txdaysterm"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="60"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:text="TextView"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:layout_weight="20"
+                                app:strokeColor="@color/colorverdeesmeralda"
+                                app:strokeWidth="1dp">
+
+                                <ImageView
+                                    android:id="@+id/pagomas"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center_horizontal|center_vertical"
+                                    android:layout_weight="0"
+                                    android:src="@drawable/ic_add_black_18dp" />
+                            </com.google.android.material.card.MaterialCardView>
 
                         </LinearLayout>
 

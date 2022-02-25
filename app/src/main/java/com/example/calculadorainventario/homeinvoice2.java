@@ -13,6 +13,7 @@ import android.provider.CalendarContract;
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.style.TextAppearanceSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -301,9 +302,15 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
             public void onChanged(CharSequence charSequence) {
                 tipodoc2 = charSequence.toString();
                 //FilterData();
+                CharSequence charsales=getResources().getString(R.string.Sales);
 
-                if (charSequence.equals("Venta") || charSequence.equals("Compra") || charSequence.equals("Borrador")) {
+                if (charSequence.equals(getResources().getString(R.string.Receipts))) {
                     edtbuscar.setQuery(charSequence, false);
+
+
+
+//                }charSequence.equals(getResources().getString(R.string.Receipts)) || charSequence.equals(getResources().getString(R.string.Draft))) {
+//                    edtbuscar.setQuery(charSequence, false);
                 } else if (charSequence.equals("Noviembre")) {
                     edtbuscar.setQuery("nov", false);
                 } else if (charSequence.equals("Octubre")) {
@@ -478,6 +485,7 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         //FilterData();
 
         sharedViewModel = new ViewModelProvider(homeinvoice2.this).get(SharedViewModel.class);
+        Log.d("value",String.valueOf(tipoDoc));
 
 
         sharedViewModel.setSearchTipo(tipoDoc);

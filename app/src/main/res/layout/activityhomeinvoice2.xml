@@ -94,7 +94,11 @@
                 android:gravity="start|center_vertical"
                 android:text="Ronaldinho Gaucho"
                 android:textColor="@color/colorNegrobrillante"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="9sp"
+                android:autoSizeMaxTextSize="12sp"
+                android:autoSizeStepGranularity="1sp"/>
 
             <TextView
                 android:id="@+id/txinvdate"
@@ -109,7 +113,11 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:text="14/feb/2022"
                 android:textColor="@color/colorNegro"
-                android:textSize="13sp" />
+                android:textSize="12sp"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="9sp"
+                android:autoSizeMaxTextSize="12sp"
+                android:autoSizeStepGranularity="1sp"/>
 
             <TextView
                 android:id="@+id/txinvtotal"
@@ -123,7 +131,11 @@
                 android:gravity="right|center_vertical"
                 android:text="13,299,750"
                 android:textColor="@color/colorNegro"
-                android:textSize="13sp" />
+                android:textSize="12sp"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="9sp"
+                android:autoSizeMaxTextSize="12sp"
+                android:autoSizeStepGranularity="1sp"/>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvdate2"
