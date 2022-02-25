@@ -489,17 +489,17 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 switch (position) {
                     case 1:
-                        tab.setText("Catálogo");
+                        tab.setText(getResources().getString(R.string.Products));
 
 
 
                         break;
                     case 0:
-                        tab.setText("Clientes");
+                        tab.setText(getResources().getString(R.string.Costumers));
 
                         break;
                     default:
-                        tab.setText("Prefactura");
+                        tab.setText(getResources().getString(R.string.Pre_order));
                         badgeDrawable = tab.getOrCreateBadge();
                         badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorRappi));
                         badgeDrawable.setVisible(false);

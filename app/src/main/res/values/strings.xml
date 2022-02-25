@@ -11,8 +11,9 @@
     <string name="Doc_list">Document List</string>
     <string name="New_Costumer">New Costumer</string>
     <string name="New_Product">New Product</string>
-    <string name="Costumers">Costumer</string>
+    <string name="Costumers">Customer</string>
     <string name="Products">Products</string>
+    <string name="Product">Product</string>
     <string name="Pre_order">PreOrder</string>
     <string name="Product_name">Product Name</string>
     <string name="Quantity">Quantity</string>
@@ -25,10 +26,26 @@
     <string name="Subtotal">Subtotal</string>
     <string name="Invoice_info">Invoice Info</string>
     <string name="Products_Resume">Products Resume</string>
-    <string name="Payment_Term">Payment_term</string>
+    <string name="Payment_Term">Payment term</string>
     <string name="Days">Days</string>
     <string name="Sales">Sales</string>
     <string name="Receipts">Receipts</string>
+    ////
+    <string name="Select">Select</string>
+    <string name="Open_PDF">Open PDF</string>
+    <string name="Notes">Notes</string>
+    <string name="leyenda_impuesto">Tax Included on Tota</string>
+    <string name="Choose_One">Choose one</string>
+    <string name="Confirmation_Cart">Please kindly review the info before adding this item to the cart</string>
+    <string name="No">NO</string>
+    <string name="Yes">YES</string>
+    <string name="Quote">Quote</string>
+    <string name="Tax_included">Tax is Included</string>
+    <string name="Acept">Acept</string>
+    <string name="Cancel">Cancel</string>
+
+
+
 
 
     <string name="_1">1</string>

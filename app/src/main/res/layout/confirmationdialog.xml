@@ -13,7 +13,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
-        android:text="NO"
+        android:text="@string/Cancel"
         android:textColor="@color/colorGrisoscuro"
         app:backgroundTint="@color/colorBlancox"
         app:cornerRadius="20dp"
@@ -30,7 +30,7 @@
         android:layout_height="60dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
-        android:text="YES"
+        android:text="@string/Acept"
         app:backgroundTint="@color/colorAccent"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -93,7 +93,7 @@
                         android:layout_gravity="center_horizontal|center_vertical"
                         android:layout_weight="70"
                         android:gravity="center_horizontal|center_vertical"
-                        android:text="Add to cart Confirmation"
+                        android:text="@string/Confirmation_Cart"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -118,7 +118,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_weight="50"
                         android:gravity="start|center_vertical"
-                        android:text="Product"
+                        android:text="@string/Product"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -129,7 +129,7 @@
                         android:layout_gravity="center_horizontal|center_vertical"
                         android:layout_weight="25"
                         android:gravity="center_horizontal|center_vertical"
-                        android:text="Price"
+                        android:text="@string/Price"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -140,7 +140,7 @@
                         android:layout_gravity="center_horizontal|center_vertical"
                         android:layout_weight="25"
                         android:gravity="center_horizontal|center_vertical"
-                        android:text="Quantity"
+                        android:text="@string/Quantity"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>

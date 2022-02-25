@@ -39,7 +39,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_weight="40"
                         android:gravity="start"
-                        android:text="Product" />
+                        android:text="@string/Product_Name" />
 
                     <TextView
                         android:id="@+id/textView48"
@@ -50,7 +50,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_weight="30"
                         android:gravity="start"
-                        android:text="Price" />
+                        android:text="@string/Price" />
 
                     <TextView
                         android:id="@+id/textView47"
@@ -61,7 +61,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_weight="20"
                         android:gravity="start"
-                        android:text="Quantity" />
+                        android:text="@string/Quantity" />
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -93,7 +93,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_weight="20"
                         android:gravity="center_vertical"
-                        android:text="Cliente" />
+                        android:text="@string/Customer_Name" />
 
                     <TextView
                         android:id="@+id/tx_cliente"
@@ -134,7 +134,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_weight="20"
                         android:gravity="center_vertical"
-                        android:text="Logotipo" />
+                        android:text="@string/Logo" />
 
                     <ImageView
                         android:id="@+id/logomini"
@@ -176,7 +176,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_weight="20"
                         android:gravity="center_vertical"
-                        android:text="Firma Vendedor" />
+                        android:text="@string/Signature" />
 
                     <ImageView
                         android:id="@+id/imgSignature11"
@@ -259,7 +259,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_weight="20"
                             android:gravity="center_vertical"
-                            android:text="Condiciones de pago" />
+                            android:text="@string/Payment_Term" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -337,7 +337,7 @@
 
 
                         android:layout_weight="90"
-                        android:text="Incluir Impuesto en precio final" />
+                        android:text="@string/leyenda_impuesto" />
 
                 </LinearLayout>
 
@@ -354,7 +354,7 @@
                         android:id="@+id/textView32"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Escoge" />
+                        android:text="@string/Choose_One" />
 
                     <RadioGroup
                         android:id="@+id/grupotipo"
@@ -365,19 +365,19 @@
                             android:id="@+id/rbventa"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Venta" />
+                            android:text="@string/Sales" />
 
                         <RadioButton
                             android:id="@+id/rbcompra"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Compra" />
+                            android:text="@string/Receipts" />
 
                         <RadioButton
                             android:id="@+id/rbborrador"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Borrador" />
+                            android:text="@string/Draft" />
                     </RadioGroup>
                 </LinearLayout>
 
@@ -405,7 +405,7 @@
                             android:id="@+id/textView33"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Notas" />
+                            android:text="@string/Notes" />
                     </LinearLayout>
 
                     <EditText

@@ -108,6 +108,8 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        Lang=Constants.getSP(getApplicationContext()).getLANG();
+        SetLanguage(Lang);
         setContentView(R.layout.activity_home1);
         barhome1 = findViewById(R.id.barhome1);
 
@@ -134,8 +136,7 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
                 ListaProd1 = noteProductos;
             }
         });
-        Lang=Constants.getSP(getApplicationContext()).getLANG();
-        SetLanguage(Lang);
+
 
 
 
@@ -549,6 +550,8 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Lang=Constants.getSP(getApplicationContext()).getLANG();
+        SetLanguage(Lang);
         getMenuInflater().inflate(R.menu.bottom_menuup, menu);
         MenuItem Buscador = menu.findItem(R.id.edtbuscar2);
         MenuInflater inflater = getMenuInflater();
@@ -641,6 +644,9 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 
         configuration.locale = locale;
         getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
+//        Intent refresh = new Intent(getIntent());
+//        startActivity(refresh);
+//        finish();
 
 //        Constants.getSP(getApplicationContext()).setLANG(Language);
     }

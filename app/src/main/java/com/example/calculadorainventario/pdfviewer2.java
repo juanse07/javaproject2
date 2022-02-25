@@ -85,6 +85,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     NoteProdViewModel noteProdViewModel;
     DecimalFormat format = new DecimalFormat("###,###,##0");
     String SumaResultado;
+    String Invoice,Receipt,Quote,Days,Terms,Customer,Product,Date,Due_Date,Total,Subtotal,Info_Fac,List_Products,
+            Quantity,Price,Tax;
 
     StorageReference storageReference;
 
@@ -123,6 +125,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     String pattern = "EEEEE MMMMM yyyy HH:mm:ss.SSSZ";
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "US"));
     String mFilename = simpleDateFormat.format(System.currentTimeMillis());
+
 
 
 
@@ -166,6 +169,23 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 //                Listadobles2=notes;
 //            }
 //        });
+        Invoice=getResources().getString(R.string.Invoice);
+        Receipt=getResources().getString(R.string.Receipts);
+        Quote=getResources().getString(R.string.Quote);
+        Days=getResources().getString(R.string.Days);
+        Terms=getResources().getString(R.string.Payment_Term);
+        Customer=getResources().getString(R.string.Costumers);
+        Product=getResources().getString(R.string.Product_Name);
+        Date=getResources().getString(R.string.Date);
+        Due_Date=getResources().getString(R.string.Due_Date);
+        Total=getResources().getString(R.string.Total);
+        Subtotal=getResources().getString(R.string.Subtotal);
+        Info_Fac=getResources().getString(R.string.Invoice_info);
+        List_Products=getResources().getString(R.string.Doc_list);
+        Quantity = getResources().getString(R.string.Quantity);
+        Price=getResources().getString(R.string.Price);
+        Tax=getResources().getString(R.string.Tax);
+
 
         listacuero3= (ArrayList<Double>) getIntent().getSerializableExtra("WLTP_list");
 
@@ -768,10 +788,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 image = Image.getInstance(imFile);
                 image.scaleAbsolute(160f,70f);
                 image.setAlignment(Image.LEFT);
-                Paragraph factu=new Paragraph("Factura de Venta",regularReportA);
+                Paragraph factu=new Paragraph(Invoice,regularReportA);
                 factu.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
-              Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
+                Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
+              Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
                 Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
                 pdfPtableimage.setWidthPercentage(100);
@@ -799,11 +819,11 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 image = Image.getInstance(imFile);
                 image.scaleAbsolute(100f,100f);
                 image.setAlignment(Image.LEFT);
-                Paragraph factu=new Paragraph("Factura de Venta",regularReportA);
+                Paragraph factu=new Paragraph(Invoice,regularReportA);
                 factu.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
+                Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
                 Plazo1.setAlignment(Element.ALIGN_RIGHT);
-              Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
+              Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
                 Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
                 pdfPtableimage.setWidthPercentage(100);
@@ -832,10 +852,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 image = Image.getInstance(imFile);
                 image.scaleAbsolute(160f,70f);
                 image.setAlignment(Image.LEFT);
-                Paragraph factu=new Paragraph("Factura de Compra",regularReportA);
-                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
+                Paragraph factu=new Paragraph(Receipt,regularReportA);
+                Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
                 Plazo1.setAlignment(Element.ALIGN_RIGHT);
-               Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
+               Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
                 Plazo.setAlignment(Element.ALIGN_RIGHT);
                 factu.setAlignment(Element.ALIGN_RIGHT);
 
@@ -868,11 +888,11 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 image = Image.getInstance(imFile);
                 image.scaleAbsolute(100f,100f);
                 image.setAlignment(Image.LEFT);
-                Paragraph factu=new Paragraph("Factura de Compra",regularReportA);
+                Paragraph factu=new Paragraph(Receipt,regularReportA);
                 factu.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
+                Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
                 Plazo1.setAlignment(Element.ALIGN_RIGHT);
-               Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
+               Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
                 Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
                 pdfPtableimage.setWidthPercentage(100);
@@ -902,11 +922,11 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 image = Image.getInstance(imFile);
                 image.scaleAbsolute(160f,70f);
                 image.setAlignment(Image.LEFT);
-                Paragraph factu=new Paragraph("Cotización",regularReportA);
+                Paragraph factu=new Paragraph(Quote,regularReportA);
                 factu.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
+                Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
                 Plazo1.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
+                Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
                 Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
                 pdfPtableimage.setWidthPercentage(100);
@@ -935,11 +955,11 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 image = Image.getInstance(imFile);
                 image.scaleAbsolute(100f,100f);
                 image.setAlignment(Image.LEFT);
-                Paragraph factu=new Paragraph("Cotización",regularReportA);
+                Paragraph factu=new Paragraph(Quote,regularReportA);
                 factu.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo1=new Paragraph("Término de pago",regularTotalBold);
+                Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
                 Plazo1.setAlignment(Element.ALIGN_RIGHT);
-              Paragraph Plazo=new Paragraph(diaspago+" "+"días",regularTotalBold);
+              Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
                 Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
                 pdfPtableimage.setWidthPercentage(100);
@@ -997,11 +1017,11 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             pcompany.setAlignment(Element.ALIGN_RIGHT);
             pcompany.setSpacingAfter(40);
 
-            Paragraph pdatosgenerales = new Paragraph("INFORMACIÓN FACTURA", regularReport2);
+            Paragraph pdatosgenerales = new Paragraph(Info_Fac, regularReport2);
             pdatosgenerales.setAlignment(Element.ALIGN_LEFT);
             pdatosgenerales.setSpacingAfter(10);
 
-            Paragraph plista = new Paragraph("LISTADO PRODUCTOS", regularReport2);
+            Paragraph plista = new Paragraph(List_Products, regularReport2);
             plista.setAlignment(Element.ALIGN_LEFT);
             plista.setSpacingAfter(10);
 
@@ -1021,18 +1041,18 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
 
 
-            Paragraph nombre1 = new Paragraph("Nombre:", regularSub2);
+            Paragraph nombre1 = new Paragraph(Customer+":", regularSub2);
             Paragraph vnombre = new Paragraph(nombreventas2,regularAddress);
             nombre1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
             vnombre.setAlignment(Element.ALIGN_RIGHT);
 
 
 
-            Paragraph fecha1 = new Paragraph("Fecha", regularSub2);
+            Paragraph fecha1 = new Paragraph(Date+":", regularSub2);
           Paragraph vfecha1 = new Paragraph(fechaventas2,regularAddress);
 
 
-            Paragraph duefecha = new Paragraph("Due Date", regularSub2);
+            Paragraph duefecha = new Paragraph(Due_Date+":", regularSub2);
             Paragraph duevfecha1 = new Paragraph(Fecha2,regularAddress);
             duefecha.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
             duevfecha1.setAlignment(Element.ALIGN_RIGHT);
@@ -1049,12 +1069,12 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
 
 
-            Paragraph producto1 = new Paragraph("Producto:", regularSub2);
+            Paragraph producto1 = new Paragraph(Product+":", regularSub2);
             Paragraph vproducto = new Paragraph(productoventas2,regularAddress);
             producto1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
             vproducto.setAlignment(Element.ALIGN_RIGHT);
 
-            Paragraph precio1 = new Paragraph("Precio:", regularSub2);
+            Paragraph precio1 = new Paragraph(Price+":", regularSub2);
             Paragraph vprecio = new Paragraph(precioventas2,regularAddress);
             precio1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
             vprecio.setAlignment(Element.ALIGN_RIGHT);
@@ -1067,7 +1087,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
 
 
-            Paragraph valor1 = new Paragraph("Valor:", regularSub2);
+            Paragraph valor1 = new Paragraph(Total+":", regularSub2);
             DecimalFormat formatter = new DecimalFormat("###,###,##0");
 
           Paragraph vvalor = new Paragraph(formatter.format(Double.parseDouble(valorventas2))+" USD",regularAddress);
@@ -1271,22 +1291,22 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 //            Atable3.setHorizontalAlignment(Element.ALIGN_RIGHT);
 //            Atable3.setWidthPercentage(21);
 
-            Paragraph Product_name=new Paragraph("Product Name",regularTotalBold);
+            Paragraph Product_name=new Paragraph(Product,regularTotalBold);
             Product_name.setAlignment(Element.ALIGN_LEFT);
-            Paragraph Quantity=new Paragraph("Quantity",regularTotalBold);
+            Paragraph Quantity=new Paragraph(getResources().getString(R.string.Quantity),regularTotalBold);
             Quantity.setAlignment(Element.ALIGN_RIGHT);
-            Paragraph Price=new Paragraph("Price",regularTotalBold);
+            Paragraph Price=new Paragraph(getResources().getString(R.string.Price),regularTotalBold);
             Price.setAlignment(Element.ALIGN_RIGHT);
 
-            Paragraph Result=new Paragraph("Result",regularTotalBold);
+            Paragraph Result=new Paragraph(Subtotal,regularTotalBold);
             Result.setAlignment(Element.ALIGN_RIGHT);
 
-            Paragraph Tax=new Paragraph("Tax",regularTotalBold);
+            Paragraph Tax=new Paragraph(getResources().getString(R.string.Tax),regularTotalBold);
             Tax.setAlignment(Element.ALIGN_RIGHT);
-            Paragraph Netvalue=new Paragraph("Net Value",regularTotalBold);
+            Paragraph Netvalue=new Paragraph(Total,regularTotalBold);
             Netvalue.setAlignment(Element.ALIGN_RIGHT);
 
-            Paragraph Total=new Paragraph("Total",regularTotalBold);
+            Paragraph Total=new Paragraph(getResources().getString(R.string.Total),regularTotalBold);
             String Valorfooter=valorventas2;
 
 
@@ -1509,7 +1529,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
         }
 
 try {
-            Paragraph Terminos = new Paragraph("TÉRMINOS DE PAGO", regularReport2);
+            Paragraph Terminos = new Paragraph(Terms, regularReport2);
             Terminos.setAlignment(Element.ALIGN_LEFT);
             Terminos.setSpacingAfter(10);
             Terminos.setSpacingBefore(10);
@@ -1519,7 +1539,7 @@ try {
 //            if(diaspago.equals("0")){
 //                Txterminos.add(" "+"Contado ");}else{
 //
-//                Txterminos.add(" "+diaspago+ " "+"días");}
+//                Txterminos.add(" "+diaspago+ " "+Days);}
             Txterminos.setAlignment(Element.ALIGN_LEFT);
             Txterminos.setSpacingAfter(10);
             Txterminos.setSpacingBefore(3);
@@ -1567,8 +1587,8 @@ try {
             pdfPtablesign.getDefaultCell().setVerticalAlignment(Element.ALIGN_BOTTOM);
 
             pdfPtablesign.addCell(signcell);
-            pdfPtablesign.addCell(Nomsigncell);
-            pdfPtablesign.addCell(CCcell);
+//            pdfPtablesign.addCell(Nomsigncell);
+//            pdfPtablesign.addCell(CCcell);
             //pdfPtablesign.setExtendLastRow(true);
             //pdfPtablesign.setTotalWidth((mDoc.right()-mDoc.left())*pdfPtablesign.getWidthPercentage()/100f);
             //pdfPtablesign.writeSelectedRows(0, -1, mDoc.left(), mDoc.bottom()+pdfPtablesign.getTotalHeight(),writer1.getDirectContent());

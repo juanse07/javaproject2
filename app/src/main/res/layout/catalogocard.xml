@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="15"
                     android:gravity="center_horizontal"
-                    android:text="Tax. "
+                    android:text="@string/Tax"
                     android:textSize="13sp" />
 
                 <TextView
@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="70"
                     android:gravity="center_horizontal"
-                    android:text="Product Name"
+                    android:text="@string/Product_Name"
                     android:textSize="13sp" />
             </LinearLayout>
 
@@ -84,7 +84,7 @@
                     android:layout_weight="15"
                     android:gravity="top"
                     android:padding="5dp"
-                    android:text="I.V.A" />
+                    android:text="@string/Tax" />
 
                 <TextView
                     android:id="@+id/nombreproducto"
@@ -120,7 +120,7 @@
                 android:layout_weight="40"
 
 
-                android:text="Add"
+                android:text="@string/Add"
                 android:textColor="@color/colorAccent"
                 android:textSize="12dp"
                 android:visibility="visible"
@@ -152,7 +152,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="10"
                 android:gravity="start|top"
-                android:text="Qt."
+                android:text="@string/Quantity"
                 android:textSize="13sp" />
 
             <androidx.cardview.widget.CardView
@@ -235,7 +235,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="10"
                 android:gravity="start|top"
-                android:text="Price"
+                android:text="@string/Price"
                 android:textSize="13sp" />
 
             <androidx.cardview.widget.CardView

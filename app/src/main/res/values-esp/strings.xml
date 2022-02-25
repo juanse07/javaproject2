@@ -4,7 +4,7 @@
         <string name="app_name">PyMESoft</string>
         <string name="app_name2"><font color='#1D2E4A'>Facturas</font>"</string>
         <string name="Purchase">Compra</string>
-        <string name="Invoice">Venta</string>
+        <string name="Invoice">Factura de Venta</string>
         <string name="Draft">Borrador</string>
         <string name="Customer_Name">Nombre del Cliente</string>
         <string name="Product_Name">Nombre del Producto</string>
@@ -15,6 +15,7 @@
         <string name="New_Product">Nuevo Producto</string>
         <string name="Costumers">Cliente</string>
         <string name="Products">Productos</string>
+        <string name="Product">Producto</string>
         <string name="Pre_order">Pre-orden</string>
         <string name="Product_name">Nombre del Producto</string>
         <string name="Quantity">Cantidad</string>
@@ -31,6 +32,18 @@
         <string name="Days">Días</string>
         <string name="Sales">Ventas</string>
         <string name="Receipts">Compras</string>
+        <string name="Select">Seleccionar</string>
+        <string name="Open_PDF">Abrir PDF</string>
+        <string name="Notes">Notas</string>
+        <string name="leyenda_impuesto">Incluir Impuesto en precio final</string>"
+        <string name="Choose_One">Escoge una</string>
+        <string name="Confirmation_Cart">Por favor revisa la información del producto que estás apunto de agregar al Carrito</string>
+        <string name="No">NO</string>
+        <string name="Yes">SI</string>
+        <string name="Quote">Cotización</string>
+        <string name="Tax_included">el impuesto está incluido</string>
+        <string name="Acept">Aceptar</string>
+        <string name="Cancel">Cancelar</string>
 
 
         <string name="_1">1</string>
