@@ -49,6 +49,8 @@
         <string name="Address">Dirección</string>
         <string name="City">Ciudad</string>
         <string name="ZIP">Código Postal</string>
+        <string name="Save_newCli">Guardar como nuevo Cliente</string>
+        <string name="Phone_contact">También guardar como contacto del teléfono</string>
 
 
         <string name="_1">1</string>

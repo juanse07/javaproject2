@@ -427,7 +427,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.4"
-                android:text="Guardar tambien como contacto del telefono" />
+                android:text="@string/Phone_contact" />
 
             <Button
                 android:id="@+id/btnuevocliente"
@@ -439,7 +439,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_weight="0.4"
                 android:background="@drawable/btnnaranja"
-                android:text="Crear Cliente"
+                android:text="@string/Save_newCli"
                 app:backgroundTint="@null" />
         </LinearLayout>
 

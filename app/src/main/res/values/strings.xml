@@ -48,6 +48,8 @@
     <string name="Address">Address</string>
     <string name="City">City</string>
     <string name="ZIP">ZIP</string>
+    <string name="Save_newCli">Save new Client</string>
+    <string name="Phone_contact">Also save as a phone Contact</string>
 
 
 

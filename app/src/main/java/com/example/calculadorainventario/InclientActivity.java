@@ -391,14 +391,15 @@ public class InclientActivity extends AppCompatActivity {
                     Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION);
                     intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
                     intent
-                            .putExtra(ContactsContract.Intents.Insert.PHONE, txinputtel1.getText())
+                            .putExtra(ContactsContract.Intents.Insert.PHONE, phonetxcl.getText())
                             .putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_WORK)
-                            .putExtra(ContactsContract.Intents.Insert.NAME, txinputnombre.getText().toString());
+                            .putExtra(ContactsContract.Intents.Insert.NAME, customertxcl.getText().toString());
                     startActivity(intent);
+//                    Intent i = new Intent(InclientActivity.this,fragments3.class);
+//                    startActivity(i);
                 }else {
-                    ((TextInputEditText) findViewById(R.id.txinputnombre)).setText("");
-
-                    ((TextInputEditText) findViewById(R.id.txinputtel1)).setText("");
+                    Intent i = new Intent(InclientActivity.this,fragments3.class);
+                    startActivity(i);
                 }
 
 

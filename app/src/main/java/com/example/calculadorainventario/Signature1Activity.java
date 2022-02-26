@@ -22,6 +22,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,7 +38,7 @@ public class Signature1Activity extends Activity implements View.OnTouchListener
     Paint paint;
     OutputStream outputStream;
     private static final int REQUEST_CODE_ASK_PERMISSIONS = 111;
-    CardView cardguardar,cardborrar;
+    FloatingActionButton cardguardar,cardborrar;
     View view;
     MotionEvent event;
 
