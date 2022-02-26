@@ -2,18 +2,26 @@ package com.example.calculadorainventario;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,6 +42,8 @@ public class Crearproducto extends AppCompatActivity {
     DatabaseReference ref;
     BottomNavigationView navclientenuevo;
     FloatingActionButton floatingActionButton5;
+    MaterialCardView nprodbtpr,prbtpro2,taxbtpromenos,taxbtpromas,pacebtmenos,pacebtmas;
+    TextView nprodtxpr,prtxpro2,taxtxpro,pacetxpro;
 
 
 
@@ -46,6 +56,16 @@ public class Crearproducto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crearproducto);
+        nprodbtpr=findViewById(R.id.nprobtpr);
+        prbtpro2=findViewById(R.id.prbtpro2);
+        taxbtpromas=findViewById(R.id.taxbtpromas);
+        taxbtpromenos=findViewById(R.id.taxbtpromenos);
+        pacebtmenos=findViewById(R.id.pacebtmenos);
+        pacebtmas=findViewById(R.id.pacebtmas);
+        nprodtxpr=findViewById(R.id.nprodtxpr);
+        prtxpro2=findViewById(R.id.prtxpro2);
+        taxtxpro=findViewById(R.id.taxtxpro);
+        pacetxpro=findViewById(R.id.pacetxpro);
 
 
         btmaterialinput = (Button) findViewById(R.id.btmaterialinput);
@@ -67,9 +87,9 @@ public class Crearproducto extends AppCompatActivity {
         myrootDbaseref2 = FirebaseDatabase.getInstance().getReference();
 
         mAuth = FirebaseAuth.getInstance();
-        ritmocajaprod.setText("0");
+        pacetxpro.setText("1");
 
-        cajaimpuestoprod.setText("0");
+        taxtxpro.setText("20");
         Recibirintents();
         navclientenuevo.setSelectedItemId(R.id.action_add);
         floatingActionButton5.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +99,79 @@ public class Crearproducto extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        nprodbtpr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
+                ;
+                final View view= LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
+                builder.setView(view);
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_CLASS_TEXT);
+//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.Product_Name));
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
+                final AlertDialog alertDialog=builder.create();
+                if(alertDialog.getWindow() !=null){
+                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+                }
+                alertDialog.show();
+                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        nprodtxpr.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
+
+                        alertDialog.dismiss();
+
+                    }
+                });
+
+            }
+        });
+        prbtpro2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
+                ;
+                final View view= LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
+                builder.setView(view);
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_CLASS_TEXT);
+//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.Price));
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
+                final AlertDialog alertDialog=builder.create();
+                if(alertDialog.getWindow() !=null){
+                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+                }
+                alertDialog.show();
+                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        prtxpro2.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
+
+                        alertDialog.dismiss();
+
+                    }
+                });
+
+            }
+        });
+        navclientenuevo.setSelectedItemId(R.id.action_add);
         navclientenuevo.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -111,15 +204,15 @@ public class Crearproducto extends AppCompatActivity {
         });
 
         if (VarProducto == null) {
-            txmaterialinput.setText("".trim());
-            cajaprecioproducto.setText("".trim());
-            ritmocajaprod.setText("5");
+            nprodtxpr.setText("".trim());
+            prtxpro2.setText("".trim());
+            pacetxpro.setText("5");
             cajaimpuestoprod.setText("0");
             checkimp.setChecked(false);
         } else {
-            txmaterialinput.setText(VarProducto);
-            cajaprecioproducto.setText(VarPrecio);
-            ritmocajaprod.setText(VarRitmo);
+            nprodtxpr.setText(VarProducto);
+            prtxpro2.setText(VarPrecio);
+            pacetxpro.setText(VarRitmo);
             cajaimpuestoprod.setText(VarImpuesto);
             if (VarEstado.equals("SI") ) {
                 checkimp.setChecked(true);
@@ -127,62 +220,62 @@ public class Crearproducto extends AppCompatActivity {
                 checkimp.setChecked(false);
             }
         }
-        impuestomasprod.setOnClickListener(new View.OnClickListener() {
+        taxbtpromas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int getinput = Integer.parseInt(cajaimpuestoprod.getText().toString());
-                int valorprecio = Integer.parseInt(cajaimpuestoprod.getText().toString());
+                int getinput = Integer.parseInt(taxtxpro.getText().toString());
+                int valorprecio = Integer.parseInt(taxtxpro.getText().toString());
                 int valorritmo = 1;
                 int valornuevosuma = valorprecio + valorritmo;
-                cajaimpuestoprod.setText(valornuevosuma + "");
+                taxtxpro.setText(valornuevosuma + "");
 
             }
         });
         impuestomenosprod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int getinput = Integer.parseInt(cajaimpuestoprod.getText().toString());
-                int valorprecio = Integer.parseInt(cajaimpuestoprod.getText().toString());
+                int getinput = Integer.parseInt(taxtxpro.getText().toString());
+                int valorprecio = Integer.parseInt(taxtxpro.getText().toString());
                 int valorritmo = 1;
                 int valornuevosuma = valorprecio - valorritmo;
-                cajaimpuestoprod.setText(valornuevosuma + "");
+                taxtxpro.setText(valornuevosuma + "");
 
             }
         });
         ritmomasprod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int getinput = Integer.parseInt(ritmocajaprod.getText().toString());
+                int getinput = Integer.parseInt(pacetxpro.getText().toString());
                 //shareViewModel2.setHorapdf(txactual.getText().toString());
                 if (getinput >=0&&getinput <10) {
-                    int valorprecio = Integer.parseInt(ritmocajaprod.getText().toString());
+                    int valorprecio = Integer.parseInt(pacetxpro.getText().toString());
                     int valorritmo = 5;
                     int valornuevosuma = valorprecio + valorritmo;
-                    ritmocajaprod.setText(valornuevosuma + "");
+                    pacetxpro.setText(valornuevosuma + "");
 
 
                 } else if (getinput >= 10&&getinput<50) {
-                    int valorprecio = Integer.parseInt(ritmocajaprod.getText().toString());
+                    int valorprecio = Integer.parseInt(pacetxpro.getText().toString());
                     int valorritmo = 40;
                     int valornuevosuma = valorprecio + valorritmo;
-                    ritmocajaprod.setText(valornuevosuma + "");
+                    pacetxpro.setText(valornuevosuma + "");
 
                 } else if (getinput >= 50 && getinput < 100) {
-                    int valorprecio = Integer.parseInt(ritmocajaprod.getText().toString());
+                    int valorprecio = Integer.parseInt(pacetxpro.getText().toString());
                     int valorritmo = 50;
                     int valornuevosuma = valorprecio + valorritmo;
-                    ritmocajaprod.setText(valornuevosuma + "");}
+                    pacetxpro.setText(valornuevosuma + "");}
 
                 else if (getinput >= 100 && getinput < 500) {
-                    int valorprecio = Integer.parseInt(ritmocajaprod.getText().toString());
+                    int valorprecio = Integer.parseInt(pacetxpro.getText().toString());
                     int valorritmo = 400;
                     int valornuevosuma = valorprecio + valorritmo;
-                    ritmocajaprod.setText(valornuevosuma + "");
+                    pacetxpro.setText(valornuevosuma + "");
                 }else if(getinput >= 500 && getinput < 1000){
-                    int valorprecio = Integer.parseInt(ritmocajaprod.getText().toString());
+                    int valorprecio = Integer.parseInt(pacetxpro.getText().toString());
                     int valorritmo = 500;
                     int valornuevosuma = valorprecio + valorritmo;
-                    ritmocajaprod.setText(valornuevosuma + "");
+                    pacetxpro.setText(valornuevosuma + "");
 
 
 
@@ -197,43 +290,43 @@ public class Crearproducto extends AppCompatActivity {
         ritmomenosprod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int getinput = Integer.parseInt(ritmocajaprod.getText().toString());
+                int getinput = Integer.parseInt(pacetxpro.getText().toString());
                 //shareViewModel2.setHorapdf(txactual.getText().toString());
                 if (getinput>0 && getinput<= 10) {
-                    int valorprecio = Integer.parseInt(ritmocajaprod.getText().toString());
+                    int valorprecio = Integer.parseInt(pacetxpro.getText().toString());
                     int valorritmo = 5;
                     int valornuevosuma = valorprecio - valorritmo;
-                    ritmocajaprod.setText(valornuevosuma + "");
+                    pacetxpro.setText(valornuevosuma + "");
                 } else if (getinput ==50) {
-                    int valorprecio = Integer.parseInt(ritmocajaprod.getText().toString());
+                    int valorprecio = Integer.parseInt(pacetxpro.getText().toString());
                     int valorritmo = 40;
                     int valornuevosuma = valorprecio - valorritmo;
-                    ritmocajaprod.setText(valornuevosuma + "");
+                    pacetxpro.setText(valornuevosuma + "");
 
 
 
                 } else if (getinput == 100) {
-                    int valorprecio = Integer.parseInt(ritmocajaprod.getText().toString());
+                    int valorprecio = Integer.parseInt(pacetxpro.getText().toString());
                     int valorritmo = 50;
                     int valornuevosuma = valorprecio - valorritmo;
-                    ritmocajaprod.setText(valornuevosuma + "");
+                    pacetxpro.setText(valornuevosuma + "");
                 }else if(getinput>100&&getinput<=500){
-                    int valorprecio = Integer.parseInt(ritmocajaprod.getText().toString());
+                    int valorprecio = Integer.parseInt(pacetxpro.getText().toString());
                     int valorritmo = 400;
                     int valornuevosuma = valorprecio - valorritmo;
-                    ritmocajaprod.setText(valornuevosuma + "");}
+                    pacetxpro.setText(valornuevosuma + "");}
                 else if(getinput>500&&getinput<=1000){
-                    int valorprecio = Integer.parseInt(ritmocajaprod.getText().toString());
+                    int valorprecio = Integer.parseInt(pacetxpro.getText().toString());
                     int valorritmo = 500;
                     int valornuevosuma = valorprecio - valorritmo;
-                    ritmocajaprod.setText(valornuevosuma + "");
+                    pacetxpro.setText(valornuevosuma + "");
 
                 }
 
 
 
-                //sharedViewModel.setDias(ritmocajaprod.getText().toString());
-                // Constants.getSP(getContext()).setDIAS(ritmocajaprod.getText().toString());
+                //sharedViewModel.setDias(pacetxpro.getText().toString());
+                // Constants.getSP(getContext()).setDIAS(pacetxpro.getText().toString());
             }
         });
 
@@ -252,16 +345,16 @@ public class Crearproducto extends AppCompatActivity {
             public void onClick(View v) {
                 ////////New Product////////
                 if(VarKey==null){
-                    String Material = txmaterialinput.getText().toString();
+                    String Material = nprodtxpr.getText().toString();
                     String id = mAuth.getCurrentUser().getUid();
                     DatabaseReference myrootbd2 = myrootDbaseref2.child("PRODUCTOS").child(id).push();
 
                     Map<String, Object> datosmaterialnuevo = new HashMap<>();
                     datosmaterialnuevo.put("TIPO_CUERO", Material);
                     datosmaterialnuevo.put("Key", myrootbd2.getKey());
-                    datosmaterialnuevo.put("Impuesto", cajaimpuestoprod.getText().toString());
-                    datosmaterialnuevo.put("Precio", cajaprecioproducto.getText().toString());
-                    datosmaterialnuevo.put("Ritmo", ritmocajaprod.getText().toString());
+                    datosmaterialnuevo.put("Impuesto", taxtxpro.getText().toString());
+                    datosmaterialnuevo.put("Precio", prtxpro2.getText().toString());
+                    datosmaterialnuevo.put("Ritmo", pacetxpro.getText().toString());
                     if (checkimp.isChecked()) {
                         datosmaterialnuevo.put("Estado_Imp", "SI");
                     } else {
@@ -278,12 +371,12 @@ public class Crearproducto extends AppCompatActivity {
                 }else if(VarKey!=null) {
                     String id = mAuth.getCurrentUser().getUid();
                     ref = FirebaseDatabase.getInstance().getReference().child("PRODUCTOS").child(id).child(VarKey);
-                    ref.child("Precio").setValue(cajaprecioproducto.getText().toString());
+                    ref.child("Precio").setValue(prtxpro2.getText().toString());
                     if(checkimp.isChecked()){
                         ref.child("Estado_Imp").setValue("SI");}else { ref.child("Estado_Imp").setValue("NO");}
-                    ref.child("Impuesto").setValue(cajaimpuestoprod.getText().toString());
-                    ref.child("Ritmo").setValue(ritmocajaprod.getText().toString());
-                    ref.child("TIPO_CUERO").setValue(txmaterialinput.getText().toString());
+                    ref.child("Impuesto").setValue(taxtxpro.getText().toString());
+                    ref.child("Ritmo").setValue(pacetxpro.getText().toString());
+                    ref.child("TIPO_CUERO").setValue(nprodtxpr.getText().toString());
                     Toast.makeText(Crearproducto.this,"Producto Actualizado",Toast.LENGTH_SHORT).show();
 
 
