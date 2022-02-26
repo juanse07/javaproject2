@@ -45,6 +45,9 @@
     <string name="Cancel">Cancel</string>
     <string name="Email">E-mail</string>
     <string name="Mobile_phone">Mobile Phone</string>
+    <string name="Address">Address</string>
+    <string name="City">City</string>
+    <string name="ZIP">ZIP</string>
 
 
 

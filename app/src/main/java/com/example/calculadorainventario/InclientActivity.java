@@ -41,8 +41,8 @@ public class InclientActivity extends AppCompatActivity {
     Button btnuevocliente;
     ImageView back4;
     CheckBox checkcliente;
-    MaterialCardView emailbtcl,phonebtcl,customerbtcl;
-    TextView emailtxcl,phonetxcl,customertxcl;
+    MaterialCardView emailbtcl,phonebtcl,customerbtcl,addressbtcl,citybtcl,zipbtcl;
+    TextView emailtxcl,phonetxcl,customertxcl,addresstxcl,citytxcl,ziptxcl;
     TextInputEditText txinputnombre, txinputape, txinputtel1;
     RecyclerView Recyclercliente;
     View ClientesView;
@@ -67,6 +67,12 @@ public class InclientActivity extends AppCompatActivity {
         emailtxcl=findViewById(R.id.emailtxcl);
         phonetxcl=findViewById(R.id.phonetxcl);
         customertxcl=findViewById(R.id.customertxcl);
+        addressbtcl=findViewById(R.id.addressbtcl);
+        addresstxcl=findViewById(R.id.addresstxcl);
+        citybtcl=findViewById(R.id.citybtcl);
+        citytxcl=findViewById(R.id.citytxcl);
+        zipbtcl=findViewById(R.id.zipbtcl);
+        ziptxcl=findViewById(R.id.ziptxcl);
 
         customerbtcl.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,6 +182,122 @@ public class InclientActivity extends AppCompatActivity {
 
                     }
                 });
+
+
+            }
+        });
+        addressbtcl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
+                ;
+                final View view= LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
+                builder.setView(view);
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_TEXT_VARIATION_POSTAL_ADDRESS);
+//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.Address));
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
+                final AlertDialog alertDialog=builder.create();
+                if(alertDialog.getWindow() !=null){
+                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+                }
+                alertDialog.show();
+                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        addresstxcl.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
+
+                        alertDialog.dismiss();
+
+                    }
+                });
+
+
+            }
+
+
+        });
+        citybtcl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
+                ;
+                final View view= LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
+                builder.setView(view);
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_TEXT_VARIATION_POSTAL_ADDRESS);
+//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.City));
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
+                final AlertDialog alertDialog=builder.create();
+                if(alertDialog.getWindow() !=null){
+                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+                }
+                alertDialog.show();
+                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        citytxcl.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
+
+                        alertDialog.dismiss();
+
+                    }
+                });
+
+
+
+            }
+        });
+
+        zipbtcl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
+                ;
+                final View view= LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
+                builder.setView(view);
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_TEXT_VARIATION_POSTAL_ADDRESS);
+//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.ZIP));
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
+                final AlertDialog alertDialog=builder.create();
+                if(alertDialog.getWindow() !=null){
+                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+                }
+                alertDialog.show();
+                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        ziptxcl.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
+
+                        alertDialog.dismiss();
+
+                    }
+                });
+
 
 
             }

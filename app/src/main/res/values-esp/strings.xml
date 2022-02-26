@@ -46,6 +46,9 @@
         <string name="Cancel">Cancelar</string>
         <string name="Email">Correo Electrónico</string>
         <string name="Mobile_phone">Teléfono Móvil</string>
+        <string name="Address">Dirección</string>
+        <string name="City">Ciudad</string>
+        <string name="ZIP">Código Postal</string>
 
 
         <string name="_1">1</string>
