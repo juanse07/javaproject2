@@ -45,8 +45,9 @@
 
     <LinearLayout
         android:id="@+id/lay2"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="200dp"
         android:layout_weight="0.3"
         android:background="#F2F2F2"
         android:orientation="vertical"
@@ -59,28 +60,53 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_margin="5dp"
             android:layout_weight="18"
             android:background="#FFFFFF"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:weightSum="100">
 
             <TextView
                 android:id="@+id/textView29"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="30"
+                android:layout_weight="20"
                 android:text="Nombre del Producto" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="80"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <TextView
+                    android:id="@+id/textView44"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="80"
+                    android:gravity="center_vertical"
+                    android:text="TextView" />
+
+                <ImageView
+                    android:id="@+id/imageView18"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="10dp"
+                    android:layout_weight="20"
+                    app:srcCompat="@drawable/ic_baseline_add_24" />
+
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/txmaterialinput"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -88,7 +114,8 @@
                 android:ems="10"
                 android:hint="Nombre del Producto"
                 android:inputType="textPersonName"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:visibility="gone" />
 
 
         </LinearLayout>
@@ -96,28 +123,53 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_margin="5dp"
             android:layout_weight="18"
             android:background="#FFFFFF"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:weightSum="100">
 
             <TextView
                 android:id="@+id/textView34"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_gravity="clip_vertical|center_vertical"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="30"
+                android:layout_weight="20"
                 android:text="Precio" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="80"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <TextView
+                    android:id="@+id/textView45"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="80"
+                    android:gravity="center_vertical"
+                    android:text="TextView" />
+
+                <ImageView
+                    android:id="@+id/imageView19"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="10dp"
+                    android:layout_weight="20"
+                    app:srcCompat="@drawable/ic_baseline_add_24" />
+
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/cajaprecioproducto"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -125,52 +177,72 @@
                 android:ems="10"
                 android:hint="Precio"
                 android:inputType="number"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:visibility="gone" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_margin="5dp"
             android:layout_weight="18"
             android:background="#FFFFFF"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:weightSum="100">
 
             <TextView
                 android:id="@+id/textView39"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="30"
+                android:layout_weight="20"
                 android:text="Impuesto" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
                 android:layout_weight="70"
-                app:cardCornerRadius="2dp">
+                app:cardCornerRadius="2dp"
+                app:cardElevation="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
-                    <ImageView
-                        android:id="@+id/impuestomenosprod"
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/colorRappi"
+                        app:strokeWidth="1dp">
 
-                        app:srcCompat="@drawable/ic_remove_black_18dp" />
+                        <ImageView
+                            android:id="@+id/impuestomenosprod"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_weight="1"
+
+                            app:srcCompat="@drawable/ic_remove_black_18dp" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                    <TextView
+                        android:id="@+id/textView67"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="60"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="TextView" />
 
                     <EditText
                         android:id="@+id/cajaimpuestoprod"
@@ -180,61 +252,90 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:inputType="number"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:visibility="gone" />
 
-                    <ImageView
-                        android:id="@+id/impuestomasprod"
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/ic_add_black_18dp" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/colorverdeesmeralda"
+                        app:strokeWidth="1dp">
+
+                        <ImageView
+                            android:id="@+id/impuestomasprod"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/ic_add_black_18dp" />
+                    </com.google.android.material.card.MaterialCardView>
+
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_margin="5dp"
             android:layout_weight="18"
             android:background="#FFFFFF"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:weightSum="100">
 
             <TextView
                 android:id="@+id/textView40"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="30"
+                android:layout_weight="20"
                 android:text="Ritmo en Precio" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
                 android:layout_weight="70"
-                app:cardCornerRadius="2dp">
+                app:cardCornerRadius="2dp"
+                app:cardElevation="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
-                    <ImageView
-                        android:id="@+id/ritmomenosprod"
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/ic_remove_black_18dp" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/colorRappi"
+                        app:strokeWidth="1dp">
+
+                        <ImageView
+                            android:id="@+id/ritmomenosprod"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/ic_remove_black_18dp" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/textView68"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="60"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="TextView" />
 
                     <EditText
                         android:id="@+id/ritmocajaprod"
@@ -244,44 +345,53 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:inputType="number"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:visibility="gone" />
 
-                    <ImageView
-                        android:id="@+id/ritmomasprod"
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/ic_add_black_18dp" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/colorverdeesmeralda"
+                        app:strokeWidth="1dp">
+
+                        <ImageView
+                            android:id="@+id/ritmomasprod"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/ic_add_black_18dp" />
+                    </com.google.android.material.card.MaterialCardView>
+
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_margin="5dp"
             android:layout_weight="18"
             android:background="#FFFFFF"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:weightSum="100">
 
             <TextView
                 android:id="@+id/textView41"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="30"
+                android:layout_weight="20"
                 android:text="Incluir Impuesto al facturar" />
 
             <CheckBox
                 android:id="@+id/checkimp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="70"
                 android:button="@null"
@@ -292,13 +402,13 @@
             android:id="@+id/btmaterialinput"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginRight="100dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="8"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="12"
             android:background="@drawable/btnnaranja"
             android:text="Guardar"
             app:backgroundTint="@null"

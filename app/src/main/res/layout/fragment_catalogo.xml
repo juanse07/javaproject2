@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F7F7"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    android:background="#40F7F7F7">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:background="#40F2F2F2">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#40F2F2F2"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,14 +45,15 @@
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/swipecatalogo"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#40F2F2F2">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/Recyclercatalogo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.9"
-                    android:background="#f7f7f7"
+                    android:background="#40F2F2F2"
                     android:orientation="vertical"
                     tools:context=".catalogo">
 
