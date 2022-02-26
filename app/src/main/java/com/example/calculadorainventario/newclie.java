@@ -143,7 +143,7 @@ public class newclie extends Fragment {
             FirebaseRecyclerAdapter<constructornom2, clientes1>firebaseRecyclerAdapter2=new FirebaseRecyclerAdapter<constructornom2, clientes1>(options) {
                 @Override
                 protected void onBindViewHolder(clientes1 clientes1, final int i, final constructornom2 constructornom2) {
-                    clientes1.txnombre45.setText(constructornom2.getNombre());
+                    clientes1.txnombre45.setText(constructornom2.getCliente_Nombre());
 
                 }
 

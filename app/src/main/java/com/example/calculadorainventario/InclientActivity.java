@@ -271,7 +271,7 @@ public class InclientActivity extends AppCompatActivity {
                 ;
                 final View view= LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
                 builder.setView(view);
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_TEXT_VARIATION_POSTAL_ADDRESS);
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_CLASS_NUMBER);
 //                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
                 ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
                 ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.ZIP));
@@ -364,12 +364,19 @@ public class InclientActivity extends AppCompatActivity {
             public void onClick(View v) {
                 
 
-                    String Nombre = txinputnombre.getText().toString();
-
-                    String Tel = txinputtel1.getText().toString();
+                    String Nombre = customertxcl.getText().toString();
+                    String Tel = phonetxcl.getText().toString();
+                    String Email=emailtxcl.getText().toString();
+                    String Address=addresstxcl.getText().toString();
+                    String City=citytxcl.getText().toString();
+                    String Zip=ziptxcl.getText().toString();
                 Map<String, Object> datosclientesnuevos = new HashMap<>();
-                datosclientesnuevos.put("Nombre", Nombre);
+                datosclientesnuevos.put("Cliente_Nombre", Nombre);
                 datosclientesnuevos.put("Tel", Tel);
+                datosclientesnuevos.put("Email",Email );
+                datosclientesnuevos.put("Address", Address);
+                datosclientesnuevos.put("City", City);
+                datosclientesnuevos.put("Zip", Zip);
                 datosclientesnuevos.put("Key", mydb2.getKey());
 
                 mydb2.setValue(datosclientesnuevos);

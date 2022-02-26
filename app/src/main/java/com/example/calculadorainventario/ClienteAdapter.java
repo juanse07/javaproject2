@@ -43,7 +43,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHoldercliente holder, final int position) {
-        holder.txnombre45.setText(ListaClientes.get(position).getNombre());
+        holder.txnombre45.setText(ListaClientes.get(position).getCliente_Nombre());
         holder.btaddcliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +101,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
             }else{
                 String filterClientePattern= constraint.toString().toLowerCase().trim();
                 for(constructornom2 item:ListaClientesFull){
-                    if(item.getNombre().toLowerCase().startsWith(constraint.toString().toLowerCase().trim())){
+                    if(item.getCliente_Nombre().toLowerCase().startsWith(constraint.toString().toLowerCase().trim())){
                         filteredClienteList.add(item);
                     }
                 }
