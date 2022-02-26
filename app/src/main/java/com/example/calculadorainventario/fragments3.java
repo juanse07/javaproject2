@@ -200,8 +200,9 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
         final RecyclerView.Adapter adapter = viepag.getAdapter();
         String first = "PyMESoft";
-        String next = "<font color='#1D2E4A'>FActuras</font>";
+        String next = "<font color='#03bfa5'>FActuras</font>";
         title4.setText(Html.fromHtml(first + next));
+        title4.setTextColor(getResources().getColor(R.color.colorBlancox));
         String vigilaestado="1";
 
       vigilaestado=Constants.getSP(fragments3.this).getRBBORRADOR();

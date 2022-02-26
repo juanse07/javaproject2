@@ -161,11 +161,12 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         //mdrawer.syncState();
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String first = "PyMESoft";
-        String secondname=getResources().getString(R.string.app_name2);
-//        String next = getResources().getString(R.string.app_name2);
+        String secondname="<font color='#ffffff'>Facturas</font>";
+        String next = getResources().getString(R.string.app_name2);
 //
-//        title2.setText(Html.fromHtml(first +" "+ next));
-        title2.setText(getResources().getString(R.string.app_name));
+        title2.setText(Html.fromHtml(first+secondname));
+//        title2.setText(getResources().getString(R.string.app_name));
+//        title2.setTextColor(getResources().getColor(R.color.Turquesa));
         IMAGEHOME.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 

@@ -42,8 +42,8 @@ public class Crearproducto extends AppCompatActivity {
     DatabaseReference ref;
     BottomNavigationView navclientenuevo;
     FloatingActionButton floatingActionButton5;
-    MaterialCardView nprodbtpr,prbtpro2,taxbtpromenos,taxbtpromas,pacebtmenos,pacebtmas;
-    TextView nprodtxpr,prtxpro2,taxtxpro,pacetxpro;
+    MaterialCardView nprodbtpr,prbtpro2,taxbtpromenos,taxbtpromas,pacebtmenos,pacebtmas,descbtpro;
+    TextView nprodtxpr,prtxpro2,taxtxpro,pacetxpro,desctxpro;
 
 
 
@@ -66,6 +66,8 @@ public class Crearproducto extends AppCompatActivity {
         prtxpro2=findViewById(R.id.prtxpro2);
         taxtxpro=findViewById(R.id.taxtxpro);
         pacetxpro=findViewById(R.id.pacetxpro);
+        descbtpro=findViewById(R.id.descbtpro);
+        desctxpro=findViewById(R.id.desctxpro);
 
 
         btmaterialinput = (Button) findViewById(R.id.btmaterialinput);
@@ -81,6 +83,7 @@ public class Crearproducto extends AppCompatActivity {
         ritmomenosprod = findViewById(R.id.ritmomenosprod);
         ritmomasprod = findViewById(R.id.ritmomasprod);
         checkimp = findViewById(R.id.checkimp);
+
         mAuth = FirebaseAuth.getInstance();
 
 
@@ -97,6 +100,43 @@ public class Crearproducto extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(Crearproducto.this, fragments3.class);
                 startActivity(i);
+            }
+        });
+        descbtpro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
+                ;
+                final View view= LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
+                builder.setView(view);
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_CLASS_TEXT);
+//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.Description));
+                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
+                final AlertDialog alertDialog=builder.create();
+                if(alertDialog.getWindow() !=null){
+                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+                }
+                alertDialog.show();
+                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        desctxpro.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
+
+                        alertDialog.dismiss();
+
+                    }
+                });
+
+
             }
         });
         nprodbtpr.setOnClickListener(new View.OnClickListener() {
@@ -204,8 +244,8 @@ public class Crearproducto extends AppCompatActivity {
         });
 
         if (VarProducto == null) {
-            nprodtxpr.setText("".trim());
-            prtxpro2.setText("".trim());
+            nprodtxpr.setText(getResources().getString(R.string.Product_Name).trim());
+            prtxpro2.setText(getResources().getString(R.string.Price).trim());
             pacetxpro.setText("5");
             cajaimpuestoprod.setText("0");
             checkimp.setChecked(false);

@@ -33,7 +33,7 @@
         android:layout_marginRight="40dp"
         android:text="@string/Acept"
         android:textStyle="bold"
-        app:backgroundTint="@color/colorAccent"
+        app:backgroundTint="@color/colorPrimary"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">

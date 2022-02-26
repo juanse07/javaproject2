@@ -149,7 +149,7 @@
                         android:layout_marginBottom="5dp"
                         android:layout_weight="70"
                         app:cardCornerRadius="10dp"
-                        app:strokeColor="#3F51B5"
+                        app:strokeColor="@color/colorPrimary"
                         app:strokeWidth="1dp">>
 
                         <ImageView
@@ -208,7 +208,7 @@
                         android:layout_marginBottom="5dp"
                         android:layout_weight="70"
                         app:cardCornerRadius="10dp"
-                        app:strokeColor="#3F51B5"
+                        app:strokeColor="@color/colorPrimary"
                         app:strokeWidth="1dp">
 
                         <ImageView

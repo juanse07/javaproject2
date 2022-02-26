@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#40F2F2F2">
+        android:background="@color/colorBlancox">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -46,11 +46,11 @@
             android:backgroundTint="@color/colorPrimary"
             android:clickable="true"
             android:onClick="iniciarhome"
-            app:backgroundTint="@color/colorAccent"
+            app:backgroundTint="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_add_or_24dp"
-            app:tint="@color/colorAccent" />
+            app:tint="@color/colorBlancox" />
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/coordinatorLayout"
@@ -112,7 +112,8 @@
                                     android:layout_height="65dp"
                                     android:layout_gravity="center_vertical|center_horizontal"
 
-                                    android:layout_weight="5">
+                                    android:layout_weight="5"
+                                    android:background="@color/colorGrisoscuro">
 
                                 </ImageView>
                             </androidx.cardview.widget.CardView>
@@ -129,7 +130,7 @@
                             android:minHeight="?actionBarSize"
 
                             android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-                            android:textColor="@color/colorAccent" />
+                            android:textColor="@color/Turquesa" />
 
 
                     </LinearLayout>

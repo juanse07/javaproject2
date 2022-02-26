@@ -1,4 +1,6 @@
-<resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -6,10 +8,20 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:editTextStyle">@style/LightDialog</item>
+        <item name="android:alertDialogTheme">@style/LightDialog</item>
+        <item name="android:dialogPreferenceStyle">@style/LightDialog</item>
+
+
     </style>
 
     <style name="barcustom" parent="Widget.AppCompat.ActionBar">
         <item name="android:titleTextStyle">@style/customactiobar</item>
+    </style>
+    <style name="LightDialog" parent="Theme.MaterialComponents.Dialog">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+
     </style>
 
     <style name="customactiobar" parent="android:TextAppearance.DeviceDefault.Widget.ActionBar.Title">

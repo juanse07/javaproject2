@@ -34,20 +34,22 @@
         android:id="@+id/navclientenuevo"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="20dp"
         android:layout_weight="1.8"
         android:background="#ffffff"
+        app:itemIconTint="@drawable/item_color"
+        app:itemTextColor="@drawable/item_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_menuup"
-        app:itemIconTint="@drawable/item_color"
-        app:itemTextColor="@drawable/item_color"/>
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButton5"
+        app:menu="@menu/bottom_menuup" />
 
     <LinearLayout
         android:id="@+id/lay2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="100dp"
         android:layout_weight="0.3"
         android:background="#F2F2F2"
         android:orientation="vertical"
@@ -55,13 +57,13 @@
         app:layout_constraintBottom_toTopOf="@+id/navclientenuevo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appbar">
+        app:layout_constraintTop_toBottomOf="@id/appbar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="18"
+            android:layout_weight="15"
             android:background="#FFFFFF"
             android:orientation="vertical"
             android:weightSum="100">
@@ -71,9 +73,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="20"
-                android:text="Nombre del Producto" />
+                android:text="Nombre del Producto"
+                android:textSize="9sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -90,12 +94,14 @@
                     android:layout_marginLeft="5dp"
                     android:layout_weight="80"
                     android:gravity="center_vertical"
-                    android:text="@string/Product_Name" />
+                    android:text="@string/Product_Name"
+                    tools:text="@string/Product_Name" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/nprobtpr"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_margin="8dp"
                     android:layout_weight="20"
                     android:padding="4dp"
                     app:cardElevation="0dp">
@@ -132,7 +138,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="18"
+            android:layout_weight="15"
             android:background="#FFFFFF"
             android:orientation="vertical"
             android:weightSum="100">
@@ -142,9 +148,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_gravity="clip_vertical|center_vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="20"
-                android:text="Precio" />
+                android:text="Precio"
+                android:textSize="9sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -161,12 +169,14 @@
                     android:layout_marginLeft="5dp"
                     android:layout_weight="80"
                     android:gravity="center_vertical"
-                    android:text="@string/Price" />
+                    android:text="@string/Price"
+                    tools:text="@string/Price" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/prbtpro2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_margin="8dp"
                     android:layout_weight="20"
                     android:padding="4dp"
                     app:cardElevation="0dp">
@@ -203,7 +213,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="18"
+            android:layout_weight="15"
             android:background="#FFFFFF"
             android:orientation="vertical"
             android:weightSum="100">
@@ -213,9 +223,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="20"
-                android:text="Impuesto" />
+                android:text="Impuesto"
+                android:textSize="9sp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -229,6 +241,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="right"
                     android:orientation="horizontal"
                     android:weightSum="100">
 
@@ -258,7 +271,7 @@
                         android:id="@+id/taxtxpro"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="60"
+                        android:layout_weight="40"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="TextView" />
 
@@ -301,7 +314,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="18"
+            android:layout_weight="15"
             android:background="#FFFFFF"
             android:orientation="vertical"
             android:weightSum="100">
@@ -311,9 +324,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="20"
-                android:text="Ritmo en Precio" />
+                android:text="Ritmo en Precio"
+                android:textSize="9sp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -327,6 +342,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="right"
                     android:orientation="horizontal"
                     android:weightSum="100">
 
@@ -353,7 +369,7 @@
                         android:id="@+id/pacetxpro"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="60"
+                        android:layout_weight="40"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="TextView" />
 
@@ -392,52 +408,119 @@
 
         </LinearLayout>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="18"
+            android:layout_weight="15"
             android:background="#FFFFFF"
             android:orientation="vertical"
             android:weightSum="100">
 
             <TextView
-                android:id="@+id/textView41"
+                android:id="@+id/textView45"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="20"
+                android:text="@string/Description"
+                android:textSize="9sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="80"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <TextView
+                    android:id="@+id/desctxpro"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="80"
+                    android:gravity="center_vertical"
+                    android:text="@string/Description" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/descbtpro"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:layout_weight="20"
+                    android:padding="4dp"
+                    app:cardElevation="0dp">
+
+                    <ImageView
+                        android:id="@+id/imageView20"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="4dp"
+                        app:srcCompat="@drawable/ic_baseline_add_24" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:layout_weight="15"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:weightSum="100">
+
+            <CheckBox
+                android:id="@+id/checkimp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="80"
+                android:button="@null"
+                android:drawableRight="?android:attr/listChoiceIndicatorMultiple" />
+
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="20"
                 android:text="Incluir Impuesto al facturar" />
 
-            <CheckBox
-                android:id="@+id/checkimp"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="70"
-                android:button="@null"
-                android:drawableRight="?android:attr/listChoiceIndicatorMultiple" />
         </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btmaterialinput"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="50dp"
             android:layout_weight="12"
-            android:background="@drawable/btnnaranja"
-            android:text="Guardar"
-            app:backgroundTint="@null"
-            app:icon="@drawable/ic_baseline_save_24"
-            app:iconGravity="end"
-            app:iconTint="@color/colorBlancox" />
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btmaterialinput"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/btnnaranja"
+                android:text="Guardar"
+                app:backgroundTint="@null"
+                app:icon="@drawable/ic_baseline_save_24"
+                app:iconGravity="end"
+                app:iconTint="@color/colorBlancox" />
+        </LinearLayout>
 
     </LinearLayout>
+
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -478,16 +561,5 @@
 
 
     </com.google.android.material.appbar.AppBarLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

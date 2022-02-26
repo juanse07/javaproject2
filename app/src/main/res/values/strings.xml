@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">PyMESoft</string>
-    <string name="app_name2"><font color='#1D2E4A'>Invoices</font>"</string>
+    <string name="app_name2">"<font color='#ffffff'>Invoices</font>"</string>
     <string name="Purchase">Purchase</string>
     <string name="Invoice">Invoice</string>
     <string name="Draft">Draft</string>
@@ -41,7 +41,7 @@
     <string name="Yes">YES</string>
     <string name="Quote">Quote</string>
     <string name="Tax_included">Tax is Included</string>
-    <string name="Acept">Acept</string>
+    <string name="Acept">Ok</string>
     <string name="Cancel">Cancel</string>
     <string name="Email">E-mail</string>
     <string name="Mobile_phone">Mobile Phone</string>
@@ -50,6 +50,7 @@
     <string name="ZIP">ZIP</string>
     <string name="Save_newCli">Save new Client</string>
     <string name="Phone_contact">Also save as a phone Contact</string>
+    <string name="Description">Product Description</string>
 
 
 
