@@ -5,6 +5,10 @@ import androidx.annotation.NonNull;
 public class cuerospinner {
     String TIPO_CUERO;
     String Impuesto;
+    String Descripcion;
+
+    public String getDescripcion(){return Descripcion;}
+    public void setDescripcion(String descripcion){Descripcion=descripcion;}
 
     public String getEstado_Imp() {
         return Estado_Imp;

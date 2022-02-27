@@ -392,9 +392,11 @@ public class Crearproducto extends AppCompatActivity {
                     Map<String, Object> datosmaterialnuevo = new HashMap<>();
                     datosmaterialnuevo.put("TIPO_CUERO", Material);
                     datosmaterialnuevo.put("Key", myrootbd2.getKey());
-                    datosmaterialnuevo.put("Impuesto", taxtxpro.getText().toString());
+                    datosmaterialnuevo.put("Impuesto", "0");
                     datosmaterialnuevo.put("Precio", prtxpro2.getText().toString());
                     datosmaterialnuevo.put("Ritmo", pacetxpro.getText().toString());
+                    datosmaterialnuevo.put("Descripcion",desctxpro.getText().toString());
+
                     if (checkimp.isChecked()) {
                         datosmaterialnuevo.put("Estado_Imp", "SI");
                     } else {
@@ -417,6 +419,7 @@ public class Crearproducto extends AppCompatActivity {
                     ref.child("Impuesto").setValue(taxtxpro.getText().toString());
                     ref.child("Ritmo").setValue(pacetxpro.getText().toString());
                     ref.child("TIPO_CUERO").setValue(nprodtxpr.getText().toString());
+                    ref.child("Descripcion").setValue(desctxpro.getText().toString());
                     Toast.makeText(Crearproducto.this,"Producto Actualizado",Toast.LENGTH_SHORT).show();
 
 

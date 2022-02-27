@@ -293,16 +293,22 @@ ArrayList<NoteProducto>notesProd;
 increasetax.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        int getinput = Integer.parseInt(txtaxvisor.getText().toString());
+//        int getinput = Integer.parseInt(txtaxvisor.getText().toString());
         //shareViewModel2.setHorapdf(txactual.getText().toString());
+
 
         int valorprecio = Integer.parseInt(txtaxvisor.getText().toString());
         int valorritmo = 1;
         int valornuevosuma = valorprecio + valorritmo;
-        txtaxvisor.setText(valornuevosuma + "");
+        String valorsum=String.valueOf(valornuevosuma);
+        String valorpercent=valorsum+" "+"%";
+//        txtaxvisor.setText(valorpercent);
+       txtaxvisor.setText(valornuevosuma + "");
+//        sharedViewModel.setTaxvalue(valorsum);
 
 
-        sharedViewModel.setTaxvalue(txtaxvisor.getText().toString());}
+      sharedViewModel.setTaxvalue(txtaxvisor.getText().toString());
+}
 
 
 
@@ -318,8 +324,12 @@ decreasetax.setOnClickListener(new View.OnClickListener() {
         int valorprecio = Integer.parseInt(txtaxvisor.getText().toString());
         int valorritmo = 1;
         int valornuevosuma = valorprecio - valorritmo;
+        String valorsum=String.valueOf(valornuevosuma);
+        String valorpercent=valorsum+" ";
+//        txtaxvisor.setText(valorpercent);
         txtaxvisor.setText(valornuevosuma + "");
-        sharedViewModel.setTaxvalue(txtaxvisor.getText().toString());
+     sharedViewModel.setTaxvalue(txtaxvisor.getText().toString());
+//        sharedViewModel.setTaxvalue(valorsum);
 
 
     }

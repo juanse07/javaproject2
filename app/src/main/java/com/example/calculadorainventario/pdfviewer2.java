@@ -79,6 +79,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     PdfPTable tableFooter;
     List<Note>Listadobles2;
     ArrayList<arrayconstructor>Listadobles3;
+    Map<String,String>RecibirNoteprod;
     ArrayList<Double> ListaCuero;
     ArrayList<Double> listacuero3;
     AdaptadorProductoGuardado adpt1=new AdaptadorProductoGuardado();
@@ -116,8 +117,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     FirebaseAuth mAuth;
     NoteViewModel noteViewModel;
     ArrayList<Note>noteArralist=new ArrayList<>();
-    ArrayList<String>List1;
-    ArrayList<Double>List2,List3,List4,List5,List6;
+    ArrayList<String>List1,Lista7;
+    ArrayList<Double>List2,List3,List4;
     byte[] outputstream2;
     //Button btactualizarpdf;
    String nombreventas2;
@@ -191,6 +192,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
        // gnombre2.setText(getIntent().getExtras().getString("Nombre1"));
         nombreventas2=getIntent().getExtras().getString("Nombre1");
+//        RecibirNoteprod=(Map<String,String>).getSerializableExtra("mapa");
 
 
         fechaventas2= getIntent().getExtras().getString("Fecha1").trim();
@@ -203,8 +205,9 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
         List2= (ArrayList<Double>) getIntent().getSerializableExtra("listaPre1");
         List3= (ArrayList<Double>) getIntent().getSerializableExtra("listaCant1");
         List4= (ArrayList<Double>) getIntent().getSerializableExtra("listaResultado");
-        List5= (ArrayList<Double>) getIntent().getSerializableExtra("ListaImp");
-        List6=(ArrayList<Double>) getIntent().getSerializableExtra("ListaRimp");
+//        List5= (ArrayList<Double>) getIntent().getSerializableExtra("ListaImp");
+//        List6=(ArrayList<Double>) getIntent().getSerializableExtra("ListaRimp");
+        Lista7=(ArrayList<String>) getIntent().getSerializableExtra("ListaDesc");
 //        SumaResultado=getIntent().getExtras().getString("Total1");
 
 
@@ -1419,10 +1422,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                Paragraph q5 = new Paragraph(par5,regularTotal2);
                q5.setAlignment(Element.ALIGN_RIGHT);
 //               String par6=  format.format(Double.parseDouble(String.valueOf(List5.get(aw))));
-               String par6=String.valueOf(List5.get(aw));
+               String par6=String.valueOf(Lista7.get(aw));
                Paragraph q6 = new Paragraph(par6,regularTotal2);
                q5.setAlignment(Element.ALIGN_RIGHT);
-               String par7=String.valueOf(List6.get(aw));
+               String par7=String.valueOf(Lista7.get(aw));
 //               String par7=  format.format(Double.parseDouble(String.valueOf(List6.get(aw))));
                Paragraph q7 = new Paragraph(par7,regularTotal2);
                q5.setAlignment(Element.ALIGN_RIGHT);

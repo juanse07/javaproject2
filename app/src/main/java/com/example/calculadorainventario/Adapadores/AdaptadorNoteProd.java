@@ -1,6 +1,5 @@
 package com.example.calculadorainventario.Adapadores;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -148,6 +147,7 @@ holder.addsym.setOnClickListener(new View.OnClickListener() {
         final Double Cant_prod=  nuevacantidad;
         final Double Precio_prod = currentnote.getPrecio_prod();
         final Double Impuesto=currentnote.getImpuesto();
+        final String Descripcion=currentnote.getDescripcion();
 
 
         Double cantidad=Cant_prod;
@@ -159,7 +159,7 @@ holder.addsym.setOnClickListener(new View.OnClickListener() {
         Double resimp=Resultado_valor*imp1;
 
         final Double Resultado_Impuesto=Resultado_valor+resimp;
-        NoteProducto noteProducto=new NoteProducto(Nombre_prod,Cant_prod,Precio_prod,Resultado_valor,Impuesto,Resultado_Impuesto);
+        NoteProducto noteProducto=new NoteProducto(Nombre_prod,Cant_prod,Precio_prod,Resultado_valor,Impuesto,Resultado_Impuesto, Descripcion);
 
 
         noteProducto.setKey(key);

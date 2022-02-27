@@ -279,11 +279,12 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
                         Double valImps2=valornuevosuma*valImp;
 
                         Resultado_impuesto=valornuevosuma+valImps2;
+                        String Descripcion=productos.get(position).getDescripcion();
 
 
 
 
-                        noteProducto=new NoteProducto(Nombre_prod,Cant_Prod,Precio_prod,Resultado_valor,Impuesto,Resultado_impuesto);
+                        noteProducto=new NoteProducto(Nombre_prod,Cant_Prod,Precio_prod,Resultado_valor,Impuesto,Resultado_impuesto,Descripcion);
                         noteProdViewModel.Insert(noteProducto);
                         int key=noteProducto.Key;
                         Log.d("key",String.valueOf(key));

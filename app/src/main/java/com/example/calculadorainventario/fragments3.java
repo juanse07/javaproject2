@@ -34,11 +34,14 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     ViewPager2 viepag;
@@ -55,6 +58,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     String PrecioL,ProductoL,ClienteL,TaxValue,DiscountValue;
     ArrayList<String> Listapdf;
     ArrayList<String> ListaProd;
+    ArrayList<String> ListaDesc;
     ArrayList<Double> ListaCant;
     ArrayList<Double> ListaPre;
     ArrayList<Double> Listavalor;
@@ -62,6 +66,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     ArrayList<Double>ListaRimp;
     ArrayList<Double>listaVal2,Listacantidades;
     Double pdfval;
+    Map<String,String>datosparapdf;
 
     double sum;
 
@@ -120,6 +125,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         textview30=findViewById(R.id.textView30);
         txSubtotal3=findViewById(R.id.txsubtotal3);
         TaxValue="0";
+        valorBruto=0.0;
 
 
 
@@ -438,6 +444,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             listaVal2=new ArrayList<>();
                             ListaRimp=new ArrayList<>();
                             ListaimP=new ArrayList<>();
+                            ListaDesc=new ArrayList<>();
 //                            double sum = 0;
 //                            for(int i = 0; i < m.size(); i++)
 //                                sum += m.get(i);
@@ -445,6 +452,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
 
                             for (int i = 0 ; i <ListaProd1.size() ; i++) {
+
+
 
 //                   Log.d("value is" , Listadobles2.get(i).valor_Medida.toString());}
 //                   Listapdf.add(Listadobles2.get(i).getValor_Medida().toString());
@@ -454,6 +463,10 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                                 Double pdfimp=ListaProd1.get(i).Impuesto;
                                 Double pdfRimp=ListaProd1.get(i).Resultado_Impuesto;
                                 pdfval = ListaProd1.get(i).Resultado_valor;
+                                String pdfDesc=ListaProd1.get(i).getDescripcion();
+                                String pdfpre2;
+                                String pdfcant2;
+                                String pdfnom2;
 
 
                                 ListaCant.add(pdfcant1);
@@ -463,8 +476,15 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                                 listaVal2.add(pdfval);
                                 ListaimP.add(pdfimp);
                                 ListaRimp.add(pdfRimp);
+                                ListaDesc.add(pdfDesc);
                                 Log.d("values",String.valueOf(ListaimP));
                                 Log.d("v2",String.valueOf(ListaRimp));
+//                               datosparapdf=new HashMap<>();
+//                                datosparapdf.put("Nombre_prod",ListaProd1.get(i).Nombre_prod);
+//                                datosparapdf.put("Cant_prod",String.valueOf(ListaProd1.get(i).Cant_prod));
+//                                datosparapdf.put("Precio_prod",String.valueOf(ListaProd1.get(i).Precio_prod));
+//                                datosparapdf.put("Descripcion",ListaProd1.get(i).Descripcion);
+
                             }
                             sumarRe();
 
@@ -481,6 +501,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             bundle.putSerializable("listaResultado",Listavalor);
                             bundle.putSerializable("ListaImp",ListaimP);
                             bundle.putSerializable("ListaRimp",ListaRimp);
+                            bundle.putSerializable("ListaDesc", ListaDesc);
 
 //
 //         bundle.putSerializable("Listapdf",Listapasar);
@@ -587,6 +608,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         sharedViewModel.getDiscountValue().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
+                if(s!=null){
+
                 DiscountValue=s;
                 DecimalFormat formatter = new DecimalFormat("###,###,##0");
 
@@ -606,6 +629,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
 //
                txSubtotal2.setText(totalfac);
+                }}
 //                Double DiscandImp= valorNeto*disc3;
 //                txSubtotal.setText(String.valueOf(formatter.format(imp5)));
 //                Double nuevoneto=valorBruto*Double.parseDouble(TaxValue);
@@ -613,13 +637,15 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 //                txSubtotal2.setText(String.valueOf(formatter.format(imp8)));
 
 
-            }
+
         });
           sharedViewModel.getTaxvalue().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
+                if(s!=null){
                 DecimalFormat formatter = new DecimalFormat("###,###,##0");
               TaxValue=s;
+
 
                 Double imp = Double.parseDouble(s);
                 Double Imp2 = imp / 100;
@@ -633,11 +659,13 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
 //
                 txSubtotal.setText(tax1);
+                }
+            }
 
 
 //                TaxValue=s;
 
-            }
+
         });
         sharedViewModel.getCliente2().observe(this, new Observer<CharSequence>() {
             @Override

@@ -23,16 +23,18 @@ public class NoteProducto implements Serializable {
     public Double Resultado_valor;
     public Double Impuesto;
     public Double Resultado_Impuesto;
+    public String Descripcion;
 
 
 
-public NoteProducto(String Nombre_prod, Double Cant_prod, Double Precio_prod,Double Resultado_valor,Double Impuesto,Double Resultado_Impuesto) {
+public NoteProducto(String Nombre_prod, Double Cant_prod, Double Precio_prod, Double Resultado_valor, Double Impuesto, Double Resultado_Impuesto, String Descripcion) {
      this.Nombre_prod = Nombre_prod;
      this.Precio_prod=Precio_prod;
      this.Cant_prod=Cant_prod;
      this.Resultado_valor=Resultado_valor;
      this.Impuesto=Impuesto;
      this.Resultado_Impuesto=Resultado_Impuesto;
+     this.Descripcion=Descripcion;
 }
 
 
@@ -51,7 +53,7 @@ public NoteProducto(String Nombre_prod, Double Cant_prod, Double Precio_prod,Dou
     public Double getPrecio_prod() {
         return Precio_prod;
     }
-
+public String getDescripcion(){return Descripcion;}
 
     public java.lang.Double getResultado_valor() {
         return Resultado_valor;
