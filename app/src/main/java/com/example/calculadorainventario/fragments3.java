@@ -51,8 +51,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     ConstraintLayout constlay;
     BottomNavigationView navcat;
     LinearLayout linprod, lincli;
-    Double valorBruto;
-    String PrecioL,ProductoL,ClienteL,TaxValue;
+    Double valorBruto,valorNeto;
+    String PrecioL,ProductoL,ClienteL,TaxValue,DiscountValue;
     ArrayList<String> Listapdf;
     ArrayList<String> ListaProd;
     ArrayList<Double> ListaCant;
@@ -69,10 +69,11 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     List<NoteProducto>ListaProd1;
 
 
-    TextView txclientebotton, txproductobttom,txpreciobottom,title4,textView38,textview30,textView50,txSubtotal,txSubtotal2;
+    TextView txclientebotton, txproductobttom,txpreciobottom,title4,textView38,textview30,textView50,txSubtotal,txSubtotal2,txSubtotal3;
     String Radiob;
     TextView textovigilancia;
     CardView card_vigilancia;
+
 
 
     private ClickInterface1 listener ;
@@ -117,6 +118,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         cardprod=findViewById(R.id.cardprod);
         textView38=findViewById(R.id.textView38);
         textview30=findViewById(R.id.textView30);
+        txSubtotal3=findViewById(R.id.txsubtotal3);
         TaxValue="0";
 
 
@@ -146,11 +148,12 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
 
                         cardprod3.setText(totalfac);
-                        txSubtotal.setText(totalfac);
+                        txSubtotal3.setText(totalfac);
                         Double imp1=Double.parseDouble(TaxValue)/100;
-                        Double imp2=1+imp1;
-                        Double imp3=valorBruto*imp2;
-                        txSubtotal2.setText(String.valueOf(formatter.format(imp3)));
+//                        imp2=1+imp1;
+//                        Double imp3=valorBruto*imp2;
+//                        txSubtotal2.setText(String.valueOf(formatter.format(imp3)));
+//                        valorNeto=imp3;
                     }
 //                }
 
@@ -581,6 +584,37 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
             }
         });
+        sharedViewModel.getDiscountValue().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                DiscountValue=s;
+                DecimalFormat formatter = new DecimalFormat("###,###,##0");
+
+
+                Double disc = Double.parseDouble(s);
+                Double disc2 = disc / 100;
+                Double disc3 = 1 - disc2;
+                Double disc4 = valorBruto* disc2;
+//                Double imp5= valorBruto*disc3;
+//                Double imp6=Double.parseDouble(TaxValue)/100;
+//                Double imp7=1-imp6;
+//                Double imp8=valorBruto*imp7;
+
+
+                String totalfac = String.valueOf(formatter.format(disc4));
+
+
+//
+               txSubtotal2.setText(totalfac);
+//                Double DiscandImp= valorNeto*disc3;
+//                txSubtotal.setText(String.valueOf(formatter.format(imp5)));
+//                Double nuevoneto=valorBruto*Double.parseDouble(TaxValue);
+//
+//                txSubtotal2.setText(String.valueOf(formatter.format(imp8)));
+
+
+            }
+        });
           sharedViewModel.getTaxvalue().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -591,12 +625,14 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                 Double Imp2 = imp / 100;
                 Double Imp3 = 1 + Imp2;
                 Double Imp4 = valorBruto* Imp3;
+                Double Imp5=valorBruto*Imp2;
+                String tax1=String.valueOf(formatter.format(Imp5));
 
 
                 String totalfac = String.valueOf(formatter.format(Imp4));
 
 //
-                txSubtotal2.setText(totalfac);
+                txSubtotal.setText(tax1);
 
 
 //                TaxValue=s;

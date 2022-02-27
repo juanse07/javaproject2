@@ -150,6 +150,7 @@ ArrayList<NoteProducto>notesProd;
 
         sharedViewModel = new ViewModelProvider((ViewModelStoreOwner) getActivity()).get(SharedViewModel.class);
         sharedViewModel.setTaxvalue(txtaxvisor.getText().toString());
+        sharedViewModel.setDiscountvalue(txdiscountvisor.getText().toString());
 
 
         lista = new List();
@@ -334,6 +335,7 @@ decreasetax.setOnClickListener(new View.OnClickListener() {
                 int valorritmo = 1;
                 int valornuevosuma = valorprecio + valorritmo;
                 txdiscountvisor.setText(valornuevosuma + "");
+                sharedViewModel.setDiscountvalue(txdiscountvisor.getText().toString());
             }
 
 
@@ -349,6 +351,7 @@ decreasetax.setOnClickListener(new View.OnClickListener() {
                 int valorritmo = 1;
                 int valornuevosuma = valorprecio - valorritmo;
                 txdiscountvisor.setText(valornuevosuma + "");
+                sharedViewModel.setDiscountvalue(txdiscountvisor.getText().toString());
 
             }
         });

@@ -339,7 +339,18 @@
                 android:layout_marginEnd="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="30dp"
-                android:text="TextView"
+                android:text="@string/Discount"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/txsubtotal3"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="50dp"
+                android:text="@string/Subtotal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -350,7 +361,7 @@
                 android:layout_marginEnd="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="10dp"
-                android:text="TextView"
+                android:text="@string/Tax"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -374,11 +385,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|top"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginEnd="170dp"
                 android:layout_marginRight="170dp"
                 android:layout_weight="1"
-                android:text="@string/Total"
+                android:text="@string/Subtotal"
                 android:textAlignment="gravity"
                 android:textSize="8sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -393,7 +404,7 @@
                 android:layout_marginEnd="170dp"
                 android:layout_marginRight="170dp"
                 android:layout_weight="1"
-                android:text="@string/Subtotal"
+                android:text="@string/Tax"
                 android:textAlignment="gravity"
                 android:textSize="8sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -408,7 +419,7 @@
                 android:layout_marginEnd="170dp"
                 android:layout_marginRight="170dp"
                 android:layout_weight="1"
-                android:text="@string/Total"
+                android:text="@string/Discount"
                 android:textAlignment="gravity"
                 android:textSize="8sp"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -36,6 +36,7 @@ public class SharedViewModel extends AndroidViewModel  {
     private LiveData<Integer>CountVentas;
     private LiveData<List<HomeNote>>allhomenotes;
     private MutableLiveData<String> Taxvalue=new MutableLiveData<>();
+    private MutableLiveData<String> Discountvalue=new MutableLiveData<>();
 
 
 
@@ -198,7 +199,10 @@ public LiveData<ArrayList<cuerospinner>>getproducto(){
         return textcliente;
     }
     ///////getdrawer/////
-
+    public LiveData<String>getDiscountValue(){return Discountvalue;}
+    public void setDiscountvalue(String input11){
+        Discountvalue.setValue(input11);
+    }
 
     public LiveData<String>getResultado(){
         return resultado;
