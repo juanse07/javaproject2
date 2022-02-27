@@ -217,7 +217,7 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
         else
         {
             holder.buttonaddproducto.setBackgroundColor(holder.itemView.getResources().getColor(R.color.colorGris));
-            holder.buttonaddproducto.setTextColor(holder.itemView.getResources().getColor(R.color.colorGrisoscuro));
+            holder.buttonaddproducto.setTextColor(holder.itemView.getResources().getColor(R.color.colorPrimary));
             // holder.textBusquedas.setTextColor(holder.itemView.getResources().getColor(R.color.colorGris));
         }
 

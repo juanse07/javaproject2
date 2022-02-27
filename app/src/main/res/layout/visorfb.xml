@@ -25,7 +25,9 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="7dp"
             android:layout_weight="1.4"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@color/colorNegrobrillante"
+            android:textSize="16sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btaddcliente"

@@ -66,7 +66,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
         else
         {
             holder.btaddcliente.setBackgroundColor(holder.itemView.getResources().getColor(R.color.colorGris));
-            holder.btaddcliente.setTextColor(holder.itemView.getResources().getColor(R.color.colorGrisoscuro));
+            holder.btaddcliente.setTextColor(holder.itemView.getResources().getColor(R.color.colorPrimary));
             // holder.textBusquedas.setTextColor(holder.itemView.getResources().getColor(R.color.colorGris));
         }
       /*  holder.itemView.setOnClickListener(new View.OnClickListener() {

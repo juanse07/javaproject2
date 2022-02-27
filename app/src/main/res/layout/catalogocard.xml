@@ -49,7 +49,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="15"
                     android:gravity="center_horizontal"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    app:autoSizeMaxTextSize="16sp"
+                    app:autoSizeMinTextSize="8sp"
+                    app:autoSizeTextType="uniform" />
 
                 <TextView
                     android:id="@+id/textView64"
@@ -58,7 +61,10 @@
                     android:layout_weight="70"
                     android:gravity="center_horizontal"
                     android:text="@string/Product_Name"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    app:autoSizeMaxTextSize="16sp"
+                    app:autoSizeMinTextSize="8sp"
+                    app:autoSizeTextType="uniform" />
             </LinearLayout>
 
             <LinearLayout
@@ -93,7 +99,10 @@
                     android:textAlignment="center"
                     android:textColor="#1F1F1F"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:autoSizeMaxTextSize="16sp"
+                    app:autoSizeMinTextSize="8sp"
+                    app:autoSizeTextType="uniform" />
 
             </LinearLayout>
 
@@ -148,7 +157,10 @@
                 android:layout_weight="10"
                 android:gravity="start|top"
                 android:text="@string/Quantity"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                app:autoSizeMaxTextSize="16sp"
+                app:autoSizeMinTextSize="8sp"
+                app:autoSizeTextType="uniform" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -197,7 +209,10 @@
                         android:text="TextView"
                         android:textColor="@color/colorNegrobrillante"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:autoSizeMaxTextSize="16sp"
+                        app:autoSizeMinTextSize="8sp"
+                        app:autoSizeTextType="uniform" />
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
@@ -231,7 +246,10 @@
                 android:layout_weight="10"
                 android:gravity="start|top"
                 android:text="@string/Price"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                app:autoSizeMaxTextSize="16sp"
+                app:autoSizeMinTextSize="8sp"
+                app:autoSizeTextType="uniform" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -278,7 +296,10 @@
                         android:text="TextView"
                         android:textColor="@color/colorNegrobrillante"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:autoSizeMaxTextSize="16sp"
+                        app:autoSizeMinTextSize="8sp"
+                        app:autoSizeTextType="uniform" />
 
                     <EditText
                         android:id="@+id/preciotext"

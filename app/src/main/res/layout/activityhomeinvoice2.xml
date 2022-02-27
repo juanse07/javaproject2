@@ -30,7 +30,10 @@
                 android:layout_marginLeft="3dp"
                 android:layout_weight="24"
                 android:text="@string/Customer_Name"
-                android:textSize="8sp" />
+                android:textSize="8sp"
+                app:autoSizeMaxTextSize="11sp"
+                app:autoSizeMinTextSize="7sp"
+                app:autoSizeTextType="uniform" />
 
             <TextView
                 android:id="@+id/textView60"
@@ -41,7 +44,10 @@
                 android:layout_marginLeft="3dp"
                 android:layout_weight="20"
                 android:text="@string/Date"
-                android:textSize="8sp" />
+                android:textSize="8sp"
+                app:autoSizeMaxTextSize="11sp"
+                app:autoSizeMinTextSize="7sp"
+                app:autoSizeTextType="uniform" />
 
             <TextView
                 android:id="@+id/textView59"
@@ -52,7 +58,10 @@
                 android:layout_marginLeft="3dp"
                 android:layout_weight="20"
                 android:text="@string/Total"
-                android:textSize="8sp" />
+                android:textSize="8sp"
+                app:autoSizeMaxTextSize="11sp"
+                app:autoSizeMinTextSize="7sp"
+                app:autoSizeTextType="uniform" />
 
             <TextView
                 android:id="@+id/textView58"
@@ -60,21 +69,30 @@
                 android:layout_height="match_parent"
                 android:layout_weight="7"
                 android:textSize="8sp"
-                android:visibility="invisible" />
+                android:visibility="invisible"
+                app:autoSizeMaxTextSize="11sp"
+                app:autoSizeMinTextSize="7sp"
+                app:autoSizeTextType="uniform" />
 
             <TextView
                 android:id="@+id/textView57"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="16"
-                android:textSize="8sp" />
+                android:textSize="8sp"
+                app:autoSizeMaxTextSize="11sp"
+                app:autoSizeMinTextSize="7sp"
+                app:autoSizeTextType="uniform" />
 
             <TextView
                 android:id="@+id/textView56"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
-                android:textSize="8sp" />
+                android:textSize="8sp"
+                app:autoSizeMaxTextSize="11sp"
+                app:autoSizeMinTextSize="7sp"
+                app:autoSizeTextType="uniform" />
         </LinearLayout>
 
         <LinearLayout
@@ -90,15 +108,20 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="3dp"
                 android:layout_marginLeft="3dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
                 android:layout_weight="28"
+                android:autoSizeMaxTextSize="12sp"
+                android:autoSizeMinTextSize="9sp"
+                android:autoSizeStepGranularity="1sp"
                 android:gravity="start|center_vertical"
                 android:text="Ronaldinho Gaucho"
                 android:textColor="@color/colorNegrobrillante"
-                android:textSize="13sp"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="9sp"
-                android:autoSizeMaxTextSize="12sp"
-                android:autoSizeStepGranularity="1sp"/>
+                app:autoSizeMaxTextSize="14sp"
+                app:autoSizeMinTextSize="9sp"
+                app:autoSizeTextType="uniform" />
 
             <TextView
                 android:id="@+id/txinvdate"
@@ -157,6 +180,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
+
                     android:text="30"
                     android:textColor="@color/colorverdeesmeralda"
                     android:textSize="13sp" />
@@ -179,10 +203,14 @@
                 <TextView
                     android:id="@+id/txinvstate"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="1dp"
+                    android:gravity="center_horizontal|center_vertical"
                     android:text="Venta"
-                    android:textSize="13sp" />
+                    app:autoSizeMaxTextSize="12sp"
+                    app:autoSizeMinTextSize="3sp"
+                    app:autoSizeTextType="uniform" />
             </androidx.cardview.widget.CardView>
 
             <ImageView

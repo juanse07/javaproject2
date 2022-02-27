@@ -39,7 +39,10 @@
                         android:layout_marginLeft="5dp"
                         android:layout_weight="40"
                         android:gravity="start"
-                        android:text="@string/Product_Name" />
+                        android:text="@string/Product_Name"
+                        app:autoSizeMaxTextSize="11sp"
+                        app:autoSizeMinTextSize="6sp"
+                        app:autoSizeTextType="uniform" />
 
                     <TextView
                         android:id="@+id/textView48"
@@ -50,7 +53,10 @@
                         android:layout_marginLeft="5dp"
                         android:layout_weight="30"
                         android:gravity="start"
-                        android:text="@string/Price" />
+                        android:text="@string/Price"
+                        app:autoSizeMaxTextSize="11sp"
+                        app:autoSizeMinTextSize="6sp"
+                        app:autoSizeTextType="uniform" />
 
                     <TextView
                         android:id="@+id/textView47"
@@ -61,7 +67,10 @@
                         android:layout_marginLeft="5dp"
                         android:layout_weight="20"
                         android:gravity="start"
-                        android:text="@string/Quantity" />
+                        android:text="@string/Quantity"
+                        app:autoSizeMaxTextSize="11sp"
+                        app:autoSizeMinTextSize="6sp"
+                        app:autoSizeTextType="uniform" />
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -93,7 +102,10 @@
                         android:layout_gravity="center_vertical"
                         android:layout_weight="30"
                         android:gravity="center_vertical"
-                        android:text="@string/Customer_Name" />
+                        android:text="@string/Customer_Name"
+                        app:autoSizeMaxTextSize="10sp"
+                        app:autoSizeMinTextSize="6sp"
+                        app:autoSizeTextType="uniform" />
 
                     <TextView
                         android:id="@+id/tx_cliente"
@@ -136,7 +148,10 @@
                         android:layout_gravity="center_vertical"
                         android:layout_weight="30"
                         android:gravity="center_vertical"
-                        android:text="@string/Logo" />
+                        android:text="@string/Logo"
+                        app:autoSizeMaxTextSize="10sp"
+                        app:autoSizeMinTextSize="6sp"
+                        app:autoSizeTextType="uniform" />
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="0dp"
@@ -194,7 +209,10 @@
                         android:layout_gravity="center_vertical"
                         android:layout_weight="30"
                         android:gravity="center_vertical"
-                        android:text="@string/Signature"></TextView>
+                        android:text="@string/Signature"
+                        app:autoSizeMaxTextSize="10sp"
+                        app:autoSizeMinTextSize="6sp"
+                        app:autoSizeTextType="uniform"></TextView>
 
 
                     <com.google.android.material.card.MaterialCardView
@@ -293,7 +311,10 @@
                             android:layout_gravity="center_vertical"
                             android:layout_weight="30"
                             android:gravity="center_vertical"
-                            android:text="@string/Payment_Term" />
+                            android:text="@string/Payment_Term"
+                            app:autoSizeMaxTextSize="10sp"
+                            app:autoSizeMinTextSize="6sp"
+                            app:autoSizeTextType="uniform" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -411,8 +432,11 @@
                         android:layout_height="match_parent"
 
 
-                        android:layout_weight="90"
-                        android:text="@string/leyenda_impuesto" />
+                        android:layout_weight="30"
+                        android:text="@string/leyenda_impuesto"
+                        app:autoSizeMaxTextSize="10sp"
+                        app:autoSizeMinTextSize="6sp"
+                        app:autoSizeTextType="uniform" />
 
                 </LinearLayout>
 
@@ -480,7 +504,11 @@
                             android:id="@+id/textView33"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/Notes" />
+                            android:layout_weight="30"
+                            android:text="@string/Notes"
+                            app:autoSizeMaxTextSize="10sp"
+                            app:autoSizeMinTextSize="6sp"
+                            app:autoSizeTextType="uniform" />
                     </LinearLayout>
 
                     <EditText

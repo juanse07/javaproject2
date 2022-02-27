@@ -75,7 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="20"
-                    android:background="@color/colorRappi"
+                    android:background="@color/colorPrimary"
                     android:orientation="horizontal"
                     android:weightSum="100">
 
@@ -93,12 +93,16 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="2dp"
                         android:layout_weight="70"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="@string/Confirmation_Cart"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
                         android:textStyle="bold"
+                        app:autoSizeMaxTextSize="14sp"
+                        app:autoSizeMinTextSize="10sp"
+                        app:autoSizeTextType="uniform"
                         tools:text="Please confirm to add to cart">
 
                     </TextView>
