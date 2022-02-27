@@ -35,6 +35,7 @@ public class SharedViewModel extends AndroidViewModel  {
     private MutableLiveData<CharSequence> searchTipo=new MutableLiveData<>();
     private LiveData<Integer>CountVentas;
     private LiveData<List<HomeNote>>allhomenotes;
+    private MutableLiveData<String> Taxvalue=new MutableLiveData<>();
 
 
 
@@ -209,6 +210,10 @@ public LiveData<ArrayList<cuerospinner>>getproducto(){
     public LiveData<List<HomeNote>>getAllNotes (){
         return allhomenotes;
 
+    }
+    public LiveData<String> getTaxvalue(){return Taxvalue;}
+    public void setTaxvalue(String Input10){
+        Taxvalue.setValue(Input10);
     }
     public LiveData<String> getboton() {
         return bottonradial;

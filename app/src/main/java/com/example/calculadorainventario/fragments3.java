@@ -8,6 +8,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -50,7 +51,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     ConstraintLayout constlay;
     BottomNavigationView navcat;
     LinearLayout linprod, lincli;
-    String PrecioL,ProductoL,ClienteL;
+    Double valorBruto;
+    String PrecioL,ProductoL,ClienteL,TaxValue;
     ArrayList<String> Listapdf;
     ArrayList<String> ListaProd;
     ArrayList<Double> ListaCant;
@@ -67,7 +69,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     List<NoteProducto>ListaProd1;
 
 
-    TextView txclientebotton, txproductobttom,txpreciobottom,title4,textView38,textview30,textView50;
+    TextView txclientebotton, txproductobttom,txpreciobottom,title4,textView38,textview30,textView50,txSubtotal,txSubtotal2;
     String Radiob;
     TextView textovigilancia;
     CardView card_vigilancia;
@@ -100,6 +102,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         btnpdf=findViewById(R.id.btnpdf);
         cardprod3=findViewById(R.id.cardprod3);
         textView50=findViewById(R.id.textView50);
+        txSubtotal=findViewById(R.id.txsubtotal);
+        txSubtotal2=findViewById(R.id.txsubtotal2);
 
         arrowchange=findViewById(R.id.arrowchange);
         //txproductobttom=findViewById(R.id.txproductobttom);
@@ -113,6 +117,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         cardprod=findViewById(R.id.cardprod);
         textView38=findViewById(R.id.textView38);
         textview30=findViewById(R.id.textView30);
+        TaxValue="0";
 
 
 
@@ -124,36 +129,56 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 //        SimpleDateFormat fecc = new SimpleDateFormat("dd/MMM/yyyy");
 //
 //        final String fechacComplString = fecc.format(calendar.getTime());
-
+        sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
         noteProdViewModel=new ViewModelProvider(this).get(NoteProdViewModel.class);
 
         noteProdViewModel.getSumTotal().observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
-//                if(aDouble==null){
-//                    cardprod3.setText("0");
-//                }else{
-//                DecimalFormat formatter = new DecimalFormat("###,###,##0");
-//                String totalfac=String.valueOf(formatter.format(aDouble));
-//
-//                cardprod3.setText(totalfac);
+                valorBruto=aDouble;
+
+                    if(aDouble==null){
+                        cardprod3.setText("0");
+                        txSubtotal.setText("0");
+                    }else{
+                        DecimalFormat formatter = new DecimalFormat("###,###,##0");
+                        String totalfac=String.valueOf(formatter.format(aDouble));
+
+
+                        cardprod3.setText(totalfac);
+                        txSubtotal.setText(totalfac);
+                        Double imp1=Double.parseDouble(TaxValue)/100;
+                        Double imp2=1+imp1;
+                        Double imp3=valorBruto*imp2;
+                        txSubtotal2.setText(String.valueOf(formatter.format(imp3)));
+                    }
 //                }
+
 
             }
         });
         noteProdViewModel.getSumResutadoImpuesto().observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
-                if(aDouble==null){
-                    cardprod3.setText("0");
-                }else{
-                    DecimalFormat formatter = new DecimalFormat("###,###,##0");
-                    String totalfac=String.valueOf(formatter.format(aDouble));
 
-                    cardprod3.setText(totalfac);
-                }
 
-            }
+                     DecimalFormat formatter = new DecimalFormat("###,###,##0");
+
+
+//                     Double imp = Double.parseDouble(TaxValue);
+//                     Double Imp2 = imp / 100;
+//                     Double Imp3 = 1 + Imp2;
+//                     Double Imp4 = aDouble * Imp3;
+//
+//
+//                     String totalfac = String.valueOf(formatter.format(Imp4));
+//
+////
+//                     txSubtotal2.setText(totalfac);
+
+                 }
+
+
         });
         noteProdViewModel.getSumcantTotal().observe(this, new Observer<Double>() {
             @Override
@@ -308,7 +333,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                     btnpdf.bringToFront();
                     btnpdf.setVisibility(View.VISIBLE);
 //                    btcompra.bringToFront();
-                    cardprod3.bringToFront();
+//                    cardprod3.bringToFront();
                     btncliente.setVisibility(View.GONE);
                     btnproducto.setVisibility(View.GONE);
                     cardprod.setVisibility(View.GONE);
@@ -317,7 +342,9 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                     textview30.setVisibility(View.GONE);
                     cardcli.setVisibility(View.GONE);
                     btcompra.setVisibility(View.GONE);
-                    cardprod3.setVisibility(View.VISIBLE);
+                    cardprod3.setVisibility(View.GONE);
+                    txSubtotal.bringToFront();
+                    txSubtotal2.bringToFront();
                     //Relative2.setVisibility(View.GONE);
                     btcompra.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -525,8 +552,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                 viepag.setCurrentItem(2);
             }
         });
-       sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
-       // sharedViewModel = new ViewModelProvider((ViewModelStoreOwner) getActivity()).get(SharedViewModel.class);
+
         sharedViewModel.init();
         sharedViewModel.getResultado().observe(this, new Observer<String>() {
             @Override
@@ -552,6 +578,28 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
 
 
+
+            }
+        });
+          sharedViewModel.getTaxvalue().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                DecimalFormat formatter = new DecimalFormat("###,###,##0");
+              TaxValue=s;
+
+                Double imp = Double.parseDouble(s);
+                Double Imp2 = imp / 100;
+                Double Imp3 = 1 + Imp2;
+                Double Imp4 = valorBruto* Imp3;
+
+
+                String totalfac = String.valueOf(formatter.format(Imp4));
+
+//
+                txSubtotal2.setText(totalfac);
+
+
+//                TaxValue=s;
 
             }
         });

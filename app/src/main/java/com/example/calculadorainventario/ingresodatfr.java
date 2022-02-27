@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -144,6 +145,11 @@ ArrayList<NoteProducto>notesProd;
         decreasediscount=ingresoview.findViewById(R.id.decreasediscount);
         txdiscountvisor=ingresoview.findViewById(R.id.txdiscountvisor);
         txtaxvisor=ingresoview.findViewById(R.id.txtaxvisor);
+        txtaxvisor.setText("20");
+        txdiscountvisor.setText("0");
+
+        sharedViewModel = new ViewModelProvider((ViewModelStoreOwner) getActivity()).get(SharedViewModel.class);
+        sharedViewModel.setTaxvalue(txtaxvisor.getText().toString());
 
 
         lista = new List();
@@ -281,8 +287,7 @@ ArrayList<NoteProducto>notesProd;
         });
 
 
-        txtaxvisor.setText("20");
-        txdiscountvisor.setText("0");
+
 
 increasetax.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -295,7 +300,10 @@ increasetax.setOnClickListener(new View.OnClickListener() {
         int valornuevosuma = valorprecio + valorritmo;
         txtaxvisor.setText(valornuevosuma + "");
 
-    }
+
+        sharedViewModel.setTaxvalue(txtaxvisor.getText().toString());}
+
+
 
 
 
@@ -310,6 +318,8 @@ decreasetax.setOnClickListener(new View.OnClickListener() {
         int valorritmo = 1;
         int valornuevosuma = valorprecio - valorritmo;
         txtaxvisor.setText(valornuevosuma + "");
+        sharedViewModel.setTaxvalue(txtaxvisor.getText().toString());
+
 
     }
 });
@@ -459,6 +469,12 @@ pagomas.setOnClickListener(new View.OnClickListener() {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         sharedViewModel = new ViewModelProvider((ViewModelStoreOwner) getActivity()).get(SharedViewModel.class);
+        sharedViewModel.getTaxvalue().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+
+            }
+        });
         sharedViewModel.getText().observe(getViewLifecycleOwner(), new Observer<CharSequence>() {
             @Override
             public void onChanged(@Nullable CharSequence charSequence) {

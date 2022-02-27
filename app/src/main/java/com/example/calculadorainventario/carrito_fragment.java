@@ -111,6 +111,12 @@ public class carrito_fragment extends Fragment implements ClickInterface1  {
 
         sharedViewModel = new ViewModelProvider((ViewModelStoreOwner) getActivity()).get(SharedViewModel.class);
         sharedViewModel.init3();
+        sharedViewModel.getTaxvalue().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+
+            }
+        });
 
 
         sharedViewModel.getcliente().observe(getViewLifecycleOwner(), new Observer<ArrayList<constructornom2>>() {

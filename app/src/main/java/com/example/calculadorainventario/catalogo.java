@@ -179,7 +179,12 @@ public class catalogo extends Fragment implements ClickInterface1 {
             public void onRefresh() {
                 sharedViewModel = new ViewModelProvider((ViewModelStoreOwner) getActivity()).get(SharedViewModel.class);
                 sharedViewModel.init();
+                sharedViewModel.getTaxvalue().observe(getViewLifecycleOwner(), new Observer<String>() {
+                    @Override
+                    public void onChanged(String s) {
 
+                    }
+                });
 
                 sharedViewModel.getproducto().observe(getViewLifecycleOwner(), new Observer<ArrayList<cuerospinner>>() {
                     @Override
