@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:orientation="horizontal"
+    android:weightSum="100"
+    tools:showIn="@layout/fragment_ingresodatfr">
+
+    <CheckBox
+        android:id="@+id/checkBox6"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/notastx"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="30"
+        android:gravity="center_vertical"
+        android:text="@string/Payment_Term"
+        app:autoSizeMaxTextSize="10sp"
+        app:autoSizeMinTextSize="6sp"
+        app:autoSizeTextType="uniform" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="70"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+
+        <EditText
+            android:id="@+id/pagotext"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:ems="10"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:visibility="gone" />
+
+        <com.google.android.material.card.MaterialCardView
+            app:strokeColor="@color/colorRappi"
+            app:strokeWidth="1dp"
+            style="@style/MatCardMinus">
+
+            <ImageView
+                android:id="@+id/pagomenos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_weight="0"
+                android:src="@drawable/ic_remove_black_18dp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/txdaysterm"
+            android:text="TextView"
+            style="@style/txmasymenos" />
+
+        <com.google.android.material.card.MaterialCardView
+            app:strokeColor="@color/colorverdeesmeralda"
+            app:strokeWidth="1dp"
+            style="@style/MatCardMas">
+
+            <ImageView
+                android:id="@+id/pagomas"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_weight="0"
+                android:src="@drawable/ic_add_black_18dp" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</LinearLayout>

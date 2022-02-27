@@ -42,6 +42,8 @@
     <string name="Quote">Quote</string>
     <string name="Tax_included">Tax is Included</string>
     <string name="Acept">Ok</string>
+    <string name="Discount">Discount</string>
+    <string name="Save">Save</string>
     <string name="Cancel">Cancel</string>
     <string name="Email">E-mail</string>
     <string name="Mobile_phone">Mobile Phone</string>

@@ -511,7 +511,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/btnnaranja"
-                android:text="Guardar"
+                android:text="@string/Save"
                 app:backgroundTint="@null"
                 app:icon="@drawable/ic_baseline_save_24"
                 app:iconGravity="end"

@@ -4,6 +4,9 @@
         <string name="app_name">PyMESoft</string>
         <string name="app_name2">"<font color='#ffffff'>Facturas</font>"</string>
         <string name="Purchase">Compra</string>
+        <string name="Discount">Descuento</string>
+        <string name="Save">Guardar</string>
+
         <string name="Invoice">Factura de Venta</string>
         <string name="Draft">Borrador</string>
         <string name="Customer_Name">Nombre del Cliente</string>

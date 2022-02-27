@@ -29,6 +29,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.calculadorainventario.Adapadores.AdaptadorNoteProd;
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.database.DatabaseReference;
 import com.itextpdf.text.List;
 
@@ -46,7 +47,7 @@ public class ingresodatfr extends Fragment implements ClickInterface1 {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    TextView txcliente1, tx_cliente, tx_producto,txdaysterm;
+    TextView txcliente1, tx_cliente, tx_producto,txdaysterm,txtaxvisor,txdiscountvisor;
     // Spinner listaclientes, listaclientes2,listacueros,spoperacion,spmetodo;
     EditText precio1, pagotext,txtterminos;
     RecyclerView.Adapter madapter;
@@ -66,6 +67,7 @@ ArrayList<NoteProducto>notesProd;
     RadioGroup grupotipo;
     RadioButton rbventa, rbcompra, rbborrador;
     ImageView logomini, pagomenos, pagomas,imagefrase,imgSignature11,imgSignature22;
+    MaterialCardView increasetax,increasediscount,discount,decreasetax,decreasediscount;
     CardView card_operacion;
     View ingresoview;
     DatabaseReference ref;
@@ -133,10 +135,16 @@ ArrayList<NoteProducto>notesProd;
         pagomas = ingresoview.findViewById(R.id.pagomas);
         pagotext = ingresoview.findViewById(R.id.pagotext);
         txdaysterm=ingresoview.findViewById(R.id.txdaysterm);
-        imagefrase=ingresoview.findViewById(R.id.imagefrase);
         txtterminos=ingresoview.findViewById(R.id.txtterminos);
         imgSignature11=ingresoview.findViewById(R.id.imgSignature11);
         imgSignature22=ingresoview.findViewById(R.id.imgSignature22);
+        increasetax=ingresoview.findViewById(R.id.increasetax);
+        increasediscount=ingresoview.findViewById(R.id.increasediscount);
+        decreasetax=ingresoview.findViewById(R.id.decreasetax);
+        decreasediscount=ingresoview.findViewById(R.id.decreasediscount);
+        txdiscountvisor=ingresoview.findViewById(R.id.txdiscountvisor);
+        txtaxvisor=ingresoview.findViewById(R.id.txtaxvisor);
+
 
         lista = new List();
         RecyProd.setHasFixedSize(true);
@@ -172,7 +180,7 @@ ArrayList<NoteProducto>notesProd;
             Bitmap myBitmap2 = BitmapFactory.decodeFile(imgFile2.getAbsolutePath());
 
 
-            imagefrase.setImageBitmap(myBitmap2);
+
         }
 
 
@@ -273,8 +281,67 @@ ArrayList<NoteProducto>notesProd;
         });
 
 
+        txtaxvisor.setText("20");
+        txdiscountvisor.setText("0");
+
+increasetax.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        int getinput = Integer.parseInt(txtaxvisor.getText().toString());
+        //shareViewModel2.setHorapdf(txactual.getText().toString());
+
+        int valorprecio = Integer.parseInt(txtaxvisor.getText().toString());
+        int valorritmo = 1;
+        int valornuevosuma = valorprecio + valorritmo;
+        txtaxvisor.setText(valornuevosuma + "");
+
+    }
 
 
+
+});
+decreasetax.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        int getinput = Integer.parseInt(txtaxvisor.getText().toString());
+        //shareViewModel2.setHorapdf(txactual.getText().toString());
+
+        int valorprecio = Integer.parseInt(txtaxvisor.getText().toString());
+        int valorritmo = 1;
+        int valornuevosuma = valorprecio - valorritmo;
+        txtaxvisor.setText(valornuevosuma + "");
+
+    }
+});
+
+        increasediscount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int getinput = Integer.parseInt(txdiscountvisor.getText().toString());
+                //shareViewModel2.setHorapdf(txactual.getText().toString());
+
+                int valorprecio = Integer.parseInt(txdiscountvisor.getText().toString());
+                int valorritmo = 1;
+                int valornuevosuma = valorprecio + valorritmo;
+                txdiscountvisor.setText(valornuevosuma + "");
+            }
+
+
+
+        });
+        decreasediscount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int getinput = Integer.parseInt(txdiscountvisor.getText().toString());
+                //shareViewModel2.setHorapdf(txactual.getText().toString());
+
+                int valorprecio = Integer.parseInt(txdiscountvisor.getText().toString());
+                int valorritmo = 1;
+                int valornuevosuma = valorprecio - valorritmo;
+                txdiscountvisor.setText(valornuevosuma + "");
+
+            }
+        });
 
 
 
