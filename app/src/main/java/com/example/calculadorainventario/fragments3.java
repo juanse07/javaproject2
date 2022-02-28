@@ -419,7 +419,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             calendar.add(Calendar.DATE, diasq);
                             fechafinal = fecc.format(calendar.getTime());
 
-                            Intent intent = new Intent(fragments3.this, pdfviewer2.class);
+                            Intent intent = new Intent(fragments3.this, pdfviewer3.class);
 
                             //  ArrayList<Note> Lista78;
                             //Lista78=(ArrayList<Note>)allnotes3;

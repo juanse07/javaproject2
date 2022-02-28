@@ -28,6 +28,9 @@
             android:name=".SelectLanguaje"
            ></activity>
         <activity
+            android:name=".pdfviewer3"
+            ></activity>
+        <activity
             android:name=".Signature2"
             android:screenOrientation="landscape"></activity>
         <activity
