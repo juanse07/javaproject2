@@ -54,6 +54,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     ConstraintLayout constlay;
     BottomNavigationView navcat;
     LinearLayout linprod, lincli;
+    Double ValorImp,ValorDesc;
     Double valorBruto,valorNeto;
     String PrecioL,ProductoL,ClienteL,TaxValue,DiscountValue;
     ArrayList<String> Listapdf;
@@ -295,6 +296,9 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                     cardprod.setVisibility(View.VISIBLE);
                     cardcli.setVisibility(View.GONE);
                     textView38.setVisibility(View.VISIBLE);
+                    txSubtotal2.setVisibility(View.GONE);
+                    txSubtotal.setVisibility(View.GONE);
+                    txSubtotal3.setVisibility(View.GONE);
                     textview30.setVisibility(View.GONE);
                     textView50.setVisibility(View.GONE);
                     //linprod.setVisibility(View.VISIBLE);
@@ -324,6 +328,9 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                     textView50.setVisibility(View.GONE);
                     //linprod.setVisibility(View.INVISIBLE);
                     //lincli.setVisibility(View.VISIBLE);
+                    txSubtotal2.setVisibility(View.GONE);
+                    txSubtotal.setVisibility(View.GONE);
+                    txSubtotal3.setVisibility(View.GONE);
 
                     btnproducto.setVisibility(View.GONE);
                     btcompra.setVisibility(View.GONE);
@@ -340,6 +347,9 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
                 }else {
                     btnpdf.bringToFront();
+                    txSubtotal2.bringToFront();
+                    txSubtotal.bringToFront();
+                    txSubtotal3.bringToFront();
                     btnpdf.setVisibility(View.VISIBLE);
 //                    btcompra.bringToFront();
 //                    cardprod3.bringToFront();
@@ -349,6 +359,9 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                     textView38.setVisibility(View.GONE);
                     textView50.setVisibility(View.VISIBLE);
                     textview30.setVisibility(View.GONE);
+                    txSubtotal2.setVisibility(View.VISIBLE);
+                    txSubtotal.setVisibility(View.VISIBLE);
+                    txSubtotal3.setVisibility(View.VISIBLE);
                     cardcli.setVisibility(View.GONE);
                     btcompra.setVisibility(View.GONE);
                     cardprod3.setVisibility(View.GONE);
@@ -423,6 +436,19 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             //                           bundle.putSerializable("Precio1", PrecioL);
                             bundle.putSerializable("Nombre1", ClienteL);
                             bundle.putSerializable("Producto1", ProductoL);
+                            Double valorbr;
+                            Double valornet;
+
+                            valorbr=noteProdViewModel.getSumTotal().getValue();
+                            valornet=valorbr-ValorDesc+ValorImp;
+
+                            Log.d("valoto",String.valueOf(valornet));
+                            bundle.putSerializable("valorneto",valornet);
+                            bundle.putSerializable("valorbruto",valorbr);
+                            bundle.putSerializable("valorimp",ValorImp);
+                            bundle.putSerializable("valordesc",ValorDesc);
+                            bundle.putSerializable("impuestopercent",TaxValue);
+                            bundle.putSerializable("descpercent",DiscountValue);
 
                             String comprobarestado = textovigilancia.getText().toString();
                             if (comprobarestado.equals(getResources().getString(R.string.Receipts))) {
@@ -617,14 +643,14 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                 Double disc = Double.parseDouble(s);
                 Double disc2 = disc / 100;
                 Double disc3 = 1 - disc2;
-                Double disc4 = valorBruto* disc2;
+                ValorDesc = valorBruto* disc2;
 //                Double imp5= valorBruto*disc3;
 //                Double imp6=Double.parseDouble(TaxValue)/100;
 //                Double imp7=1-imp6;
 //                Double imp8=valorBruto*imp7;
 
 
-                String totalfac = String.valueOf(formatter.format(disc4));
+                String totalfac = String.valueOf(formatter.format(ValorDesc));
 
 
 //
@@ -651,8 +677,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                 Double Imp2 = imp / 100;
                 Double Imp3 = 1 + Imp2;
                 Double Imp4 = valorBruto* Imp3;
-                Double Imp5=valorBruto*Imp2;
-                String tax1=String.valueOf(formatter.format(Imp5));
+               ValorImp=valorBruto*Imp2;
+                String tax1=String.valueOf(formatter.format(ValorImp));
 
 
                 String totalfac = String.valueOf(formatter.format(Imp4));

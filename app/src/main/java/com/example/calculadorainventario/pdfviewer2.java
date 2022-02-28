@@ -108,6 +108,12 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     String precioventas2;
 //    String medidaventas2;
   String valorventas2;
+  double valorbr;
+    double ValorImp;
+    double ValorDesc;
+    double TaxValue;
+    double DiscountValue;
+    double valorneto;
   String fechaventas2;
    String estadoventas2;
 //    String horareal2;
@@ -159,7 +165,6 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             @Override
             public void onClick(View v) {
 
-           
                 onBackPressed();
             }
         });
@@ -208,6 +213,13 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 //        List5= (ArrayList<Double>) getIntent().getSerializableExtra("ListaImp");
 //        List6=(ArrayList<Double>) getIntent().getSerializableExtra("ListaRimp");
         Lista7=(ArrayList<String>) getIntent().getSerializableExtra("ListaDesc");
+
+        valorbr=getIntent().getExtras().getDouble("valorbruto");
+        ValorImp=getIntent().getExtras().getDouble("valorimp");
+        ValorDesc=getIntent().getExtras().getDouble("valordesc");
+        TaxValue=getIntent().getExtras().getDouble("impuestopercent");
+        DiscountValue=getIntent().getExtras().getDouble("descpercent");
+        valorneto=getIntent().getExtras().getDouble("valorneto");
 //        SumaResultado=getIntent().getExtras().getString("Total1");
 
 
@@ -1093,7 +1105,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             Paragraph valor1 = new Paragraph(Total+":", regularSub2);
             DecimalFormat formatter = new DecimalFormat("###,###,##0");
 
-          Paragraph vvalor = new Paragraph(formatter.format(Double.parseDouble(valorventas2))+" USD",regularAddress);
+          Paragraph vvalor = new Paragraph(formatter.format(Double.parseDouble(String.valueOf(valorneto)))+" USD",regularAddress);
             valor1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
             vvalor.setAlignment(Element.ALIGN_RIGHT);
 
@@ -1281,14 +1293,14 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             Toast.makeText(this, "Fallo b", Toast.LENGTH_SHORT).show();
         }
         try {
-            PdfPTable Atable = new PdfPTable(6);
-           Atable.setTotalWidth(new float[] { 30, 14,14,14,14,14 });
+            PdfPTable Atable = new PdfPTable(5);
+           Atable.setTotalWidth(new float[] { 27, 10,10,53,10 });
             Atable.setHorizontalAlignment(Element.ALIGN_LEFT);
-            Atable.setWidthPercentage(70);
+            Atable.setWidthPercentage(90);
             Atable.setSpacingAfter(10);
             PdfPTable Atable2 = new PdfPTable(2);
             Atable2.setHorizontalAlignment(Element.ALIGN_LEFT);
-            Atable2.setWidthPercentage(70);
+            Atable2.setWidthPercentage(90);
             Atable2.setSpacingAfter(20);
 //            PdfPTable Atable3 = new PdfPTable(1);
 //            Atable3.setHorizontalAlignment(Element.ALIGN_RIGHT);
@@ -1304,18 +1316,24 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             Paragraph Result=new Paragraph(Subtotal,regularTotalBold);
             Result.setAlignment(Element.ALIGN_RIGHT);
 
-            Paragraph Tax=new Paragraph(getResources().getString(R.string.Tax),regularTotalBold);
-            Tax.setAlignment(Element.ALIGN_RIGHT);
+//            Paragraph Result=new Paragraph(Subtotal,regularTotalBold);
+//            Result.setAlignment(Element.ALIGN_RIGHT);
+
+            Paragraph Tax=new Paragraph(getResources().getString(R.string.Description),regularTotalBold);
+            Tax.setAlignment(Element.ALIGN_CENTER);
             Paragraph Netvalue=new Paragraph(Total,regularTotalBold);
             Netvalue.setAlignment(Element.ALIGN_RIGHT);
 
             Paragraph Total=new Paragraph(getResources().getString(R.string.Total),regularTotalBold);
+            Paragraph Psubtotal=new Paragraph(getResources().getString(R.string.Subtotal),regularTotalBold);
             String Valorfooter=valorventas2;
 
 
             DecimalFormat formatter3 = new DecimalFormat("###,###,##0");
-            Paragraph Totalvalue=new Paragraph(String.valueOf(formatter3.format(Double.parseDouble(Valorfooter)))+" USD",regularTotalBold);
+            Paragraph Totalvalue=new Paragraph(String.valueOf(formatter3.format(valorneto))+" USD",regularTotalBold);
             Totalvalue.setAlignment(Element.ALIGN_RIGHT);
+            Paragraph SubtotalValue=new Paragraph(String.valueOf(formatter3.format(valorbr))+" USD",regularTotalBold);
+            SubtotalValue.setAlignment(Element.ALIGN_RIGHT);
 
             PdfPCell cellP = new PdfPCell();
             cellP.setPaddingBottom(8);
@@ -1365,7 +1383,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             cellTotalV.setHorizontalAlignment(Element.ALIGN_LEFT);
             cellTotalV.setBorderColor(BaseColor.WHITE);
             cellTotalV.setFixedHeight(25);
-            cellTotalV.addElement(Totalvalue);
+          cellTotalV.addElement(Totalvalue);
+
             PdfPCell celltax = new PdfPCell();
             celltax.setPaddingBottom(8);
             celltax.setPaddingTop(5);
@@ -1382,15 +1401,32 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             celltax2.setBorderColor(BaseColor.WHITE);
             celltax2.setFixedHeight(25);
             celltax2.addElement(Netvalue);
+            PdfPCell cellSubTotal = new PdfPCell();
+            cellSubTotal.setPaddingBottom(8);
+            cellSubTotal.setPaddingTop(5);
+            cellSubTotal.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellSubTotal.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cellSubTotal.setBorderColor(BaseColor.WHITE);
+            cellSubTotal.setFixedHeight(25);
+            cellSubTotal.addElement(Psubtotal);
+            PdfPCell cellSubTotalV = new PdfPCell();
+            cellSubTotalV.setPaddingBottom(8);
+            cellSubTotalV.setPaddingTop(5);
+            cellSubTotalV.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellSubTotalV.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cellSubTotalV.setBorderColor(BaseColor.WHITE);
+            cellSubTotalV.setFixedHeight(25);
+            cellSubTotalV.addElement(SubtotalValue);
+
 
 
 
             Atable.addCell(cellP);
             Atable.addCell(cellQ);
             Atable.addCell(cellP2);
-            Atable.addCell(cellR);
             Atable.addCell(celltax);
-            Atable.addCell(celltax2);
+            Atable.addCell(cellR);
+//            Atable.addCell(celltax2);
             Atable.setHeaderRows(1);
 
 
@@ -1424,11 +1460,11 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 //               String par6=  format.format(Double.parseDouble(String.valueOf(List5.get(aw))));
                String par6=String.valueOf(Lista7.get(aw));
                Paragraph q6 = new Paragraph(par6,regularTotal2);
-               q5.setAlignment(Element.ALIGN_RIGHT);
-               String par7=String.valueOf(Lista7.get(aw));
+               q6.setAlignment(Element.ALIGN_LEFT);
+//               String par7=String.valueOf(Lista7.get(aw));
 //               String par7=  format.format(Double.parseDouble(String.valueOf(List6.get(aw))));
-               Paragraph q7 = new Paragraph(par7,regularTotal2);
-               q5.setAlignment(Element.ALIGN_RIGHT);
+//               Paragraph q7 = new Paragraph(par7,regularTotal2);
+//               q5.setAlignment(Element.ALIGN_RIGHT);
 
 
 
@@ -1439,16 +1475,17 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 p.add(q2);
 //                p.add(gumble);
                 p1.add(q3);
-                p2.add(q4);
-                p3.add(q5);
-                p4.add(q6);
-                p5.add(q7);
+                p2.add(q5);
+                p3.add(q6);
+                p4.add(q4);
+//                p5.add(q7);
                 p.setAlignment(Element.ALIGN_LEFT);
                 p1.setAlignment(Element.ALIGN_RIGHT);
                p2.setAlignment(Element.ALIGN_RIGHT);
-               p3.setAlignment(Element.ALIGN_RIGHT);
+               p3.setAlignment(Element.ALIGN_LEFT);
                p4.setAlignment(Element.ALIGN_RIGHT);
                p5.setAlignment(Element.ALIGN_RIGHT);
+
 
 
 
@@ -1470,6 +1507,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                cell2.setPaddingBottom(8);
                cell2.setPaddingTop(5);
                cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+
                cell2.setHorizontalAlignment(Element.ALIGN_RIGHT);
                cell2.setBorderColor(BaseColor.WHITE);
                cell2.setFixedHeight(25);
@@ -1477,7 +1515,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                cell3.setPaddingBottom(8);
                cell3.setPaddingTop(5);
                cell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
-               cell3.setHorizontalAlignment(Element.ALIGN_RIGHT);
+               cell3.setHorizontalAlignment(Element.ALIGN_MIDDLE);
                cell3.setBorderColor(BaseColor.WHITE);
                cell3.setFixedHeight(25);
                PdfPCell cell4 = new PdfPCell(p4);
@@ -1498,17 +1536,23 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
 
                 Atable.addCell(cell);
+
                 Atable.addCell(cell1);
+               Atable.addCell(cell4);
+               Atable.addCell(cell3);
                 Atable.addCell(cell2);
-                Atable.addCell(cell3);
-                Atable.addCell(cell4);
-                Atable.addCell(cell5);
+
+//               Atable.addCell(cell5);
+
+
                 //stamper.close();
 
             }
 
            Atable2.addCell(cellTotal);
            Atable2.addCell(cellTotalV);
+           Atable2.addCell(cellSubTotal);
+           Atable2.addCell(cellSubTotalV);
 
 
 
