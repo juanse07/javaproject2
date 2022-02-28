@@ -1294,6 +1294,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
         }
         try {
             PdfPTable Atable = new PdfPTable(5);
+//
            Atable.setTotalWidth(new float[] { 27, 10,10,53,10 });
             Atable.setHorizontalAlignment(Element.ALIGN_LEFT);
             Atable.setWidthPercentage(90);
@@ -1558,8 +1559,9 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
 
 
-
-            Atable.getDefaultCell().setBorderColor(BaseColor.WHITE);
+//
+//            Atable.getDefaultCell().setBorderColor(BaseColor.WHITE);
+//
 
 
             Atable.completeRow();

@@ -144,12 +144,13 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         noteProdViewModel.getSumTotal().observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
-                valorBruto=aDouble;
+
 
                     if(aDouble==null){
                         cardprod3.setText("0");
                         txSubtotal.setText("0");
                     }else{
+                        valorBruto=aDouble;
                         DecimalFormat formatter = new DecimalFormat("###,###,##0");
                         String totalfac=String.valueOf(formatter.format(aDouble));
 
@@ -246,18 +247,18 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         textovigilancia.setText(Constants.getSP(fragments3.this).getRBBORRADOR());
         if (vigilaestado.toString().equals("1")) {
             textovigilancia.setText(getResources().getString(R.string.Sales));
-            textovigilancia.setTextColor(getResources().getColor(R.color.bluecolor));
-            card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.blueTransparent));
+            textovigilancia.setTextColor(getResources().getColor(R.color.colorDarkBlue));
+            card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.bluecolor));
         }
         else if(vigilaestado.equals("2")){
             textovigilancia.setText(getResources().getString(R.string.Receipts));
             textovigilancia.setTextColor(getResources().getColor(R.color.purplecolor));
-            card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.purplecolotransparentr));
+            card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.Moradoclaro));
 
         }else if(vigilaestado.equals("3")){
             textovigilancia.setText(getResources().getString(R.string.Draft));
             textovigilancia.setTextColor(getResources().getColor(R.color.colorGrisoscuro));
-            card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorGrisoscurotransparent));
+            card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorGris));
         }
 
 
@@ -268,15 +269,15 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                    textovigilancia.setText(getResources().getString(R.string.Receipts));
                    textovigilancia.setTextColor(getResources().getColor(R.color.purplecolor));
 
-                   card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.purplecolotransparentr));
+                   card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.Moradoclaro));
                }else  if(textovigilancia.getText().toString().equals(getResources().getString(R.string.Receipts))){
                    textovigilancia.setText(getResources().getString(R.string.Draft));
                    textovigilancia.setTextColor(getResources().getColor(R.color.colorGrisoscuro));
-                   card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorGrisoscurotransparent));
+                   card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorGris));
                }else  if(textovigilancia.getText().toString().equals(getResources().getString(R.string.Draft))){
                    textovigilancia.setText(getResources().getString(R.string.Sales));
-                   textovigilancia.setTextColor(getResources().getColor(R.color.bluecolor));
-                   card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.blueTransparent));
+                   textovigilancia.setTextColor(getResources().getColor(R.color.colorDarkBlue));
+                   card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.bluecolor));
                }
 
            }

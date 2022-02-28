@@ -6,6 +6,7 @@
     <color name="Turquesa">#03bfa5</color>
     <color name="colorTitle">#FE7300</color>
     <color name="colorRappi">#FB2D4B</color>
+    <color name="Moradoclaro">#c175ff</color>
     <color name="colorNegro">#26282B</color>
     <color name="colorgirsazul">#82a1b1</color>
     <color name="colorBlancox">#ffffff</color>
@@ -19,6 +20,7 @@
     <color name="semitransparentAccent">#80FE7300</color>
     <color name="colorRappiTransparent">#40FB2D4B</color>
     <color name="blueTransparent">#400492c2</color>
+    <color name="blueclaro">#0492c2</color>
     <color name="bluecolor">#0492c2</color>
     <color name="purplecolor">#710193</color>
     <color name="purplecolotransparentr">#40710193</color>
