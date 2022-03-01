@@ -776,8 +776,8 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
             tableFooter.setWidthPercentage(100);
 //            tableFooter.addCell(preBorderBlue);
-            //tableFooter.addCell(footerEmail);
-           // tableFooter.addCell(footerName);
+           // tableFooter.addCell(footerEmail);
+            tableFooter.addCell(footerName);
 
 
 
@@ -1336,6 +1336,23 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
                 }
             });
+            PdfPCell nestercell2=new PdfPCell();
+            nestercell2.setBorder(Rectangle.NO_BORDER);
+            nestercell2.setCellEvent(new PdfPCellEvent() {
+                @Override
+                public void cellLayout(PdfPCell cell, Rectangle position, PdfContentByte[] canvases) {
+                    PdfContentByte cb = canvases[PdfPTable.BACKGROUNDCANVAS];
+
+                    cb.roundRectangle(
+                            position.getLeft() + 1.5f,
+                            position.getBottom() + 1.5f,
+                            position.getWidth() - 3,
+                            position.getHeight() - 3, 4
+                    );
+                    cb.stroke();
+
+                }
+            });
 
 
             final PdfPTable Atable = new PdfPTable(5);
@@ -1412,7 +1429,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             Totalvalue.setAlignment(Element.ALIGN_RIGHT);
             Paragraph SubtotalValue=new Paragraph(String.valueOf(formatter3.format(valorbr))+" USD",regularTotalBold);
             SubtotalValue.setAlignment(Element.ALIGN_RIGHT);
-            Paragraph RELLENO=new Paragraph(String.valueOf(1));
+            Paragraph RELLENO=new Paragraph(String.valueOf(""));
             RELLENO.setAlignment(Element.ALIGN_RIGHT);
 
             PdfPCell cellP = new PdfPCell();
@@ -1477,7 +1494,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             cellTotal.setPaddingTop(5);
             cellTotal.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellTotal.setHorizontalAlignment(Element.ALIGN_MIDDLE);
-            cellTotal.setBorder( Rectangle.BOTTOM);
+            cellTotal.setBorder( Rectangle.BOTTOM|Rectangle.LEFT);
             cellTotal.setBorderColor(BaseColor.DARK_GRAY);
             cellTotal.setFixedHeight(25);
             cellTotal.addElement(Total);
@@ -1513,6 +1530,8 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             PdfPCell cellSubTotal = new PdfPCell();
             cellSubTotal.setPaddingBottom(8);
             cellSubTotal.setPaddingTop(5);
+            cellSubTotal.setBorder(Rectangle.LEFT);
+            cellSubTotal.setBorderColor(BaseColor.DARK_GRAY);
             cellSubTotal.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellSubTotal.setHorizontalAlignment(Element.ALIGN_MIDDLE);
 
@@ -1524,7 +1543,9 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             cellSubTotalV.setPaddingTop(5);
             cellSubTotalV.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellSubTotalV.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+            cellSubTotalV.setBorder( Rectangle.BOTTOM);
             cellSubTotalV.setBorderColor(BaseColor.DARK_GRAY);
+
             cellSubTotalV.setFixedHeight(25);
             cellSubTotalV.addElement(SubtotalValue);
             PdfPCell cellRELLENO= new PdfPCell();
@@ -1532,6 +1553,8 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             cellRELLENO.setPaddingTop(5);
             cellRELLENO.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellRELLENO.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+            cellSubTotalV.setBorder( Rectangle.NO_BORDER);
+
             cellRELLENO.setBorderColor(BaseColor.DARK_GRAY);
             cellRELLENO.setFixedHeight(25);
             cellRELLENO.addElement(RELLENO);
@@ -1692,17 +1715,21 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
 
             Atable2.addCell(RELLENO);
-           Atable2.addCell(cellTotal);
             Atable2.addCell(cellSubTotal);
-
+            Atable2.addCell(cellSubTotalV);
             Atable2.addCell(RELLENO);
+           Atable2.addCell(cellTotal);
+
+
+
             Atable2.addCell(cellTotalV);
 
-           Atable2.addCell(cellSubTotalV);
+
             nestercell.addElement(Atable);
+            nestercell2.addElement(Atable2);
 //            nestercell.addElement(Atable2);
             primarytable.addCell(nestercell);
-            primarytable.addCell(Atable2);
+            primarytable.addCell(nestercell2);
 
 
 
