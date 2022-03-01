@@ -999,7 +999,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
                 pdfPtableimage.addCell(imagecell);
                 pdfPtableimage.addCell(factucell);
 
-                pdfPtableimage.setSpacingAfter(40);
+                pdfPtableimage.setSpacingAfter(20);
                 mDoc.add(pdfPtableimage);
                 System.setProperty("http.agent", "Chrome");
             }
@@ -1124,6 +1124,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
 
             PdfPTable table1 = new PdfPTable(4);
+
             table1.setTableEvent(new PdfPTableEvent() {
                 @Override
                 public void tableLayout(PdfPTable table, float[][] widths, float[] heights, int headerRows, int rowStart, PdfContentByte[] canvases) {
@@ -1274,7 +1275,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
 
 
-            table1.setSpacingAfter(40);
+            table1.setSpacingAfter(20);
             mDoc.add(table1);
 
 
@@ -1311,45 +1312,72 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             Toast.makeText(this, "Fallo b", Toast.LENGTH_SHORT).show();
         }
         try {
-            PdfPTable Atable = new PdfPTable(5);
-           // Atable.getDefaultCell().setBorder(Rectangle.NO_BORDER);
-           Atable.setTotalWidth(new float[] { 27, 10,10,53,10 });
-            Atable.setHorizontalAlignment(Element.ALIGN_CENTER);
+            final PdfPTable primarytable=new PdfPTable(1);
+            primarytable.setWidthPercentage(100);
+//            primarytable.setLockedWidth(true);
 
-            Atable.setTableEvent(new PdfPTableEvent() {
+            PdfPCell nestercell=new  PdfPCell();
+
+            nestercell.setBorder(Rectangle.NO_BORDER);
+            nestercell.setFixedHeight(380f);
+
+            nestercell.setCellEvent(new PdfPCellEvent() {
                 @Override
-                public void tableLayout(PdfPTable table, float[][] widths, float[] heights, int headerRows, int rowStart, PdfContentByte[] canvases) {
+                public void cellLayout(PdfPCell cell, Rectangle position, PdfContentByte[] canvases) {
                     PdfContentByte cb = canvases[PdfPTable.BACKGROUNDCANVAS];
-
-//                    cb.roundRectangle(
-//                            widths[0][0],heights[heights.length-1]-2,widths[0][5]-widths[0][0]+6,
-//                            heights[0]-heights[heights.length-1],4
-//                    );
-//                    cb.stroke();
                     cb.roundRectangle(
-                            widths[0][0],heights[heights.length-1],widths[0][5]-widths[0][0],
-                            heights[0]-heights[heights.length-1],10
+                            position.getLeft() + 1.5f,
+                            position.getBottom() + 1.5f,
+                            position.getWidth() - 3,
+                            position.getHeight() - 3, 4
                     );
                     cb.stroke();
 
-
-//                    cb.roundRectangle(
-//                            position.getLeft() + 1.5f,
-//                            position.getBottom() + 1.5f,
-//                            position.getWidth() - 3,
-//                            position.getHeight() - 3, 4
-//                    );
-//                    cb.stroke();
-
                 }
             });
-            Atable.setWidthPercentage(95);
+
+
+            final PdfPTable Atable = new PdfPTable(5);
+           // Atable.getDefaultCell().setBorder(Rectangle.NO_BORDER);
+
+           Atable.setTotalWidth(new float[] { 27, 10,10,53,10 });
+
+            Atable.setHorizontalAlignment(Element.ALIGN_LEFT);
+
+//            Atable.setTableEvent(new PdfPTableEvent() {
+//                @Override
+//                public void tableLayout(PdfPTable table, float[][] widths, float[] heights, int headerRows, int rowStart, PdfContentByte[] canvases) {
+//                    PdfContentByte cb = canvases[PdfPTable.BACKGROUNDCANVAS];
+//
+//                    cb.roundRectangle(
+//                            widths[0][0],heights[heights.length.],widths[0][5]-widths[0][0],
+//                            heights[0]-heights[100-1],4
+//                    );
+//                   cb.stroke();
+////                    cb.roundRectangle(
+////                            widths[0][0],heights[heights.length-1],widths[0][5]-widths[0][0],
+////                            heights[0]-heights[heights.length-1],10
+////                    );
+////                    cb.stroke();
+//
+//
+////                    cb.roundRectangle(
+////                            position.getLeft() + 1.5f,
+////                            position.getBottom() + 1.5f,
+////                            position.getWidth() - 3,
+////                            position.getHeight() - 3, 4
+////                    );
+////                    cb.stroke();
+//
+//                }
+//            });
+            Atable.setWidthPercentage(100);
             Atable.setSpacingAfter(0);
             PdfPTable Atable2 = new PdfPTable(3);
 
             Atable2.setHorizontalAlignment(Element.ALIGN_MIDDLE);
             Atable2.setTotalWidth(new float[] { 80, 10,10 });
-            Atable2.setWidthPercentage(95);
+            Atable2.setWidthPercentage(100);
             Atable2.setSpacingAfter(20);
 //            PdfPTable Atable3 = new PdfPTable(1);
 //            Atable3.setHorizontalAlignment(Element.ALIGN_RIGHT);
@@ -1640,8 +1668,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
          //      Atable.addCell(cell5);
 
-
-                //stamper.close();
+                  //stamper.close();
 
             }
             Atable2.addCell(RELLENO);
@@ -1652,6 +1679,12 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             Atable2.addCell(cellTotalV);
 
            Atable2.addCell(cellSubTotalV);
+            nestercell.addElement(Atable);
+//            nestercell.addElement(Atable2);
+            primarytable.addCell(nestercell);
+            primarytable.addCell(Atable2);
+
+
 
 
 
@@ -1663,9 +1696,9 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
             Atable.completeRow();
 
-           mDoc.add(Atable);
-           mDoc.add(Atable2);
-
+//            mDoc.add(Atable);
+//           mDoc.add(Atable2);
+            mDoc.add(primarytable);
 
 //            mDoc.close();
 
@@ -1775,30 +1808,30 @@ try {
 //    canvas2.setLineWidth(0f);
 //    canvas2.roundRectangle(487, 665,90, 30, 10);
 //    canvas2.stroke();
- if(List1.size()>8&&List1.size()<=14){
-     mDoc.add(pdfPtablesign);
-
- }else if(List1.size()<=8){
-
-     pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer1.getDirectContent());
-     pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer2.getDirectContent());
-
-
- }else if(List1.size()>33&&List1.size()<=42){
-        mDoc.add(pdfPtablesign);
-
-    }else if(List1.size()>14&&List1.size()<=33){
-     pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer1.getDirectContent());
-     pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer2.getDirectContent());
-
-
- }else if(List1.size()>42){
-     mDoc.add(pdfPtablesign);
-
- }else {
-     mDoc.add(pdfPtablesign);
-
- }
+// if(List1.size()>8&&List1.size()<=14){
+//     mDoc.add(pdfPtablesign);
+//
+// }else if(List1.size()<=8){
+//
+//     pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer1.getDirectContent());
+//     pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer2.getDirectContent());
+//
+//
+// }else if(List1.size()>33&&List1.size()<=42){
+//        mDoc.add(pdfPtablesign);
+//
+//    }else if(List1.size()>14&&List1.size()<=33){
+//     pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer1.getDirectContent());
+//     pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer2.getDirectContent());
+//
+//
+// }else if(List1.size()>42){
+//     mDoc.add(pdfPtablesign);
+//
+// }else {
+//     mDoc.add(pdfPtablesign);
+//
+// }
 
 //    pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer1.getDirectContent());
 //    pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer2.getDirectContent());
