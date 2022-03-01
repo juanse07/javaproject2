@@ -76,6 +76,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
     ImageView back1;
     private File file;
     RoundedBorder roundedBorder;
+    PdfPCell cell;
 
     TextView title6;
     BaseFont baseFont=null;
@@ -1434,8 +1435,9 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             cellP.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellP.setHorizontalAlignment(Element.ALIGN_CENTER);
             cellP.setBorder(Rectangle.BOTTOM);
-            cellP.setBorderColor(BaseColor.DARK_GRAY);
+            cellP.setBorderColor(BaseColor.BLACK);
             cellP.setFixedHeight(25);
+            cellP.setBackgroundColor(new BaseColor(235,236,240));
 
             cellP.addElement(Product_name);
             PdfPCell cellQ = new PdfPCell();
@@ -1444,7 +1446,8 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             cellQ.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellQ.setHorizontalAlignment(Element.ALIGN_MIDDLE);
             cellQ.setBorder(Rectangle.BOTTOM);
-            cellQ.setBorderColor(BaseColor.DARK_GRAY);
+            cellQ.setBackgroundColor(new BaseColor(235,236,240));
+            cellQ.setBorderColor(BaseColor.BLACK);
             cellQ.setFixedHeight(25);
             cellQ.addElement(Price);
             PdfPCell cellP2 = new PdfPCell();
@@ -1453,7 +1456,8 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             cellP2.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellP2.setHorizontalAlignment(Element.ALIGN_MIDDLE);
             cellP2.setBorder(Rectangle.BOTTOM);
-            cellP2.setBorderColor(BaseColor.DARK_GRAY);
+            cellP2.setBackgroundColor(new BaseColor(235,236,240));
+            cellP2.setBorderColor(BaseColor.BLACK);
             cellP2.setFixedHeight(25);
             cellP2.addElement(Quantity);
             PdfPCell cellR = new PdfPCell();
@@ -1462,8 +1466,10 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             cellR.setBorder(Rectangle.BOTTOM);
             cellR.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellR.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+            cellR.setBackgroundColor(new BaseColor(235,236,240));
 
-            cellR.setBorderColor(BaseColor.DARK_GRAY);
+
+            cellR.setBorderColor(BaseColor.BLACK);
             cellR.setFixedHeight(25);
             cellR.addElement(Result);
             PdfPCell cellTotal = new PdfPCell();
@@ -1491,7 +1497,8 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             celltax.setVerticalAlignment(Element.ALIGN_MIDDLE);
             celltax.setHorizontalAlignment(Element.ALIGN_MIDDLE);
             celltax.setBorder( Rectangle.BOTTOM);
-            celltax.setBorderColor(BaseColor.DARK_GRAY);
+            celltax.setBackgroundColor(new BaseColor(235,236,240));
+            celltax.setBorderColor(BaseColor.BLACK);
             celltax.setFixedHeight(25);
             celltax.addElement(Tax);
             PdfPCell celltax2 = new PdfPCell();
@@ -1541,7 +1548,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             Atable.setHeaderRows(1);
 
 
-
+//            cell.setBackgroundColor(BaseColor.WHITE);
 //
            for (int aw = 0; aw <List1.size(); aw++) {
                 // for (adpt.setNotes(allnotes3);;) {
@@ -1600,23 +1607,32 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
 
 
-                PdfPCell cell = new PdfPCell(p);
+                 cell = new PdfPCell(p);
                 cell.setPaddingBottom(8);
                 cell.setPaddingTop(5);
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+//                cell.setBackgroundColor(BaseColor.WHITE);
                 cell.setHorizontalAlignment(Element.ALIGN_LEFT);
-               cell.setBorder( Rectangle.RIGHT);
 
-                cell.setBorderColor(BaseColor.DARK_GRAY);
+//                if(cell.getBackgroundColor().equals(BaseColor.LIGHT_GRAY)){
+//                    cell.setBackgroundColor(BaseColor.WHITE);
+//
+//
+//               }else if(cell.getBackgroundColor().equals(BaseColor.WHITE)){
+//                    cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+//                };
+              cell.setBorder( Rectangle.RIGHT);
+
+                cell.setBorderColor(BaseColor.WHITE);
                 cell.setFixedHeight(25);
                PdfPCell cell1 = new PdfPCell(p1);
                cell1.setPaddingBottom(8);
                cell1.setPaddingTop(5);
                cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
                cell1.setHorizontalAlignment(Element.ALIGN_RIGHT);
-               cell1.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
-
-               cell1.setBorderColor(BaseColor.DARK_GRAY);
+              cell1.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
+//
+               cell1.setBorderColor(BaseColor.WHITE);
 
                cell1.setFixedHeight(25);
                PdfPCell cell2 = new PdfPCell(p2);
@@ -1626,8 +1642,8 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
                cell2.setHorizontalAlignment(Element.ALIGN_RIGHT);
                cell2.setBorder(Rectangle.LEFT |Rectangle.ALIGN_BOTTOM);
-
-               cell2.setBorderColor(BaseColor.DARK_GRAY);
+//
+               cell2.setBorderColor(BaseColor.WHITE);
                cell2.setFixedHeight(25);
                PdfPCell cell3 = new PdfPCell(p3);
                cell3.setPaddingBottom(8);
@@ -1636,7 +1652,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
                cell3.setHorizontalAlignment(Element.ALIGN_MIDDLE);
                cell3.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
 
-               cell3.setBorderColor(BaseColor.DARK_GRAY);
+               cell3.setBorderColor(BaseColor.WHITE);
                cell3.setFixedHeight(25);
                PdfPCell cell4 = new PdfPCell(p4);
                cell4.setPaddingBottom(8);
@@ -1645,7 +1661,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
                cell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
                cell4.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
 
-               cell4.setBorderColor(BaseColor.DARK_GRAY);
+               cell4.setBorderColor(BaseColor.WHITE);
                cell4.setFixedHeight(25);
                PdfPCell cell5 = new PdfPCell(p5);
                cell5.setPaddingBottom(8);
@@ -1654,8 +1670,9 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
                cell5.setHorizontalAlignment(Element.ALIGN_RIGHT);
                cell5.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
 
-               cell5.setBorderColor(BaseColor.DARK_GRAY);
+               cell5.setBorderColor(BaseColor.WHITE);
                cell5.setFixedHeight(25);
+
 
 
 
@@ -1671,6 +1688,9 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
                   //stamper.close();
 
             }
+
+
+
             Atable2.addCell(RELLENO);
            Atable2.addCell(cellTotal);
             Atable2.addCell(cellSubTotal);
