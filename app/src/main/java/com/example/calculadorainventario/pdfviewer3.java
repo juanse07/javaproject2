@@ -1317,7 +1317,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 //                    cb.stroke();
                     cb.roundRectangle(
                             widths[0][0],heights[heights.length-1],widths[0][5]-widths[0][0],
-                            heights[0]-heights[heights.length-1],20
+                            heights[0]-heights[heights.length-1],10
                     );
                     cb.stroke();
 
@@ -1334,8 +1334,10 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             });
             Atable.setWidthPercentage(95);
             Atable.setSpacingAfter(0);
-            PdfPTable Atable2 = new PdfPTable(2);
+            PdfPTable Atable2 = new PdfPTable(3);
+
             Atable2.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+            Atable2.setTotalWidth(new float[] { 80, 10,10 });
             Atable2.setWidthPercentage(95);
             Atable2.setSpacingAfter(20);
 //            PdfPTable Atable3 = new PdfPTable(1);
@@ -1370,6 +1372,8 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             Totalvalue.setAlignment(Element.ALIGN_RIGHT);
             Paragraph SubtotalValue=new Paragraph(String.valueOf(formatter3.format(valorbr))+" USD",regularTotalBold);
             SubtotalValue.setAlignment(Element.ALIGN_RIGHT);
+            Paragraph RELLENO=new Paragraph(String.valueOf(1));
+            RELLENO.setAlignment(Element.ALIGN_RIGHT);
 
             PdfPCell cellP = new PdfPCell();
             cellP.setPaddingBottom(8);
@@ -1473,6 +1477,14 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             cellSubTotalV.setBorderColor(BaseColor.DARK_GRAY);
             cellSubTotalV.setFixedHeight(25);
             cellSubTotalV.addElement(SubtotalValue);
+            PdfPCell cellRELLENO= new PdfPCell();
+            cellRELLENO.setPaddingBottom(8);
+            cellRELLENO.setPaddingTop(5);
+            cellRELLENO.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellRELLENO.setHorizontalAlignment(Element.ALIGN_LEFT);
+            cellRELLENO.setBorderColor(BaseColor.DARK_GRAY);
+            cellRELLENO.setFixedHeight(25);
+            cellRELLENO.addElement(RELLENO);
 
 
 
@@ -1617,10 +1629,13 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
                 //stamper.close();
 
             }
-
+            Atable2.addCell(RELLENO);
            Atable2.addCell(cellTotal);
-           Atable2.addCell(cellTotalV);
-           Atable2.addCell(cellSubTotal);
+            Atable2.addCell(cellSubTotal);
+
+            Atable2.addCell(RELLENO);
+            Atable2.addCell(cellTotalV);
+
            Atable2.addCell(cellSubTotalV);
 
 
