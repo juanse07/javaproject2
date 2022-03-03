@@ -8,7 +8,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -34,12 +33,10 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,44 +44,44 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     ViewPager2 viepag;
     TabLayout tabLayout;
     BadgeDrawable badgeDrawable, badgeDrawable2;
-    ImageView back2,arrowchange;
-    Button btnproducto, btncliente,btcompra,btnpdf;
-    MaterialButton cardprod,cardcli,cardprod3;
-    RelativeLayout relativev,Relative2,relativigilancia;
+    ImageView back2, arrowchange;
+    Button btnproducto, btncliente, btcompra, btnpdf;
+    MaterialButton cardprod, cardcli, cardprod3;
+    RelativeLayout relativev, Relative2, relativigilancia;
     ConstraintLayout constlay;
     BottomNavigationView navcat;
     LinearLayout linprod, lincli;
-    Double ValorImp,ValorDesc;
-    Double valorBruto,valorNeto;
-    String PrecioL,ProductoL,ClienteL,TaxValue,DiscountValue;
+    Double ValorImp, ValorDesc;
+    Double valorBruto, valorNeto;
+    String PrecioL, ProductoL, ClienteL, TaxValue, DiscountValue;
+
     ArrayList<String> Listapdf;
     ArrayList<String> ListaProd;
     ArrayList<String> ListaDesc;
     ArrayList<Double> ListaCant;
     ArrayList<Double> ListaPre;
     ArrayList<Double> Listavalor;
-    ArrayList<Double>ListaimP;
-    ArrayList<Double>ListaRimp;
-    ArrayList<Double>listaVal2,Listacantidades;
+    ArrayList<Double> ListaimP;
+    ArrayList<Double> ListaRimp;
+    ArrayList<Double> listaVal2, Listacantidades;
     Double pdfval;
-    Map<String,String>datosparapdf;
+    Map<String, String> datosparapdf;
 
     double sum;
 
     NoteProdViewModel noteProdViewModel;
-    List<NoteProducto>ListaProd1;
+    List<NoteProducto> ListaProd1;
 
 
-    TextView txclientebotton, txproductobttom,txpreciobottom,title4,textView38,textview30,textView50,txSubtotal,txSubtotal2,txSubtotal3;
+    TextView txclientebotton, txproductobttom, txpreciobottom, title4, textView38, textview30, textView50, txSubtotal, txSubtotal2, txSubtotal3;
     String Radiob;
     TextView textovigilancia;
     CardView card_vigilancia;
 
 
-
-    private ClickInterface1 listener ;
+    private ClickInterface1 listener;
     int Estado1;
-    String dias1,fechafinal;
+    String dias1, fechafinal;
     int diasq;
 
 
@@ -98,40 +95,35 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
 
         viepag = findViewById(R.id.viepag);
-        back2=findViewById(R.id.back2);
-        navcat=findViewById(R.id.navcat);
+        back2 = findViewById(R.id.back2);
+        navcat = findViewById(R.id.navcat);
         //relativev=findViewById(R.id.relativev);
-        btncliente=findViewById(R.id.btncliente);
-        btnproducto=findViewById(R.id.btnproducto);
-       // Relative2=findViewById(R.id.Relative2);
-        title4=findViewById(R.id.title4);
-        btcompra=findViewById(R.id.btcompra);
-        btnpdf=findViewById(R.id.btnpdf);
-        cardprod3=findViewById(R.id.cardprod3);
-        textView50=findViewById(R.id.textView50);
-        txSubtotal=findViewById(R.id.txsubtotal);
-        txSubtotal2=findViewById(R.id.txsubtotal2);
+        btncliente = findViewById(R.id.btncliente);
+        btnproducto = findViewById(R.id.btnproducto);
+        // Relative2=findViewById(R.id.Relative2);
+        title4 = findViewById(R.id.title4);
+        btcompra = findViewById(R.id.btcompra);
+        btnpdf = findViewById(R.id.btnpdf);
+        cardprod3 = findViewById(R.id.cardprod3);
+        textView50 = findViewById(R.id.textView50);
+        txSubtotal = findViewById(R.id.txsubtotal);
+        txSubtotal2 = findViewById(R.id.txsubtotal2);
 
-        arrowchange=findViewById(R.id.arrowchange);
+        arrowchange = findViewById(R.id.arrowchange);
         //txproductobttom=findViewById(R.id.txproductobttom);
-        relativigilancia=findViewById(R.id.relativigilancia);
-       // txpreciobottom=findViewById(R.id.txpreciobottom);
-        textovigilancia=findViewById(R.id.textovigilancia);
-        card_vigilancia=findViewById(R.id.card_vigilancia);
-       // lincli=findViewById(R.id.lincli);
+        relativigilancia = findViewById(R.id.relativigilancia);
+        // txpreciobottom=findViewById(R.id.txpreciobottom);
+        textovigilancia = findViewById(R.id.textovigilancia);
+        card_vigilancia = findViewById(R.id.card_vigilancia);
+        // lincli=findViewById(R.id.lincli);
         //linprod=findViewById(R.id.linprod);
-        cardcli=findViewById(R.id.cardcli);
-        cardprod=findViewById(R.id.cardprod);
-        textView38=findViewById(R.id.textView38);
-        textview30=findViewById(R.id.textView30);
-        txSubtotal3=findViewById(R.id.txsubtotal3);
-        TaxValue="0";
-        valorBruto=0.0;
-
-
-
-
-
+        cardcli = findViewById(R.id.cardcli);
+        cardprod = findViewById(R.id.cardprod);
+        textView38 = findViewById(R.id.textView38);
+        textview30 = findViewById(R.id.textView30);
+        txSubtotal3 = findViewById(R.id.txsubtotal3);
+        TaxValue = "0";
+        valorBruto = 0.0;
 
 
 //        Calendar calendar = Calendar.getInstance();
@@ -139,30 +131,30 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 //
 //        final String fechacComplString = fecc.format(calendar.getTime());
         sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
-        noteProdViewModel=new ViewModelProvider(this).get(NoteProdViewModel.class);
+        noteProdViewModel = new ViewModelProvider(this).get(NoteProdViewModel.class);
 
         noteProdViewModel.getSumTotal().observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
 
 
-                    if(aDouble==null){
-                        cardprod3.setText("0");
-                        txSubtotal.setText("0");
-                    }else{
-                        valorBruto=aDouble;
-                        DecimalFormat formatter = new DecimalFormat("###,###,##0");
-                        String totalfac=String.valueOf(formatter.format(aDouble));
+                if (aDouble == null) {
+                    cardprod3.setText("0");
+                    txSubtotal.setText("0");
+                } else {
+                    valorBruto = aDouble;
+                    DecimalFormat formatter = new DecimalFormat("###,###,##0");
+                    String totalfac = String.valueOf(formatter.format(aDouble));
 
 
-                        cardprod3.setText(totalfac);
-                        txSubtotal3.setText(totalfac);
-                        Double imp1=Double.parseDouble(TaxValue)/100;
+                    cardprod3.setText(totalfac);
+                    txSubtotal3.setText(totalfac);
+                    Double imp1 = Double.parseDouble(TaxValue) / 100;
 //                        imp2=1+imp1;
 //                        Double imp3=valorBruto*imp2;
 //                        txSubtotal2.setText(String.valueOf(formatter.format(imp3)));
 //                        valorNeto=imp3;
-                    }
+                }
 //                }
 
 
@@ -173,7 +165,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
             public void onChanged(Double aDouble) {
 
 
-                     DecimalFormat formatter = new DecimalFormat("###,###,##0");
+                DecimalFormat formatter = new DecimalFormat("###,###,##0");
 
 
 //                     Double imp = Double.parseDouble(TaxValue);
@@ -187,30 +179,30 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 ////
 //                     txSubtotal2.setText(totalfac);
 
-                 }
+            }
 
 
         });
         noteProdViewModel.getSumcantTotal().observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
-                if(aDouble==null) {
+                if (aDouble == null) {
                     badgeDrawable.setVisible(false);
 
                 } else {
-                        Double sumacant=aDouble;
+                    Double sumacant = aDouble;
 
                     Double newData = Double.valueOf(aDouble);
                     int value = newData.intValue();
 
-                        badgeDrawable.setVisible(true);
-                        badgeDrawable.setNumber(value);
+                    badgeDrawable.setVisible(true);
+                    badgeDrawable.setNumber(value);
 
 
-                        badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getApplicationContext(), R.color.mdtp_white));
+                    badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getApplicationContext(), R.color.mdtp_white));
 
-                        badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolor));
-                    }
+                    badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolor));
+                }
 
 
             }
@@ -218,20 +210,14 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         noteProdViewModel.getAllNotes().observe(this, new Observer<List<NoteProducto>>() {
             @Override
             public void onChanged(List<NoteProducto> noteProductos) {
-                ListaProd1=noteProductos;
+                ListaProd1 = noteProductos;
 //
 
             }
         });
 
 
-
-
-
-
         viepag.setAdapter(new FragmentAdapter1(this));
-
-
 
 
         final RecyclerView.Adapter adapter = viepag.getAdapter();
@@ -239,58 +225,55 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         String next = "<font color='#03bfa5'>FActuras</font>";
         title4.setText(Html.fromHtml(first + next));
         title4.setTextColor(getResources().getColor(R.color.colorBlancox));
-        String vigilaestado="1";
+        String vigilaestado = "1";
 
-      vigilaestado=Constants.getSP(fragments3.this).getRBBORRADOR();
-      Log.d("estado",vigilaestado);
+        vigilaestado = Constants.getSP(fragments3.this).getRBBORRADOR();
+        Log.d("estado", vigilaestado);
 
         textovigilancia.setText(Constants.getSP(fragments3.this).getRBBORRADOR());
         if (vigilaestado.toString().equals("1")) {
             textovigilancia.setText(getResources().getString(R.string.Sales));
             textovigilancia.setTextColor(getResources().getColor(R.color.colorDarkBlue));
             card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.bluecolor));
-        }
-        else if(vigilaestado.equals("2")){
+        } else if (vigilaestado.equals("2")) {
             textovigilancia.setText(getResources().getString(R.string.Receipts));
             textovigilancia.setTextColor(getResources().getColor(R.color.purplecolor));
             card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.Moradoclaro));
 
-        }else if(vigilaestado.equals("3")){
+        } else if (vigilaestado.equals("3")) {
             textovigilancia.setText(getResources().getString(R.string.Draft));
             textovigilancia.setTextColor(getResources().getColor(R.color.colorGrisoscuro));
             card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorGris));
         }
 
 
-       arrowchange.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               if(textovigilancia.getText().toString().equals(getResources().getString(R.string.Sales))){
-                   textovigilancia.setText(getResources().getString(R.string.Receipts));
-                   textovigilancia.setTextColor(getResources().getColor(R.color.purplecolor));
+        arrowchange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (textovigilancia.getText().toString().equals(getResources().getString(R.string.Sales))) {
+                    textovigilancia.setText(getResources().getString(R.string.Receipts));
+                    textovigilancia.setTextColor(getResources().getColor(R.color.purplecolor));
 
-                   card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.Moradoclaro));
-               }else  if(textovigilancia.getText().toString().equals(getResources().getString(R.string.Receipts))){
-                   textovigilancia.setText(getResources().getString(R.string.Draft));
-                   textovigilancia.setTextColor(getResources().getColor(R.color.colorGrisoscuro));
-                   card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorGris));
-               }else  if(textovigilancia.getText().toString().equals(getResources().getString(R.string.Draft))){
-                   textovigilancia.setText(getResources().getString(R.string.Sales));
-                   textovigilancia.setTextColor(getResources().getColor(R.color.colorDarkBlue));
-                   card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.bluecolor));
-               }
+                    card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.Moradoclaro));
+                } else if (textovigilancia.getText().toString().equals(getResources().getString(R.string.Receipts))) {
+                    textovigilancia.setText(getResources().getString(R.string.Draft));
+                    textovigilancia.setTextColor(getResources().getColor(R.color.colorGrisoscuro));
+                    card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.colorGris));
+                } else if (textovigilancia.getText().toString().equals(getResources().getString(R.string.Draft))) {
+                    textovigilancia.setText(getResources().getString(R.string.Sales));
+                    textovigilancia.setTextColor(getResources().getColor(R.color.colorDarkBlue));
+                    card_vigilancia.setCardBackgroundColor(getResources().getColor(R.color.bluecolor));
+                }
 
-           }
-       });
-
-
+            }
+        });
 
 
         viepag.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(final int position) {
                 super.onPageSelected(position);
-                if(position==1){
+                if (position == 1) {
                     btnproducto.bringToFront();
                     btnproducto.setVisibility(View.VISIBLE);
                     cardprod3.setVisibility(View.GONE);
@@ -310,14 +293,14 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                     btnproducto.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intent2=new Intent(fragments3.this,Crearproducto.class);
-                            Log.d("array:",String.valueOf(ListaProd1.size()));
+                            Intent intent2 = new Intent(fragments3.this, Crearproducto.class);
+                            Log.d("array:", String.valueOf(ListaProd1.size()));
 
                             startActivity(intent2);
                         }
                     });
 
-                }else if(position==0){
+                } else if (position == 0) {
                     btncliente.bringToFront();
                     //Relative2.setVisibility(View.VISIBLE);
                     btncliente.setVisibility(View.VISIBLE);
@@ -338,15 +321,14 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                     btncliente.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intent=new Intent(fragments3.this,InclientActivity.class);
+                            Intent intent = new Intent(fragments3.this, InclientActivity.class);
                             startActivity(intent);
 
                         }
                     });
 
 
-
-                }else {
+                } else {
                     btnpdf.bringToFront();
                     txSubtotal2.bringToFront();
                     txSubtotal.bringToFront();
@@ -374,25 +356,22 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                         public void onClick(View v) {
                             NoteViewModel noteViewModel;
                             noteViewModel = new ViewModelProvider(fragments3.this).get(NoteViewModel.class);
-                           // noteViewModel.DeleteAll();
+                            // noteViewModel.DeleteAll();
 
                             guardarpreferencias3();
 
 
-
-
-
                             Intent intent = new Intent(fragments3.this, preparacionas.class);
-                            Bundle bundle=new Bundle();
+                            Bundle bundle = new Bundle();
                             bundle.putString("Cliente", ClienteL);
                             bundle.putString("Producto", ProductoL);
                             //bundle.putString("Precio", txpreciobottom.getText().toString());
                             bundle.putString("Precio", PrecioL);
-                            bundle.putString("Diasdepago",dias1);
-                            bundle.putInt("Diasdepagoint",diasq);
+                            bundle.putString("Diasdepago", dias1);
+                            bundle.putInt("Diasdepagoint", diasq);
 
 
-                            bundle.putString("radiobuton",textovigilancia.getText().toString());
+                            bundle.putString("radiobuton", textovigilancia.getText().toString());
 
                             intent.putExtras(bundle);
 
@@ -403,12 +382,12 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                         @Override
                         public void onClick(View v) {
                             Constants.getSP(fragments3.this).setDIAS(dias1);
-                            if(textovigilancia.getText().toString().equals(getResources().getString(R.string.Sales))){
-                            Constants.getSP(fragments3.this).setRBBORRADOR("1");
-                            }else if(textovigilancia.getText().toString().equals(getResources().getString(R.string.Receipts))){
+                            if (textovigilancia.getText().toString().equals(getResources().getString(R.string.Sales))) {
+                                Constants.getSP(fragments3.this).setRBBORRADOR("1");
+                            } else if (textovigilancia.getText().toString().equals(getResources().getString(R.string.Receipts))) {
                                 Constants.getSP(fragments3.this).setRBBORRADOR("2");
 
-                            }else if(textovigilancia.getText().toString().equals(getResources().getString(R.string.Draft))){
+                            } else if (textovigilancia.getText().toString().equals(getResources().getString(R.string.Draft))) {
                                 Constants.getSP(fragments3.this).setRBBORRADOR("3");
 
                             }
@@ -419,134 +398,141 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             final String fechacComplString = fecc.format(calendar.getTime());
                             calendar.add(Calendar.DATE, diasq);
                             fechafinal = fecc.format(calendar.getTime());
+                            String Pdftipo = Constants.getSP(fragments3.this).getPDFPREFERENCE();
+                            Log.d("valorde",Pdftipo);
 
-                            Intent intent = new Intent(fragments3.this, pdfviewer3.class);
 
-                            //  ArrayList<Note> Lista78;
-                            //Lista78=(ArrayList<Note>)allnotes3;
-                            Bundle bundle = new Bundle();
-                            //intent.putExtra("Lista6", (Parcelable) allnotes3);
+                            if (Pdftipo.toString().equals("PDFLIGHT")) {
+                                Intent intent;
+                                intent = new Intent(fragments3.this, pdfviewer2.class);
+                                pdfbutton(intent);
 
-                            bundle.putSerializable("Diasdepago2", dias1);
-                            bundle.putSerializable("Fecha2", fechafinal);
-//                            bundle.putSerializable("Unidades1",gcantidad.getText().toString());
-//                            bundle.putSerializable("Medida1",gmedida.getText().toString());
-//                            bundle.putSerializable("Total1",txtotalbottom.getText().toString());
-                            bundle.putSerializable("Fecha1", fechacComplString.toString());
-//                        bundle.putSerializable("Hora1",ghora.getText().toString());
-                            //                           bundle.putSerializable("Precio1", PrecioL);
-                            bundle.putSerializable("Nombre1", ClienteL);
-                            bundle.putSerializable("Producto1", ProductoL);
-                            Double valorbr;
-                            Double valornet;
+                                startActivity(intent);
 
-                            valorbr=noteProdViewModel.getSumTotal().getValue();
-                            valornet=valorbr-ValorDesc+ValorImp;
+                            } else if (Pdftipo.toString().equals("PDFSTRUCTURED")) {
+                                Intent intent ;
 
-                            Log.d("valoto",String.valueOf(valornet));
-                            bundle.putSerializable("valorneto",valornet);
-                            bundle.putSerializable("valorbruto",valorbr);
-                            bundle.putSerializable("valorimp",ValorImp);
-                            bundle.putSerializable("valordesc",ValorDesc);
-                            bundle.putSerializable("impuestopercent",TaxValue);
-                            bundle.putSerializable("descpercent",DiscountValue);
+                                intent = new Intent(fragments3.this, pdfviewer3.class);
+                                pdfbutton(intent);
 
-                            String comprobarestado = textovigilancia.getText().toString();
-                            if (comprobarestado.equals(getResources().getString(R.string.Receipts))) {
-                                bundle.putSerializable("Estado1", "2");
-                            } else if (comprobarestado.equals(getResources().getString(R.string.Sales))) {
-                                bundle.putSerializable("Estado1", "1");
-
-                            } else if (comprobarestado.equals(getResources().getString(R.string.Draft))) {
-                                bundle.putSerializable("Estado1", "3");
+                                startActivity(intent);
 
                             }
 
-
-
-                            ListaProd=new ArrayList<>();
-                            ListaCant=new ArrayList<>();
-                            ListaPre=new ArrayList<>();
-                            Listavalor=new ArrayList<Double>();
-                            listaVal2=new ArrayList<>();
-                            ListaRimp=new ArrayList<>();
-                            ListaimP=new ArrayList<>();
-                            ListaDesc=new ArrayList<>();
-//                            double sum = 0;
-//                            for(int i = 0; i < m.size(); i++)
-//                                sum += m.get(i);
-//                            return sum;
-
-
-                            for (int i = 0 ; i <ListaProd1.size() ; i++) {
-
-
-
-//                   Log.d("value is" , Listadobles2.get(i).valor_Medida.toString());}
-//                   Listapdf.add(Listadobles2.get(i).getValor_Medida().toString());
-                             String pdfprod1 = ListaProd1.get(i).Nombre_prod;
-                                Double pdfcant1 = ListaProd1.get(i).Cant_prod;
-                                Double pdfpre1 = ListaProd1.get(i).Precio_prod;
-                                Double pdfimp=ListaProd1.get(i).Impuesto;
-                                Double pdfRimp=ListaProd1.get(i).Resultado_Impuesto;
-                                pdfval = ListaProd1.get(i).Resultado_valor;
-                                String pdfDesc=ListaProd1.get(i).getDescripcion();
-                                String pdfpre2;
-                                String pdfcant2;
-                                String pdfnom2;
-
-
-                                ListaCant.add(pdfcant1);
-                                ListaProd.add(pdfprod1);
-                                ListaPre.add(pdfpre1);
-                                Listavalor.add(pdfval);
-                                listaVal2.add(pdfval);
-                                ListaimP.add(pdfimp);
-                                ListaRimp.add(pdfRimp);
-                                ListaDesc.add(pdfDesc);
-                                Log.d("values",String.valueOf(ListaimP));
-                                Log.d("v2",String.valueOf(ListaRimp));
-//                               datosparapdf=new HashMap<>();
-//                                datosparapdf.put("Nombre_prod",ListaProd1.get(i).Nombre_prod);
-//                                datosparapdf.put("Cant_prod",String.valueOf(ListaProd1.get(i).Cant_prod));
-//                                datosparapdf.put("Precio_prod",String.valueOf(ListaProd1.get(i).Precio_prod));
-//                                datosparapdf.put("Descripcion",ListaProd1.get(i).Descripcion);
-
-                            }
-                            sumarRe();
-
-                            String sumaResultado= String.valueOf(sum);
-
+//
+//                            //  ArrayList<Note> Lista78;
+//                            //Lista78=(ArrayList<Note>)allnotes3;
+//                            Bundle bundle = new Bundle();
+//                            //intent.putExtra("Lista6", (Parcelable) allnotes3);
+//
+//                            bundle.putSerializable("Diasdepago2", dias1);
+//                            bundle.putSerializable("Fecha2", fechafinal);
+////                            bundle.putSerializable("Unidades1",gcantidad.getText().toString());
+////                            bundle.putSerializable("Medida1",gmedida.getText().toString());
+////                            bundle.putSerializable("Total1",txtotalbottom.getText().toString());
+//                            bundle.putSerializable("Fecha1", fechacComplString.toString());
+////                        bundle.putSerializable("Hora1",ghora.getText().toString());
+//                            //                           bundle.putSerializable("Precio1", PrecioL);
+//                            bundle.putSerializable("Nombre1", ClienteL);
+//                            bundle.putSerializable("Producto1", ProductoL);
+//                            Double valorbr;
+//                            Double valornet;
+//
+//                            valorbr = noteProdViewModel.getSumTotal().getValue();
+//                            valornet = valorbr - ValorDesc + ValorImp;
+//
+//                            Log.d("valoto", String.valueOf(valornet));
+//                            bundle.putSerializable("valorneto", valornet);
+//                            bundle.putSerializable("valorbruto", valorbr);
+//                            bundle.putSerializable("valorimp", ValorImp);
+//                            bundle.putSerializable("valordesc", ValorDesc);
+//                            bundle.putSerializable("impuestopercent", TaxValue);
+//                            bundle.putSerializable("descpercent", DiscountValue);
+//
+//                            String comprobarestado = textovigilancia.getText().toString();
+//                            if (comprobarestado.equals(getResources().getString(R.string.Receipts))) {
+//                                bundle.putSerializable("Estado1", "2");
+//                            } else if (comprobarestado.equals(getResources().getString(R.string.Sales))) {
+//                                bundle.putSerializable("Estado1", "1");
+//
+//                            } else if (comprobarestado.equals(getResources().getString(R.string.Draft))) {
+//                                bundle.putSerializable("Estado1", "3");
+//
+//                            }
 //
 //
+//                            ListaProd = new ArrayList<>();
+//                            ListaCant = new ArrayList<>();
+//                            ListaPre = new ArrayList<>();
+//                            Listavalor = new ArrayList<Double>();
+//                            listaVal2 = new ArrayList<>();
+//                            ListaRimp = new ArrayList<>();
+//                            ListaimP = new ArrayList<>();
+//                            ListaDesc = new ArrayList<>();
+////                            double sum = 0;
+////                            for(int i = 0; i < m.size(); i++)
+////                                sum += m.get(i);
+////                            return sum;
 //
 //
-                            bundle.putSerializable("Total1",sumaResultado);
-                            bundle.putSerializable("listaProd1",ListaProd);
-                            bundle.putSerializable("listaCant1",ListaCant);
-                            bundle.putSerializable("listaPre1",ListaPre);
-                            bundle.putSerializable("listaResultado",Listavalor);
-                            bundle.putSerializable("ListaImp",ListaimP);
-                            bundle.putSerializable("ListaRimp",ListaRimp);
-                            bundle.putSerializable("ListaDesc", ListaDesc);
-
+//                            for (int i = 0; i < ListaProd1.size(); i++) {
 //
-//         bundle.putSerializable("Listapdf",Listapasar);
-                            // bundle.putByteArray("wpa",outputStream.toByteArray());
-
-
-                            intent.putExtras(bundle);
+//
+////                   Log.d("value is" , Listadobles2.get(i).valor_Medida.toString());}
+////                   Listapdf.add(Listadobles2.get(i).getValor_Medida().toString());
+//                                String pdfprod1 = ListaProd1.get(i).Nombre_prod;
+//                                Double pdfcant1 = ListaProd1.get(i).Cant_prod;
+//                                Double pdfpre1 = ListaProd1.get(i).Precio_prod;
+//                                Double pdfimp = ListaProd1.get(i).Impuesto;
+//                                Double pdfRimp = ListaProd1.get(i).Resultado_Impuesto;
+//                                pdfval = ListaProd1.get(i).Resultado_valor;
+//                                String pdfDesc = ListaProd1.get(i).getDescripcion();
+//                                String pdfpre2;
+//                                String pdfcant2;
+//                                String pdfnom2;
+//
+//
+//                                ListaCant.add(pdfcant1);
+//                                ListaProd.add(pdfprod1);
+//                                ListaPre.add(pdfpre1);
+//                                Listavalor.add(pdfval);
+//                                listaVal2.add(pdfval);
+//                                ListaimP.add(pdfimp);
+//                                ListaRimp.add(pdfRimp);
+//                                ListaDesc.add(pdfDesc);
+//                                Log.d("values", String.valueOf(ListaimP));
+//                                Log.d("v2", String.valueOf(ListaRimp));
+////                               datosparapdf=new HashMap<>();
+////                                datosparapdf.put("Nombre_prod",ListaProd1.get(i).Nombre_prod);
+////                                datosparapdf.put("Cant_prod",String.valueOf(ListaProd1.get(i).Cant_prod));
+////                                datosparapdf.put("Precio_prod",String.valueOf(ListaProd1.get(i).Precio_prod));
+////                                datosparapdf.put("Descripcion",ListaProd1.get(i).Descripcion);
+//
+//                            }
+//                            sumarRe();
+//
+//                            String sumaResultado = String.valueOf(sum);
+//
+////
+////
+////
+////
+//                            bundle.putSerializable("Total1", sumaResultado);
+//                            bundle.putSerializable("listaProd1", ListaProd);
+//                            bundle.putSerializable("listaCant1", ListaCant);
+//                            bundle.putSerializable("listaPre1", ListaPre);
+//                            bundle.putSerializable("listaResultado", Listavalor);
+//                            bundle.putSerializable("ListaImp", ListaimP);
+//                            bundle.putSerializable("ListaRimp", ListaRimp);
+//                            bundle.putSerializable("ListaDesc", ListaDesc);
+//
+////
+////         bundle.putSerializable("Listapdf",Listapasar);
+//                            // bundle.putByteArray("wpa",outputStream.toByteArray());
+//
+//
+//                            intent.putExtras(bundle);
                             // pdfviewer pdfviewer2=new pdfviewer();
-
-
-
-
-
-                            startActivity(intent);
-
-
-
-
 
 
 
@@ -560,8 +546,6 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         });
 
 
-
-
         tabLayout = findViewById(R.id.tablayout);
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viepag, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
@@ -569,7 +553,6 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                 switch (position) {
                     case 1:
                         tab.setText(getResources().getString(R.string.Products));
-
 
 
                         break;
@@ -608,7 +591,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         sharedViewModel.getResultado().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String resultado) {
-                int i=Integer.parseInt(resultado);
+                int i = Integer.parseInt(resultado);
 //                if(badgeDrawable.hasNumber()) {
 //
 //                    badgeDrawable.setVisible(true);
@@ -628,35 +611,34 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 //
 
 
-
-
             }
         });
         sharedViewModel.getDiscountValue().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                if(s!=null){
+                if (s != null) {
 
-                DiscountValue=s;
-                DecimalFormat formatter = new DecimalFormat("###,###,##0");
+                    DiscountValue = s;
+                    DecimalFormat formatter = new DecimalFormat("###,###,##0");
 
 
-                Double disc = Double.parseDouble(s);
-                Double disc2 = disc / 100;
-                Double disc3 = 1 - disc2;
-                ValorDesc = valorBruto* disc2;
+                    Double disc = Double.parseDouble(s);
+                    Double disc2 = disc / 100;
+                    Double disc3 = 1 - disc2;
+                    ValorDesc = valorBruto * disc2;
 //                Double imp5= valorBruto*disc3;
 //                Double imp6=Double.parseDouble(TaxValue)/100;
 //                Double imp7=1-imp6;
 //                Double imp8=valorBruto*imp7;
 
 
-                String totalfac = String.valueOf(formatter.format(ValorDesc));
+                    String totalfac = String.valueOf(formatter.format(ValorDesc));
 
 
 //
-               txSubtotal2.setText(totalfac);
-                }}
+                    txSubtotal2.setText(totalfac);
+                }
+            }
 //                Double DiscandImp= valorNeto*disc3;
 //                txSubtotal.setText(String.valueOf(formatter.format(imp5)));
 //                Double nuevoneto=valorBruto*Double.parseDouble(TaxValue);
@@ -664,28 +646,27 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 //                txSubtotal2.setText(String.valueOf(formatter.format(imp8)));
 
 
-
         });
-          sharedViewModel.getTaxvalue().observe(this, new Observer<String>() {
+        sharedViewModel.getTaxvalue().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                if(s!=null){
-                DecimalFormat formatter = new DecimalFormat("###,###,##0");
-              TaxValue=s;
+                if (s != null) {
+                    DecimalFormat formatter = new DecimalFormat("###,###,##0");
+                    TaxValue = s;
 
 
-                Double imp = Double.parseDouble(s);
-                Double Imp2 = imp / 100;
-                Double Imp3 = 1 + Imp2;
-                Double Imp4 = valorBruto* Imp3;
-               ValorImp=valorBruto*Imp2;
-                String tax1=String.valueOf(formatter.format(ValorImp));
+                    Double imp = Double.parseDouble(s);
+                    Double Imp2 = imp / 100;
+                    Double Imp3 = 1 + Imp2;
+                    Double Imp4 = valorBruto * Imp3;
+                    ValorImp = valorBruto * Imp2;
+                    String tax1 = String.valueOf(formatter.format(ValorImp));
 
 
-                String totalfac = String.valueOf(formatter.format(Imp4));
+                    String totalfac = String.valueOf(formatter.format(Imp4));
 
 //
-                txSubtotal.setText(tax1);
+                    txSubtotal.setText(tax1);
                 }
             }
 
@@ -697,7 +678,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         sharedViewModel.getCliente2().observe(this, new Observer<CharSequence>() {
             @Override
             public void onChanged(CharSequence charSequence) {
-                ClienteL=charSequence.toString();
+                ClienteL = charSequence.toString();
                 cardcli.setText(charSequence);
                 cardcli.setTextSize(11);
                 cardcli.setTextColor(getResources().getColor(R.color.colorNegrobrillante));
@@ -716,13 +697,13 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         sharedViewModel.getprecio().observe(this, new Observer<CharSequence>() {
             @Override
             public void onChanged(CharSequence charSequence) {
-                PrecioL=charSequence.toString();
+                PrecioL = charSequence.toString();
             }
         });
         sharedViewModel.getText().observe(this, new Observer<CharSequence>() {
             @Override
             public void onChanged(@Nullable CharSequence charSequence) {
-                ProductoL=charSequence.toString();
+                ProductoL = charSequence.toString();
                 cardprod.setText(charSequence);
                 cardprod.setTextSize(11);
                 cardprod.setTextColor(getResources().getColor(R.color.colorNegrobrillante));
@@ -732,7 +713,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                 //txproductobttom.setTextSize(14);
                 //txproductobttom.setText(charSequence);
                 //txproductobttom.setTextColor(getResources().getColor(R.color.colorNegrobrillante));
-               // cardprod.setCardBackgroundColor(getResources().getColor(R.color.colorverdeesmeralda));
+                // cardprod.setCardBackgroundColor(getResources().getColor(R.color.colorverdeesmeralda));
             }
         });
         sharedViewModel.getboton().observe(this, new Observer<String>() {
@@ -746,15 +727,14 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
             @Override
             public void onChanged(Integer integer) {
 
-           Estado1 =integer;
+                Estado1 = integer;
 
             }
         });
         sharedViewModel.getdias().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                dias1=s;
-
+                dias1 = s;
 
 
             }
@@ -763,7 +743,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
             @Override
             public void onChanged(Integer integer) {
 
-                diasq=integer;
+                diasq = integer;
 
             }
         });
@@ -784,6 +764,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
 
     }
+
     public void guardarpreferencias3() {
 
 
@@ -794,26 +775,24 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                 .putInt("estado", Estado1)
                 .putString("diasdepago1", dias1);
         //if(rbborrador.isChecked()) {
-          //  editor.putString("Tipo", rbborrador.getText().toString());
+        //  editor.putString("Tipo", rbborrador.getText().toString());
         //}else if(rbcompra.isChecked()){
-          //  editor.putString("Tipo", rbcompra.getText().toString());
+        //  editor.putString("Tipo", rbcompra.getText().toString());
 
         //}else {
-          //  editor.putString("Tipo", rbventa.getText().toString());
-       // }
+        //  editor.putString("Tipo", rbventa.getText().toString());
+        // }
         editor.apply();
         // editor.commit();
 
 
-
-
     }
-    public double sumarRe()
-    {
-         sum = 0;
-        for(int i = 0; i < ListaRimp.size(); i++)
+
+    public double sumarRe() {
+        sum = 0;
+        for (int i = 0; i < ListaRimp.size(); i++)
             sum += ListaRimp.get(i);
-        Log.d("TT:",String.valueOf(sum));
+        Log.d("TT:", String.valueOf(sum));
         return sum;
 
     }
@@ -841,12 +820,10 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     }
 
 
-
     @Override
     public void passingprecio1Click(int position, CharSequence Precio) {
 
     }
-
 
 
     @Override
@@ -878,22 +855,144 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     @Override
     public void PassnoteprodPosition(int position, String Producto, String Cantidad, String Precio, NoteProducto currentnote) {
 
-        Log.d("values:",String.valueOf(position));
-        Log.d("values:",String.valueOf(currentnote));
-        Log.d("values:",String.valueOf(Producto));
-        Log.d("values:",String.valueOf(Cantidad));
-        Log.d("values:",String.valueOf(Precio));
+        Log.d("values:", String.valueOf(position));
+        Log.d("values:", String.valueOf(currentnote));
+        Log.d("values:", String.valueOf(Producto));
+        Log.d("values:", String.valueOf(Cantidad));
+        Log.d("values:", String.valueOf(Precio));
     }
 
 
-
-
-    public void setListener(ClickInterface1 listener)
-    {
-        this.listener = listener ;
+    public void setListener(ClickInterface1 listener) {
+        this.listener = listener;
     }
 
+    public void pdfbutton(Intent intent) {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat fecc = new SimpleDateFormat("dd/MMM/yyyy");
 
+        final String fechacComplString = fecc.format(calendar.getTime());
+        calendar.add(Calendar.DATE, diasq);
+        fechafinal = fecc.format(calendar.getTime());
+
+
+        //  ArrayList<Note> Lista78;
+        //Lista78=(ArrayList<Note>)allnotes3;
+        Bundle bundle = new Bundle();
+        //intent.putExtra("Lista6", (Parcelable) allnotes3);
+
+        bundle.putSerializable("Diasdepago2", dias1);
+        bundle.putSerializable("Fecha2", fechafinal);
+//                            bundle.putSerializable("Unidades1",gcantidad.getText().toString());
+//                            bundle.putSerializable("Medida1",gmedida.getText().toString());
+//                            bundle.putSerializable("Total1",txtotalbottom.getText().toString());
+        bundle.putSerializable("Fecha1", fechacComplString.toString());
+//                        bundle.putSerializable("Hora1",ghora.getText().toString());
+        //                           bundle.putSerializable("Precio1", PrecioL);
+        bundle.putSerializable("Nombre1", ClienteL);
+        bundle.putSerializable("Producto1", ProductoL);
+        Double valorbr;
+        Double valornet;
+
+        valorbr = noteProdViewModel.getSumTotal().getValue();
+        valornet = valorbr - ValorDesc + ValorImp;
+
+        Log.d("valoto", String.valueOf(valornet));
+        bundle.putSerializable("valorneto", valornet);
+        bundle.putSerializable("valorbruto", valorbr);
+        bundle.putSerializable("valorimp", ValorImp);
+        bundle.putSerializable("valordesc", ValorDesc);
+        bundle.putSerializable("impuestopercent", TaxValue);
+        bundle.putSerializable("descpercent", DiscountValue);
+
+        String comprobarestado = textovigilancia.getText().toString();
+        if (comprobarestado.equals(getResources().getString(R.string.Receipts))) {
+            bundle.putSerializable("Estado1", "2");
+        } else if (comprobarestado.equals(getResources().getString(R.string.Sales))) {
+            bundle.putSerializable("Estado1", "1");
+
+        } else if (comprobarestado.equals(getResources().getString(R.string.Draft))) {
+            bundle.putSerializable("Estado1", "3");
+
+        }
+
+
+        ListaProd = new ArrayList<>();
+        ListaCant = new ArrayList<>();
+        ListaPre = new ArrayList<>();
+        Listavalor = new ArrayList<Double>();
+        listaVal2 = new ArrayList<>();
+        ListaRimp = new ArrayList<>();
+        ListaimP = new ArrayList<>();
+        ListaDesc = new ArrayList<>();
+//                            double sum = 0;
+//                            for(int i = 0; i < m.size(); i++)
+//                                sum += m.get(i);
+//                            return sum;
+
+
+        for (int i = 0; i < ListaProd1.size(); i++) {
+
+
+//                   Log.d("value is" , Listadobles2.get(i).valor_Medida.toString());}
+//                   Listapdf.add(Listadobles2.get(i).getValor_Medida().toString());
+            String pdfprod1 = ListaProd1.get(i).Nombre_prod;
+            Double pdfcant1 = ListaProd1.get(i).Cant_prod;
+            Double pdfpre1 = ListaProd1.get(i).Precio_prod;
+            Double pdfimp = ListaProd1.get(i).Impuesto;
+            Double pdfRimp = ListaProd1.get(i).Resultado_Impuesto;
+            pdfval = ListaProd1.get(i).Resultado_valor;
+            String pdfDesc = ListaProd1.get(i).getDescripcion();
+            String pdfpre2;
+            String pdfcant2;
+            String pdfnom2;
+
+
+            ListaCant.add(pdfcant1);
+            ListaProd.add(pdfprod1);
+            ListaPre.add(pdfpre1);
+            Listavalor.add(pdfval);
+            listaVal2.add(pdfval);
+            ListaimP.add(pdfimp);
+            ListaRimp.add(pdfRimp);
+            ListaDesc.add(pdfDesc);
+            Log.d("values", String.valueOf(ListaimP));
+            Log.d("v2", String.valueOf(ListaRimp));
+//                               datosparapdf=new HashMap<>();
+//                                datosparapdf.put("Nombre_prod",ListaProd1.get(i).Nombre_prod);
+//                                datosparapdf.put("Cant_prod",String.valueOf(ListaProd1.get(i).Cant_prod));
+//                                datosparapdf.put("Precio_prod",String.valueOf(ListaProd1.get(i).Precio_prod));
+//                                datosparapdf.put("Descripcion",ListaProd1.get(i).Descripcion);
+
+        }
+        sumarRe();
+
+        String sumaResultado = String.valueOf(sum);
+
+//
+//
+//
+//
+        bundle.putSerializable("Total1", sumaResultado);
+        bundle.putSerializable("listaProd1", ListaProd);
+        bundle.putSerializable("listaCant1", ListaCant);
+        bundle.putSerializable("listaPre1", ListaPre);
+        bundle.putSerializable("listaResultado", Listavalor);
+        bundle.putSerializable("ListaImp", ListaimP);
+        bundle.putSerializable("ListaRimp", ListaRimp);
+        bundle.putSerializable("ListaDesc", ListaDesc);
+
+//
+//         bundle.putSerializable("Listapdf",Listapasar);
+        // bundle.putByteArray("wpa",outputStream.toByteArray());
+
+        intent.putExtras(bundle);
+
+
+
+
+
+    }
 }
 
 

@@ -15,6 +15,7 @@ public class Spreferences {
     protected final String COMPANYEMAIL="companyemail";
     protected final String ADDRESSNAME="addressname";
     protected final String LANG="lang";
+    protected final String PDFPREFERENCE="pdfpreference";
 
 
 
@@ -33,6 +34,12 @@ public class Spreferences {
     public String getDIAS(){
         return sp.getString(DIAS, "0");
     }
+
+    public java.lang.String getPDFPREFERENCE() {
+        return sp.getString(PDFPREFERENCE,"PDFSIMPLE");
+    }
+    public void setPDFPREFERENCE(String pdfpreference){ sp.edit().putString(PDFPREFERENCE,pdfpreference).commit();}
+
     public void setTIPO(String tipo){
         sp.edit().putString(TIPO,tipo).commit();
     }
