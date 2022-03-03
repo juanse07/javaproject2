@@ -24,15 +24,12 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".SelectLanguaje"
-           ></activity>
-        <activity
-            android:name=".pdfviewer3"
-            ></activity>
+        <activity android:name=".PdfChoose"></activity>
+        <activity android:name=".SelectLanguaje" />
+        <activity android:name=".pdfviewer3" />
         <activity
             android:name=".Signature2"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Signature1Activity"
             android:screenOrientation="landscape" />
@@ -40,7 +37,6 @@
         <activity android:name=".ClienteEdit" />
         <activity android:name=".Productoedit" />
         <activity android:name=".settingsAcivity" />
-
         <activity
             android:name=".Crearproducto"
             android:windowSoftInputMode="adjustResize" />

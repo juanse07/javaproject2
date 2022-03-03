@@ -67,6 +67,17 @@
 
             </intent>
         </PreferenceScreen>
+        <PreferenceScreen
+            android:title="Pdf Template"
+            android:key="pdftemp">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="com.example.calculadorainventario"
+                android:targetClass="com.example.calculadorainventario.PdfChoose">
+
+            </intent>
+
+        </PreferenceScreen>
 
 
 
