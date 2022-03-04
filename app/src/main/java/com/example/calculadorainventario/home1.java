@@ -421,6 +421,11 @@ public class home1 extends AppCompatActivity implements ClickInterface1 {
     }
 
     @Override
+    public void passfirebasekey(String key) {
+
+    }
+
+    @Override
     public void preferenciasacalculadora() {
 
     }

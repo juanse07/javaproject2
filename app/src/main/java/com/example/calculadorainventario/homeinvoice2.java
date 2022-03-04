@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.calculadorainventario.Adapadores.BuscarAdaptador;
 import com.example.calculadorainventario.Constructores.constcards;
@@ -55,6 +56,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -70,6 +72,7 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
     FirebaseAuth mAuth;
     SearchView edtbuscar;
     NavigationView navdrawer;
+    String Firekey;
     Toolbar barhome1;
     RecyclerView RecyclerBusqueda;
     RecyclerView.Adapter madapter;
@@ -379,6 +382,22 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         });
         myadaptador2 = new homeinvoiceadapterclass(sharedViewModel.getdato().getValue());
         recyclerview1.setAdapter(myadaptador2);
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                myadaptador2.getposicion(viewHolder.getAdapterPosition());
+//                final String id = mAuth.getCurrentUser().getUid();
+//                ref = FirebaseDatabase.getInstance().getReference().child("VENTAS").child(id).child(Firekey);
+//                ref.removeValue();
+                Toast.makeText(homeinvoice2.this,"Deleted",Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(recyclerview1);
+
 
         navigationView.setSelectedItemId(R.id.home);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -462,6 +481,12 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 
     @Override
     public void passingcliente2Click(int position, CharSequence Cliente) {
+
+    }
+
+    @Override
+    public void passfirebasekey(String key) {
+        Firekey=key;
 
     }
 

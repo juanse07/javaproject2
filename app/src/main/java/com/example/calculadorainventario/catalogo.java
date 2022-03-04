@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -20,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.calculadorainventario.Adapadores.adaptadorcatalogo;
 import com.example.calculadorainventario.Constructores.cuerospinner;
@@ -133,6 +136,22 @@ public class catalogo extends Fragment implements ClickInterface1 {
         });
         myadaptador = new adaptadorcatalogo(sharedViewModel.getproducto().getValue(), this);
         Recyclercatalogo.setAdapter(myadaptador);
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.UP) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                myadaptador.getpos(viewHolder.getAdapterPosition());
+//                final String id = mAuth.getCurrentUser().getUid();
+//                ref = FirebaseDatabase.getInstance().getReference().child("VENTAS").child(id).child(Firekey);
+//                ref.removeValue();
+                Toast.makeText(CatalogoView.getContext(),"Deleted",Toast.LENGTH_SHORT).show();
+
+            }
+        }).attachToRecyclerView(Recyclercatalogo);
 
 
 
@@ -293,6 +312,11 @@ public class catalogo extends Fragment implements ClickInterface1 {
 
     @Override
     public void passingcliente2Click(int position, CharSequence Cliente) {
+
+    }
+
+    @Override
+    public void passfirebasekey(String key) {
 
     }
 

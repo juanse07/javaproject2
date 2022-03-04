@@ -363,6 +363,8 @@ private Filter FiltroProducto=new Filter() {
         notifyDataSetChanged();
 
     }
+
+
 };
 
     public class ViewHolder extends RecyclerView.ViewHolder  {
@@ -409,12 +411,24 @@ private Filter FiltroProducto=new Filter() {
         }
         private  void showdialog(){
             AlertDialog.Builder builder=new AlertDialog.Builder(itemView.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
-;
+
             View view=LayoutInflater.from(itemView.getContext()).inflate(R.layout.confirmationdialog,(ConstraintLayout)itemView.findViewById(R.id.parental1));
             builder.setView(view);
         }
-    }
 
+    }
+    public void getpos(int position){
+        mAuth = FirebaseAuth.getInstance();
+        DatabaseReference ref;
+        productos.get(position);
+
+
+        String key=productos.get(position).getKey();
+        final String id = mAuth.getCurrentUser().getUid();
+        ref = FirebaseDatabase.getInstance().getReference().child("PRODUCTOS").child(id).child(key);
+        ref.removeValue();
+
+    }
 
 
 }

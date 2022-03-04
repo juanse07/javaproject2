@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
@@ -17,6 +18,9 @@ import android.widget.TextView;
 
 import com.example.calculadorainventario.Constructores.constcards;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -32,13 +36,19 @@ import java.util.concurrent.TimeUnit;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceadapterclass.ViewHolder>implements Filterable {
-
+    private ClickInterface1 clickInterface1;
     Repositorio1 repositorio1;
     //SharedViewModel sharedViewModel;
  Downloadpdfclass downloadpdfclass;
+    FirebaseAuth mAuth;
+ public homeinvoiceadapterclass(ClickInterface1 clickInterface1){
+     this.clickInterface1=clickInterface1;
+
+ }
 
 
     ArrayList<constcards> listhome;
@@ -76,6 +86,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
     public homeinvoiceadapterclass.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activityhomeinvoice2, parent, false);
         return new ViewHolder(view);
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -214,6 +225,8 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
             }
         });
 
+
+
         holder.mtpdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -239,6 +252,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
                     }
 
                 }
+
 
                 String pattern = "EEEEE MMMMM yyyy HH:mm:ss.SSSZ";
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "US"));
@@ -379,6 +393,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
 
         }
 
+
     };
     /*public void filterDateRange(Date charText,Date charText1) {
         filteredHomeList.clear();
@@ -435,6 +450,19 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
 
         }
     }
+    public void getposicion(int position){
+        mAuth = FirebaseAuth.getInstance();
+        DatabaseReference ref;
+        listhome.get(position);
+
+
+        String key=listhome.get(position).getKey();
+        final String id = mAuth.getCurrentUser().getUid();
+        ref = FirebaseDatabase.getInstance().getReference().child("VENTAS").child(id).child(key);
+        ref.removeValue();
+
+    }
+
 
 }
 

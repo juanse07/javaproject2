@@ -1,20 +1,10 @@
 package com.example.calculadorainventario;
 
-import android.Manifest;
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
+import android.app.Application;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
 import android.os.Environment;
-import android.os.StrictMode;
-import android.text.Html;
-import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,13 +12,11 @@ import android.widget.Toast;
 import com.example.calculadorainventario.Adapadores.AdaptadorProductoGuardado;
 import com.example.calculadorainventario.Constructores.arrayconstructor;
 import com.github.barteksc.pdfviewer.PDFView;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
@@ -52,40 +40,30 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
-//import com.github.barteksc.pdfviewer.util.FitPolicy;
-
-
-public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
+public class Pdfbasicclass extends Application {
     private PDFView pdfView;
     ImageView back1;
     private File file;
-    Pdfbasicclass pdfbasicclass=new Pdfbasicclass();
 
     TextView title6;
     BaseFont baseFont=null;
+    Context context;
     Uri pdfUri;
     PdfPTable tableFooter;
-    List<Note>Listadobles2;
-    ArrayList<arrayconstructor>Listadobles3;
-    Map<String,String>RecibirNoteprod;
+    List<Note> Listadobles2;
+    ArrayList<arrayconstructor> Listadobles3;
+    Map<String,String> RecibirNoteprod;
     ArrayList<Double> ListaCuero;
     ArrayList<Double> listacuero3;
-    Context context;
     AdaptadorProductoGuardado adpt1=new AdaptadorProductoGuardado();
     NoteProdViewModel noteProdViewModel;
     DecimalFormat format = new DecimalFormat("###,###,##0");
@@ -106,22 +84,22 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     //String fechaventas2;
     Document mDoc = new Document(PageSize.LETTER,36,36,53,56);
 
-//   String horaventas2;
+    //   String horaventas2;
     String productoventas2;
-//    String unidadesventas2;
+    //    String unidadesventas2;
     String precioventas2;
-//    String medidaventas2;
-  String valorventas2;
-  double valorbr;
+    //    String medidaventas2;
+    String valorventas2;
+    double valorbr;
     double ValorImp;
     double ValorDesc;
     double TaxValue;
     double DiscountValue;
     double valorneto;
-  String fechaventas2;
-   String estadoventas2;
-//    String horareal2;
-  String diaspago,Fecha2;
+    String fechaventas2;
+    String estadoventas2;
+    //    String horareal2;
+    String diaspago,Fecha2;
     DatabaseReference myrootDbaseref5;
     FirebaseStorage mystorage;
     FirebaseAuth mAuth;
@@ -131,24 +109,32 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     ArrayList<Double>List2,List3,List4;
     byte[] outputstream2;
     //Button btactualizarpdf;
-   String nombreventas2;
-   String CantProd;
+    String nombreventas2;
+    String CantProd;
     String pattern = "EEEEE MMMMM yyyy HH:mm:ss.SSSZ";
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "US"));
     String mFilename = simpleDateFormat.format(System.currentTimeMillis());
+    private static Context mContext;
 
+    public static Context getContext() {
+        return mContext;
+    }
+
+    public void setContext(Context mContext) {
+        this.mContext = mContext;
+    }
 
 
 
     Calendar calendar = Calendar.getInstance();
     SimpleDateFormat hora1 = new SimpleDateFormat("HH:mm:ss");
     String hora2 = hora1.format(calendar.getTime());
- String mFilepath = Environment.getExternalStorageDirectory() +   File.separator+ "PyMESoft"+
-  File.separator+"invoices"+File.separator +mFilename.toString().replaceAll(":",".");
- File filepath2;
+    String mFilepath = Environment.getExternalStorageDirectory() +   File.separator+ "PyMESoft"+
+            File.separator+"invoices"+File.separator +mFilename.toString().replaceAll(":",".");
+    File filepath2;
     File file2;
 
-   // byte[] outputStream = new ByteArrayOutputStream();
+    // byte[] outputStream = new ByteArrayOutputStream();
     byte[] outputStream2;
     private static final int REQUEST_CODE_ASK_PERMISSIONS = 111;
     private static final int REQUEST_CODE_ASK_PERMISSIONS_2 = 112;
@@ -156,522 +142,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
     // Bundle bundle;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.viewer2);
-        pdfView = (PDFView) findViewById(R.id.pdfView);
-        title6=findViewById(R.id.title6);
 
-        back1=findViewById(R.id.back1);
-
-
-        back1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                onBackPressed();
-            }
-        });
-//        noteViewModel=new ViewModelProvider(this).get(NoteViewModel.class);
-//        noteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
-//            @Override
-//            public void onChanged(List<Note> notes) {
-//                Listadobles2=notes;
-//            }
-//        });
-        Invoice=getResources().getString(R.string.Invoice);
-        Receipt=getResources().getString(R.string.Receipts);
-        Quote=getResources().getString(R.string.Quote);
-        Days=getResources().getString(R.string.Days);
-        Terms=getResources().getString(R.string.Payment_Term);
-        Customer=getResources().getString(R.string.Costumers);
-        Product=getResources().getString(R.string.Product_Name);
-        Date=getResources().getString(R.string.Date);
-        Due_Date=getResources().getString(R.string.Due_Date);
-        Total=getResources().getString(R.string.Total);
-        Subtotal=getResources().getString(R.string.Subtotal);
-        Info_Fac=getResources().getString(R.string.Invoice_info);
-        List_Products=getResources().getString(R.string.Doc_list);
-        Quantity = getResources().getString(R.string.Quantity);
-        Price=getResources().getString(R.string.Price);
-        Tax=getResources().getString(R.string.Tax);
-
-
-        listacuero3= (ArrayList<Double>) getIntent().getSerializableExtra("WLTP_list");
-
-       // gnombre2.setText(getIntent().getExtras().getString("Nombre1"));
-        nombreventas2=getIntent().getExtras().getString("Nombre1");
-//        RecibirNoteprod=(Map<String,String>).getSerializableExtra("mapa");
-
-
-        fechaventas2= getIntent().getExtras().getString("Fecha1").trim();
-
-//         horaventas2=getIntent().getExtras().getString("Hora1");
-
-        productoventas2=getIntent().getExtras().getString("Producto1");
-
-        List1= (ArrayList<String>) getIntent().getSerializableExtra("listaProd1");
-        List2= (ArrayList<Double>) getIntent().getSerializableExtra("listaPre1");
-        List3= (ArrayList<Double>) getIntent().getSerializableExtra("listaCant1");
-        List4= (ArrayList<Double>) getIntent().getSerializableExtra("listaResultado");
-//        List5= (ArrayList<Double>) getIntent().getSerializableExtra("ListaImp");
-//        List6=(ArrayList<Double>) getIntent().getSerializableExtra("ListaRimp");
-        Lista7=(ArrayList<String>) getIntent().getSerializableExtra("ListaDesc");
-
-        valorbr=getIntent().getExtras().getDouble("valorbruto");
-        ValorImp=getIntent().getExtras().getDouble("valorimp");
-        ValorDesc=getIntent().getExtras().getDouble("valordesc");
-        TaxValue=getIntent().getExtras().getDouble("impuestopercent");
-        DiscountValue=getIntent().getExtras().getDouble("descpercent");
-        valorneto=getIntent().getExtras().getDouble("valorneto");
-//        SumaResultado=getIntent().getExtras().getString("Total1");
-
-
-
-
-
-
-//        unidadesventas2=getIntent().getExtras().getString("Unidades1");
-
-       precioventas2=getIntent().getExtras().getString("Precio1");
-
-//       medidaventas2=getIntent().getExtras().getString("Medida1");
-//
-   valorventas2=getIntent().getExtras().getString("Total1");
-
-    estadoventas2=getIntent().getExtras().getString("Estado1");
-     Fecha2 =getIntent().getExtras().getString("Fecha2").trim();
-        //outputStream2=getIntent().getExtras().getByteArray("wpa");
-
-
-
-//        horareal2=hora2;
-   diaspago=Constants.getSP(this).getDIAS();
-
-        myrootDbaseref5 = FirebaseDatabase.getInstance().getReference();
-
-        mystorage= FirebaseStorage.getInstance();
-        storageReference=mystorage.getReference();
-
-        String first = "PyMESoft";
-        String next = "<font color='#1D2E4A'>FActuras</font>";
-        title6.setText(Html.fromHtml(first + next));
-
-
-
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                    PackageManager.PERMISSION_DENIED) {
-                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                requestPermissions(permissions, REQUEST_CODE_ASK_PERMISSIONS);
-
-
-            } else {
-                try {
-
-                    //savepdf();
-                    pdfbasicclass.createpdf();
-                    String qaz="Yeahh";
-                    Log.d("Succesfull try!!!!",qaz);
-                } catch (DocumentException e) {
-                    Toast.makeText(this, "no inicia", Toast.LENGTH_SHORT).show();
-                }
-//                Toast.makeText(this, "Fallo permiso", Toast.LENGTH_SHORT).show();
-
-
-//                try {
-//                    savepdf();
-//                } catch (DocumentException e) {
-//                    e.printStackTrace();
-//                    Toast.makeText(this, "Fallo a1", Toast.LENGTH_SHORT).show();
-//                }
-
-            }
-        } else {
-
-//            outputStream = new ByteArrayOutputStream();
-//
-//            try {
-//                savepdf();
-//            } catch (DocumentException e) {
-//                e.printStackTrace();
-//                Toast.makeText(this, "Fallo a2", Toast.LENGTH_SHORT).show();
-//            }
-
-
-
-        }
-
-        pdfView.fromBytes(outputStream.toByteArray())
-                //.enableSwipe(true)
-                //.swipeHorizontal(false)
-                //.enableDoubletap(true)
-                //.enableAntialiasing(true)
-                //.fitEachPage(true)
-                //.spacing(0)
-                //.autoSpacing(true)
-
-                //.pageFling(true)
-                //.pageSnap(true)
-                //.fitEachPage(true)
-                .swipeHorizontal(true)
-                //.pageSnap(true)
-                //.autoSpacing(true)
-               // .pageFling(true)
-
-
-
-                .load();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //Intent intent=getIntent();
-
-
-
-
-
-
-////////////////////////////////////
-
-    }
-
-
-    public void compartir(View view) throws IOException {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                    PackageManager.PERMISSION_DENIED) {
-                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                requestPermissions(permissions, REQUEST_CODE_ASK_PERMISSIONS);
-
-
-            } else {
-
-                //new PdfSave().execute();
-
-
-            }
-        } else {
-
-           // outputStream = new ByteArrayOutputStream();
-
-
-
-
-            //new PdfSave().execute();
-
-
-        }
-
-       // OutputStream outputStream3 = new FileOutputStream (mFilepath);
-       // OutputStream outputStream4=outputStream2.
-       // outputStream2.writeTo(outputStream3);
-
-
-
-       if (Build.VERSION.SDK_INT >= 24) {
-
-            try {
-
-                //For API's > 24, runtime exception occurs when a URI is exposed BEYOND this particular app that you are writing (AKA when user attempts to open in device/emulator
-
-              Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
-
-                m.invoke(null);
-
-            } catch (Exception e) {
-
-                e.printStackTrace();
-
-            }
-
-        }
-
-
-        File file=new File(file2.getAbsolutePath());
-        Uri pdfUri = Uri.fromFile(file);
-        Intent shareIntent = new Intent();
-        shareIntent.setAction(Intent.ACTION_SEND);
-        //shareIntent.putExtra(Intent.EXTRA_TEXT, text);
-        shareIntent.putExtra(Intent.EXTRA_STREAM, pdfUri);
-        shareIntent.setType("application/pdf");
-        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
-
-        try {
-
-            startActivity(Intent.createChooser(shareIntent, "share"));
-        } catch (ActivityNotFoundException e) {
-
-            // Instruct the user to install a PDF reader here, or something
-
-            //}
-
-
-        }
-    }
-
-    public void home1(View view) {
-   guardarbdventas();
-        finish();
-
-        Intent i = new Intent(pdfviewer2.this, homeinvoice2.class);
-        startActivity(i);
-        noteProdViewModel=new ViewModelProvider(this).get(NoteProdViewModel.class);
-        noteProdViewModel.DeleteAll();
-
-    }
-
-    public void wzp(View view) {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                    PackageManager.PERMISSION_DENIED) {
-                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                requestPermissions(permissions, REQUEST_CODE_ASK_PERMISSIONS);
-
-
-            } else {
-
-                //new PdfSave().execute();
-
-
-
-            }
-        } else {
-
-            // outputStream = new ByteArrayOutputStream();
-
-
-
-
-            //new PdfSave().execute();
-
-
-        }
-
-
-        if (Build.VERSION.SDK_INT >= 24) {
-
-            try {
-
-                //For API's > 24, runtime exception occurs when a URI is exposed BEYOND this particular app that you are writing (AKA when user attempts to open in device/emulator
-
-                Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
-
-                m.invoke(null);
-
-            } catch (Exception e) {
-
-                e.printStackTrace();
-
-            }
-
-        }
-        File file=new File(file2.getAbsolutePath());
-
-        Uri pdfUri = Uri.fromFile(file);
-        Intent shareIntent = new Intent();
-        shareIntent.setAction(Intent.ACTION_SEND);
-        //shareIntent.putExtra(Intent.EXTRA_TEXT, text);
-        shareIntent.putExtra(Intent.EXTRA_STREAM, pdfUri);
-        shareIntent.setType("application/pdf");
-        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        shareIntent.setPackage("com.whatsapp");
-
-
-        try {
-
-            startActivity(Intent.createChooser(shareIntent, "share"));
-        } catch (ActivityNotFoundException e) {
-
-            // Instruct the user to install a PDF reader here, or something
-
-            //}
-
-
-        }
-
-    }
-
-    @Override
-    public void OnaddClick(double getinput) {
-
-    }
-
-    @Override
-    public void outputClick(ArrayList<Double> Lista5) {
-        //ListaCuero=Lista5;
-
-    }
-
-    @Override
-    public void streamclick(ByteArrayOutputStream outputStream) {
-        ///outputStream=outputStream2;
-    }
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case REQUEST_CODE_ASK_PERMISSIONS: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-
-                    //new PdfSave().execute();
-                  try {
-//                       savepdf();
-                      pdfbasicclass.createpdf();
-                      String qaz="Yeahh";
-                      Log.d("Succesfull try!!!!",qaz);
-                    } catch (DocumentException e) {
-                        e.printStackTrace();
-                    }
-
-
-                    Toast.makeText(this, "Permiso concedido", Toast.LENGTH_SHORT).show();
-
-
-                } else {
-                    Toast.makeText(this, "Permiso no apto para mayores", Toast.LENGTH_SHORT).show();
-                }
-
-
-            }
-            case REQUEST_CODE_ASK_PERMISSIONS_2:{
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    uploadpdf(pdfUri);
-
-
-                } else {
-                    Toast.makeText(pdfviewer2.this, "Permiso negado para adultos", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        }
-
-
-
-
-
-
-    }
-
-    public void uploadpdf(Uri pdfUri) {
-
-        mAuth=FirebaseAuth.getInstance();
-        String id=mAuth.getCurrentUser().getUid();
-
-
-
-       // pdfUri = Uri.fromFile(new File(pdfFile.getAbsolutePath()))
-        pdfUri = Uri.fromFile(file2);
-
-
-
-
-        storageReference.child("pdfcloud2").child(mFilename).child(id).putFile(pdfUri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(final UploadTask.TaskSnapshot taskSnapshot) {
-                        // String url = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
-                        taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                Uri downloadurl=uri;
-
-                                String url2=String.valueOf(downloadurl);
-                                mAuth=FirebaseAuth.getInstance();
-                                String id=mAuth.getCurrentUser().getUid();
-
-
-                                String nombreventas = nombreventas2;
-                                String fechaventas = fechaventas2;
-                               String horaventas = "n/a";//horaventas2;
-                                String productoventas = productoventas2;
-                                //String colorventas = ghora.getText().toString();
-//                                String unidadesventas = unidadesventas2;
-                                String precioventas = precioventas2;
-                                String medidaventas = "n/a"; //medidaventas2;
-                                String valorventas = valorventas2;
-                                String estado=estadoventas2;
-
-
-                                DatabaseReference newref=  myrootDbaseref5.child("VENTAS").child(id).push();
-
-
-
-
-                                Map<String, Object> datosventa = new HashMap<>();
-                                datosventa.put("Fecha", fechaventas);
-                                datosventa.put("Hora", horaventas);
-                                datosventa.put("Cliente", nombreventas);
-                                datosventa.put("Producto", productoventas);
-                                datosventa.put("Medida", medidaventas);
-                                datosventa.put("Precio", precioventas);
-//                                datosventa.put("Unidades", unidadesventas);
-                                datosventa.put("Valor", valorventas);
-                                datosventa.put("Estado",estado);
-                                datosventa.put("pdfurl", url2);
-                                datosventa.put("Key",newref.getKey());
-                                datosventa.put("Fechaparapago",Fecha2);
-                                datosventa.put("Dias_plazo",diaspago);
-
-
-                                datosventa.put("Id_usuario",id);
-                                newref.setValue(datosventa);
-                                Toast.makeText(pdfviewer2.this   , "Se ha registrado la Venta", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
-                    }
-                });
-
-
-//         Instruct the user to install a PDF reader here, or something
-
-
-    }
-    public void guardarbdventas() {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
-                    PackageManager.PERMISSION_DENIED) {
-                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
-                requestPermissions(permissions, REQUEST_CODE_ASK_PERMISSIONS_2);
-
-            } else {
-                uploadpdf(pdfUri);
-
-            }
-
-
-        } else {
-            uploadpdf(pdfUri);
-        }
-
-
-        Toast.makeText(pdfviewer2.this, "Se ha registrado la Venta", Toast.LENGTH_SHORT).show();
-        //Intent i = new Intent(VistaAA.this, home1.class);
-        //startActivity(i);
-
-        ///////////////////////
-    }
-    private void savepdf() throws DocumentException {
-//        BaseFont baseFont=null;
+    public void createpdf()throws DocumentException{
+        //        BaseFont baseFont=null;
 //        try {
 //
 //            baseFont = BaseFont.createFont("res/font/montserratregular.ttf", "UTF-8", BaseFont.EMBEDDED);
@@ -710,16 +184,16 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
         }
         filepath2= new File(file.getAbsolutePath());
         filepath2.mkdir();
-         file2=new File(filepath2,"inv-"+nombreventas2+".pdf");
+        file2=new File(filepath2,"inv-"+nombreventas2+".pdf");
 
 
         try {
 
-           // PdfWriter writer1, writer2;
+            // PdfWriter writer1, writer2;
 
-           writer2= PdfWriter.getInstance(mDoc, new FileOutputStream(file2));
+            writer2= PdfWriter.getInstance(mDoc, new FileOutputStream(file2));
             //PdfWriter.getInstance(mDoc, new FileOutputStream(mFilepath));
-           writer1= PdfWriter.getInstance(mDoc, outputStream);
+            writer1= PdfWriter.getInstance(mDoc, outputStream);
 
             mDoc.open();
 
@@ -727,10 +201,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
             tableFooter = new PdfPTable(1);
             tableFooter.setTotalWidth(523);
-            String empresa=Constants.getSP(pdfviewer2.this).getCompanyname();
-            String direccion=Constants.getSP(pdfviewer2.this).getAdressname();
-            String tel=Constants.getSP(pdfviewer2.this).getCompanyphone();
-            String email=Constants.getSP(pdfviewer2.this).getCOMPANYEMAIL();
+            String empresa=Constants.getSP(getApplicationContext()).getCompanyname();
+            String direccion=Constants.getSP(getApplicationContext()).getAdressname();
+            String tel=Constants.getSP(getApplicationContext()).getCompanyphone();
+            String email=Constants.getSP(getApplicationContext()).getCOMPANYEMAIL();
             Paragraph p1=new Paragraph();
             Phrase q1= new Phrase(empresa, regularReport) ;
             Phrase q2 = new Phrase(direccion,footerE);
@@ -759,12 +233,12 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             footerName.addElement(p1);
             footerName.setHorizontalAlignment(Element.ALIGN_RIGHT);
 
-           // PdfPCell footerEmail = new PdfPCell();
+            // PdfPCell footerEmail = new PdfPCell();
 
-          //  PdfPCell footerEmpty = new PdfPCell(new Phrase(""));
+            //  PdfPCell footerEmpty = new PdfPCell(new Phrase(""));
             footerName.setBorder(Rectangle.NO_BORDER);
-           // footerEmpty.setBorder(Rectangle.NO_BORDER);
-           // footerEmail.setBorder(Rectangle.NO_BORDER);
+            // footerEmpty.setBorder(Rectangle.NO_BORDER);
+            // footerEmail.setBorder(Rectangle.NO_BORDER);
 
 
 
@@ -784,7 +258,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             tableFooter.setWidthPercentage(100);
             tableFooter.addCell(preBorderBlue);
             //tableFooter.addCell(footerEmail);
-           // tableFooter.addCell(footerName);
+            // tableFooter.addCell(footerName);
 
 
 
@@ -793,20 +267,20 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
             HeaderFooter event = new HeaderFooter(tableFooter);
             writer1.setPageEvent(event);
-         writer2.setPageEvent(event);
+            writer2.setPageEvent(event);
 
 
 
 
 
 
-           // mDoc.setMargins(36, 36, 55, 150);
+            // mDoc.setMargins(36, 36, 55, 150);
 
 
 
 
-            SharedPreferences logopreference2 = getSharedPreferences
-                    ("logopref2", Context.MODE_PRIVATE);
+            SharedPreferences logopreference2 =getApplicationContext().getSharedPreferences
+                    ("logopref2", getApplicationContext().MODE_PRIVATE);
 
             String radiotipo= logopreference2.getString("logocheck2","no hay datos");
 
@@ -818,7 +292,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 Paragraph factu=new Paragraph(Invoice,regularReportA);
                 factu.setAlignment(Element.ALIGN_RIGHT);
                 Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
-              Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
+                Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
                 Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
                 pdfPtableimage.setWidthPercentage(100);
@@ -830,7 +304,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 factucell.addElement(factu);
                 factucell.setBorderColor(new BaseColor(255,255,255));
                 factucell.addElement(Plazo1);
-             factucell.addElement(Plazo);
+                factucell.addElement(Plazo);
 
 
 
@@ -850,7 +324,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 factu.setAlignment(Element.ALIGN_RIGHT);
                 Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
                 Plazo1.setAlignment(Element.ALIGN_RIGHT);
-              Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
+                Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
                 Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
                 pdfPtableimage.setWidthPercentage(100);
@@ -862,7 +336,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 factucell.addElement(factu);
                 factucell.setBorderColor(new BaseColor(255,255,255));
                 factucell.addElement(Plazo1);
-               factucell.addElement(Plazo);
+                factucell.addElement(Plazo);
 
 
 
@@ -882,7 +356,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 Paragraph factu=new Paragraph(Receipt,regularReportA);
                 Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
                 Plazo1.setAlignment(Element.ALIGN_RIGHT);
-               Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
+                Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
                 Plazo.setAlignment(Element.ALIGN_RIGHT);
                 factu.setAlignment(Element.ALIGN_RIGHT);
 
@@ -898,7 +372,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
                 factucell.setBorderColor(new BaseColor(255,255,255));
                 factucell.addElement(Plazo1);
-               factucell.addElement(Plazo);
+                factucell.addElement(Plazo);
 
 
 
@@ -919,7 +393,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 factu.setAlignment(Element.ALIGN_RIGHT);
                 Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
                 Plazo1.setAlignment(Element.ALIGN_RIGHT);
-               Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
+                Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
                 Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
                 pdfPtableimage.setWidthPercentage(100);
@@ -931,8 +405,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 factucell.addElement(factu);
                 factucell.addElement(Plazo1);
 
-               factucell.setBorderColor(new BaseColor(255,255,255));
-              factucell.addElement(Plazo);
+                factucell.setBorderColor(new BaseColor(255,255,255));
+                factucell.addElement(Plazo);
 
 
 
@@ -986,7 +460,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 factu.setAlignment(Element.ALIGN_RIGHT);
                 Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
                 Plazo1.setAlignment(Element.ALIGN_RIGHT);
-              Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
+                Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
                 Plazo.setAlignment(Element.ALIGN_RIGHT);
                 PdfPTable pdfPtableimage = new PdfPTable(2);
                 pdfPtableimage.setWidthPercentage(100);
@@ -999,7 +473,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
                 factucell.setBorderColor(new BaseColor(255,255,255));
                 factucell.addElement(Plazo1);
-               factucell.addElement(Plazo);
+                factucell.addElement(Plazo);
 
 
 
@@ -1024,20 +498,20 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
-            Toast.makeText(this, "Fallo c1", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Fallo c1", Toast.LENGTH_SHORT).show();
         } catch (MalformedURLException ex) {
             ex.printStackTrace();
-            Toast.makeText(this, "Fallo c2", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Fallo c2", Toast.LENGTH_SHORT).show();
         } catch (IOException ex) {
             ex.printStackTrace();
-            Toast.makeText(this, "Fallo c3", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Fallo c3", Toast.LENGTH_SHORT).show();
         } catch (BadElementException ex) {
 
             ex.printStackTrace();
-            Toast.makeText(this, "Fallo c4", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Fallo c4", Toast.LENGTH_SHORT).show();
         } catch (DocumentException ex) {
             ex.printStackTrace();
-            Toast.makeText(this, "Fallo c5", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Fallo c5", Toast.LENGTH_SHORT).show();
         }
         try{
             Paragraph pcompany = new Paragraph("PyMESoft®", regularReport);
@@ -1076,7 +550,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
 
             Paragraph fecha1 = new Paragraph(Date+":", regularSub2);
-          Paragraph vfecha1 = new Paragraph(fechaventas2,regularAddress);
+            Paragraph vfecha1 = new Paragraph(fechaventas2,regularAddress);
 
 
             Paragraph duefecha = new Paragraph(Due_Date+":", regularSub2);
@@ -1086,7 +560,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
 
             fecha1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
-         vfecha1.setAlignment(Element.ALIGN_RIGHT);
+            vfecha1.setAlignment(Element.ALIGN_RIGHT);
 
 
             Paragraph hora1 = new Paragraph("Hora", regularSub2);
@@ -1117,7 +591,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             Paragraph valor1 = new Paragraph(Total+":", regularSub2);
             DecimalFormat formatter = new DecimalFormat("###,###,##0");
 
-          Paragraph vvalor = new Paragraph(formatter.format(Double.parseDouble(String.valueOf(valorneto)))+" USD",regularAddress);
+            Paragraph vvalor = new Paragraph(formatter.format(Double.parseDouble(String.valueOf(valorneto)))+" USD",regularAddress);
             valor1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
             vvalor.setAlignment(Element.ALIGN_RIGHT);
 
@@ -1166,7 +640,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 //            cellmedida2.addElement(vpmedida);
             cellvalor.addElement(valor1);
 
-           cellvalor2.addElement(vvalor);
+            cellvalor2.addElement(vvalor);
             cellprecio.addElement(precio1);
             cellprecio2.addElement(vprecio);
             duedate.addElement(duefecha);
@@ -1299,15 +773,15 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
 
 
-            // Toast.makeText(VistaAA.this, mFilename + "guardado" + mFilepath, Toast.LENGTH_SHORT).show();
+            // Toast.makeText(VistaAA.getApplicationContext(), mFilename + "guardado" + mFilepath, Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
-            Toast.makeText(this, "Fallo b", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Fallo b", Toast.LENGTH_SHORT).show();
         }
         try {
             PdfPTable Atable = new PdfPTable(5);
 //
-           Atable.setTotalWidth(new float[] { 27, 10,10,53,10 });
+            Atable.setTotalWidth(new float[] { 27, 10,10,53,10 });
             Atable.setHorizontalAlignment(Element.ALIGN_LEFT);
             Atable.setWidthPercentage(90);
             Atable.setSpacingAfter(10);
@@ -1321,9 +795,9 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
             Paragraph Product_name=new Paragraph(Product,regularTotalBold);
             Product_name.setAlignment(Element.ALIGN_LEFT);
-            Paragraph Quantity=new Paragraph(getResources().getString(R.string.Quantity),regularTotalBold);
+            Paragraph Quantity=new Paragraph(getApplicationContext().getResources().getString(R.string.Quantity),regularTotalBold);
             Quantity.setAlignment(Element.ALIGN_RIGHT);
-            Paragraph Price=new Paragraph(getResources().getString(R.string.Price),regularTotalBold);
+            Paragraph Price=new Paragraph(getApplicationContext().getResources().getString(R.string.Price),regularTotalBold);
             Price.setAlignment(Element.ALIGN_RIGHT);
 
             Paragraph Result=new Paragraph(Subtotal,regularTotalBold);
@@ -1332,13 +806,13 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 //            Paragraph Result=new Paragraph(Subtotal,regularTotalBold);
 //            Result.setAlignment(Element.ALIGN_RIGHT);
 
-            Paragraph Tax=new Paragraph(getResources().getString(R.string.Description),regularTotalBold);
+            Paragraph Tax=new Paragraph(getApplicationContext().getResources().getString(R.string.Description),regularTotalBold);
             Tax.setAlignment(Element.ALIGN_CENTER);
             Paragraph Netvalue=new Paragraph(Total,regularTotalBold);
             Netvalue.setAlignment(Element.ALIGN_RIGHT);
 
-            Paragraph Total=new Paragraph(getResources().getString(R.string.Total),regularTotalBold);
-            Paragraph Psubtotal=new Paragraph(getResources().getString(R.string.Subtotal),regularTotalBold);
+            Paragraph Total=new Paragraph(getApplicationContext().getResources().getString(R.string.Total),regularTotalBold);
+            Paragraph Psubtotal=new Paragraph(getApplicationContext().getResources().getString(R.string.Subtotal),regularTotalBold);
             String Valorfooter=valorventas2;
 
 
@@ -1396,7 +870,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             cellTotalV.setHorizontalAlignment(Element.ALIGN_LEFT);
             cellTotalV.setBorderColor(BaseColor.WHITE);
             cellTotalV.setFixedHeight(25);
-          cellTotalV.addElement(Totalvalue);
+            cellTotalV.addElement(Totalvalue);
 
             PdfPCell celltax = new PdfPCell();
             celltax.setPaddingBottom(8);
@@ -1445,7 +919,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
 
 //
-           for (int aw = 0; aw <List1.size(); aw++) {
+            for (int aw = 0; aw <List1.size(); aw++) {
                 // for (adpt.setNotes(allnotes3);;) {
                 //adpt1.notifyDataSetChanged();
 
@@ -1454,26 +928,26 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 Paragraph p = new Paragraph();
                 Paragraph p1=new Paragraph();
                 Paragraph p2=new Paragraph();
-               Paragraph p3=new Paragraph();
-               Paragraph p4=new Paragraph();
-               Paragraph p5=new Paragraph();
+                Paragraph p3=new Paragraph();
+                Paragraph p4=new Paragraph();
+                Paragraph p5=new Paragraph();
 
                 Paragraph q1 = new Paragraph(String.valueOf(aw + 1),regularSub );
                 Paragraph q2 = new Paragraph(String.valueOf(List1.get(aw)),regularTotal2);
                 q2.setAlignment(Element.ALIGN_LEFT);
-               Paragraph q3 = new Paragraph(String.valueOf(List2.get(aw)),regularTotal2);
-               q3.setAlignment(Element.ALIGN_RIGHT);
-               Paragraph q4 = new Paragraph(String.valueOf(List3.get(aw)),regularTotal2);
-               q4.setAlignment(Element.ALIGN_RIGHT);
-               DecimalFormat formatter2 = new DecimalFormat("###,###,##0");
-               formatter2.format(Double.parseDouble(String.valueOf(aw)));
-               String par5=  formatter2.format(Double.parseDouble(String.valueOf(List4.get(aw))));
-               Paragraph q5 = new Paragraph(par5,regularTotal2);
-               q5.setAlignment(Element.ALIGN_RIGHT);
+                Paragraph q3 = new Paragraph(String.valueOf(List2.get(aw)),regularTotal2);
+                q3.setAlignment(Element.ALIGN_RIGHT);
+                Paragraph q4 = new Paragraph(String.valueOf(List3.get(aw)),regularTotal2);
+                q4.setAlignment(Element.ALIGN_RIGHT);
+                DecimalFormat formatter2 = new DecimalFormat("###,###,##0");
+                formatter2.format(Double.parseDouble(String.valueOf(aw)));
+                String par5=  formatter2.format(Double.parseDouble(String.valueOf(List4.get(aw))));
+                Paragraph q5 = new Paragraph(par5,regularTotal2);
+                q5.setAlignment(Element.ALIGN_RIGHT);
 //               String par6=  format.format(Double.parseDouble(String.valueOf(List5.get(aw))));
-               String par6=String.valueOf(Lista7.get(aw));
-               Paragraph q6 = new Paragraph(par6,regularTotal2);
-               q6.setAlignment(Element.ALIGN_LEFT);
+                String par6=String.valueOf(Lista7.get(aw));
+                Paragraph q6 = new Paragraph(par6,regularTotal2);
+                q6.setAlignment(Element.ALIGN_LEFT);
 //               String par7=String.valueOf(Lista7.get(aw));
 //               String par7=  format.format(Double.parseDouble(String.valueOf(List6.get(aw))));
 //               Paragraph q7 = new Paragraph(par7,regularTotal2);
@@ -1483,7 +957,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
 
 
-               Chunk gumble = new Chunk(new VerticalPositionMark());
+                Chunk gumble = new Chunk(new VerticalPositionMark());
 
                 p.add(q2);
 //                p.add(gumble);
@@ -1494,10 +968,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 //                p5.add(q7);
                 p.setAlignment(Element.ALIGN_LEFT);
                 p1.setAlignment(Element.ALIGN_RIGHT);
-               p2.setAlignment(Element.ALIGN_RIGHT);
-               p3.setAlignment(Element.ALIGN_LEFT);
-               p4.setAlignment(Element.ALIGN_RIGHT);
-               p5.setAlignment(Element.ALIGN_RIGHT);
+                p2.setAlignment(Element.ALIGN_RIGHT);
+                p3.setAlignment(Element.ALIGN_LEFT);
+                p4.setAlignment(Element.ALIGN_RIGHT);
+                p5.setAlignment(Element.ALIGN_RIGHT);
 
 
 
@@ -1509,50 +983,50 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 cell.setHorizontalAlignment(Element.ALIGN_LEFT);
                 cell.setBorderColor(BaseColor.WHITE);
                 cell.setFixedHeight(25);
-               PdfPCell cell1 = new PdfPCell(p1);
-               cell1.setPaddingBottom(8);
-               cell1.setPaddingTop(5);
-               cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
-               cell1.setHorizontalAlignment(Element.ALIGN_RIGHT);
-               cell1.setBorderColor(BaseColor.WHITE);
-               cell1.setFixedHeight(25);
-               PdfPCell cell2 = new PdfPCell(p2);
-               cell2.setPaddingBottom(8);
-               cell2.setPaddingTop(5);
-               cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                PdfPCell cell1 = new PdfPCell(p1);
+                cell1.setPaddingBottom(8);
+                cell1.setPaddingTop(5);
+                cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell1.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                cell1.setBorderColor(BaseColor.WHITE);
+                cell1.setFixedHeight(25);
+                PdfPCell cell2 = new PdfPCell(p2);
+                cell2.setPaddingBottom(8);
+                cell2.setPaddingTop(5);
+                cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
 
-               cell2.setHorizontalAlignment(Element.ALIGN_RIGHT);
-               cell2.setBorderColor(BaseColor.WHITE);
-               cell2.setFixedHeight(25);
-               PdfPCell cell3 = new PdfPCell(p3);
-               cell3.setPaddingBottom(8);
-               cell3.setPaddingTop(5);
-               cell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
-               cell3.setHorizontalAlignment(Element.ALIGN_MIDDLE);
-               cell3.setBorderColor(BaseColor.WHITE);
-               cell3.setFixedHeight(25);
-               PdfPCell cell4 = new PdfPCell(p4);
-               cell4.setPaddingBottom(8);
-               cell4.setPaddingTop(5);
-               cell4.setVerticalAlignment(Element.ALIGN_MIDDLE);
-               cell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
-               cell4.setBorderColor(BaseColor.WHITE);
-               cell4.setFixedHeight(25);
-               PdfPCell cell5 = new PdfPCell(p5);
-               cell5.setPaddingBottom(8);
-               cell5.setPaddingTop(5);
-               cell5.setVerticalAlignment(Element.ALIGN_MIDDLE);
-               cell5.setHorizontalAlignment(Element.ALIGN_RIGHT);
-               cell5.setBorderColor(BaseColor.WHITE);
-               cell5.setFixedHeight(25);
+                cell2.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                cell2.setBorderColor(BaseColor.WHITE);
+                cell2.setFixedHeight(25);
+                PdfPCell cell3 = new PdfPCell(p3);
+                cell3.setPaddingBottom(8);
+                cell3.setPaddingTop(5);
+                cell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell3.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+                cell3.setBorderColor(BaseColor.WHITE);
+                cell3.setFixedHeight(25);
+                PdfPCell cell4 = new PdfPCell(p4);
+                cell4.setPaddingBottom(8);
+                cell4.setPaddingTop(5);
+                cell4.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                cell4.setBorderColor(BaseColor.WHITE);
+                cell4.setFixedHeight(25);
+                PdfPCell cell5 = new PdfPCell(p5);
+                cell5.setPaddingBottom(8);
+                cell5.setPaddingTop(5);
+                cell5.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell5.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                cell5.setBorderColor(BaseColor.WHITE);
+                cell5.setFixedHeight(25);
 
 
 
                 Atable.addCell(cell);
 
                 Atable.addCell(cell1);
-               Atable.addCell(cell4);
-               Atable.addCell(cell3);
+                Atable.addCell(cell4);
+                Atable.addCell(cell3);
                 Atable.addCell(cell2);
 
 //               Atable.addCell(cell5);
@@ -1562,10 +1036,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
             }
 
-           Atable2.addCell(cellTotal);
-           Atable2.addCell(cellTotalV);
-           Atable2.addCell(cellSubTotal);
-           Atable2.addCell(cellSubTotalV);
+            Atable2.addCell(cellTotal);
+            Atable2.addCell(cellTotalV);
+            Atable2.addCell(cellSubTotal);
+            Atable2.addCell(cellSubTotalV);
 
 
 
@@ -1578,18 +1052,18 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
             Atable.completeRow();
 
-           mDoc.add(Atable);
-           mDoc.add(Atable2);
+            mDoc.add(Atable);
+            mDoc.add(Atable2);
 
 
 //            mDoc.close();
 
         } catch (Exception e) {
-            Toast.makeText(this, "Fallo abc", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Fallo abc", Toast.LENGTH_SHORT).show();
 
         }
 
-try {
+        try {
             Paragraph Terminos = new Paragraph(Terms, regularReport2);
             Terminos.setAlignment(Element.ALIGN_LEFT);
             Terminos.setSpacingAfter(10);
@@ -1617,7 +1091,7 @@ try {
 //            mDoc.add(Terminos);
 //            mDoc.add(pdflinea);
 //            mDoc.add(Txterminos);
-           // mDoc.add(tableFooter);
+            // mDoc.add(tableFooter);
             String imgsign = "/storage/emulated/0/PyMESoft/Signature/signaturepng";
             image = Image.getInstance(imgsign);
             image.scaleAbsolute(180f,150f);
@@ -1643,8 +1117,8 @@ try {
             CCcell.setBorderColor(new BaseColor(255,255,255));
             CCcell.setVerticalAlignment(Element.ALIGN_TOP);
             Nomsigncell.addElement(new Phrase("Juan Sebastián Gómez",footerE));
-           Nomsigncell.setBorderColor(new BaseColor(255,255,255));
-           Nomsigncell.setVerticalAlignment(Element.ALIGN_TOP);
+            Nomsigncell.setBorderColor(new BaseColor(255,255,255));
+            Nomsigncell.setVerticalAlignment(Element.ALIGN_TOP);
             pdfPtablesign.getDefaultCell().setVerticalAlignment(Element.ALIGN_BOTTOM);
 
             pdfPtablesign.addCell(signcell);
@@ -1653,10 +1127,10 @@ try {
             //pdfPtablesign.setExtendLastRow(true);
             //pdfPtablesign.setTotalWidth((mDoc.right()-mDoc.left())*pdfPtablesign.getWidthPercentage()/100f);
             //pdfPtablesign.writeSelectedRows(0, -1, mDoc.left(), mDoc.bottom()+pdfPtablesign.getTotalHeight(),writer1.getDirectContent());
-           // pdfPtablesign.setSpacingBefore(120);
+            // pdfPtablesign.setSpacingBefore(120);
             //pdfPtablesign.setTotalWidth(mDoc.right(40)
-                   // - mDoc.left(60));
-           //mDoc.add(pdfPtablesign);
+            // - mDoc.left(60));
+            //mDoc.add(pdfPtablesign);
             //mDoc.left(mDoc.leftMargin())
             pdfPtablesign.setTotalWidth(90);
 //            int intetable1=pdfPtablesign.getRows().size();
@@ -1677,7 +1151,7 @@ try {
 //                    ,
 //                    pdfPtablesign.getTotalHeight() + mDoc.bottom(mDoc.bottomMargin()),
 //                    writer2.getDirectContent());
-    //////////////////////
+            //////////////////////
 //            PdfContentByte canvas = writer1.getDirectContent();
 //          PdfContentByte canvas2 = writer2.getDirectContent();
 //            canvas.setColorStroke(BaseColor.GRAY);
@@ -1690,60 +1164,43 @@ try {
 //    canvas2.setLineWidth(0f);
 //    canvas2.roundRectangle(487, 665,90, 30, 10);
 //    canvas2.stroke();
- if(List1.size()>8&&List1.size()<=14){
-     mDoc.add(pdfPtablesign);
+            if(List1.size()>8&&List1.size()<=14){
+                mDoc.add(pdfPtablesign);
 
- }else if(List1.size()<=8){
+            }else if(List1.size()<=8){
 
-     pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer1.getDirectContent());
-     pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer2.getDirectContent());
-
-
- }else if(List1.size()>33&&List1.size()<=42){
-        mDoc.add(pdfPtablesign);
-
-    }else if(List1.size()>14&&List1.size()<=33){
-     pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer1.getDirectContent());
-     pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer2.getDirectContent());
+                pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer1.getDirectContent());
+                pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer2.getDirectContent());
 
 
- }else if(List1.size()>42){
-     mDoc.add(pdfPtablesign);
+            }else if(List1.size()>33&&List1.size()<=42){
+                mDoc.add(pdfPtablesign);
 
- }else {
-     mDoc.add(pdfPtablesign);
+            }else if(List1.size()>14&&List1.size()<=33){
+                pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer1.getDirectContent());
+                pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer2.getDirectContent());
 
- }
+
+            }else if(List1.size()>42){
+                mDoc.add(pdfPtablesign);
+
+            }else {
+                mDoc.add(pdfPtablesign);
+
+            }
 
 //    pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer1.getDirectContent());
 //    pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer2.getDirectContent());
 
-                mDoc.close();
-   // Toast.makeText(VistaAA.this, mFilename + "guardado" + mFilepath, Toast.LENGTH_SHORT).show();
+            mDoc.close();
+            // Toast.makeText(VistaAA.getApplicationContext(), mFilename + "guardado" + mFilepath, Toast.LENGTH_SHORT).show();
 
 
-}catch (Exception e){
-    Toast.makeText(this, "Fallo firma y otros", Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(), "Fallo firma y otros", Toast.LENGTH_SHORT).show();
+
+
+
+        }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
 }

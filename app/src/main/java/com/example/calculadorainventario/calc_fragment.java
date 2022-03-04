@@ -834,6 +834,11 @@ dcmbutton.setOnClickListener(new View.OnClickListener() {
     }
 
     @Override
+    public void passfirebasekey(String key) {
+
+    }
+
+    @Override
     public void preferenciasacalculadora() {
 
     }

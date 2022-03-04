@@ -833,6 +833,11 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     }
 
     @Override
+    public void passfirebasekey(String key) {
+
+    }
+
+    @Override
     public void preferenciasacalculadora() {
 
     }

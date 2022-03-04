@@ -295,6 +295,11 @@ public class vista_fragment extends Fragment implements ClickInterface1 {
     }
 
     @Override
+    public void passfirebasekey(String key) {
+
+    }
+
+    @Override
     public void preferenciasacalculadora() {
 
     }
