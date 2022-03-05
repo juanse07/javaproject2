@@ -1,6 +1,7 @@
 package com.example.calculadorainventario;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,29 +18,42 @@ public class PdfChoose extends AppCompatActivity {
     RecyclerView.Adapter pdfAdapter;
     PdfChooseContructor pdfChooseContructor;
     ArrayList<PdfChooseContructor> myImageList;
+    ArrayList<String>titulos;
     ArrayList<Integer>myImageList2;
     RecyclerView.LayoutManager Lmanager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pdf_choose);
 
         Recpdf = findViewById(R.id.Recpdf);
 
-
-            myImageList2=new ArrayList<>();
+//        pdfChooseContructor=new PdfChooseContructor();
+//
 //        pdfChooseContructor.setImage(R.drawable.pdfstructured);
-        myImageList2.add(R.drawable.pdfstructured);
-        myImageList2.add(R.drawable.simplepdfformat);
+//        pdfChooseContructor.setImage(R.drawable.simplepdfformat);
+//        pdfChooseContructor.setTittle("PDFSTRUCTURED");
+//        pdfChooseContructor.setTittle("");
+
+
+            myImageList=new ArrayList<>();
+
+        myImageList.add(new PdfChooseContructor(R.drawable.pdfstructured, "Classic Robotic" ));
+        myImageList.add(new PdfChooseContructor(R.drawable.simplepdfformat, "Classic Ligero" ));
+
+//        pdfChooseContructor.setImage(R.drawable.pdfstructured);
+
+
 
 
 
         Recpdf.setHasFixedSize(true);
 
-        Lmanager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false);
+        Lmanager=new GridLayoutManager(this,2);
 
-        pdfAdapter=new pdfadaptador(myImageList2);
+        pdfAdapter=new pdfadaptador(myImageList);
         Recpdf.setLayoutManager(Lmanager);
         Recpdf.setAdapter(pdfAdapter);
 // later...
