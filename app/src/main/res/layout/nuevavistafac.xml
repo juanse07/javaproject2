@@ -25,7 +25,12 @@
         android:layout_weight="40"
         android:gravity="center_vertical"
         android:text="TextView"
-        android:textSize="14sp" />
+        android:textColor="@color/colorNegrobrillante"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:autoSizeMaxTextSize="12sp"
+        app:autoSizeMinTextSize="9sp"
+        app:autoSizeTextType="uniform" />
 
     <TextView
         android:id="@+id/textm2"
@@ -34,7 +39,12 @@
         android:layout_weight="30"
         android:gravity="center_horizontal|center_vertical"
         android:text="TextView"
-        android:textSize="14sp" />
+        android:textColor="@color/colorNegrobrillante"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:autoSizeMaxTextSize="12sp"
+        app:autoSizeMinTextSize="9sp"
+        app:autoSizeTextType="uniform" />
 
     <TextView
         android:id="@+id/text1"
@@ -44,7 +54,12 @@
         android:layout_weight="10"
         android:gravity="center_horizontal|center_vertical"
         android:text="TextView"
-        android:textSize="14sp" />
+        android:textColor="@color/colorNegrobrillante"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:autoSizeMaxTextSize="12sp"
+        app:autoSizeMinTextSize="9sp"
+        app:autoSizeTextType="uniform" />
 
     <ImageView
         android:id="@+id/deletesym"
