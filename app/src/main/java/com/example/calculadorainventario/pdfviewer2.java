@@ -74,7 +74,6 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     private PDFView pdfView;
     ImageView back1;
     private File file;
-    Pdfbasicclass pdfbasicclass=new Pdfbasicclass();
 
     TextView title6;
     BaseFont baseFont=null;
@@ -133,6 +132,8 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     //Button btactualizarpdf;
    String nombreventas2;
    String CantProd;
+
+
     String pattern = "EEEEE MMMMM yyyy HH:mm:ss.SSSZ";
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "US"));
     String mFilename = simpleDateFormat.format(System.currentTimeMillis());
@@ -163,6 +164,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
         setContentView(R.layout.viewer2);
         pdfView = (PDFView) findViewById(R.id.pdfView);
         title6=findViewById(R.id.title6);
+
 
         back1=findViewById(R.id.back1);
 
@@ -233,6 +235,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
 
 
+
 //        unidadesventas2=getIntent().getExtras().getString("Unidades1");
 
        precioventas2=getIntent().getExtras().getString("Precio1");
@@ -272,7 +275,9 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                 try {
 
                     //savepdf();
-                    pdfbasicclass.createpdf();
+                    Pdfbasicclass pdfbasicclass=new Pdfbasicclass();
+
+                    pdfbasicclass.createpdf(pdfviewer2.this);
                     String qaz="Yeahh";
                     Log.d("Succesfull try!!!!",qaz);
                 } catch (DocumentException e) {
@@ -535,7 +540,9 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                     //new PdfSave().execute();
                   try {
 //                       savepdf();
-                      pdfbasicclass.createpdf();
+                      Pdfbasicclass pdfbasicclass=new Pdfbasicclass();
+
+                      pdfbasicclass.createpdf(pdfviewer2.this);
                       String qaz="Yeahh";
                       Log.d("Succesfull try!!!!",qaz);
                     } catch (DocumentException e) {
@@ -1740,6 +1747,13 @@ try {
 
 
     }
+    public Context getcontext(Context context){
+        context=pdfviewer2.this;
+
+        return context;
+
+    }
+
 
 
 

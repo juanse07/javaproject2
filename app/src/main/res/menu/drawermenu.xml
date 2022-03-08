@@ -18,27 +18,10 @@
 
 
                 app:showAsAction="ifRoom"
-                android:title="Configurar Empresa">
+                android:title="@string/Settings">
 
             </item>
-            <item
-                android:id="@+id/confcuenta"
-                android:enabled="true"
 
-                android:icon="@drawable/ic_baseline_account_circle_24"
-                app:showAsAction="ifRoom"
-                android:title="Configurar Cuenta">
-            </item>
-            <item
-                android:id="@+id/confapp"
-                android:enabled="true"
-                android:icon="@drawable/ic_baseline_format_color_fill_24"
-
-
-                app:showAsAction="ifRoom"
-                android:title="Configurar App">
-
-            </item>
 
 
 

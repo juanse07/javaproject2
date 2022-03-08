@@ -1,5 +1,6 @@
 package com.example.calculadorainventario;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -49,16 +50,20 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class Pdfbasicclass extends Application {
+public class Pdfbasicclass extends Activity {
+    pdfviewer2 pdfviewer2;
     private PDFView pdfView;
     ImageView back1;
     private File file;
 
     TextView title6;
     BaseFont baseFont=null;
-    Context context;
+
     Uri pdfUri;
     PdfPTable tableFooter;
+
+
+
     List<Note> Listadobles2;
     ArrayList<arrayconstructor> Listadobles3;
     Map<String,String> RecibirNoteprod;
@@ -116,13 +121,6 @@ public class Pdfbasicclass extends Application {
     String mFilename = simpleDateFormat.format(System.currentTimeMillis());
     private static Context mContext;
 
-    public static Context getContext() {
-        return mContext;
-    }
-
-    public void setContext(Context mContext) {
-        this.mContext = mContext;
-    }
 
 
 
@@ -134,6 +132,7 @@ public class Pdfbasicclass extends Application {
     File filepath2;
     File file2;
 
+
     // byte[] outputStream = new ByteArrayOutputStream();
     byte[] outputStream2;
     private static final int REQUEST_CODE_ASK_PERMISSIONS = 111;
@@ -144,7 +143,7 @@ public class Pdfbasicclass extends Application {
 
 
 
-    public void createpdf()throws DocumentException{
+    public void createpdf(Context context)throws DocumentException{
         //        BaseFont baseFont=null;
 //        try {
 //
@@ -155,7 +154,13 @@ public class Pdfbasicclass extends Application {
 //        } catch (DocumentException e) {
 //            e.printStackTrace();
 //            Toast.makeText(this, "Fallo d2", Toast.LENGTH_SHORT).show();
+
 //        }
+//        pdfviewer2=new pdfviewer2();
+//
+//        context=pdfviewer2.getcontext(context);
+
+
         BaseColor orangedark = new BaseColor(255, 79, 0);
         Font regularHead = new Font(baseFont, 15, Font.BOLD, BaseColor.WHITE);
         Font regularReport = new Font(baseFont, 12, Font.BOLD, new BaseColor(254, 114, 0));
@@ -201,10 +206,10 @@ public class Pdfbasicclass extends Application {
 
             tableFooter = new PdfPTable(1);
             tableFooter.setTotalWidth(523);
-            String empresa=Constants.getSP(getApplicationContext()).getCompanyname();
-            String direccion=Constants.getSP(getApplicationContext()).getAdressname();
-            String tel=Constants.getSP(getApplicationContext()).getCompanyphone();
-            String email=Constants.getSP(getApplicationContext()).getCOMPANYEMAIL();
+            String empresa=Constants.getSP(context).getCompanyname();
+            String direccion=Constants.getSP(context).getAdressname();
+            String tel=Constants.getSP(context).getCompanyphone();
+            String email=Constants.getSP(context).getCOMPANYEMAIL();
             Paragraph p1=new Paragraph();
             Phrase q1= new Phrase(empresa, regularReport) ;
             Phrase q2 = new Phrase(direccion,footerE);
@@ -278,9 +283,9 @@ public class Pdfbasicclass extends Application {
 
 
 
-
-            SharedPreferences logopreference2 =getApplicationContext().getSharedPreferences
-                    ("logopref2", getApplicationContext().MODE_PRIVATE);
+//
+            SharedPreferences logopreference2 =context.getSharedPreferences
+                    ("logopref2", context.MODE_PRIVATE);
 
             String radiotipo= logopreference2.getString("logocheck2","no hay datos");
 
@@ -498,20 +503,20 @@ public class Pdfbasicclass extends Application {
 
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Fallo c1", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Fallo c1", Toast.LENGTH_SHORT).show();
         } catch (MalformedURLException ex) {
             ex.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Fallo c2", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Fallo c2", Toast.LENGTH_SHORT).show();
         } catch (IOException ex) {
             ex.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Fallo c3", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Fallo c3", Toast.LENGTH_SHORT).show();
         } catch (BadElementException ex) {
 
             ex.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Fallo c4", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Fallo c4", Toast.LENGTH_SHORT).show();
         } catch (DocumentException ex) {
             ex.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Fallo c5", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Fallo c5", Toast.LENGTH_SHORT).show();
         }
         try{
             Paragraph pcompany = new Paragraph("PyMESoft®", regularReport);
@@ -773,10 +778,10 @@ public class Pdfbasicclass extends Application {
 
 
 
-            // Toast.makeText(VistaAA.getApplicationContext(), mFilename + "guardado" + mFilepath, Toast.LENGTH_SHORT).show();
+            // Toast.makeText(VistaAA.context, mFilename + "guardado" + mFilepath, Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "Fallo b", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Fallo b", Toast.LENGTH_SHORT).show();
         }
         try {
             PdfPTable Atable = new PdfPTable(5);
@@ -795,9 +800,9 @@ public class Pdfbasicclass extends Application {
 
             Paragraph Product_name=new Paragraph(Product,regularTotalBold);
             Product_name.setAlignment(Element.ALIGN_LEFT);
-            Paragraph Quantity=new Paragraph(getApplicationContext().getResources().getString(R.string.Quantity),regularTotalBold);
+            Paragraph Quantity=new Paragraph(context.getResources().getString(R.string.Quantity),regularTotalBold);
             Quantity.setAlignment(Element.ALIGN_RIGHT);
-            Paragraph Price=new Paragraph(getApplicationContext().getResources().getString(R.string.Price),regularTotalBold);
+            Paragraph Price=new Paragraph(context.getResources().getString(R.string.Price),regularTotalBold);
             Price.setAlignment(Element.ALIGN_RIGHT);
 
             Paragraph Result=new Paragraph(Subtotal,regularTotalBold);
@@ -806,13 +811,13 @@ public class Pdfbasicclass extends Application {
 //            Paragraph Result=new Paragraph(Subtotal,regularTotalBold);
 //            Result.setAlignment(Element.ALIGN_RIGHT);
 
-            Paragraph Tax=new Paragraph(getApplicationContext().getResources().getString(R.string.Description),regularTotalBold);
+            Paragraph Tax=new Paragraph(context.getResources().getString(R.string.Description),regularTotalBold);
             Tax.setAlignment(Element.ALIGN_CENTER);
             Paragraph Netvalue=new Paragraph(Total,regularTotalBold);
             Netvalue.setAlignment(Element.ALIGN_RIGHT);
 
-            Paragraph Total=new Paragraph(getApplicationContext().getResources().getString(R.string.Total),regularTotalBold);
-            Paragraph Psubtotal=new Paragraph(getApplicationContext().getResources().getString(R.string.Subtotal),regularTotalBold);
+            Paragraph Total=new Paragraph(context.getResources().getString(R.string.Total),regularTotalBold);
+            Paragraph Psubtotal=new Paragraph(context.getResources().getString(R.string.Subtotal),regularTotalBold);
             String Valorfooter=valorventas2;
 
 
@@ -1059,7 +1064,7 @@ public class Pdfbasicclass extends Application {
 //            mDoc.close();
 
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "Fallo abc", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "Fallo abc", Toast.LENGTH_SHORT).show();
 
         }
 
@@ -1193,11 +1198,11 @@ public class Pdfbasicclass extends Application {
 //    pdfPtablesign.writeSelectedRows(0,-1,mDoc.left(mDoc.leftMargin()),pdfPtablesign.getTotalHeight()+ mDoc.bottom(mDoc.bottomMargin()),writer2.getDirectContent());
 
             mDoc.close();
-            // Toast.makeText(VistaAA.getApplicationContext(), mFilename + "guardado" + mFilepath, Toast.LENGTH_SHORT).show();
+            // Toast.makeText(VistaAA.context, mFilename + "guardado" + mFilepath, Toast.LENGTH_SHORT).show();
 
 
         }catch (Exception e){
-            Toast.makeText(getApplicationContext(), "Fallo firma y otros", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Fallo firma y otros", Toast.LENGTH_SHORT).show();
 
 
 

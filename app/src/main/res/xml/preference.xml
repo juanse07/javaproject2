@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <PreferenceCategory android:title="Company">
+    <PreferenceCategory android:title="@string/CompanyInfo">
         <EditTextPreference
-            android:title="Company Name"
+            android:title="@string/CompanyName"
             android:key="companyname"
-            android:summary="Yeloo INC."
-            android:text="PyeSoft"
+            android:summary="@string/CompanyName"
+            android:text="@string/CompanyName"
 
             >
 
         </EditTextPreference>
 
         <EditTextPreference
-            android:title="Address"
+            android:title="@string/Address"
             android:key="companyaddress"
-            android:summary="321 Sherman St.80202 Denver.CO"
+            android:summary="@string/Address"
             >
 
         </EditTextPreference>
         <EditTextPreference
-            android:title="Email"
+            android:title="@string/Email"
             android:key="companyemail"
-            android:summary="YELOO@YelooApps.com"
+            android:summary="@string/Email"
             >
 
         </EditTextPreference>
         <EditTextPreference
-            android:title="Phone"
+            android:title="@string/Mobile_phone"
             android:key="companyphone"
 
-            android:summary="1-800-Yeloo"
+            android:summary="@string/Mobile_phone"
             >
 
         </EditTextPreference>
         <PreferenceScreen
-            android:title="Logo"
+            android:title="@string/Logo"
             android:key="companylogo"
-            android:summary="">
+            android:summary="@string/Logo">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:targetPackage="com.example.calculadorainventario"
@@ -47,8 +47,9 @@
         </PreferenceScreen>
 
         <PreferenceScreen
-            android:title="Signature"
+            android:title="@string/Signature"
             android:key="companysignature"
+            android:summary="@string/Signature"
             >
             <intent
                 android:action="android.intent.action.VIEW"
@@ -57,8 +58,11 @@
 
             </intent>
         </PreferenceScreen>
+        <PreferenceCategory
+            android:title="@string/AppSettings">
+
         <PreferenceScreen
-            android:title="Language"
+            android:title="@string/Language"
             android:key="applang">
             <intent
                 android:action="android.intent.action.VIEW"
@@ -68,8 +72,9 @@
             </intent>
         </PreferenceScreen>
         <PreferenceScreen
-            android:title="Pdf Template"
-            android:key="pdftemp">
+            android:title="@string/PdfTemplate"
+            android:key="pdftemp"
+            android:summary="@string/PdfTemplate">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:targetPackage="com.example.calculadorainventario"
@@ -79,22 +84,24 @@
 
         </PreferenceScreen>
 
+        </PreferenceCategory>
+
 
 
 
     </PreferenceCategory>
-    <PreferenceCategory android:title="Account info">
+    <PreferenceCategory android:title="@string/AccountInfo">
         <EditTextPreference
-            android:title="account Email"
+            android:title="@string/Email"
             android:key="companyname"
-            android:summary="juan@gmail.com."
+            android:summary="@string/Email"
             android:text="PyeSoft"
             >
         </EditTextPreference>
         <EditTextPreference
-            android:title="Pasword"
+            android:title="@string/fui_password_hint"
             android:key="companyname"
-            android:summary="abcdffof."
+            android:summary="@string/fui_password_hint"
             android:text="PyeSoft"
             android:inputType="numberPassword"
             >

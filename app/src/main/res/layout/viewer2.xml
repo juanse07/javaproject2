@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="12dp"
-                app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+                app:srcCompat="@drawable/abc_vector_test" />
 
             <TextView
                 android:id="@+id/title6"
@@ -76,7 +76,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/floatingActionButtonviewer"
         app:srcCompat="@drawable/ic_whatsapp"
-        app:tint="@color/colorPrimary" />
+        app:tint="@color/colorGrisclaro" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButtonviewer"
@@ -111,8 +111,8 @@
         app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_home_black_24dp"
-        app:tint="@color/colorAccent" />
+        app:srcCompat="@drawable/ic_baseline_save_24"
+        app:tint="@color/colorBlancox" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

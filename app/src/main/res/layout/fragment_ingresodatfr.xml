@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    >
+    android:orientation="vertical"
+    android:weightSum="100">
 
     <LinearLayout
         android:id="@+id/lineartitulos"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="0dp"
+        android:layout_weight="2"
         android:background="#F2F2F2"
         android:orientation="horizontal"
-        android:weightSum="100"
-        app:layout_constraintTop_toTopOf="parent">
+        android:weightSum="100">
 
         <TextView
             android:id="@+id/textView49"
@@ -62,26 +63,18 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyProd"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@id/nestedScrollView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineartitulos" />
+        android:layout_marginBottom="1dp"
+        android:layout_weight="36" />
 
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
 
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/RecyProd"
-        tools:context=".ingresodatfr">
+        android:layout_weight="62">
 
 
         <LinearLayout
@@ -769,5 +762,5 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 

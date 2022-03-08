@@ -25,6 +25,7 @@ public class pdfadaptador extends RecyclerView.Adapter<pdfadaptador.Viewholder> 
 
     String pdfstate;
     int row_index=-1;
+    String titulo;
 
 
    public pdfadaptador(ArrayList<PdfChooseContructor>myImageList){
@@ -35,7 +36,8 @@ public class pdfadaptador extends RecyclerView.Adapter<pdfadaptador.Viewholder> 
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-       pdfstate=  Constants.getSP(parent.getContext()).getPDFPREFERENCE();
+
+
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.pdfsrecyclercard, parent, false);
 
@@ -44,11 +46,18 @@ public class pdfadaptador extends RecyclerView.Adapter<pdfadaptador.Viewholder> 
 
     @Override
     public void onBindViewHolder(@NonNull final Viewholder holder, final int position) {
+     int previousPos=  Constants.getSP(holder.itemView.getContext()).getPDFPOSITION();
+    row_index=previousPos;
+     if (row_index==previousPos){
+         selectRowindex(position,holder);
+     }
+
 
         Integer currentimage=myImageList.get(position).getImage();
-        String titulo=myImageList.get(position).gettittle();
+        titulo=myImageList.get(position).gettittle();
         holder.pdfimage.setImageResource(currentimage);
         holder.pdftitulo.setText(titulo);
+
 
 
 
@@ -58,27 +67,36 @@ public class pdfadaptador extends RecyclerView.Adapter<pdfadaptador.Viewholder> 
 //                Integer currentimage=myImageList.get(position);
                 row_index=position;
                 notifyDataSetChanged();
-                if (holder.pdftitulo.getText().toString().equals("Classic Ligero")){
-                    Constants.getSP(v.getContext()).setPDFPREFERENCE("PDFLIGHT");
+                Constants.getSP(v.getContext()).setPDFPOSITION(position);
+                Constants.getSP(v.getContext()).setPDFPREFERENCE(titulo);
 
-                Constants.getSP(v.getContext()).setPDFPREFERENCE("PDFSTRUCTURED");
-
-
-
-                }else if(holder.pdftitulo.getText().toString().equals("Classic Robotic")){
-                    Constants.getSP(v.getContext()).setPDFPREFERENCE("PDFSTRUCTURED");
-
-
-
-
-                }
 
 
 
             }
 
 
+
+
+
         });
+        selectRowindex(position,holder);
+
+
+
+
+
+    }
+
+
+
+
+    @Override
+    public int getItemCount() {
+        return myImageList.size();
+    }
+
+    public void selectRowindex(Integer position, Viewholder holder){
         if (row_index==position){
 
             holder.pdfscard.setStrokeWidth(10);
@@ -92,11 +110,11 @@ public class pdfadaptador extends RecyclerView.Adapter<pdfadaptador.Viewholder> 
 
 
     }
+    public void PositionW(Integer position){
+       row_index=-1;
+       row_index=position;
 
 
-    @Override
-    public int getItemCount() {
-        return myImageList.size();
     }
 
     public static class Viewholder extends RecyclerView.ViewHolder {
@@ -113,10 +131,24 @@ public class pdfadaptador extends RecyclerView.Adapter<pdfadaptador.Viewholder> 
            pdfscard = itemView.findViewById(R.id.pdfsCard);
            pdfimage=itemView.findViewById(R.id.pdfimage);
            pdftitulo=itemView.findViewById(R.id.pdftitulo);
+           String pdfstate=  Constants.getSP(itemView.getContext()).getPDFPREFERENCE();
+           if(pdfstate.equals(pdftitulo.getText().toString())){
+
+               pdfscard.setStrokeWidth(10);
+               pdfscard.setStrokeColor(itemView.getResources().getColor(R.color.colorNegrobrillante));
+               }else {
+                   pdfscard.setStrokeWidth(1);
+                   pdfscard.setStrokeColor(itemView.getResources().getColor(R.color.colorGrisoscuro));
+
+               }
+           
+
+
 
 
 
         }
 
     }
+
 }

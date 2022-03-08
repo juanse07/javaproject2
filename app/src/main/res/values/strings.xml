@@ -53,6 +53,15 @@
     <string name="Save_newCli">Save new Client</string>
     <string name="Phone_contact">Also save as a phone Contact</string>
     <string name="Description">Product Description</string>
+    <string name="Settings">Settings</string>
+    <string name="CompanyName">Company Name</string>
+    <string name="Language">Language</string>
+    <string name="PdfTemplate">Pdf Template</string>
+    <string name="CompanyInfo">Company Info</string>
+    <string name="AppSettings">App Settings</string>
+    <string name="AccountInfo">Account Info</string>
+
+
 
 
     <string name="_1">1</string>

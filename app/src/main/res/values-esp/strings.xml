@@ -55,6 +55,13 @@
         <string name="Save_newCli">Guardar como nuevo Cliente</string>
         <string name="Phone_contact">También guardar como contacto del teléfono</string>
         <string name="Description">Descripción del Producto</string>
+        <string name="Settings">Configuración</string>
+        <string name="CompanyName">Nombre de la Empresa</string>
+        <string name="Language">Idioma</string>
+        <string name="PdfTemplate">Plantilla Pdf</string>
+        <string name="CompanyInfo">Informació de la Empresa</string>
+        <string name="AppSettings">Configuración de la App</string>
+        <string name="AccountInfo">Información de la Cuenta</string>
 
 
         <string name="_1">1</string>

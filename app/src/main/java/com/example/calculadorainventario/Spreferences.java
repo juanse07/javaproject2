@@ -16,6 +16,7 @@ public class Spreferences {
     protected final String ADDRESSNAME="addressname";
     protected final String LANG="lang";
     protected final String PDFPREFERENCE="pdfpreference";
+    protected final String PDFPOSITION="pdfposition";
 
 
 
@@ -39,6 +40,10 @@ public class Spreferences {
         return sp.getString(PDFPREFERENCE,"PDFSIMPLE");
     }
     public void setPDFPREFERENCE(String pdfpreference){ sp.edit().putString(PDFPREFERENCE,pdfpreference).commit();}
+    public Integer getPDFPOSITION(){return sp.getInt(PDFPOSITION,0);}
+    public void setPDFPOSITION(Integer pdfposition){
+        sp.edit().putInt(PDFPOSITION,pdfposition).commit();
+    }
 
     public void setTIPO(String tipo){
         sp.edit().putString(TIPO,tipo).commit();

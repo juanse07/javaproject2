@@ -399,17 +399,18 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             calendar.add(Calendar.DATE, diasq);
                             fechafinal = fecc.format(calendar.getTime());
                             String Pdftipo = Constants.getSP(fragments3.this).getPDFPREFERENCE();
+                            int pdfposition=Constants.getSP(fragments3.this).getPDFPOSITION();
                             Log.d("valorde",Pdftipo);
 
 
-                            if (Pdftipo.toString().equals("PDFLIGHT")) {
+                            if (pdfposition==1) {
                                 Intent intent;
                                 intent = new Intent(fragments3.this, pdfviewer2.class);
                                 pdfbutton(intent);
 
                                 startActivity(intent);
 
-                            } else if (Pdftipo.toString().equals("PDFSTRUCTURED")) {
+                            } else if (pdfposition==0) {
                                 Intent intent ;
 
                                 intent = new Intent(fragments3.this, pdfviewer3.class);
