@@ -131,6 +131,204 @@
 
             </LinearLayout>
 
+            <LinearLayout
+
+                style="@style/linearingrsodat"
+                android:layout_height="60dp">
+
+                <TextView
+                    style="@style/titel"
+                    android:gravity="start|top"
+                    android:text="@string/Tax"
+                    app:autoSizeMaxTextSize="12sp"
+                    app:autoSizeMinTextSize="6sp"
+                    app:autoSizeTextType="uniform"
+                    tools:text="@string/Tax"></TextView>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="70"
+                    android:weightSum="100">
+
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/decreasetax"
+                        style="@style/MatCardMinus"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/colorRappi"
+                        app:strokeWidth="1dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="4dp"
+                            app:srcCompat="@drawable/ic_remove_black_18dp"></com.google.android.material.imageview.ShapeableImageView>
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                    <TextView
+                        android:id="@+id/txtaxvisor"
+                        style="@style/txmasymenos"
+                        app:autoSizeMaxTextSize="16sp"
+                        app:autoSizeMinTextSize="14sp"
+                        app:autoSizeTextType="uniform"></TextView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/increasetax"
+                        style="@style/MatCardMas"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/colorverdeesmeralda"
+                        app:strokeWidth="1dp">
+
+                        <ImageView
+                            android:id="@+id/imageView21"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:padding="4dp"
+                            app:srcCompat="@drawable/ic_add_black_18dp" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/linearingrsodat"
+                android:layout_height="60dp">
+
+                <LinearLayout
+
+                    style="@style/linearingrsodat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        style="@style/titel"
+                        android:gravity="start|top"
+                        android:text="@string/Discount"
+                        tools:text="@string/Discount"></TextView>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="70"
+                        android:weightSum="100">
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/decreasediscount"
+                            style="@style/MatCardMinus"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="0dp"
+                            app:strokeColor="@color/colorRappi"
+                            app:strokeWidth="1dp">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="4dp"
+                                app:srcCompat="@drawable/ic_remove_black_18dp"></com.google.android.material.imageview.ShapeableImageView>
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <TextView
+                            android:id="@+id/txdiscountvisor"
+                            style="@style/txmasymenos"></TextView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/increasediscount"
+                            style="@style/MatCardMas"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="0dp"
+                            app:strokeColor="@color/colorverdeesmeralda"
+                            app:strokeWidth="1dp">
+
+                            <ImageView
+                                android:id="@+id/imageView21"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:padding="4dp"
+                                app:srcCompat="@drawable/ic_add_black_18dp" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <TextView
+                    android:id="@+id/textView44"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="30"
+                    android:text="@string/Tax2" />
+
+                <LinearLayout
+                    android:id="@+id/impuesto2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="70"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:layout_weight="20"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/colorRappi"
+                        app:strokeWidth="1dp">
+
+                        <ImageView
+                            android:id="@+id/imageView22"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="4dp"
+                            app:srcCompat="@drawable/ic_remove_black_18dp" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="60">
+
+                    </TextView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:layout_weight="20"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/colorverdeesmeralda"
+                        app:strokeWidth="1dp">
+
+                        <ImageView
+                            android:id="@+id/imageView23"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="4dp"
+                            app:srcCompat="@drawable/ic_add_black_18dp" />
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -389,134 +587,6 @@
                     android:textColor="#e9e9e9"
                     android:visibility="gone" />
 
-            </LinearLayout>
-
-            <LinearLayout
-
-                style="@style/linearingrsodat"
-                android:layout_height="60dp">
-
-                <TextView
-                    style="@style/titel"
-                    android:gravity="start|top"
-                    android:text="@string/Tax"
-                    app:autoSizeMaxTextSize="12sp"
-                    app:autoSizeMinTextSize="6sp"
-                    app:autoSizeTextType="uniform"
-                    tools:text="@string/Tax"></TextView>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="70"
-                    android:weightSum="100">
-
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/decreasetax"
-                        style="@style/MatCardMinus"
-                        app:cardCornerRadius="5dp"
-                        app:cardElevation="0dp"
-                        app:strokeColor="@color/colorRappi"
-                        app:strokeWidth="1dp">
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            app:srcCompat="@drawable/ic_remove_black_18dp"></com.google.android.material.imageview.ShapeableImageView>
-                    </com.google.android.material.card.MaterialCardView>
-
-
-                    <TextView
-                        android:id="@+id/txtaxvisor"
-                        style="@style/txmasymenos"
-                        app:autoSizeMaxTextSize="16sp"
-                        app:autoSizeMinTextSize="14sp"
-                        app:autoSizeTextType="uniform"></TextView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/increasetax"
-                        style="@style/MatCardMas"
-                        app:cardCornerRadius="5dp"
-                        app:cardElevation="0dp"
-                        app:strokeColor="@color/colorverdeesmeralda"
-                        app:strokeWidth="1dp">
-
-                        <ImageView
-                            android:id="@+id/imageView21"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            app:srcCompat="@drawable/ic_add_black_18dp" />
-                    </com.google.android.material.card.MaterialCardView>
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/linearingrsodat"
-                android:layout_height="60dp">
-
-                <LinearLayout
-
-                    style="@style/linearingrsodat"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        style="@style/titel"
-                        android:gravity="start|top"
-                        android:text="@string/Discount"
-                        tools:text="@string/Discount"></TextView>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="70"
-                        android:weightSum="100">
-
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/decreasediscount"
-                            style="@style/MatCardMinus"
-                            app:cardCornerRadius="5dp"
-                            app:cardElevation="0dp"
-                            app:strokeColor="@color/colorRappi"
-                            app:strokeWidth="1dp">
-
-                            <com.google.android.material.imageview.ShapeableImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                app:srcCompat="@drawable/ic_remove_black_18dp"></com.google.android.material.imageview.ShapeableImageView>
-                        </com.google.android.material.card.MaterialCardView>
-
-
-                        <TextView
-                            android:id="@+id/txdiscountvisor"
-                            style="@style/txmasymenos"></TextView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/increasediscount"
-                            style="@style/MatCardMas"
-                            app:cardCornerRadius="5dp"
-                            app:cardElevation="0dp"
-                            app:strokeColor="@color/colorverdeesmeralda"
-                            app:strokeWidth="1dp">
-
-                            <ImageView
-                                android:id="@+id/imageView21"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                app:srcCompat="@drawable/ic_add_black_18dp" />
-                        </com.google.android.material.card.MaterialCardView>
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
             </LinearLayout>
 
 
