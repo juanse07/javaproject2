@@ -211,6 +211,9 @@
                         style="@style/titel"
                         android:gravity="start|top"
                         android:text="@string/Discount"
+                        app:autoSizeMaxTextSize="12sp"
+                        app:autoSizeMinTextSize="6sp"
+                        app:autoSizeTextType="uniform"
                         tools:text="@string/Discount"></TextView>
 
                     <LinearLayout
@@ -238,7 +241,10 @@
 
                         <TextView
                             android:id="@+id/txdiscountvisor"
-                            style="@style/txmasymenos"></TextView>
+                            style="@style/txmasymenos"
+                            app:autoSizeMaxTextSize="16sp"
+                            app:autoSizeMinTextSize="14sp"
+                            app:autoSizeTextType="uniform"></TextView>
 
                         <com.google.android.material.card.MaterialCardView
                             android:id="@+id/increasediscount"
@@ -274,7 +280,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="30"
-                    android:text="@string/Tax2" />
+                    android:text="@string/Tax2"
+                    app:autoSizeMaxTextSize="12sp"
+                    app:autoSizeMinTextSize="6sp"
+                    app:autoSizeTextType="uniform" />
 
                 <LinearLayout
                     android:id="@+id/impuesto2"
@@ -285,6 +294,7 @@
                     android:weightSum="100">
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/decreaseimp2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="5dp"
@@ -303,13 +313,20 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <TextView
+                        android:id="@+id/tximp2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="60">
+                        android:layout_weight="60"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:textStyle="bold"
+                        app:autoSizeMaxTextSize="16sp"
+                        app:autoSizeMinTextSize="14sp"
+                        app:autoSizeTextType="uniform">
 
                     </TextView>
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/increaseimp2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="5dp"

@@ -48,43 +48,14 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".newclie">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbar"
+        <include
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/lay1"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/back4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="12dp"
-                    app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
-
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:minHeight="?actionBarSize"
-                    android:padding="10dp"
-                    android:text="@string/app_name"
-                    android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-                    android:textColor="@color/colorAccent" />
-
-            </LinearLayout>
-
-            //android:theme="@style/AppTheme.AppBarOverlay"
+            layout="@layout/appbarpyme"
+            >
 
 
-        </com.google.android.material.appbar.AppBarLayout>
+        </include>
 
         <LinearLayout
             android:id="@+id/lay1"

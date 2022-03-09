@@ -2,7 +2,7 @@
 <resources>
 
         <string name="app_name">PyMESoft</string>
-        <string name="app_name2">"<font color='#ffffff'>Facturas</font>"</string>
+        <string name="app_name2">"Facturas"</string>
         <string name="Purchase">Compra</string>
         <string name="Discount">Descuento</string>
         <string name="Save">Guardar</string>
@@ -63,6 +63,7 @@
         <string name="AppSettings">Configuración de la App</string>
         <string name="AccountInfo">Información de la Cuenta</string>
         <string name="Tax2">Impuesto 2</string>
+        <string name="Ritmo">Ritmo en Precio</string>
 
 
         <string name="_1">1</string>

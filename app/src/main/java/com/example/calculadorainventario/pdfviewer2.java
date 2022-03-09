@@ -258,9 +258,6 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
         mystorage= FirebaseStorage.getInstance();
         storageReference=mystorage.getReference();
 
-        String first = "PyMESoft";
-        String next = "<font color='#1D2E4A'>FActuras</font>";
-        title6.setText(Html.fromHtml(first + next));
 
 
 

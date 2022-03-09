@@ -39,7 +39,7 @@ public class InclientActivity extends AppCompatActivity {
 
     DatabaseReference myrootDbaseref2, mydb2;
     Button btnuevocliente;
-    ImageView back4;
+//    ImageView back4;
     CheckBox checkcliente;
     MaterialCardView emailbtcl,phonebtcl,customerbtcl,addressbtcl,citybtcl,zipbtcl;
     TextView emailtxcl,phonetxcl,customertxcl,addresstxcl,citytxcl,ziptxcl;
@@ -58,7 +58,7 @@ public class InclientActivity extends AppCompatActivity {
 
         btnuevocliente = (Button) findViewById(R.id.btnuevocliente);
         txinputnombre = (TextInputEditText) findViewById(R.id.txinputnombre);
-        back4=findViewById(R.id.back4);
+//        back4=findViewById(R.id.back4);
         checkcliente=findViewById(R.id.checkcliente);
         navigationView = (BottomNavigationView) findViewById(R.id.navigation);
         emailbtcl=findViewById(R.id.emailbtcl);
@@ -77,149 +77,40 @@ public class InclientActivity extends AppCompatActivity {
         customerbtcl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
-                ;
-                final View view= LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
-                builder.setView(view);
-               ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_CLASS_TEXT);
-//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.Customer_Name));
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
-                final AlertDialog alertDialog=builder.create();
-                if(alertDialog.getWindow() !=null){
-                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-                }
-                alertDialog.show();
-                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        customertxcl.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
-
-                        alertDialog.dismiss();
-
-                    }
-                });
-
-
+                String inputtext;
+                inputtext=getResources().getString(R.string.Customer_Name);
+                int inputype=1;
+                AlertDialog(customertxcl,inputtext,inputype);
+//
             }
         });
         phonebtcl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
-                ;
-                final View view= LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
-                builder.setView(view);
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_CLASS_PHONE);
-//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.Mobile_phone));
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
-                final AlertDialog alertDialog=builder.create();
-                if(alertDialog.getWindow() !=null){
-                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-                }
-                alertDialog.show();
-                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        phonetxcl.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
-
-                        alertDialog.dismiss();
-
-                    }
-                });
-
-
+                String inputtext;
+                inputtext=getResources().getString(R.string.Mobile_phone);
+                int inputtype=2;
+                AlertDialog(phonetxcl,inputtext,inputtype);
             }
         });
 
         emailbtcl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
-                ;
-                final View view= LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
-                builder.setView(view);
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.Email));
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
-                final AlertDialog alertDialog=builder.create();
-                if(alertDialog.getWindow() !=null){
-                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-                }
-                alertDialog.show();
-                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        emailtxcl.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
-
-                        alertDialog.dismiss();
-
-                    }
-                });
-
+                String inputtext;
+                inputtext=getResources().getString(R.string.Email);
+                int inputype=1;
+                AlertDialog(emailtxcl,inputtext,inputype);
 
             }
         });
         addressbtcl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
-                ;
-                final View view= LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
-                builder.setView(view);
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_TEXT_VARIATION_POSTAL_ADDRESS);
-//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.Address));
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
-                final AlertDialog alertDialog=builder.create();
-                if(alertDialog.getWindow() !=null){
-                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-                }
-                alertDialog.show();
-                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        addresstxcl.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
-
-                        alertDialog.dismiss();
-
-                    }
-                });
-
+                String inputtext;
+                inputtext=getResources().getString(R.string.Address);
+                int inputype=1;
+                AlertDialog(addresstxcl,inputtext,inputype);
 
             }
 
@@ -228,37 +119,10 @@ public class InclientActivity extends AppCompatActivity {
         citybtcl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
-                ;
-                final View view= LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
-                builder.setView(view);
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_TEXT_VARIATION_POSTAL_ADDRESS);
-//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.City));
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
-                final AlertDialog alertDialog=builder.create();
-                if(alertDialog.getWindow() !=null){
-                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-                }
-                alertDialog.show();
-                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        citytxcl.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
-
-                        alertDialog.dismiss();
-
-                    }
-                });
-
+                String inputtext;
+                inputtext=getResources().getString(R.string.City);
+                int inputype=1;
+                AlertDialog(citytxcl,inputtext,inputype);
 
 
             }
@@ -267,38 +131,10 @@ public class InclientActivity extends AppCompatActivity {
         zipbtcl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
-                ;
-                final View view= LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
-                builder.setView(view);
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(InputType.TYPE_CLASS_NUMBER);
-//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.ZIP));
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
-                final AlertDialog alertDialog=builder.create();
-                if(alertDialog.getWindow() !=null){
-                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-                }
-                alertDialog.show();
-                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        ziptxcl.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
-
-                        alertDialog.dismiss();
-
-                    }
-                });
-
-
+                String inputtext;
+                inputtext=getResources().getString(R.string.ZIP);
+                int inputype=2;
+                AlertDialog(ziptxcl,inputtext,inputype);
 
             }
         });
@@ -310,12 +146,12 @@ public class InclientActivity extends AppCompatActivity {
         String id= mAuth.getCurrentUser().getUid();
         myrootDbaseref2 = FirebaseDatabase.getInstance().getReference();
         mydb2 = myrootDbaseref2.child("CLIENTE").child(id).push();
-        back4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+//        back4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onBackPressed();
+//            }
+//        });
         navigationView.setSelectedItemId(R.id.action_more);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -412,10 +248,48 @@ public class InclientActivity extends AppCompatActivity {
 
 
     }
+    private void AlertDialog(final TextView textView, String inputtext1,int inputtype){
+        AlertDialog.Builder builder=new AlertDialog.Builder(InclientActivity.this,R.style.Theme_MaterialComponents_Dialog_Alert);
+        ;
+        final View view= LayoutInflater.from(InclientActivity.this).inflate(R.layout.edittextdialog,(ConstraintLayout)InclientActivity.this.findViewById(R.id.parentconstrait));
+        builder.setView(view);
+        ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(inputtype);
+//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
+        ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
+        ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(inputtext1);
+        ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
+        final AlertDialog alertDialog=builder.create();
+        if(alertDialog.getWindow() !=null){
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        alertDialog.show();
+        ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                textView.setText(((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
+
+                alertDialog.dismiss();
+
+            }
+
+        });
 
 
 
+
+
+
+
+
+
+
+    }
 
 }
-
-
