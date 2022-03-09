@@ -1,10 +1,12 @@
 package com.example.calculadorainventario;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -12,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -30,7 +33,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.calculadorainventario.Adapadores.AdaptadorNoteProd;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.itextpdf.text.List;
 
@@ -353,6 +358,40 @@ decreasetax.setOnClickListener(new View.OnClickListener() {
     }
 });
 
+txtaxvisor.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        String inputtext;
+        inputtext=getResources().getString(R.string.Tax);
+        int keynumber1=2;
+        int keydecimal=8192;
+        int inputtype=keynumber1+keydecimal;
+        AlertDialog(txtaxvisor,inputtext,inputtype);
+    }
+});
+txdiscountvisor.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        String inputtext;
+        inputtext=getResources().getString(R.string.Discount);
+        int keynumber1=2;
+        int keydecimal=8192;
+        int inputtype=keynumber1+keydecimal;
+        AlertDialog(txdiscountvisor,inputtext,inputtype);
+    }
+});
+tximp2.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        String inputtext;
+        inputtext=getResources().getString(R.string.Tax);
+        int keynumber1=2;
+        int keydecimal=8192;
+        int inputtype=keynumber1+keydecimal;
+        AlertDialog(tximp2,inputtext,inputtype);
+    }
+});
+
         increasediscount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -395,25 +434,25 @@ decreasetax.setOnClickListener(new View.OnClickListener() {
 pagomas.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        int getinput = Integer.parseInt(txdaysterm.getText().toString());
+        Double getinput = Double.parseDouble(txdaysterm.getText().toString());
         //shareViewModel2.setHorapdf(txactual.getText().toString());
         if (getinput == 0) {
-            int valorprecio = Integer.parseInt(txdaysterm.getText().toString());
-            int valorritmo = 8;
-            int valornuevosuma = valorprecio + valorritmo;
+            Double valorprecio = Double.parseDouble(txdaysterm.getText().toString());
+            Double valorritmo = 8.0;
+            Double valornuevosuma = valorprecio + valorritmo;
             txdaysterm.setText(valornuevosuma + "");
 
 
 
         } else if (getinput == 8) {
-            int valorprecio = Integer.parseInt(txdaysterm.getText().toString());
-            int valorritmo = 7;
-            int valornuevosuma = valorprecio + valorritmo;
+            Double valorprecio = Double.parseDouble(txdaysterm.getText().toString());
+            Double valorritmo = 7.0;
+            Double valornuevosuma = valorprecio + valorritmo;
             txdaysterm.setText(valornuevosuma + "");
         } else if (getinput >= 15 && getinput < 120) {
-            int valorprecio = Integer.parseInt(txdaysterm.getText().toString());
-            int valorritmo = 15;
-            int valornuevosuma = valorprecio + valorritmo;
+            Double valorprecio =Double.parseDouble(txdaysterm.getText().toString());
+            Double valorritmo = 15.0;
+            Double valornuevosuma = valorprecio + valorritmo;
             txdaysterm.setText(valornuevosuma + "");
 
 
@@ -436,25 +475,25 @@ pagomas.setOnClickListener(new View.OnClickListener() {
         pagomenos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int getinput = Integer.parseInt(txdaysterm.getText().toString());
+                Double getinput = Double.parseDouble(txdaysterm.getText().toString());
                 //shareViewModel2.setHorapdf(txactual.getText().toString());
                 if (getinput == 8) {
-                    int valorprecio = Integer.parseInt(txdaysterm.getText().toString());
-                    int valorritmo = 8;
-                    int valornuevosuma = valorprecio - valorritmo;
+                    Double valorprecio = Double.parseDouble(txdaysterm.getText().toString());
+                    Double valorritmo = 8.0;
+                    Double valornuevosuma = valorprecio - valorritmo;
                     txdaysterm.setText(valornuevosuma + "");
                 } else if (getinput > 15 && getinput <= 120) {
-                    int valorprecio = Integer.parseInt(txdaysterm.getText().toString());
-                    int valorritmo = 15;
-                    int valornuevosuma = valorprecio - valorritmo;
+                    Double valorprecio = Double.parseDouble(txdaysterm.getText().toString());
+                    Double valorritmo = 15.0;
+                    Double valornuevosuma = valorprecio - valorritmo;
                     txdaysterm.setText(valornuevosuma + "");
 
 
 
                 } else if (getinput == 15) {
-                    int valorprecio = Integer.parseInt(txdaysterm.getText().toString());
-                    int valorritmo = 7;
-                    int valornuevosuma = valorprecio - valorritmo;
+                    Double valorprecio = Double.parseDouble(txdaysterm.getText().toString());
+                    Double valorritmo = 7.0;
+                    Double valornuevosuma = valorprecio - valorritmo;
                     txdaysterm.setText(valornuevosuma + "");
 
 
@@ -472,9 +511,9 @@ pagomas.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
 
-                int valorprecio = Integer.parseInt(precio1.getText().toString());
-                int valorritmo = 50;
-                int valornuevosuma = valorprecio + valorritmo;
+                Double valorprecio = Double.parseDouble(precio1.getText().toString());
+                Double valorritmo = 50.0;
+                Double valornuevosuma = valorprecio + valorritmo;
                 precio1.setText(valornuevosuma + "");
 
 
@@ -485,9 +524,9 @@ pagomas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                int valorprecio = Integer.parseInt(precio1.getText().toString());
-                int valorritmo = 50;
-                int valornuevosuma = valorprecio - valorritmo;
+                Double valorprecio = Double.parseDouble(precio1.getText().toString());
+                Double valorritmo = 50.0;
+                Double valornuevosuma = valorprecio - valorritmo;
                 precio1.setText(valornuevosuma + "");
 
 
@@ -609,6 +648,40 @@ pagomas.setOnClickListener(new View.OnClickListener() {
             txdaysterm.setText(creacion.getString("diasdepago1", "0"));
         }
 
+
+    }
+    private void AlertDialog(final TextView textView, String inputtext1,int inputtype){
+        AlertDialog.Builder builder=new AlertDialog.Builder(ingresoview.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
+        ;
+        final View view= LayoutInflater.from(ingresoview.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)ingresoview.findViewById(R.id.parentconstrait));
+        builder.setView(view);
+        ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setInputType(inputtype);
+//                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
+        ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
+        ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(inputtext1);
+        ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
+        final AlertDialog alertDialog=builder.create();
+        if(alertDialog.getWindow() !=null){
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        alertDialog.show();
+        ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                textView.setText(((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
+
+                alertDialog.dismiss();
+
+            }
+
+        });
 
     }
 
