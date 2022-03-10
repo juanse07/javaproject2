@@ -187,7 +187,7 @@ ArrayList<NoteProducto>notesProd;
 
 
 
-        txdaysterm.setText( Constants.getSP(getContext()).getDIAS());
+       txdaysterm.setText( Constants.getSP(getContext()).getDIAS());
 
 
 
@@ -384,7 +384,7 @@ tximp2.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         String inputtext;
-        inputtext=getResources().getString(R.string.Tax);
+        inputtext=getResources().getString(R.string.Tax2);
         int keynumber1=2;
         int keydecimal=8192;
         int inputtype=keynumber1+keydecimal;
@@ -434,25 +434,25 @@ tximp2.setOnClickListener(new View.OnClickListener() {
 pagomas.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        Double getinput = Double.parseDouble(txdaysterm.getText().toString());
+        int getinput = Integer.parseInt(txdaysterm.getText().toString());
         //shareViewModel2.setHorapdf(txactual.getText().toString());
         if (getinput == 0) {
-            Double valorprecio = Double.parseDouble(txdaysterm.getText().toString());
-            Double valorritmo = 8.0;
-            Double valornuevosuma = valorprecio + valorritmo;
+            Integer valorprecio = Integer.parseInt(txdaysterm.getText().toString());
+           Integer valorritmo = 8;
+            Integer valornuevosuma = valorprecio + valorritmo;
             txdaysterm.setText(valornuevosuma + "");
 
 
 
         } else if (getinput == 8) {
-            Double valorprecio = Double.parseDouble(txdaysterm.getText().toString());
-            Double valorritmo = 7.0;
-            Double valornuevosuma = valorprecio + valorritmo;
+            Integer valorprecio = Integer.parseInt(txdaysterm.getText().toString());
+            Integer valorritmo = 7;
+            Integer valornuevosuma = valorprecio + valorritmo;
             txdaysterm.setText(valornuevosuma + "");
         } else if (getinput >= 15 && getinput < 120) {
-            Double valorprecio =Double.parseDouble(txdaysterm.getText().toString());
-            Double valorritmo = 15.0;
-            Double valornuevosuma = valorprecio + valorritmo;
+            Integer valorprecio =Integer.parseInt(txdaysterm.getText().toString());
+            Integer valorritmo = 15;
+            Integer valornuevosuma = valorprecio + valorritmo;
             txdaysterm.setText(valornuevosuma + "");
 
 
@@ -461,7 +461,7 @@ pagomas.setOnClickListener(new View.OnClickListener() {
         }
         sharedViewModel.setDias(txdaysterm.getText().toString());
         Constants.getSP(ingresoview.getContext()).setDIAS(txdaysterm.getText().toString());
-        sharedViewModel.setDiasfinal(Integer.parseInt(txdaysterm.getText().toString()));
+        sharedViewModel.setDiasfinal(txdaysterm.getText().toString());
 
 
 
@@ -475,25 +475,25 @@ pagomas.setOnClickListener(new View.OnClickListener() {
         pagomenos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Double getinput = Double.parseDouble(txdaysterm.getText().toString());
+                int getinput = Integer.parseInt(txdaysterm.getText().toString());
                 //shareViewModel2.setHorapdf(txactual.getText().toString());
                 if (getinput == 8) {
-                    Double valorprecio = Double.parseDouble(txdaysterm.getText().toString());
-                    Double valorritmo = 8.0;
-                    Double valornuevosuma = valorprecio - valorritmo;
+                    Integer valorprecio = Integer.parseInt(txdaysterm.getText().toString());
+                    Integer valorritmo = 8;
+                    Integer valornuevosuma = valorprecio - valorritmo;
                     txdaysterm.setText(valornuevosuma + "");
                 } else if (getinput > 15 && getinput <= 120) {
-                    Double valorprecio = Double.parseDouble(txdaysterm.getText().toString());
-                    Double valorritmo = 15.0;
-                    Double valornuevosuma = valorprecio - valorritmo;
+                    Integer valorprecio = Integer.parseInt(txdaysterm.getText().toString());
+                    Integer valorritmo = 15;
+                    Integer valornuevosuma = valorprecio - valorritmo;
                     txdaysterm.setText(valornuevosuma + "");
 
 
 
                 } else if (getinput == 15) {
-                    Double valorprecio = Double.parseDouble(txdaysterm.getText().toString());
-                    Double valorritmo = 7.0;
-                    Double valornuevosuma = valorprecio - valorritmo;
+                    Integer valorprecio = Integer.parseInt(txdaysterm.getText().toString());
+                    Integer valorritmo = 7;
+                    Integer valornuevosuma = valorprecio - valorritmo;
                     txdaysterm.setText(valornuevosuma + "");
 
 
@@ -501,7 +501,7 @@ pagomas.setOnClickListener(new View.OnClickListener() {
                 sharedViewModel.setDias(txdaysterm.getText().toString());
                 Constants.getSP(ingresoview.getContext()).setDIAS(txdaysterm.getText().toString());
 
-                sharedViewModel.setDiasfinal(Integer.parseInt(txdaysterm.getText().toString()));
+                sharedViewModel.setDiasfinal(txdaysterm.getText().toString());
 
 
             }
@@ -577,12 +577,12 @@ pagomas.setOnClickListener(new View.OnClickListener() {
 
             }
         });
-        sharedViewModel.getdiasfinal().observe(getViewLifecycleOwner(), new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer integer) {
+     sharedViewModel.getdiasfinal().observe(getViewLifecycleOwner(), new Observer<String>() {
+         @Override
+         public void onChanged(String s) {
 
-            }
-        });
+         }
+     });
         sharedViewModel.getdias().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -796,7 +796,7 @@ pagomas.setOnClickListener(new View.OnClickListener() {
     public void onStart() {
 
         super.onStart();sharedViewModel.setDias(txdaysterm.getText().toString());
-        sharedViewModel.setDiasfinal(Integer.parseInt(txdaysterm.getText().toString()));
+        sharedViewModel.setDiasfinal(txdaysterm.getText().toString());
 
     }
 

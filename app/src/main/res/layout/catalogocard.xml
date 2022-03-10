@@ -177,6 +177,7 @@
                     android:weightSum="100">
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cantdown"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal|center_vertical"
@@ -215,6 +216,7 @@
                         app:autoSizeTextType="uniform" />
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cantup"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
@@ -267,6 +269,7 @@
                     android:weightSum="100">
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/picedown"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="6dp"
@@ -316,6 +319,7 @@
                         android:visibility="gone" />
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/priceup"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"

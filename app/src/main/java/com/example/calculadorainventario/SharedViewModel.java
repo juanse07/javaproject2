@@ -24,7 +24,7 @@ public class SharedViewModel extends AndroidViewModel  {
     private MutableLiveData<String> resultado;
     private MutableLiveData<String> textcliente=new MutableLiveData<>();
     private MutableLiveData<String> dias=new MutableLiveData<>();
-    private MutableLiveData<Integer> diasfinal=new MutableLiveData<>();
+    private MutableLiveData<String> diasfinal=new MutableLiveData<>();
     private MutableLiveData<ArrayList<cuerospinner>>obtenerproductos;
     private MutableLiveData<ArrayList<constcards>>obtenerdatos;
     private MutableLiveData<ArrayList<MatrizLista>>obtenerproductosguardados;
@@ -250,10 +250,10 @@ public LiveData<ArrayList<cuerospinner>>getproducto(){
 
 
 
-    public LiveData<Integer> getdiasfinal() {
+    public LiveData<String> getdiasfinal() {
         return diasfinal;
     }
-    public void setDiasfinal(Integer input7) {
+    public void setDiasfinal(String input7) {
         diasfinal.setValue(input7);
     }
    // public void removeMaterial() {

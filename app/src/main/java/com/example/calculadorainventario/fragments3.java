@@ -368,7 +368,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             //bundle.putString("Precio", txpreciobottom.getText().toString());
                             bundle.putString("Precio", PrecioL);
                             bundle.putString("Diasdepago", dias1);
-                            bundle.putInt("Diasdepagoint", diasq);
+                            bundle.putDouble("Diasdepagoint", diasq);
 
 
                             bundle.putString("radiobuton", textovigilancia.getText().toString());
@@ -740,12 +740,11 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
             }
         });
-        sharedViewModel.getdiasfinal().observe(this, new Observer<Integer>() {
+
+        sharedViewModel.getdiasfinal().observe(this, new Observer<String>() {
             @Override
-            public void onChanged(Integer integer) {
-
-                diasq = integer;
-
+            public void onChanged(String s) {
+                diasq=Integer.parseInt(s);
             }
         });
 

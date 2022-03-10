@@ -136,22 +136,7 @@ public class catalogo extends Fragment implements ClickInterface1 {
         });
         myadaptador = new adaptadorcatalogo(sharedViewModel.getproducto().getValue(), this);
         Recyclercatalogo.setAdapter(myadaptador);
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.UP) {
-            @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                return false;
-            }
 
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                myadaptador.getpos(viewHolder.getAdapterPosition());
-//                final String id = mAuth.getCurrentUser().getUid();
-//                ref = FirebaseDatabase.getInstance().getReference().child("VENTAS").child(id).child(Firekey);
-//                ref.removeValue();
-                Toast.makeText(CatalogoView.getContext(),"Deleted",Toast.LENGTH_SHORT).show();
-
-            }
-        }).attachToRecyclerView(Recyclercatalogo);
 
 
 

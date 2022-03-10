@@ -1,6 +1,8 @@
 package com.example.calculadorainventario.Adapadores;
 
 import android.app.AlertDialog;
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -24,6 +26,7 @@ import com.example.calculadorainventario.R;
 import com.example.calculadorainventario.SharedViewModel;
 import com.example.calculadorainventario.Constructores.cuerospinner;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -113,99 +116,61 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
             }
         });
 
-
-        holder.preciomas.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               int valorprecio = Integer.parseInt(holder.txcatprice.getText().toString());
-
-               int valorritmo = 50;
-               int valornuevosuma = valorprecio + valorritmo;
-               holder.txcatprice.setText(valornuevosuma + "");
-
-
-
-
-
-
-
-           }
-       });
-       holder.preciomenos.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               int valorprecio = Integer.parseInt(holder.txcatprice.getText().toString());
-//               int valorritmo = Integer.parseInt(Ritmo1);
-               int valorritmo = 50;
-
-               int valornuevosuma = valorprecio - valorritmo;
-               holder.txcatprice.setText(valornuevosuma + "");
-
-           }
-       });
-
-        holder.cantmas2.setOnClickListener(new View.OnClickListener() {
+//
+        holder.cantup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int valorcant = Integer.parseInt(holder.canttext2.getText().toString());
-                int valorritmo = 1;
-                int valornuevosuma = valorcant + valorritmo;
-                holder.canttext2.setText(valornuevosuma + "");
+                Double valorritmo = 1.0;
 
+             holder.buttonup(valorritmo,holder.canttext2);
 
+            }
+        });
+        holder.cantdown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Double valorritmo = 1.0;
 
+                holder.buttondown(valorritmo,holder.canttext2);
 
+            }
+        });
+        holder.priceup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Double valorritmo = Double.parseDouble(productos.get(position).getRitmo());
 
+               holder.buttonup(valorritmo,holder.txcatprice);
 
+            }
+        });
+        holder.pricedown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Double valorritmo =  Double.parseDouble(productos.get(position).getRitmo());;
+
+                holder.buttondown(valorritmo,holder.txcatprice);
             }
         });
         holder.txcatprice.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(v.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
-                ;
-                final View view=LayoutInflater.from(v.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)v.findViewById(R.id.parentconstrait));
-                builder.setView(view);
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(holder.txcatprice.getText().toString());
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(view.getResources().getString(R.string.Price));
-                ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
-                final AlertDialog alertDialog=builder.create();
-                if(alertDialog.getWindow() !=null){
-                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-                }
-                alertDialog.show();
-                ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-                ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                String price=holder.itemView.getResources().getString(R.string.Price);
+               holder.showdialog(holder.txcatprice,price,holder.itemView);
 
-                        holder.txcatprice.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
-
-                        alertDialog.dismiss();
-
-                    }
-                });
 
             }
         });
-        holder.cantmenos2.setOnClickListener(new View.OnClickListener() {
+        holder.canttext2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int valorcant = Integer.parseInt(holder.canttext2.getText().toString());
-                int valorritmo = 1;
-                int valornuevosuma = valorcant - valorritmo;
-                holder.canttext2.setText(valornuevosuma + "");
-
+                String Cant=holder.itemView.getResources().getString(R.string.Quantity);
+                holder.showdialog(holder.canttext2,Cant,holder.itemView);
             }
         });
+
         if(row_index==position){
             holder.buttonaddproducto.setBackgroundColor(holder.itemView.getResources().getColor(R.color.colorAccent));
 
@@ -367,11 +332,14 @@ private Filter FiltroProducto=new Filter() {
 
 };
 
+
+
     public class ViewHolder extends RecyclerView.ViewHolder  {
         TextView nombreproducto,canttext2,txcatprice;
         Button buttonaddproducto;
         ImageView preciomas, preciomenos,configcrear,cantmenos2,cantmas2;
         CheckBox checkIVA;
+        MaterialCardView priceup,pricedown,cantup,cantdown;
 
 
         EditText preciotext;
@@ -397,6 +365,10 @@ private Filter FiltroProducto=new Filter() {
             configcrear=itemView.findViewById(R.id.deletesym);
             checkIVA=itemView.findViewById(R.id.checkIVA);
             txcatprice=itemView.findViewById(R.id.txcatprice);
+            cantdown=itemView.findViewById(R.id.cantdown);
+            cantup=itemView.findViewById(R.id.cantup);
+            priceup=itemView.findViewById(R.id.priceup);
+            pricedown=itemView.findViewById(R.id.picedown);
 
 
             mAuth = FirebaseAuth.getInstance();
@@ -409,12 +381,21 @@ private Filter FiltroProducto=new Filter() {
 
 
         }
-        private  void showdialog(){
-            AlertDialog.Builder builder=new AlertDialog.Builder(itemView.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
 
-            View view=LayoutInflater.from(itemView.getContext()).inflate(R.layout.confirmationdialog,(ConstraintLayout)itemView.findViewById(R.id.parental1));
-            builder.setView(view);
-        }
+    public void buttonup(Double valorritmo,TextView textView){
+
+        Double valorcant = Double.parseDouble(textView.getText().toString());
+
+        Double valornuevosuma = valorcant + valorritmo;
+        textView.setText(valornuevosuma + "");
+
+    }
+    public void buttondown(Double valorritmo,TextView textView){
+
+        Double valorcant = Double.parseDouble(textView.getText().toString());
+
+        Double valornuevosuma = valorcant - valorritmo;
+        textView.setText(valornuevosuma + "");
 
     }
     public void getpos(int position){
@@ -427,6 +408,41 @@ private Filter FiltroProducto=new Filter() {
         final String id = mAuth.getCurrentUser().getUid();
         ref = FirebaseDatabase.getInstance().getReference().child("PRODUCTOS").child(id).child(key);
         ref.removeValue();
+
+    }
+
+        private  void showdialog(final TextView textview, String input1,View itemview){
+            AlertDialog.Builder builder=new AlertDialog.Builder(itemview.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
+            ;
+            final View view=LayoutInflater.from(itemview.getContext()).inflate(R.layout.edittextdialog,(ConstraintLayout)itemview.findViewById(R.id.parentconstrait));
+            builder.setView(view);
+            ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setText(textview.getText().toString());
+            ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).requestFocus();
+            ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHint(input1);
+            ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).setHintTextColor(view.getResources().getColor(R.color.colorGrisoscuro));
+            final AlertDialog alertDialog=builder.create();
+            if(alertDialog.getWindow() !=null){
+                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            }
+            alertDialog.show();
+            ((MaterialButton) view.findViewById(R.id.editdialogbutton)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialog.dismiss();
+                }
+            });
+            ((MaterialButton) view.findViewById(R.id.aceptedtx)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    textview.setText( ((TextInputEditText) view.findViewById(R.id.edtxeditdialog)).getText().toString());
+
+                    alertDialog.dismiss();
+
+                }
+            });
+        }
+
 
     }
 
