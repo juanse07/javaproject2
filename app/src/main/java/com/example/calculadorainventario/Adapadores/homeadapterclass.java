@@ -1,4 +1,4 @@
-package com.example.calculadorainventario;
+package com.example.calculadorainventario.Adapadores;
 
 import android.content.Intent;
 import android.os.Build;
@@ -11,6 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.calculadorainventario.Constructores.constcards;
+import com.example.calculadorainventario.HomeNote;
+import com.example.calculadorainventario.R;
+import com.example.calculadorainventario.Repositorio1;
+import com.example.calculadorainventario.reminderAc;
 
 import java.text.ParseException;
 import java.util.ArrayList;

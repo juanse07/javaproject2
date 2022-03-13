@@ -90,7 +90,7 @@ public class Pdfbasicclass extends Activity {
     Document mDoc = new Document(PageSize.LETTER,36,36,53,56);
 
     //   String horaventas2;
-    String productoventas2;
+//    String productoventas2;
     //    String unidadesventas2;
     String precioventas2;
     //    String medidaventas2;
@@ -143,7 +143,10 @@ public class Pdfbasicclass extends Activity {
 
 
 
-    public void createpdf(Context context)throws DocumentException{
+    public void createpdf(Context context,String productoventas2,String precioventas2,String valorventas2,Double valorbr,
+                          Double valorneto,String fechaventas2,String estadoventas2,String diaspago,
+                          String Fecha2,String nombreventas2,ArrayList<String>Lista7,ArrayList<String>List1,
+                          ArrayList<Double>List2,ArrayList<Double>List3,ArrayList<Double>List4,ByteArrayOutputStream outputStream)throws DocumentException{
         //        BaseFont baseFont=null;
 //        try {
 //

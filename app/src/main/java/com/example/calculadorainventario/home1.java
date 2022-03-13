@@ -24,7 +24,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceManager;
 import android.provider.CalendarContract;
 import android.text.Html;
 import android.text.SpannableString;
@@ -39,6 +38,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.calculadorainventario.Adapadores.BuscarAdaptador;
+import com.example.calculadorainventario.Adapadores.homeadapterclass;
 import com.example.calculadorainventario.Constructores.constcards;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.appbar.AppBarLayout;

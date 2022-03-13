@@ -1,4 +1,4 @@
-package com.example.calculadorainventario;
+package com.example.calculadorainventario.Adapadores;
 
 import android.app.DownloadManager;
 import android.content.ActivityNotFoundException;
@@ -8,7 +8,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
@@ -16,7 +15,12 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.calculadorainventario.ClickInterface1;
 import com.example.calculadorainventario.Constructores.constcards;
+import com.example.calculadorainventario.Downloadpdfclass;
+import com.example.calculadorainventario.HomeNote;
+import com.example.calculadorainventario.R;
+import com.example.calculadorainventario.Repositorio1;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -36,7 +40,6 @@ import java.util.concurrent.TimeUnit;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceadapterclass.ViewHolder>implements Filterable {
@@ -429,7 +432,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txurl=itemView.findViewById(R.id.textView58);
+//            txurl=itemView.findViewById(R.id.textView58);
             txinvname=itemView.findViewById(R.id.txinvname);
             txinvdate=itemView.findViewById(R.id.txinvdate);
             txinvdate2=itemView.findViewById(R.id.txinvdate2);
@@ -437,7 +440,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
             txinvstate=itemView.findViewById(R.id.txinvstate);
             cvdate2=itemView.findViewById(R.id.cvdate2);
             cvstate=itemView.findViewById(R.id.cvstate);
-            imgvpdf=itemView.findViewById(R.id.imgvpdf);
+//            imgvpdf=itemView.findViewById(R.id.imgvpdf);
             mtpdf=itemView.findViewById(R.id.mtpdf);
 
 
@@ -462,6 +465,8 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
         ref.removeValue();
 
     }
+
+
 
 
 }

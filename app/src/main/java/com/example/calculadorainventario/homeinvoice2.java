@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.calculadorainventario.Adapadores.BuscarAdaptador;
+import com.example.calculadorainventario.Adapadores.homeinvoiceadapterclass;
 import com.example.calculadorainventario.Constructores.constcards;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.appbar.AppBarLayout;
