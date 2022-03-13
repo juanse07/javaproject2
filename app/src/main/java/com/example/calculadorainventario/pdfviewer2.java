@@ -1,18 +1,15 @@
 package com.example.calculadorainventario;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,31 +26,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.itextpdf.text.BadElementException;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.BaseFont;
-import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.draw.VerticalPositionMark;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.net.MalformedURLException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -84,6 +67,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     Map<String,String>RecibirNoteprod;
     ArrayList<Double> ListaCuero;
     ArrayList<Double> listacuero3;
+    Pdfbasicclass pdfbasicclass=new Pdfbasicclass();
     Context context;
     AdaptadorProductoGuardado adpt1=new AdaptadorProductoGuardado();
     NoteProdViewModel noteProdViewModel;
@@ -218,11 +202,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
                     //savepdf();
                     RecibirBundleFragment3();
-                    Pdfbasicclass pdfbasicclass=new Pdfbasicclass();
 
                     pdfbasicclass.createpdf(pdfviewer2.this,productoventas2,precioventas2,valorventas2,
                             valorbr,valorneto,fechaventas2,estadoventas2,diaspago,Fecha2,nombreventas2,
-                            Lista7,List1,List2,List3,List4,outputStream);
+                            Lista7,List1,List2,List3,List4,outputStream, mFilepath);
                     String qaz="Yeahh";
                     Log.d("Succesfull try!!!!",qaz);
                 } catch (DocumentException e) {
@@ -352,7 +335,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
         }
 
 
-        File file=new File(file2.getAbsolutePath());
+        File file=new File(pdfbasicclass.getfile2().getAbsolutePath());
         Uri pdfUri = Uri.fromFile(file);
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
@@ -431,7 +414,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
             }
 
         }
-        File file=new File(file2.getAbsolutePath());
+        File file=new File(pdfbasicclass.getfile2().getAbsolutePath());
 
         Uri pdfUri = Uri.fromFile(file);
         Intent shareIntent = new Intent();
@@ -486,11 +469,11 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
                   try {
 //                       savepdf();
                       RecibirBundleFragment3();
-                      Pdfbasicclass pdfbasicclass=new Pdfbasicclass();
+
 
                       pdfbasicclass.createpdf(pdfviewer2.this,productoventas2,precioventas2,valorventas2,
                               valorbr,valorneto,fechaventas2,estadoventas2,diaspago,Fecha2,nombreventas2,
-                              Lista7,List1,List2,List3,List4,outputStream);
+                              Lista7,List1,List2,List3,List4,outputStream, mFilepath);
                       String qaz="Yeahh";
                       Log.d("Succesfull try!!!!",qaz);
                     } catch (DocumentException e) {
@@ -533,8 +516,10 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
 
 
+
        // pdfUri = Uri.fromFile(new File(pdfFile.getAbsolutePath()))
-        pdfUri = Uri.fromFile(file2);
+//        pdfUri = Uri.fromFile(file2);
+        pdfUri = Uri.fromFile(pdfbasicclass.getfile2());
 
 
 

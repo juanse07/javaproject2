@@ -1,7 +1,6 @@
 package com.example.calculadorainventario;
 
 import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -51,28 +50,14 @@ import java.util.Locale;
 import java.util.Map;
 
 public class Pdfbasicclass extends Activity {
-    pdfviewer2 pdfviewer2;
-    private PDFView pdfView;
-    ImageView back1;
-    private File file;
 
-    TextView title6;
     BaseFont baseFont=null;
 
-    Uri pdfUri;
+
     PdfPTable tableFooter;
+    File file2;
 
 
-
-    List<Note> Listadobles2;
-    ArrayList<arrayconstructor> Listadobles3;
-    Map<String,String> RecibirNoteprod;
-    ArrayList<Double> ListaCuero;
-    ArrayList<Double> listacuero3;
-    AdaptadorProductoGuardado adpt1=new AdaptadorProductoGuardado();
-    NoteProdViewModel noteProdViewModel;
-    DecimalFormat format = new DecimalFormat("###,###,##0");
-    String SumaResultado;
     String Invoice,Receipt,Quote,Days,Terms,Customer,Product,Date,Due_Date,Total,Subtotal,Info_Fac,List_Products,
             Quantity,Price,Tax;
 
@@ -89,33 +74,8 @@ public class Pdfbasicclass extends Activity {
     //String fechaventas2;
     Document mDoc = new Document(PageSize.LETTER,36,36,53,56);
 
-    //   String horaventas2;
-//    String productoventas2;
-    //    String unidadesventas2;
-    String precioventas2;
-    //    String medidaventas2;
-    String valorventas2;
-    double valorbr;
-    double ValorImp;
-    double ValorDesc;
-    double TaxValue;
-    double DiscountValue;
-    double valorneto;
-    String fechaventas2;
-    String estadoventas2;
-    //    String horareal2;
-    String diaspago,Fecha2;
-    DatabaseReference myrootDbaseref5;
-    FirebaseStorage mystorage;
-    FirebaseAuth mAuth;
-    NoteViewModel noteViewModel;
-    ArrayList<Note>noteArralist=new ArrayList<>();
-    ArrayList<String>List1,Lista7;
-    ArrayList<Double>List2,List3,List4;
-    byte[] outputstream2;
-    //Button btactualizarpdf;
-    String nombreventas2;
-    String CantProd;
+
+
     String pattern = "EEEEE MMMMM yyyy HH:mm:ss.SSSZ";
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "US"));
     String mFilename = simpleDateFormat.format(System.currentTimeMillis());
@@ -130,7 +90,7 @@ public class Pdfbasicclass extends Activity {
     String mFilepath = Environment.getExternalStorageDirectory() +   File.separator+ "PyMESoft"+
             File.separator+"invoices"+File.separator +mFilename.toString().replaceAll(":",".");
     File filepath2;
-    File file2;
+
 
 
     // byte[] outputStream = new ByteArrayOutputStream();
@@ -143,10 +103,12 @@ public class Pdfbasicclass extends Activity {
 
 
 
-    public void createpdf(Context context,String productoventas2,String precioventas2,String valorventas2,Double valorbr,
-                          Double valorneto,String fechaventas2,String estadoventas2,String diaspago,
-                          String Fecha2,String nombreventas2,ArrayList<String>Lista7,ArrayList<String>List1,
-                          ArrayList<Double>List2,ArrayList<Double>List3,ArrayList<Double>List4,ByteArrayOutputStream outputStream)throws DocumentException{
+    public void createpdf(Context context, String productoventas2, String precioventas2, String valorventas2, Double valorbr,
+                          Double valorneto, String fechaventas2, String estadoventas2, String diaspago,
+                          String Fecha2, String nombreventas2, ArrayList<String> Lista7, ArrayList<String> List1,
+                          ArrayList<Double> List2, ArrayList<Double> List3, ArrayList<Double> List4, ByteArrayOutputStream outputStream,
+
+                          String mFilepath)throws DocumentException{
         //        BaseFont baseFont=null;
 //        try {
 //
@@ -182,17 +144,15 @@ public class Pdfbasicclass extends Activity {
         Image image;
 
 
-
-
-
-        file = new File(mFilepath);
+        File file = new File(mFilepath);
         if (!file.exists()) {
             file.mkdirs();
 
         }
         filepath2= new File(file.getAbsolutePath());
         filepath2.mkdir();
-        file2=new File(filepath2,"inv-"+nombreventas2+".pdf");
+        File file2 = new File(filepath2, "inv-" + nombreventas2 + ".pdf");
+        setfile2(file2);
 
 
         try {
@@ -1210,5 +1170,16 @@ public class Pdfbasicclass extends Activity {
 
 
         }
+
+
+
+
 }
+
+    public File getfile2(){
+        return file2;}
+    public void setfile2(File file2) {
+        this.file2 = file2;
+    }
 }
+
