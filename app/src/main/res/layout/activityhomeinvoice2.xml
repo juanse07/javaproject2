@@ -115,12 +115,11 @@
 
                 <TextView
                     android:id="@+id/txinvstate"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_margin="1dp"
                     android:gravity="center_horizontal|center_vertical"
-                    android:text="Venta"
                     app:autoSizeMaxTextSize="12sp"
                     app:autoSizeMinTextSize="3sp"
                     app:autoSizeTextType="uniform" />

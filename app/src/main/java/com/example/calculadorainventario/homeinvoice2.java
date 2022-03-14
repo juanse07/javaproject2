@@ -309,13 +309,12 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
                 //FilterData();
                 CharSequence charsales=getResources().getString(R.string.Sales);
 
-                if (charSequence.equals(getResources().getString(R.string.Receipts))) {
+                if (charSequence.equals(getResources().getString(R.string.Receipts))||charSequence.equals(getResources().getString(R.string.Sales))||charSequence.equals(getResources().getString(R.string.Draft))) {
                     edtbuscar.setQuery(charSequence, false);
 
 
 
-//                }charSequence.equals(getResources().getString(R.string.Receipts)) || charSequence.equals(getResources().getString(R.string.Draft))) {
-//                    edtbuscar.setQuery(charSequence, false);
+//
                 } else if (charSequence.equals("Noviembre")) {
                     edtbuscar.setQuery("nov", false);
                 } else if (charSequence.equals("Octubre")) {
@@ -512,7 +511,7 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         //FilterData();
 
         sharedViewModel = new ViewModelProvider(homeinvoice2.this).get(SharedViewModel.class);
-        Log.d("value",String.valueOf(tipoDoc));
+        Log.d("value of the state",String.valueOf(tipoDoc));
 
 
         sharedViewModel.setSearchTipo(tipoDoc);

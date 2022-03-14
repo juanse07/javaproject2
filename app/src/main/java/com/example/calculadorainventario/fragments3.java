@@ -911,13 +911,22 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         bundle.putSerializable("descpercent", DiscountValue);
 
         String comprobarestado = textovigilancia.getText().toString();
+//        if (comprobarestado.equals(getResources().getString(R.string.Receipts))) {
+//            bundle.putSerializable("Estado1", "2");
+//        } else if (comprobarestado.equals(getResources().getString(R.string.Sales))) {
+//            bundle.putSerializable("Estado1", "1");
+//
+//        } else if (comprobarestado.equals(getResources().getString(R.string.Draft))) {
+//            bundle.putSerializable("Estado1", "3");
+//
+//        }
         if (comprobarestado.equals(getResources().getString(R.string.Receipts))) {
-            bundle.putSerializable("Estado1", "2");
+            bundle.putSerializable("Estado1",getResources().getString(R.string.Receipts));
         } else if (comprobarestado.equals(getResources().getString(R.string.Sales))) {
-            bundle.putSerializable("Estado1", "1");
+            bundle.putSerializable("Estado1", getResources().getString(R.string.Sales));
 
         } else if (comprobarestado.equals(getResources().getString(R.string.Draft))) {
-            bundle.putSerializable("Estado1", "3");
+            bundle.putSerializable("Estado1", getResources().getString(R.string.Draft));
 
         }
 

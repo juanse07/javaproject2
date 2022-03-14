@@ -103,15 +103,15 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
 
         String comprobarestado;
         comprobarestado=listhome.get(position).getEstado().toString();
-        if(comprobarestado.equals("1")){
+        if(comprobarestado.equals(holder.itemView.getResources().getString(R.string.Sales))){
             holder.txinvstate.setText(holder.itemView.getResources().getString(R.string.Sales));
             holder.cvstate.setCardBackgroundColor(holder.itemView.getResources().getColor(R.color.blueTransparent));
             holder.txinvstate.setTextColor(holder.itemView.getResources().getColor(R.color.bluecolor));
-        }else if(comprobarestado.equals("3")){
+        }else if(comprobarestado.equals(holder.itemView.getResources().getString(R.string.Draft))){
             holder.txinvstate.setText(holder.itemView.getResources().getString(R.string.Draft));
             holder.cvstate.setCardBackgroundColor(holder.itemView.getResources().getColor(R.color.colorGrisoscurotransparent));
             holder.txinvstate.setTextColor(holder.itemView.getResources().getColor(R.color.colorGrisoscuro));
-        }else if(comprobarestado.equals("2")){
+        }else if(comprobarestado.equals(holder.itemView.getResources().getString(R.string.Receipts))){
             holder.txinvstate.setText(holder.itemView.getResources().getString(R.string.Receipts));
             holder.cvstate.setCardBackgroundColor(holder.itemView.getResources().getColor(R.color.purplecolotransparentr));
             holder.txinvstate.setTextColor(holder.itemView.getResources().getColor(R.color.purplecolor));
@@ -355,14 +355,13 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
                 String filterHomePattern= constraint.toString().toLowerCase().trim();
                 for(constcards item:listhomefull){
                     if(item.getCliente().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
-//                            item.getProdu.toLowerCase().contains(constraint.toString().toLowerCase().trim())||
-                         item.getValor().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
-//                            item.getMedida().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
+                            item.getProducto().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
+                            item.getValor().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
+                            item.getMedida().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
 //                            item.getUnidades().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
 //                            item.getPrecio().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
                             item.getFecha().toLowerCase().contains(constraint.toString().toLowerCase().trim())||
                             item.getEstado().toLowerCase().contains(constraint.toString().toLowerCase().trim())
-
 
                     )
                     {

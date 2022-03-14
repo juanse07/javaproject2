@@ -66,11 +66,26 @@ public class BuscarAdaptador extends RecyclerView.Adapter<BuscarAdaptador.Viewho
 
             @Override
             public void onClick(View v) {
+                CharSequence tipo=holder.textBusquedas.getText();
+                if(tipo.equals(v.getResources().getString(R.string.Sales))){
 
-                CharSequence tipodoc= holder.textBusquedas.getText();
+                CharSequence tipodoc= v.getResources().getString(R.string.Sales).trim();
                 clickInterface1.PassTipoDoc(position,tipodoc);
                 row_index=position;
                 notifyDataSetChanged();
+                }else if(tipo.equals(v.getResources().getString(R.string.Receipts))){
+                    CharSequence tipodoc= v.getResources().getString(R.string.Receipts).trim();
+                    clickInterface1.PassTipoDoc(position,tipodoc);
+                    row_index=position;
+                    notifyDataSetChanged();
+
+                }else if(tipo.equals(v.getResources().getString(R.string.Draft))){
+                    CharSequence tipodoc= v.getResources().getString(R.string.Draft).trim();
+                    clickInterface1.PassTipoDoc(position,tipodoc);
+                    row_index=position;
+                    notifyDataSetChanged();
+
+                }
 
 
 

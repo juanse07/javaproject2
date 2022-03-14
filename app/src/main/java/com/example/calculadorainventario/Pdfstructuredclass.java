@@ -139,6 +139,23 @@ public class Pdfstructuredclass extends Activity {
 
                                     String mFilepath)throws DocumentException {
 
+        Invoice=context.getResources().getString(R.string.Invoice);
+        Receipt=context.getResources().getString(R.string.Receipts);
+        Quote=context.getResources().getString(R.string.Quote);
+        Days=context.getResources().getString(R.string.Days);
+        Terms=context.getResources().getString(R.string.Payment_Term);
+        Customer=context.getResources().getString(R.string.Costumers);
+        Product=context.getResources().getString(R.string.Product_Name);
+        Date=context.getResources().getString(R.string.Date);
+        Due_Date=context.getResources().getString(R.string.Due_Date);
+        Total=context.getResources().getString(R.string.Total);
+        Subtotal=context.getResources().getString(R.string.Subtotal);
+        Info_Fac=context.getResources().getString(R.string.Invoice_info);
+        List_Products=context.getResources().getString(R.string.Doc_list);
+        Quantity = context.getResources().getString(R.string.Quantity);
+        Price=context.getResources().getString(R.string.Price);
+        Tax=context.getResources().getString(R.string.Tax);
+
         //        BaseFont baseFont=null;
 //        try {
 //
@@ -150,6 +167,8 @@ public class Pdfstructuredclass extends Activity {
 //            e.printStackTrace();
 //            Toast.makeText(context, "Fallo d2", Toast.LENGTH_SHORT).show();
 //        }
+
+
         BaseColor orangedark = new BaseColor(255, 79, 0);
         Font regularHead = new Font(baseFont, 15, Font.BOLD, BaseColor.WHITE);
         Font regularReport = new Font(baseFont, 12, Font.BOLD, new BaseColor(254, 114, 0));
@@ -162,6 +181,7 @@ public class Pdfstructuredclass extends Activity {
         Font regularTotal2 = new Font(Font.FontFamily.HELVETICA, 11, Font.ITALIC, BaseColor.BLACK);
         Font regularTotalBold = new Font(baseFont, 8, Font.BOLD, new BaseColor(128,128,128));
         Font regularSub2 = new Font(Font.FontFamily.HELVETICA, 7, Font.NORMAL, BaseColor.GRAY);
+        Font ColorResalte=new Font(baseFont,12,Font.BOLD,new BaseColor(3,191,165));
         //Font footerN = new Font(baseFont, 15,Font.BOLD,printAccent);
 
         Font footerE = new Font(baseFont, 8, Font.NORMAL, BaseColor.BLACK);
@@ -194,18 +214,24 @@ public class Pdfstructuredclass extends Activity {
 
 
             tableFooter = new PdfPTable(1);
+
+
             tableFooter.setTotalWidth(523);
+            tableFooter.setWidthPercentage(100);
+            tableFooter.setHorizontalAlignment(Element.ALIGN_CENTER);
             String empresa=Constants.getSP(context).getCompanyname();
             String direccion=Constants.getSP(context).getAdressname();
             String tel=Constants.getSP(context).getCompanyphone();
             String email=Constants.getSP(context).getCOMPANYEMAIL();
             Paragraph p1=new Paragraph();
-            Phrase q1= new Phrase(empresa, regularReport) ;
-            Phrase q2 = new Phrase(direccion,footerE);
-            Phrase q3= new Phrase(tel,footerE);
+            Phrase q1= new Phrase(empresa+" | ", footerE) ;
+            Phrase q2 = new Phrase(direccion+ " | ",footerE);
+            Phrase q3= new Phrase(tel+" | ",footerE);
+
 
             Phrase q4=new Phrase("Powered by",footerE);
-            Phrase q5= new Phrase(email,footerE);
+            Phrase q5= new Phrase(email+" | ",footerE);
+            Phrase q6=new Phrase(" PyMESoft",ColorResalte);
 
 
 
@@ -213,19 +239,21 @@ public class Pdfstructuredclass extends Activity {
             Chunk gumble = new Chunk(new VerticalPositionMark());
             Chunk gumble2 = new Chunk(new VerticalPositionMark());
             Chunk gumble3 = new Chunk(new VerticalPositionMark());
+            p1.add(q1);
 
             p1.add(q2);
-            p1.add(gumble);
             p1.add(q3);
-            p1.add(gumble2);
-            p1.add(q4);
             p1.add(q5);
-            p1.add(gumble3);
-            p1.add(q1);
+
+            p1.add(q4);
+            p1.add(q6);
+
+
+
 
             PdfPCell footerName = new PdfPCell();
             footerName.addElement(p1);
-            footerName.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            footerName.setHorizontalAlignment(Element.ALIGN_CENTER);
 
             // PdfPCell footerEmail = new PdfPCell();
 
@@ -249,7 +277,7 @@ public class Pdfstructuredclass extends Activity {
 
 
 
-            tableFooter.setWidthPercentage(100);
+//            tableFooter.setWidthPercentage(100);
 //            tableFooter.addCell(preBorderBlue);
             // tableFooter.addCell(footerEmail);
             tableFooter.addCell(footerName);
@@ -278,207 +306,58 @@ public class Pdfstructuredclass extends Activity {
 
             String radiotipo= logopreference2.getString("logocheck2","no hay datos");
 
-            if (radiotipo.equals("Rectangular")&&estadoventas2.equals("1")){
-                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
-                image = Image.getInstance(imFile);
-                image.scaleAbsolute(160f,70f);
-                image.setAlignment(Image.LEFT);
-                Paragraph factu=new Paragraph(Invoice,regularReportA);
-                factu.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
-                Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
-                Plazo.setAlignment(Element.ALIGN_RIGHT);
-                PdfPTable pdfPtableimage = new PdfPTable(2);
-                pdfPtableimage.setWidthPercentage(100);
-                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
-                PdfPCell imagecell = new PdfPCell();
-                PdfPCell factucell = new PdfPCell();
-                imagecell.addElement(image);
-                imagecell.setBorderColor(new BaseColor(255,255,255));
-                factucell.addElement(factu);
-                factucell.setBorderColor(new BaseColor(255,255,255));
-                factucell.addElement(Plazo1);
-                factucell.addElement(Plazo);
+            PdfPCell factucell = new PdfPCell();
+            PdfPCell imagecell = new PdfPCell();
 
+            if (radiotipo.equals("Rectangular")&&estadoventas2.equals(context.getResources().getString(R.string.Sales))){
+//
+                TopSide(regularReportA,regularTotalBold,diaspago,Invoice,Days,factucell);
 
+                imagecell.addElement(LogoImage(160f,70f));
 
+//
+            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals(context.getResources().getString(R.string.Sales))) {
+                TopSide(regularReportA,regularTotalBold,diaspago,Invoice,Days,factucell);
 
-                pdfPtableimage.addCell(imagecell);
-                pdfPtableimage.addCell(factucell);
-
-                pdfPtableimage.setSpacingAfter(25);
-                mDoc.add(pdfPtableimage);
-                System.setProperty("http.agent", "Chrome");
-            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals("1")) {
-                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
-                image = Image.getInstance(imFile);
-                image.scaleAbsolute(100f,100f);
-                image.setAlignment(Image.LEFT);
-                Paragraph factu=new Paragraph(Invoice,regularReportA);
-                factu.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
-                Plazo1.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
-                Plazo.setAlignment(Element.ALIGN_RIGHT);
-                PdfPTable pdfPtableimage = new PdfPTable(2);
-                pdfPtableimage.setWidthPercentage(100);
-                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
-                PdfPCell imagecell = new PdfPCell();
-                PdfPCell factucell = new PdfPCell();
-                imagecell.addElement(image);
-                imagecell.setBorderColor(new BaseColor(255,255,255));
-                factucell.addElement(factu);
-                factucell.setBorderColor(new BaseColor(255,255,255));
-                factucell.addElement(Plazo1);
-                factucell.addElement(Plazo);
-
-
-
-
-                pdfPtableimage.addCell(imagecell);
-                pdfPtableimage.addCell(factucell);
-
-                pdfPtableimage.setSpacingAfter(25);
-                mDoc.add(pdfPtableimage);
-                System.setProperty("http.agent", "Chrome");
+                imagecell.addElement(LogoImage(100f,100f));
             }
-            if (radiotipo.equals("Rectangular")&&estadoventas2.equals("2")){
-                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
-                image = Image.getInstance(imFile);
-                image.scaleAbsolute(160f,70f);
-                image.setAlignment(Image.LEFT);
-                Paragraph factu=new Paragraph(Receipt,regularReportA);
-                Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
-                Plazo1.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
-                Plazo.setAlignment(Element.ALIGN_RIGHT);
-                factu.setAlignment(Element.ALIGN_RIGHT);
+            if (radiotipo.equals("Rectangular")&&estadoventas2.equals(context.getResources().getString(R.string.Receipts))){
+                TopSide(regularReportA,regularTotalBold,diaspago,Receipt,Days,factucell);
 
-                Plazo.setAlignment(Element.ALIGN_RIGHT);
-                PdfPTable pdfPtableimage = new PdfPTable(2);
-                pdfPtableimage.setWidthPercentage(100);
-                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
-                PdfPCell imagecell = new PdfPCell();
-                PdfPCell factucell = new PdfPCell();
-                imagecell.addElement(image);
-                imagecell.setBorderColor(new BaseColor(255,255,255));
-                factucell.addElement(factu);
+                imagecell.addElement(LogoImage(160f,70f));
 
-                factucell.setBorderColor(new BaseColor(255,255,255));
-                factucell.addElement(Plazo1);
-                factucell.addElement(Plazo);
+            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals(context.getResources().getString(R.string.Receipts))) {
+                TopSide(regularReportA,regularTotalBold,diaspago,Receipt,Days,factucell);
 
-
-
-
-
-                pdfPtableimage.addCell(imagecell);
-                pdfPtableimage.addCell(factucell);
-
-                pdfPtableimage.setSpacingAfter(25);
-                mDoc.add(pdfPtableimage);
-                System.setProperty("http.agent", "Chrome");
-            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals("2")) {
-                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
-                image = Image.getInstance(imFile);
-                image.scaleAbsolute(100f,100f);
-                image.setAlignment(Image.LEFT);
-                Paragraph factu=new Paragraph(Receipt,regularReportA);
-                factu.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
-                Plazo1.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
-                Plazo.setAlignment(Element.ALIGN_RIGHT);
-                PdfPTable pdfPtableimage = new PdfPTable(2);
-                pdfPtableimage.setWidthPercentage(100);
-                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
-                PdfPCell imagecell = new PdfPCell();
-                PdfPCell factucell = new PdfPCell();
-                imagecell.addElement(image);
-                imagecell.setBorderColor(new BaseColor(255,255,255));
-                factucell.addElement(factu);
-                factucell.addElement(Plazo1);
-
-                factucell.setBorderColor(new BaseColor(255,255,255));
-                factucell.addElement(Plazo);
-
-
-
-
-                pdfPtableimage.addCell(imagecell);
-                pdfPtableimage.addCell(factucell);
-
-                pdfPtableimage.setSpacingAfter(25);
-                mDoc.add(pdfPtableimage);
-                System.setProperty("http.agent", "Chrome");
+                imagecell.addElement(LogoImage(100f,100f));
             }
-            if (radiotipo.equals("Rectangular")&&estadoventas2.equals("3")){
-                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
-                image = Image.getInstance(imFile);
-                image.scaleAbsolute(160f,70f);
-                image.setAlignment(Image.LEFT);
-                Paragraph factu=new Paragraph(Quote,regularReportA);
-                factu.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
-                Plazo1.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
-                Plazo.setAlignment(Element.ALIGN_RIGHT);
-                PdfPTable pdfPtableimage = new PdfPTable(2);
-                pdfPtableimage.setWidthPercentage(100);
-                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
-                PdfPCell imagecell = new PdfPCell();
-                PdfPCell factucell = new PdfPCell();
-                imagecell.addElement(image);
-                imagecell.setBorderColor(new BaseColor(255,255,255));
-                factucell.addElement(factu);
+            if (radiotipo.equals("Rectangular")&&estadoventas2.equals(context.getResources().getString(R.string.Draft))){
+                TopSide(regularReportA,regularTotalBold,diaspago,Quote,Days,factucell);
 
-                factucell.setBorderColor(new BaseColor(255,255,255));
-                factucell.addElement(Plazo1);
-                factucell.addElement(Plazo);
+                imagecell.addElement(LogoImage(160f,70f));
+            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals(context.getResources().getString(R.string.Draft))) {
+                TopSide(regularReportA,regularTotalBold,diaspago,Quote,Days,factucell);
 
+                imagecell.addElement(LogoImage(100f,100f));
 
-
-
-                pdfPtableimage.addCell(imagecell);
-                pdfPtableimage.addCell(factucell);
-
-                pdfPtableimage.setSpacingAfter(25);
-                mDoc.add(pdfPtableimage);
-                System.setProperty("http.agent", "Chrome");
-            }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals("3")) {
-                String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
-                image = Image.getInstance(imFile);
-                image.scaleAbsolute(100f,100f);
-                image.setAlignment(Image.LEFT);
-                Paragraph factu=new Paragraph(Quote,regularReportA);
-                factu.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
-                Plazo1.setAlignment(Element.ALIGN_RIGHT);
-                Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
-                Plazo.setAlignment(Element.ALIGN_RIGHT);
-                PdfPTable pdfPtableimage = new PdfPTable(2);
-                pdfPtableimage.setWidthPercentage(100);
-                pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
-                PdfPCell imagecell = new PdfPCell();
-                PdfPCell factucell = new PdfPCell();
-                imagecell.addElement(image);
-                imagecell.setBorderColor(new BaseColor(255,255,255));
-                factucell.addElement(factu);
-
-                factucell.setBorderColor(new BaseColor(255,255,255));
-                factucell.addElement(Plazo1);
-                factucell.addElement(Plazo);
-
-
-
-
-                pdfPtableimage.addCell(imagecell);
-                pdfPtableimage.addCell(factucell);
-
-                pdfPtableimage.setSpacingAfter(20);
-                mDoc.add(pdfPtableimage);
-                System.setProperty("http.agent", "Chrome");
             }
+            imagecell.setBorderColor(new BaseColor(255,255,255));
+
+            PdfPTable pdfPtableimage = new PdfPTable(2);
+            pdfPtableimage.setWidthPercentage(100);
+            pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+
+
+
+
+            pdfPtableimage.addCell(imagecell);
+            pdfPtableimage.addCell(factucell);
+
+            pdfPtableimage.setSpacingAfter(25);
+            mDoc.add(pdfPtableimage);
+            System.setProperty("http.agent", "Chrome");
+
 
 
 
@@ -1365,6 +1244,7 @@ public class Pdfstructuredclass extends Activity {
 
         }catch (Exception e){
             Toast.makeText(context, "Fallo firma y otros", Toast.LENGTH_SHORT).show();
+            Log.d("fallofirma",String.valueOf(e));
         }
 
 
@@ -1377,6 +1257,31 @@ public class Pdfstructuredclass extends Activity {
 
 
 
+
+
+    }
+    public Image LogoImage(float float1,float float2) throws IOException, BadElementException {
+        Image image;
+        String imFile = "/storage/emulated/0/PyMESoft/Logotipo/logopng";
+        image = Image.getInstance(imFile);
+        image.scaleAbsolute(float1,float2);
+        image.setAlignment(Image.LEFT);
+
+        return image;
+
+    }
+
+    public void TopSide(Font regularReportA,Font regularTotalBold,String diaspago,String Tipo,String Days,PdfPCell factucell) throws IOException, BadElementException {
+        Paragraph factu=new Paragraph(Tipo,regularReportA);
+        factu.setAlignment(Element.ALIGN_RIGHT);
+        Paragraph Plazo1=new Paragraph(Terms,regularTotalBold);
+        Plazo1.setAlignment(Element.ALIGN_RIGHT);
+        Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
+        Plazo.setAlignment(Element.ALIGN_RIGHT);
+        factucell.addElement(factu);
+        factucell.setBorderColor(new BaseColor(255,255,255));
+        factucell.addElement(Plazo1);
+        factucell.addElement(Plazo);
 
 
     }
