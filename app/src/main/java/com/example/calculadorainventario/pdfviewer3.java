@@ -79,6 +79,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
     PdfPCell cell;
     Pdfstructuredclass pdfstructuredclass=new Pdfstructuredclass();
 
+
     TextView title6;
     BaseFont baseFont=null;
     Uri pdfUri;
@@ -399,7 +400,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
         }
 
 
-        File file=new File(file2.getAbsolutePath());
+        File file=new File(pdfstructuredclass.getfile2().getAbsolutePath());
         Uri pdfUri = Uri.fromFile(file);
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
@@ -478,7 +479,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
             }
 
         }
-        File file=new File(file2.getAbsolutePath());
+        File file=new File(pdfstructuredclass.getfile2().getAbsolutePath());
 
         Uri pdfUri = Uri.fromFile(file);
         Intent shareIntent = new Intent();
@@ -577,7 +578,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
 
        // pdfUri = Uri.fromFile(new File(pdfFile.getAbsolutePath()))
-        pdfUri = Uri.fromFile(file2);
+        pdfUri = Uri.fromFile(pdfstructuredclass.getfile2());
 
 
 

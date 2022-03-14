@@ -199,6 +199,7 @@ public class Pdfstructuredclass extends Activity {
         filepath2= new File(file.getAbsolutePath());
         filepath2.mkdir();
         file2=new File(filepath2,"inv-"+nombreventas2+".pdf");
+        setfile2(file2);
 
 
         try {
@@ -1259,6 +1260,12 @@ public class Pdfstructuredclass extends Activity {
 
 
 
+    }
+
+    public File getfile2(){
+        return file2;}
+    public void setfile2(File file2) {
+        this.file2 = file2;
     }
     public Image LogoImage(float float1,float float2) throws IOException, BadElementException {
         Image image;
