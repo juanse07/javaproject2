@@ -181,6 +181,7 @@ public class Pdfstructuredclass extends Activity {
         Font regularTotal = new Font(Font.FontFamily.HELVETICA, 14, Font.ITALIC, BaseColor.BLACK);
         Font regularTotal2 = new Font(Font.FontFamily.HELVETICA, 11, Font.ITALIC, BaseColor.BLACK);
         Font regularTotalBold = new Font(baseFont, 8, Font.BOLD, new BaseColor(128,128,128));
+        Font regularTotalBold2 = new Font(baseFont, 8, Font.BOLD, new BaseColor(128,128,128));
         Font regularSub2 = new Font(Font.FontFamily.HELVETICA, 7, Font.NORMAL, BaseColor.GRAY);
         Font ColorResalte=new Font(baseFont,12,Font.BOLD,new BaseColor(3,191,165));
         //Font footerN = new Font(baseFont, 15,Font.BOLD,printAccent);
@@ -676,7 +677,7 @@ public class Pdfstructuredclass extends Activity {
             PdfPCell nestercell=new  PdfPCell();
 
             nestercell.setBorder(Rectangle.NO_BORDER);
-            nestercell.setFixedHeight(380f);
+            nestercell.setFixedHeight(350f);
 
             nestercell.setCellEvent(new PdfPCellEvent() {
                 @Override
@@ -746,13 +747,13 @@ public class Pdfstructuredclass extends Activity {
 //                }
 //            });
             Atable.setWidthPercentage(100);
-            Atable.setSpacingAfter(0);
+            Atable.setSpacingAfter(2);
             PdfPTable Atable2 = new PdfPTable(3);
 
             Atable2.setHorizontalAlignment(Element.ALIGN_MIDDLE);
-            Atable2.setTotalWidth(new float[] { 80, 10,10 });
+            Atable2.setTotalWidth(new float[] { 70, 15,15 });
             Atable2.setWidthPercentage(100);
-            Atable2.setSpacingAfter(20);
+            Atable2.setSpacingAfter(0);
 //            PdfPTable Atable3 = new PdfPTable(1);
 //            Atable3.setHorizontalAlignment(Element.ALIGN_RIGHT);
 //            Atable3.setWidthPercentage(21);
@@ -855,76 +856,80 @@ public class Pdfstructuredclass extends Activity {
             cellR.setFixedHeight(25);
             cellR.addElement(Result);
             PdfPCell cellTotal = new PdfPCell();
-            cellTotal.setPaddingBottom(8);
-            cellTotal.setPaddingTop(5);
+            cellTotal.setPaddingBottom(2);
+            cellTotal.setPaddingTop(2);
             cellTotal.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellTotal.setHorizontalAlignment(Element.ALIGN_MIDDLE);
-            cellTotal.setBorder( Rectangle.BOTTOM|Rectangle.LEFT);
+            cellTotal.setBackgroundColor(new BaseColor(235,236,240));
+            //cellTotal.setBorder( Rectangle.BOTTOM|Rectangle.LEFT);
             cellTotal.setBorderColor(BaseColor.DARK_GRAY);
-            cellTotal.setFixedHeight(25);
+            cellTotal.setFixedHeight(18);
             cellTotal.addElement(Total);
             PdfPCell cellTotalV = new PdfPCell();
-            cellTotalV.setPaddingBottom(8);
-            cellTotalV.setPaddingTop(5);
+            cellTotalV.setPaddingBottom(2);
+            cellTotalV.setPaddingTop(2);
             cellTotalV.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellTotalV.setHorizontalAlignment(Element.ALIGN_MIDDLE);
-            cellTotalV.setBorder(Rectangle.BOTTOM);
+            //cellTotalV.setBorder(Rectangle.BOTTOM);
             cellTotalV.setBorderColor(BaseColor.DARK_GRAY);
-            cellTotalV.setFixedHeight(25);
+            cellTotalV.setFixedHeight(18);
             cellTotalV.addElement(Totalvalue);
             PdfPCell cellDiscount = new PdfPCell();
-            cellDiscount.setPaddingBottom(8);
-            cellDiscount.setPaddingTop(5);
+            cellDiscount.setPaddingBottom(2);
+            cellDiscount.setPaddingTop(2);
             cellDiscount.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellDiscount.setHorizontalAlignment(Element.ALIGN_MIDDLE);
-            cellDiscount.setBorder( Rectangle.BOTTOM|Rectangle.LEFT);
+            cellDiscount.setBackgroundColor(new BaseColor(235,236,240));
+            //cellDiscount.setBorder( Rectangle.LEFT);
             cellDiscount.setBorderColor(BaseColor.DARK_GRAY);
-            cellDiscount.setFixedHeight(25);
+            cellDiscount.setFixedHeight(18);
             cellDiscount.addElement(Pdiscount);
             PdfPCell cellDiscountV = new PdfPCell();
-            cellDiscountV.setPaddingBottom(8);
-            cellDiscountV.setPaddingTop(5);
+            cellDiscountV.setPaddingBottom(2);
+            cellDiscountV.setPaddingTop(2);
             cellDiscountV.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellDiscountV.setHorizontalAlignment(Element.ALIGN_MIDDLE);
-            cellDiscountV.setBorder(Rectangle.BOTTOM);
-            cellDiscountV.setBorderColor(BaseColor.DARK_GRAY);
-            cellDiscountV.setFixedHeight(25);
+            //cellDiscountV.setBorder(Rectangle.NO_BORDER);
+           cellDiscountV.setBorderColor(BaseColor.DARK_GRAY);
+            cellDiscountV.setFixedHeight(18);
             cellDiscountV.addElement(DiscountValue2);
             PdfPCell cellTx1 = new PdfPCell();
-            cellTx1.setPaddingBottom(8);
-            cellTx1.setPaddingTop(5);
+            cellTx1.setPaddingBottom(2);
+            cellTx1.setPaddingTop(2);
             cellTx1.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellTx1.setHorizontalAlignment(Element.ALIGN_MIDDLE);
-            cellTx1.setBorder( Rectangle.BOTTOM|Rectangle.LEFT);
+            cellTx1.setBackgroundColor(new BaseColor(235,236,240));
+            //cellTx1.setBorder( Rectangle.LEFT);
             cellTx1.setBorderColor(BaseColor.DARK_GRAY);
-            cellTx1.setFixedHeight(25);
+            cellTx1.setFixedHeight(18);
             cellTx1.addElement(Ptx1);
             PdfPCell cellTx1V = new PdfPCell();
-            cellTx1V.setPaddingBottom(8);
-            cellTx1V.setPaddingTop(5);
+            cellTx1V.setPaddingBottom(2);
+            cellTx1V.setPaddingTop(2);
             cellTx1V.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellTx1V.setHorizontalAlignment(Element.ALIGN_MIDDLE);
-            cellTx1V.setBorder(Rectangle.BOTTOM);
+            //cellTx1V.setBorder(Rectangle.NO_BORDER);
             cellTx1V.setBorderColor(BaseColor.DARK_GRAY);
-            cellTx1V.setFixedHeight(25);
+            cellTx1V.setFixedHeight(18);
             cellTx1V.addElement(Tx1Value);
             PdfPCell cellTx2 = new PdfPCell();
-            cellTx2.setPaddingBottom(8);
-            cellTx2.setPaddingTop(5);
+            cellTx2.setPaddingBottom(2);
+            cellTx2.setPaddingTop(2);
             cellTx2.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellTx2.setHorizontalAlignment(Element.ALIGN_MIDDLE);
-            cellTx2.setBorder( Rectangle.BOTTOM|Rectangle.LEFT);
+            cellTx2.setBackgroundColor(new BaseColor(235,236,240));
+            //cellTx2.setBorder(Rectangle.LEFT);
             cellTx2.setBorderColor(BaseColor.DARK_GRAY);
-            cellTx2.setFixedHeight(25);
+            cellTx2.setFixedHeight(18);
             cellTx2.addElement(Ptx2);
             PdfPCell cellTx2V = new PdfPCell();
-            cellTx2V.setPaddingBottom(8);
-            cellTx2V.setPaddingTop(5);
+            cellTx2V.setPaddingBottom(2);
+            cellTx2V.setPaddingTop(2);
             cellTx2V.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellTx2V.setHorizontalAlignment(Element.ALIGN_MIDDLE);
-            cellTx2V.setBorder(Rectangle.BOTTOM);
+            //cellTx2V.setBorder(Rectangle.NO_BORDER);
             cellTx2V.setBorderColor(BaseColor.DARK_GRAY);
-            cellTx2V.setFixedHeight(25);
+            cellTx2V.setFixedHeight(18);
             cellTx2V.addElement(Tx2Value);
 
             PdfPCell celltax = new PdfPCell();
@@ -942,39 +947,41 @@ public class Pdfstructuredclass extends Activity {
             celltax2.setPaddingTop(5);
             celltax2.setVerticalAlignment(Element.ALIGN_MIDDLE);
             celltax2.setHorizontalAlignment(Element.ALIGN_MIDDLE);
-            cellTotal.setBorder( Rectangle.BOTTOM);
+           // cellTotal.setBorder( Rectangle.BOTTOM);
             celltax2.setBorderColor(BaseColor.DARK_GRAY);
             celltax2.setFixedHeight(25);
             celltax2.addElement(Netvalue);
             PdfPCell cellSubTotal = new PdfPCell();
-            cellSubTotal.setPaddingBottom(8);
-            cellSubTotal.setPaddingTop(5);
-            cellSubTotal.setBorder(Rectangle.LEFT);
+            cellSubTotal.setPaddingBottom(2);
+            cellSubTotal.setPaddingTop(2);
+            //cellSubTotal.setBorder(Rectangle.LEFT);
             cellSubTotal.setBorderColor(BaseColor.DARK_GRAY);
             cellSubTotal.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellSubTotal.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+            cellSubTotal.setBackgroundColor(new BaseColor(235,236,240));
 
             cellSubTotal.setBorderColor(BaseColor.DARK_GRAY);
-            cellSubTotal.setFixedHeight(25);
+            cellSubTotal.setFixedHeight(18);
             cellSubTotal.addElement(Psubtotal);
             PdfPCell cellSubTotalV = new PdfPCell();
-            cellSubTotalV.setPaddingBottom(8);
-            cellSubTotalV.setPaddingTop(5);
+            cellSubTotalV.setPaddingBottom(2);
+            cellSubTotalV.setPaddingTop(2);
             cellSubTotalV.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellSubTotalV.setHorizontalAlignment(Element.ALIGN_MIDDLE);
-            cellSubTotalV.setBorder( Rectangle.BOTTOM);
+            //cellSubTotalV.setBorder( Rectangle.NO_BORDER);
             cellSubTotalV.setBorderColor(BaseColor.DARK_GRAY);
-            cellSubTotalV.setFixedHeight(25);
+            cellSubTotalV.setFixedHeight(18);
             cellSubTotalV.addElement(SubtotalValue);
             PdfPCell cellRELLENO= new PdfPCell();
-            cellRELLENO.setPaddingBottom(8);
-            cellRELLENO.setPaddingTop(5);
+            cellRELLENO.setPaddingBottom(2);
+            cellRELLENO.setPaddingTop(2);
             cellRELLENO.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cellRELLENO.setHorizontalAlignment(Element.ALIGN_MIDDLE);
-            cellSubTotalV.setBorder( Rectangle.NO_BORDER);
+            cellRELLENO.setBorder(Rectangle.NO_BORDER);
 
-            cellRELLENO.setBorderColor(BaseColor.DARK_GRAY);
-            cellRELLENO.setFixedHeight(25);
+
+           // cellRELLENO.setBorderColor(BaseColor.WHITE);
+            cellRELLENO.setFixedHeight(18);
             cellRELLENO.addElement(RELLENO);
 
 
@@ -1132,19 +1139,19 @@ public class Pdfstructuredclass extends Activity {
 
 
 
-            Atable2.addCell(RELLENO);
+            Atable2.addCell(cellRELLENO);
             Atable2.addCell(cellSubTotal);
             Atable2.addCell(cellSubTotalV);
-            Atable2.addCell(RELLENO);
+            Atable2.addCell(cellRELLENO);
             Atable2.addCell(cellTx1);
             Atable2.addCell(cellTx1V);
-            Atable2.addCell(RELLENO);
+            Atable2.addCell(cellRELLENO);
             Atable2.addCell(cellTx2);
             Atable2.addCell(cellTx2V);
-            Atable2.addCell(RELLENO);
+            Atable2.addCell(cellRELLENO);
             Atable2.addCell(cellDiscount);
             Atable2.addCell(cellDiscountV);
-            Atable2.addCell(RELLENO);
+            Atable2.addCell(cellRELLENO);
             Atable2.addCell(cellTotal);
             Atable2.addCell(cellTotalV);
 
