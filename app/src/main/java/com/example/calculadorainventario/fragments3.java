@@ -147,22 +147,26 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
             public void onChanged(Double aDouble) {
 
 
+
+
                 if (aDouble == null) {
-                    cardprod3.setText("0");
+                    valorBruto=0.0;
+
                     txSubtotal.setText("0");
+                    txSubtotal3.setText("0");
+                    txSubtotal2.setText("0");
+                    Log.d("valordevb",String.valueOf(aDouble));
                 } else {
                     valorBruto = aDouble;
+                    String st=TaxValue;
+                    taxesvisual(st,valorBruto,txSubtotal);
                     DecimalFormat formatter = new DecimalFormat("###,###,##0");
-                    String totalfac = String.valueOf(formatter.format(aDouble));
+                    String totalfac = String.valueOf(formatter.format(valorBruto));
 
 
-                    cardprod3.setText(totalfac);
+
                     txSubtotal3.setText(totalfac);
-                    Double imp1 = Double.parseDouble(TaxValue) / 100;
-//                        imp2=1+imp1;
-//                        Double imp3=valorBruto*imp2;
-//                        txSubtotal2.setText(String.valueOf(formatter.format(imp3)));
-//                        valorNeto=imp3;
+
                 }
 //                }
 
@@ -543,7 +547,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
             @Override
             public void onChanged(String s) {
 
-                taxesvisual(s, Valortax1,txSubtotal,tax1);
+                taxesvisual(s,valorBruto,txSubtotal);
 //                if (s != null) {
 //                    DecimalFormat formatter = new DecimalFormat("###,###,##0");
 //                    TaxValue = s;
@@ -573,7 +577,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         sharedViewModel.getTaxvalue2().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-              taxesvisual(s,Valortax2,txSubtotal,tax2);
+              taxesvisual(s,valorBruto,txSubtotal);
 //                if (s != null) {
 //                    DecimalFormat formatter = new DecimalFormat("###,###,##0");
 //                    TaxValue2 = s;
@@ -924,11 +928,11 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
 
     }
-    public Double  taxesvisual(String s,Double valorimpsaved,TextView textView, String tax) {
+    public void  taxesvisual(String s,Double valorBruto, TextView textView) {
 
 
     Double ValorImp;
-    ValorImp = valorimpsaved;
+    ValorImp = 0.0;
 
 
     if (s != null) {
@@ -942,7 +946,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         Double Imp3 = 1 + Imp2;
         Double Imp4 = valorBruto * Imp3;
         ValorImp = valorBruto * Imp2;
-        tax = String.valueOf(formatter.format(ValorImp));
+        String tax = String.valueOf(formatter.format(ValorImp));
 
 
         String totalfac = String.valueOf(formatter.format(Imp4));
@@ -951,7 +955,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         textView.setText(tax);
 
     }
-    return ValorImp;
+
 
 
 
