@@ -766,12 +766,9 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
         bundle.putSerializable("Diasdepago2", dias1);
         bundle.putSerializable("Fecha2", fechafinal);
-//                            bundle.putSerializable("Unidades1",gcantidad.getText().toString());
-//                            bundle.putSerializable("Medida1",gmedida.getText().toString());
-//                            bundle.putSerializable("Total1",txtotalbottom.getText().toString());
+//
         bundle.putSerializable("Fecha1", fechacComplString.toString());
-//                        bundle.putSerializable("Hora1",ghora.getText().toString());
-        //                           bundle.putSerializable("Precio1", PrecioL);
+//
         bundle.putSerializable("Nombre1", ClienteL);
         bundle.putSerializable("Producto1", ProductoL);
         Double valorbr;
@@ -785,8 +782,11 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         bundle.putSerializable("valorbruto", valorbr);
         bundle.putSerializable("valorimp", ValorImp);
         bundle.putSerializable("valordesc", ValorDesc);
-        bundle.putSerializable("impuestopercent", TaxValue);
-        bundle.putSerializable("descpercent", DiscountValue);
+        bundle.putSerializable("valorimp2",ValorImp2);
+        bundle.putSerializable("impuestopercent", Double.parseDouble(TaxValue));
+        bundle.putSerializable("descpercent", Double.parseDouble(DiscountValue));
+        bundle.putSerializable("impuesto2percent", Double.parseDouble(TaxValue2));
+
 
         String comprobarestado = textovigilancia.getText().toString();
 //        if (comprobarestado.equals(getResources().getString(R.string.Receipts))) {

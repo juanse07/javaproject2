@@ -137,7 +137,8 @@ public class Pdfstructuredclass extends Activity {
                                     String Fecha2, String nombreventas2, ArrayList<String> Lista7, ArrayList<String> List1,
                                     ArrayList<Double> List2, ArrayList<Double> List3, ArrayList<Double> List4, ByteArrayOutputStream outputStream,
 
-                                    String mFilepath)throws DocumentException {
+                                    String mFilepath, Double ValorDesc,Double ValorImp,Double ValorImp2,Double DiscountValue, Double TaxValue,
+    Double TaxValue2)throws DocumentException {
 
         Invoice=context.getResources().getString(R.string.Invoice);
         Receipt=context.getResources().getString(R.string.Receipts);
@@ -776,6 +777,9 @@ public class Pdfstructuredclass extends Activity {
 
             Paragraph Total=new Paragraph(context.getResources().getString(R.string.Total),regularTotalBold);
             Paragraph Psubtotal=new Paragraph(context.getResources().getString(R.string.Subtotal),regularTotalBold);
+            Paragraph Pdiscount=new Paragraph(context.getResources().getString(R.string.Discount)+" "+"("+DiscountValue+")"+"%",regularTotalBold);
+            Paragraph Ptx1=new Paragraph(context.getResources().getString(R.string.Tax)+" "+"("+TaxValue+"%"+")",regularTotalBold);
+            Paragraph Ptx2=new Paragraph(context.getResources().getString(R.string.Tax2)+" "+"("+TaxValue2+"%"+")",regularTotalBold);
             String Valorfooter=valorventas2;
 
 
@@ -784,6 +788,12 @@ public class Pdfstructuredclass extends Activity {
             Totalvalue.setAlignment(Element.ALIGN_RIGHT);
             Paragraph SubtotalValue=new Paragraph(String.valueOf(formatter3.format(valorbr))+" USD",regularTotalBold);
             SubtotalValue.setAlignment(Element.ALIGN_RIGHT);
+            Paragraph DiscountValue2=new Paragraph(String.valueOf(formatter3.format(ValorDesc))+" USD",regularTotalBold);
+            DiscountValue2.setAlignment(Element.ALIGN_RIGHT);
+            Paragraph Tx1Value=new Paragraph(String.valueOf(formatter3.format(ValorImp))+" USD",regularTotalBold);
+            Tx1Value.setAlignment(Element.ALIGN_RIGHT);
+            Paragraph Tx2Value=new Paragraph(String.valueOf(formatter3.format(ValorImp2))+" USD",regularTotalBold);
+            Tx2Value.setAlignment(Element.ALIGN_RIGHT);
             Paragraph RELLENO=new Paragraph(String.valueOf(""));
             RELLENO.setAlignment(Element.ALIGN_RIGHT);
 
@@ -862,6 +872,60 @@ public class Pdfstructuredclass extends Activity {
             cellTotalV.setBorderColor(BaseColor.DARK_GRAY);
             cellTotalV.setFixedHeight(25);
             cellTotalV.addElement(Totalvalue);
+            PdfPCell cellDiscount = new PdfPCell();
+            cellDiscount.setPaddingBottom(8);
+            cellDiscount.setPaddingTop(5);
+            cellDiscount.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellDiscount.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+            cellDiscount.setBorder( Rectangle.BOTTOM|Rectangle.LEFT);
+            cellDiscount.setBorderColor(BaseColor.DARK_GRAY);
+            cellDiscount.setFixedHeight(25);
+            cellDiscount.addElement(Pdiscount);
+            PdfPCell cellDiscountV = new PdfPCell();
+            cellDiscountV.setPaddingBottom(8);
+            cellDiscountV.setPaddingTop(5);
+            cellDiscountV.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellDiscountV.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+            cellDiscountV.setBorder(Rectangle.BOTTOM);
+            cellDiscountV.setBorderColor(BaseColor.DARK_GRAY);
+            cellDiscountV.setFixedHeight(25);
+            cellDiscountV.addElement(DiscountValue2);
+            PdfPCell cellTx1 = new PdfPCell();
+            cellTx1.setPaddingBottom(8);
+            cellTx1.setPaddingTop(5);
+            cellTx1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellTx1.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+            cellTx1.setBorder( Rectangle.BOTTOM|Rectangle.LEFT);
+            cellTx1.setBorderColor(BaseColor.DARK_GRAY);
+            cellTx1.setFixedHeight(25);
+            cellTx1.addElement(Ptx1);
+            PdfPCell cellTx1V = new PdfPCell();
+            cellTx1V.setPaddingBottom(8);
+            cellTx1V.setPaddingTop(5);
+            cellTx1V.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellTx1V.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+            cellTx1V.setBorder(Rectangle.BOTTOM);
+            cellTx1V.setBorderColor(BaseColor.DARK_GRAY);
+            cellTx1V.setFixedHeight(25);
+            cellTx1V.addElement(Tx1Value);
+            PdfPCell cellTx2 = new PdfPCell();
+            cellTx2.setPaddingBottom(8);
+            cellTx2.setPaddingTop(5);
+            cellTx2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellTx2.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+            cellTx2.setBorder( Rectangle.BOTTOM|Rectangle.LEFT);
+            cellTx2.setBorderColor(BaseColor.DARK_GRAY);
+            cellTx2.setFixedHeight(25);
+            cellTx2.addElement(Ptx2);
+            PdfPCell cellTx2V = new PdfPCell();
+            cellTx2V.setPaddingBottom(8);
+            cellTx2V.setPaddingTop(5);
+            cellTx2V.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cellTx2V.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+            cellTx2V.setBorder(Rectangle.BOTTOM);
+            cellTx2V.setBorderColor(BaseColor.DARK_GRAY);
+            cellTx2V.setFixedHeight(25);
+            cellTx2V.addElement(Tx2Value);
 
             PdfPCell celltax = new PdfPCell();
             celltax.setPaddingBottom(8);
@@ -900,7 +964,6 @@ public class Pdfstructuredclass extends Activity {
             cellSubTotalV.setHorizontalAlignment(Element.ALIGN_MIDDLE);
             cellSubTotalV.setBorder( Rectangle.BOTTOM);
             cellSubTotalV.setBorderColor(BaseColor.DARK_GRAY);
-
             cellSubTotalV.setFixedHeight(25);
             cellSubTotalV.addElement(SubtotalValue);
             PdfPCell cellRELLENO= new PdfPCell();
@@ -1073,11 +1136,18 @@ public class Pdfstructuredclass extends Activity {
             Atable2.addCell(cellSubTotal);
             Atable2.addCell(cellSubTotalV);
             Atable2.addCell(RELLENO);
+            Atable2.addCell(cellTx1);
+            Atable2.addCell(cellTx1V);
+            Atable2.addCell(RELLENO);
+            Atable2.addCell(cellTx2);
+            Atable2.addCell(cellTx2V);
+            Atable2.addCell(RELLENO);
+            Atable2.addCell(cellDiscount);
+            Atable2.addCell(cellDiscountV);
+            Atable2.addCell(RELLENO);
             Atable2.addCell(cellTotal);
-
-
-
             Atable2.addCell(cellTotalV);
+
 
 
             nestercell.addElement(Atable);

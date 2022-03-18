@@ -163,6 +163,7 @@ ArrayList<NoteProducto>notesProd;
         sharedViewModel = new ViewModelProvider((ViewModelStoreOwner) getActivity()).get(SharedViewModel.class);
         sharedViewModel.setTaxvalue(txtaxvisor.getText().toString());
         sharedViewModel.setDiscountvalue(txdiscountvisor.getText().toString());
+        sharedViewModel.setTaxvalue2(tximp2.getText().toString());
 
 
         lista = new List();

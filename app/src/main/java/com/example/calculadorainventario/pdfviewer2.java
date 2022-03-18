@@ -68,6 +68,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     ArrayList<Double> ListaCuero;
     ArrayList<Double> listacuero3;
     Pdfbasicclass pdfbasicclass=new Pdfbasicclass();
+    Pdfstructuredclass pdfstructuredclass=new Pdfstructuredclass();
     Context context;
     AdaptadorProductoGuardado adpt1=new AdaptadorProductoGuardado();
     NoteProdViewModel noteProdViewModel;
@@ -96,10 +97,13 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 //    String medidaventas2;
   String valorventas2;
   double valorbr;
+  double TaxValue2;
     double ValorImp;
+    double ValorImp2;
     double ValorDesc;
     double TaxValue;
     double DiscountValue;
+
     double valorneto;
   String fechaventas2;
    String estadoventas2;
@@ -116,6 +120,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
     //Button btactualizarpdf;
    String nombreventas2;
    String CantProd;
+   int comprobarpodf;
 
 
     String pattern = "EEEEE MMMMM yyyy HH:mm:ss.SSSZ";
@@ -181,6 +186,7 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
 
    diaspago=Constants.getSP(this).getDIAS();
+   comprobarpodf=Constants.getSP(this).getPDFPOSITION();
 
         myrootDbaseref5 = FirebaseDatabase.getInstance().getReference();
 
@@ -202,7 +208,6 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
                     //savepdf();
                     RecibirBundleFragment3();
-
                     pdfbasicclass.createpdf(pdfviewer2.this,productoventas2,precioventas2,valorventas2,
                             valorbr,valorneto,fechaventas2,estadoventas2,diaspago,Fecha2,nombreventas2,
                             Lista7,List1,List2,List3,List4,outputStream, mFilepath);
@@ -634,10 +639,13 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
         valorbr=getIntent().getExtras().getDouble("valorbruto");
         ValorImp=getIntent().getExtras().getDouble("valorimp");
+        ValorImp2=getIntent().getExtras().getDouble("valorimp2");
         ValorDesc=getIntent().getExtras().getDouble("valordesc");
         TaxValue=getIntent().getExtras().getDouble("impuestopercent");
+        TaxValue2=getIntent().getExtras().getDouble("impuesto2percent");
         DiscountValue=getIntent().getExtras().getDouble("descpercent");
         valorneto=getIntent().getExtras().getDouble("valorneto");
+
 //        SumaResultado=getIntent().getExtras().getString("Total1");
 
 
