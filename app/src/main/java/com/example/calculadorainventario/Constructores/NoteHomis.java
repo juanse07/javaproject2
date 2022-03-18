@@ -1,7 +1,10 @@
 package com.example.calculadorainventario.Constructores;
 
+import com.google.firebase.database.Exclude;
+
 import java.io.Serializable;
 
+import androidx.annotation.StringRes;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -9,60 +12,74 @@ import androidx.room.PrimaryKey;
 
 public class NoteHomis implements Serializable {
 
+
+    @Exclude
+    @StringRes
     @PrimaryKey(autoGenerate = true)
-    int Key;
+  public int Key;
+    @Exclude
+    public  String Cliente;
+    @Exclude
+   public String Fecha;
+    @Exclude
+   public String Hora;
 
-    String Cliente;
-    String Fecha;
-    String Hora;
-    Double Precio;
-    Double Medida;
-    String Producto;
-    String Unidades;
-    Double Valor;
-    String pdfurl;
-    String Estado;
+    @Exclude
 
-
-
-
-  int dias_plazo;
-    String Fechaparapago;
+  public  Double Precio;
+    @Exclude
+    public String Medida;
+    @Exclude
+    public String Producto;
+    @Exclude
+    public String Unidades;
+    @Exclude
+    public Double Valor;
+    @Exclude
+    public String pdfurl;
+    @Exclude
+    public String Estado;
+    @Exclude
+    public String Dias_Plazo;
+    @Exclude
+   public String Fechaparapago;
+    @Exclude
+    public String Key_fire;
 
 
     public NoteHomis() {
     }
 
-    public void setMedida(Double medida) {
-        Medida = medida;
+    public void setMedida(String medida) {
+       this.Medida = medida;
     }
 
     public void setValor(Double valor) {
-        Valor = valor;
+       this.Valor = valor;
     }
 
     public void setPrecio(Double precio) {
-        Precio = precio;
+      this.Precio = precio;
     }
 
     public void setCliente(String cliente) {
-        Cliente = cliente;
+       this.Cliente = cliente;
     }
 
     public void setProducto(String producto) {
-        Producto = producto;
+       this.Producto = producto;
     }
 
     public void setEstado(String estado) {
-        Estado = estado;
+       this. Estado = estado;
     }
 
     public void setFecha(String fecha) {
-        Fecha = fecha;
+        this.Fecha = fecha;
     }
 
     public void setFechaparapago(String fechaparapago) {
-        Fechaparapago = fechaparapago;
+        this.Fechaparapago = fechaparapago;
     }
 
 
@@ -71,13 +88,16 @@ public class NoteHomis implements Serializable {
         this.pdfurl = pdfurl;
     }
 
-    public void setDias_plazo(int dias_plazo) {
-        this.dias_plazo = dias_plazo;
+    public void setKey_fire(String key_fire) {
+        Key_fire = key_fire;
     }
+    //    public void setDias_Plazo(int dias_plazo) {
+//        this.Dias_Plazo = dias_plazo;
+//    }
 
 
 
-    public Double getMedida() {
+    public String getMedida() {
         return Medida;
     }
 
@@ -108,6 +128,7 @@ public class NoteHomis implements Serializable {
     public String getFechaparapago() {
         return Fechaparapago;
     }
+    public String getKey_fire(){return Key_fire;}
 
 
 
@@ -115,8 +136,12 @@ public class NoteHomis implements Serializable {
         return pdfurl;
     }
 
-    public int getDias_plazo() {
-        return dias_plazo;
+//    public int getDias_Plazo() {
+//        return Dias_Plazo;
+//    }
+
+    public int getKey() {
+        return Key;
     }
 
     public void setKey(int key) {

@@ -3,14 +3,13 @@ package com.example.calculadorainventario;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.example.calculadorainventario.Constructores.NoteProducto;
+
 import androidx.annotation.NonNull;
 import androidx.room.Database;
-import androidx.room.DatabaseConfiguration;
-import androidx.room.InvalidationTracker;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
-import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
 @Database(entities = {NoteProducto.class},version = 8)
 

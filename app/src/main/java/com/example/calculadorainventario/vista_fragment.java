@@ -24,7 +24,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.calculadorainventario.Adapadores.AdaptadorProductoGuardado;
+import com.example.calculadorainventario.Constructores.NoteProducto;
 import com.example.calculadorainventario.Constructores.arrayconstructor;
+import com.example.calculadorainventario.ViewModel.SharedViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;

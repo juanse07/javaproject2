@@ -5,8 +5,6 @@ import android.os.AsyncTask;
 
 import com.example.calculadorainventario.Constructores.NoteHomis;
 import com.example.calculadorainventario.Dao.NoteHomisDao;
-import com.example.calculadorainventario.NoteProdDao;
-import com.example.calculadorainventario.NoteProducto;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -14,7 +12,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {NoteHomis.class},version = 1)
+@Database(entities = {NoteHomis.class},version = 7)
 
 public abstract class NoteHomisDataBase extends RoomDatabase {
     @NonNull
@@ -22,7 +20,7 @@ public abstract class NoteHomisDataBase extends RoomDatabase {
     public abstract NoteHomisDao noteHomisDao();
     public static synchronized com.example.calculadorainventario.DataBases.NoteHomisDataBase getInstance(Context context){
         if(instance==null){
-            instance= Room.databaseBuilder(context.getApplicationContext(), com.example.calculadorainventario.DataBases.NoteHomisDataBase.class,"note_Proddatabase")
+            instance= Room.databaseBuilder(context.getApplicationContext(), com.example.calculadorainventario.DataBases.NoteHomisDataBase.class,"note_Homisdatabase")
                     .fallbackToDestructiveMigration()
                     .addCallback(roomcallback)
                     .build();

@@ -3,6 +3,8 @@ package com.example.calculadorainventario;
 import android.app.Application;
 import android.os.AsyncTask;
 
+import com.example.calculadorainventario.Constructores.NoteProducto;
+
 import java.util.List;
 
 import androidx.lifecycle.LiveData;

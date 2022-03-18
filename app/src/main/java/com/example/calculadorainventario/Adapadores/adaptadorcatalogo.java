@@ -1,8 +1,6 @@
 package com.example.calculadorainventario.Adapadores;
 
 import android.app.AlertDialog;
-import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -21,9 +19,9 @@ import android.widget.TextView;
 import com.example.calculadorainventario.ClickInterface1;
 import com.example.calculadorainventario.Crearproducto;
 import com.example.calculadorainventario.NoteProdViewModel;
-import com.example.calculadorainventario.NoteProducto;
+import com.example.calculadorainventario.Constructores.NoteProducto;
 import com.example.calculadorainventario.R;
-import com.example.calculadorainventario.SharedViewModel;
+import com.example.calculadorainventario.ViewModel.SharedViewModel;
 import com.example.calculadorainventario.Constructores.cuerospinner;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;

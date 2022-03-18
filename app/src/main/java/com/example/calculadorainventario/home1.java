@@ -39,7 +39,9 @@ import android.widget.TextView;
 
 import com.example.calculadorainventario.Adapadores.BuscarAdaptador;
 import com.example.calculadorainventario.Adapadores.homeadapterclass;
+import com.example.calculadorainventario.Constructores.NoteProducto;
 import com.example.calculadorainventario.Constructores.constcards;
+import com.example.calculadorainventario.ViewModel.SharedViewModel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

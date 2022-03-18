@@ -6,8 +6,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 
+import com.example.calculadorainventario.Constructores.NoteHomis;
 import com.example.calculadorainventario.Constructores.constcards;
 import com.example.calculadorainventario.Constructores.cuerospinner;
+import com.example.calculadorainventario.Dao.NoteHomisDao;
+import com.example.calculadorainventario.DataBases.NoteHomisDataBase;
+import com.example.calculadorainventario.Repositorios.NoteHomiRepo;
+import com.example.calculadorainventario.ViewModel.NoteHomisViewModel;
+import com.example.calculadorainventario.ViewModel.SharedViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,20 +27,32 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 
 public class Repositorio1 {
     HomeNoteDao homeNoteDao;
+    homeinvoice2 homeinvoice2;
     DatabaseReference reference, referenceoffline;
     SharedViewModel sharedViewModel;
+    NoteHomisViewModel noteHomisViewModel;
+    NoteHomis noteHomis=new NoteHomis();
     FirebaseAuth mAuth;
+    Context context;
+    private NoteHomisDao noteHomisDao;
+    private LiveData<List<NoteHomis>> allNotes;
+    private LiveData<List<Double>>allDoubleNotes;
+    private LiveData<Double>getTotal;
+    private LiveData<Double>getcantTotal;
+
 
     static Repositorio1 instance;
     private ArrayList<cuerospinner> productos = new ArrayList<>();
     private MutableLiveData<ArrayList<cuerospinner>> productos1 = new MutableLiveData<>();
     private ArrayList<constcards> datos = new ArrayList<>();
     private MutableLiveData<ArrayList<constcards>> datos1 = new MutableLiveData<>();
-    private ArrayList<constcards> datoshomesql = new ArrayList<>();
-    private MutableLiveData<ArrayList<constcards>> datos1homesql = new MutableLiveData<>();
+    private ArrayList<NoteHomis> datoshomesql = new ArrayList<>();
+    private MutableLiveData<ArrayList<NoteHomis>> datos1homesql = new MutableLiveData<>();
     private ArrayList<constructornom2> clientes = new ArrayList<constructornom2>();
     private MutableLiveData<ArrayList<constructornom2>> clientes1 = new MutableLiveData<ArrayList<constructornom2>>();
     private ArrayList<Double> Unidadesnuevas = new ArrayList<Double>();
@@ -44,25 +62,27 @@ public class Repositorio1 {
     private LiveData<List<HomeNote>>getallventas;
     private LiveData<Integer> countVentas;
     Double getinput;
-    Context context;
 
-    public Repositorio1(Context context) {
-        this.context = context;
-    }
+
+
 
     public Repositorio1() {
 
     }
 
-    public Context provideContext() {
-        return context;
-    }
+
 
 
     public Repositorio1(Application application) {
+
         NoteHomeDataBase homeDataBase = NoteHomeDataBase.getInstance(application);
         homeNoteDao = homeDataBase.HomenoteDao();
         getallventas=homeNoteDao.getallventas();
+        NoteHomisDataBase noteHomisDataBase=NoteHomisDataBase.getInstance(application);
+        noteHomisDao=noteHomisDataBase.noteHomisDao();
+        allNotes=noteHomisDao.getallnotes();
+        getTotal=noteHomisDao.getTotal();
+        getcantTotal=noteHomisDao.getcantTotal();
        // countVentas=homeNoteDao.getCountVenta();
 
     }
@@ -93,6 +113,25 @@ public class Repositorio1 {
         return getallventas ;
     }
     public LiveData<Integer>getCountventas(){return countVentas;}
+    public void Insert(NoteHomis noteHomis){
+        new Repositorio1.InserNotesProdAsynk(noteHomisDao).execute(noteHomis);
+
+    }
+
+    private static class InserNotesProdAsynk extends AsyncTask<NoteHomis,Void,Void> {
+        private NoteHomisDao noteHomisDao;
+
+        private InserNotesProdAsynk(NoteHomisDao noteHomisDao) {
+            this.noteHomisDao = noteHomisDao;
+        }
+
+        @Override
+        protected Void doInBackground(NoteHomis... notesHomis) {
+            noteHomisDao.Insert(notesHomis[0]);
+            return null;
+        }
+    }
+
 
     private void loadProductos() {
         mAuth = FirebaseAuth.getInstance();
@@ -186,6 +225,68 @@ public class Repositorio1 {
         });
 
     }
+    private  void loadDatossql() {
+        homeinvoice2=new homeinvoice2();
+
+    //  noteHomisViewModel=new ViewModelProvider((ViewModelStoreOwner) homeinvoice2.context1()).get(NoteHomisViewModel.class);
+
+        mAuth = FirebaseAuth.getInstance();
+        String id = mAuth.getCurrentUser().getUid();
+
+        referenceoffline = FirebaseDatabase.getInstance().getReference("PersistenciaDatosOffline");
+
+        reference = FirebaseDatabase.getInstance().getReference().child("VENTAS").child(id);
+        referenceoffline.keepSynced(true);
+
+        //Query query=reference.child("PRODUCTOS");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    if (datoshomesql.size() != 0) {
+                        datoshomesql.clear();
+
+                    }
+
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+
+
+                        datoshomesql.add(snapshot.getValue(NoteHomis.class));
+
+                       }
+
+
+                    }
+                    datos1homesql.postValue(datoshomesql);
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+    public MutableLiveData<ArrayList<NoteHomis>> getdatossql() {
+
+
+        // if(productos.size()==-1) {
+        loadDatossql();
+
+
+        //}
+
+
+        datos1homesql.setValue(datoshomesql);
+
+        return datos1homesql;
+
+
+    }
 
     public MutableLiveData<ArrayList<constructornom2>> getClientes() {
         loadClientes();
@@ -269,49 +370,6 @@ public class Repositorio1 {
 
     }
 
-    private void loadhomesql(Context context) {
-        ConexionBD conexionBD;
-        conexionBD = new ConexionBD(context, "bd_home", null, 1);
-
-        SQLiteDatabase db = conexionBD.getReadableDatabase();
-        //String[]ConsultaMedida={Utilities.Medida};
-        constcards datoshome = null;
-        Cursor cursor = db.rawQuery("SELECT * FROM HomeTabla", null);
-        while (cursor.moveToNext()) {
-            datoshome = new constcards();
-            datoshome.setKey(cursor.getString(0));
-            datoshome.setCliente(cursor.getString(1));
-            datoshome.setProducto(cursor.getString(2));
-            datoshome.setMedida(cursor.getString(3));
-            datoshome.setUnidades(cursor.getString(4));
-            datoshome.setPrecio(cursor.getString(5));
-            datoshome.setValor(cursor.getString(6));
-            datoshome.setFecha(cursor.getString(7));
-            datoshome.setFechaparapago(cursor.getString(8));
-            datoshome.setDias_plazo(cursor.getString(9));
-            datoshome.setPdfurl(cursor.getString(10));
-            datoshome.setHora(cursor.getString(11));
-            datoshome.setEstado(cursor.getString(12));
-
-
-            datoshomesql.add(datoshome);
-        }
-
-
-    }
-
-    public MutableLiveData<ArrayList<constcards>> getHomesql() {
-
-        loadhomesql(context);
-        //}
-
-
-        datos1homesql.setValue(datoshomesql);
-
-        return datos1homesql;
-
-
-    }
 
     private static class InserHomeNotesAsynk extends AsyncTask<HomeNote, Void, Void> {
         private HomeNoteDao homeNoteDao;
@@ -355,4 +413,7 @@ public class Repositorio1 {
         new Repositorio1.DeleteAllhomeNotes(homeNoteDao).execute();
 
     }
-}
+
+    }
+
+

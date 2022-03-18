@@ -25,8 +25,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.calculadorainventario.Adapadores.BuscarAdaptador;
+import com.example.calculadorainventario.Adapadores.NoteHomisAdapter;
 import com.example.calculadorainventario.Adapadores.homeinvoiceadapterclass;
+import com.example.calculadorainventario.Constructores.NoteHomis;
+import com.example.calculadorainventario.Constructores.NoteProducto;
 import com.example.calculadorainventario.Constructores.constcards;
+import com.example.calculadorainventario.ViewModel.NoteHomisViewModel;
+import com.example.calculadorainventario.ViewModel.SharedViewModel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -78,10 +83,15 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
     RecyclerView RecyclerBusqueda;
     RecyclerView.Adapter madapter;
     CharSequence tipodoc, tipodoc2;
+    NoteHomisViewModel noteHomisViewModel;
     SelectLanguaje selectLanguaje;
     String Lang;
-
+    ArrayList<NoteHomis>noteHomis1;
     Context context;
+
+
+
+
     int contarventas;
     HomeNote homeNote = new HomeNote();
     List<HomeNote> listahomenotes = new ArrayList<>();
@@ -97,8 +107,9 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
     DrawerLayout drawer1;
     ActionBarDrawerToggle mdrawer;
     LinearLayout gridmenu;
-    private SharedViewModel sharedViewModel;
-    private homeinvoiceadapterclass myadaptador2;
+     SharedViewModel sharedViewModel;
+     homeinvoiceadapterclass myadaptador2;
+     NoteHomisAdapter myadaptador3;
     ArrayList<String> Busquedas;
     ArrayList<constcards> Listahomesql;
     FirebaseRecyclerAdapter firebaseRecyclerAdapter, firebaseRecyclerAdapter2;
@@ -132,9 +143,11 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         navdrawer = findViewById(R.id.navdrawer);
         card_opciones = findViewById(R.id.card_opciones);
         RecyclerBusqueda = findViewById(R.id.RecyclerBusqueda);
+        setContext1(getApplicationContext());
 
         PreferenceManager.setDefaultValues(this,R.xml.preference,false);
         noteProdViewModel = new ViewModelProvider(this).get(NoteProdViewModel.class);
+        noteHomisViewModel=new ViewModelProvider(this).get(NoteHomisViewModel.class);
         noteProdViewModel.getAllNotes().observe(this, new Observer<List<NoteProducto>>() {
             @Override
             public void onChanged(List<NoteProducto> noteProductos) {
@@ -343,7 +356,9 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 
                    }
                });*/
-                sharedViewModel.init2();
+//
+               sharedViewModel.init2();
+
                 sharedViewModel.getdato().observe(homeinvoice2.this, new Observer<ArrayList<constcards>>() {
                     @Override
                     public void onChanged(ArrayList<constcards> Constcard) {
@@ -352,7 +367,11 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
 
                     }
                 });
-                myadaptador2 = new homeinvoiceadapterclass(sharedViewModel.getdato().getValue());
+               myadaptador2 = new homeinvoiceadapterclass(sharedViewModel.getdato().getValue());
+
+
+
+
                 recyclerview1.setAdapter(myadaptador2);
 
                 swipehome.setRefreshing(false);
@@ -371,17 +390,43 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
         linearLayoutManager.setStackFromEnd(true);
         recyclerview1.setLayoutManager(linearLayoutManager);
         sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
-        sharedViewModel.init2();
+       sharedViewModel.init2();
+
+
+
         sharedViewModel.getdato().observe(this, new Observer<ArrayList<constcards>>() {
             @Override
             public void onChanged(ArrayList<constcards> Constcard) {
-                myadaptador2.notifyDataSetChanged();
+                myadaptador2.notifyDataSetChanged();}
+        });
+//
+  noteHomisViewModel = new ViewModelProvider(this).get(NoteHomisViewModel.class);
+//            }
+//        });
+       myadaptador2 = new homeinvoiceadapterclass(sharedViewModel.getdato().getValue());
 
 
+
+
+
+
+        recyclerview1.setAdapter(myadaptador2);
+
+
+        noteHomisViewModel.getSumTotal().observe(this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                Log.d("sumadehomis",String.valueOf(aDouble));
             }
         });
-        myadaptador2 = new homeinvoiceadapterclass(sharedViewModel.getdato().getValue());
-        recyclerview1.setAdapter(myadaptador2);
+        noteHomisViewModel.getAllNotes().observe(this, new Observer<List<NoteHomis>>() {
+            @Override
+            public void onChanged(List<NoteHomis> noteHomis) {
+                for(int i = 0; i<noteHomis.size(); i++) {
+                    Log.d("sumadehomis", String.valueOf(noteHomis.get(i)));
+                }
+            }
+        });
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -689,6 +734,12 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
     public void LoadLocale(String lang) {
 //        SetLanguage(lang);
 
+    }
+    public Context context1(){
+        return context;
+    }
+    public void setContext1(Context context) {
+        this.context = context;
     }
 }
 

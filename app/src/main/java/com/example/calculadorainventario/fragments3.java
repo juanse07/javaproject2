@@ -27,6 +27,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.calculadorainventario.Constructores.NoteProducto;
+import com.example.calculadorainventario.ViewModel.SharedViewModel;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
@@ -51,9 +53,9 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     ConstraintLayout constlay;
     BottomNavigationView navcat;
     LinearLayout linprod, lincli;
-    Double ValorImp, ValorDesc;
-    Double valorBruto, valorNeto;
-    String PrecioL, ProductoL, ClienteL, TaxValue, DiscountValue;
+    Double ValorImp, ValorDesc,ValorImp2;
+    Double valorBruto, valorNeto,valorBruto2,Valortax1,Valortax2,ValorDisc;
+    String PrecioL, ProductoL, ClienteL, TaxValue, DiscountValue,TaxValue2,tax2,tax1;
 
     ArrayList<String> Listapdf;
     ArrayList<String> ListaProd;
@@ -122,8 +124,15 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         textView38 = findViewById(R.id.textView38);
         textview30 = findViewById(R.id.textView30);
         txSubtotal3 = findViewById(R.id.txsubtotal3);
+        Valortax1 = Double.parseDouble(Constants.getSP(this).getTAX1TX());
+        Valortax2 = Double.parseDouble(Constants.getSP(this).getTAX2TX());
+        ValorDisc = Double.parseDouble(Constants.getSP(this).getDISCOUNT());
+
+
         TaxValue = "0";
+        TaxValue2 = "0";
         valorBruto = 0.0;
+        valorBruto2 = 0.0;
 
 
 //        Calendar calendar = Calendar.getInstance();
@@ -399,19 +408,19 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             calendar.add(Calendar.DATE, diasq);
                             fechafinal = fecc.format(calendar.getTime());
                             String Pdftipo = Constants.getSP(fragments3.this).getPDFPREFERENCE();
-                            int pdfposition=Constants.getSP(fragments3.this).getPDFPOSITION();
-                            Log.d("valorde",Pdftipo);
+                            int pdfposition = Constants.getSP(fragments3.this).getPDFPOSITION();
+                            Log.d("valorde", Pdftipo);
 
 
-                            if (pdfposition==1) {
+                            if (pdfposition == 1) {
                                 Intent intent;
                                 intent = new Intent(fragments3.this, pdfviewer2.class);
                                 pdfbutton(intent);
 
                                 startActivity(intent);
 
-                            } else if (pdfposition==0) {
-                                Intent intent ;
+                            } else if (pdfposition == 0) {
+                                Intent intent;
 
                                 intent = new Intent(fragments3.this, pdfviewer3.class);
                                 pdfbutton(intent);
@@ -419,124 +428,6 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                                 startActivity(intent);
 
                             }
-
-//
-//                            //  ArrayList<Note> Lista78;
-//                            //Lista78=(ArrayList<Note>)allnotes3;
-//                            Bundle bundle = new Bundle();
-//                            //intent.putExtra("Lista6", (Parcelable) allnotes3);
-//
-//                            bundle.putSerializable("Diasdepago2", dias1);
-//                            bundle.putSerializable("Fecha2", fechafinal);
-////                            bundle.putSerializable("Unidades1",gcantidad.getText().toString());
-////                            bundle.putSerializable("Medida1",gmedida.getText().toString());
-////                            bundle.putSerializable("Total1",txtotalbottom.getText().toString());
-//                            bundle.putSerializable("Fecha1", fechacComplString.toString());
-////                        bundle.putSerializable("Hora1",ghora.getText().toString());
-//                            //                           bundle.putSerializable("Precio1", PrecioL);
-//                            bundle.putSerializable("Nombre1", ClienteL);
-//                            bundle.putSerializable("Producto1", ProductoL);
-//                            Double valorbr;
-//                            Double valornet;
-//
-//                            valorbr = noteProdViewModel.getSumTotal().getValue();
-//                            valornet = valorbr - ValorDesc + ValorImp;
-//
-//                            Log.d("valoto", String.valueOf(valornet));
-//                            bundle.putSerializable("valorneto", valornet);
-//                            bundle.putSerializable("valorbruto", valorbr);
-//                            bundle.putSerializable("valorimp", ValorImp);
-//                            bundle.putSerializable("valordesc", ValorDesc);
-//                            bundle.putSerializable("impuestopercent", TaxValue);
-//                            bundle.putSerializable("descpercent", DiscountValue);
-//
-//                            String comprobarestado = textovigilancia.getText().toString();
-//                            if (comprobarestado.equals(getResources().getString(R.string.Receipts))) {
-//                                bundle.putSerializable("Estado1", "2");
-//                            } else if (comprobarestado.equals(getResources().getString(R.string.Sales))) {
-//                                bundle.putSerializable("Estado1", "1");
-//
-//                            } else if (comprobarestado.equals(getResources().getString(R.string.Draft))) {
-//                                bundle.putSerializable("Estado1", "3");
-//
-//                            }
-//
-//
-//                            ListaProd = new ArrayList<>();
-//                            ListaCant = new ArrayList<>();
-//                            ListaPre = new ArrayList<>();
-//                            Listavalor = new ArrayList<Double>();
-//                            listaVal2 = new ArrayList<>();
-//                            ListaRimp = new ArrayList<>();
-//                            ListaimP = new ArrayList<>();
-//                            ListaDesc = new ArrayList<>();
-////                            double sum = 0;
-////                            for(int i = 0; i < m.size(); i++)
-////                                sum += m.get(i);
-////                            return sum;
-//
-//
-//                            for (int i = 0; i < ListaProd1.size(); i++) {
-//
-//
-////                   Log.d("value is" , Listadobles2.get(i).valor_Medida.toString());}
-////                   Listapdf.add(Listadobles2.get(i).getValor_Medida().toString());
-//                                String pdfprod1 = ListaProd1.get(i).Nombre_prod;
-//                                Double pdfcant1 = ListaProd1.get(i).Cant_prod;
-//                                Double pdfpre1 = ListaProd1.get(i).Precio_prod;
-//                                Double pdfimp = ListaProd1.get(i).Impuesto;
-//                                Double pdfRimp = ListaProd1.get(i).Resultado_Impuesto;
-//                                pdfval = ListaProd1.get(i).Resultado_valor;
-//                                String pdfDesc = ListaProd1.get(i).getDescripcion();
-//                                String pdfpre2;
-//                                String pdfcant2;
-//                                String pdfnom2;
-//
-//
-//                                ListaCant.add(pdfcant1);
-//                                ListaProd.add(pdfprod1);
-//                                ListaPre.add(pdfpre1);
-//                                Listavalor.add(pdfval);
-//                                listaVal2.add(pdfval);
-//                                ListaimP.add(pdfimp);
-//                                ListaRimp.add(pdfRimp);
-//                                ListaDesc.add(pdfDesc);
-//                                Log.d("values", String.valueOf(ListaimP));
-//                                Log.d("v2", String.valueOf(ListaRimp));
-////                               datosparapdf=new HashMap<>();
-////                                datosparapdf.put("Nombre_prod",ListaProd1.get(i).Nombre_prod);
-////                                datosparapdf.put("Cant_prod",String.valueOf(ListaProd1.get(i).Cant_prod));
-////                                datosparapdf.put("Precio_prod",String.valueOf(ListaProd1.get(i).Precio_prod));
-////                                datosparapdf.put("Descripcion",ListaProd1.get(i).Descripcion);
-//
-//                            }
-//                            sumarRe();
-//
-//                            String sumaResultado = String.valueOf(sum);
-//
-////
-////
-////
-////
-//                            bundle.putSerializable("Total1", sumaResultado);
-//                            bundle.putSerializable("listaProd1", ListaProd);
-//                            bundle.putSerializable("listaCant1", ListaCant);
-//                            bundle.putSerializable("listaPre1", ListaPre);
-//                            bundle.putSerializable("listaResultado", Listavalor);
-//                            bundle.putSerializable("ListaImp", ListaimP);
-//                            bundle.putSerializable("ListaRimp", ListaRimp);
-//                            bundle.putSerializable("ListaDesc", ListaDesc);
-//
-////
-////         bundle.putSerializable("Listapdf",Listapasar);
-//                            // bundle.putByteArray("wpa",outputStream.toByteArray());
-//
-//
-//                            intent.putExtras(bundle);
-                            // pdfviewer pdfviewer2=new pdfviewer();
-
-
-
 
 
                         }
@@ -651,29 +542,58 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         sharedViewModel.getTaxvalue().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                if (s != null) {
-                    DecimalFormat formatter = new DecimalFormat("###,###,##0");
-                    TaxValue = s;
 
-
-                    Double imp = Double.parseDouble(s);
-                    Double Imp2 = imp / 100;
-                    Double Imp3 = 1 + Imp2;
-                    Double Imp4 = valorBruto * Imp3;
-                    ValorImp = valorBruto * Imp2;
-                    String tax1 = String.valueOf(formatter.format(ValorImp));
-
-
-                    String totalfac = String.valueOf(formatter.format(Imp4));
-
+                taxesvisual(s, Valortax1,txSubtotal,tax1);
+//                if (s != null) {
+//                    DecimalFormat formatter = new DecimalFormat("###,###,##0");
+//                    TaxValue = s;
 //
-                    txSubtotal.setText(tax1);
-                }
-            }
+//
+//                    Double imp = Double.parseDouble(s);
+//                    Double Imp2 = imp / 100;
+//                    Double Imp3 = 1 + Imp2;
+//                    Double Imp4 = valorBruto * Imp3;
+//                    ValorImp = valorBruto * Imp2;
+//                    tax1 = String.valueOf(formatter.format(ValorImp));
+//
+//
+//                    String totalfac = String.valueOf(formatter.format(Imp4));
+//
+//
+//                    txSubtotal.setText(tax1 + " + " + tax2);
+//
+//                }
 
+            }
 
 //                TaxValue=s;
 
+
+        });
+        sharedViewModel.getTaxvalue2().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+              taxesvisual(s,Valortax2,txSubtotal,tax2);
+//                if (s != null) {
+//                    DecimalFormat formatter = new DecimalFormat("###,###,##0");
+//                    TaxValue2 = s;
+//
+//
+//                    Double imp = Double.parseDouble(s);
+//                    Double Imp2 = imp / 100;
+//                    Double Imp3 = 1 + Imp2;
+//                    Double Imp4 = valorBruto * Imp3;
+//                    ValorImp2 = valorBruto * Imp2;
+//                    tax2 = String.valueOf(formatter.format(ValorImp2));
+//
+//
+//                    String totalfac2 = String.valueOf(formatter.format(Imp4));
+//
+//
+//                    txSubtotal.setText(tax1 + " + " + tax2);
+//
+//                }
+            }
 
         });
         sharedViewModel.getCliente2().observe(this, new Observer<CharSequence>() {
@@ -711,10 +631,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                 cardprod.setIcon(getResources().getDrawable(R.drawable.ic_baseline_arrow_forward_24));
                 cardprod.setIconTint(ColorStateList.valueOf(getResources().getColor(R.color.colorNegrobrillante)));
                 cardprod.setIconGravity(MaterialButton.ICON_GRAVITY_END);
-                //txproductobttom.setTextSize(14);
-                //txproductobttom.setText(charSequence);
-                //txproductobttom.setTextColor(getResources().getColor(R.color.colorNegrobrillante));
-                // cardprod.setCardBackgroundColor(getResources().getColor(R.color.colorverdeesmeralda));
+
             }
         });
         sharedViewModel.getboton().observe(this, new Observer<String>() {
@@ -744,7 +661,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         sharedViewModel.getdiasfinal().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                diasq=Integer.parseInt(s);
+                diasq = Integer.parseInt(s);
             }
         });
 
@@ -755,8 +672,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
             }
         });
 
-
     }
+
 
     @Override
     public void onPostCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
@@ -1005,6 +922,41 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
 
 
+
+    }
+    public Double  taxesvisual(String s,Double valorimpsaved,TextView textView, String tax) {
+
+
+    Double ValorImp;
+    ValorImp = valorimpsaved;
+
+
+    if (s != null) {
+
+        DecimalFormat formatter = new DecimalFormat("###,###,##0");
+        TaxValue = s;
+
+
+        Double imp = Double.parseDouble(s);
+        Double Imp2 = imp / 100;
+        Double Imp3 = 1 + Imp2;
+        Double Imp4 = valorBruto * Imp3;
+        ValorImp = valorBruto * Imp2;
+        tax = String.valueOf(formatter.format(ValorImp));
+
+
+        String totalfac = String.valueOf(formatter.format(Imp4));
+
+//
+        textView.setText(tax);
+
+    }
+    return ValorImp;
+
+
+
+    }
+    public void traerpreferences1(){
 
     }
 }

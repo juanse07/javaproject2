@@ -38,6 +38,7 @@
         <string name="Select">Seleccionar</string>
         <string name="Open_PDF">Abrir PDF</string>
         <string name="Notes">Notas</string>
+        <string name="Taxes">Impuestos</string>
         <string name="leyenda_impuesto">Incluir Impuesto en precio final</string>"
         <string name="Choose_One">Escoge una</string>
         <string name="Confirmation_Cart">Por favor revisa la información del producto que estás apunto de agregar al Carrito</string>

@@ -6,9 +6,6 @@ import android.os.AsyncTask;
 import com.example.calculadorainventario.Constructores.NoteHomis;
 import com.example.calculadorainventario.Dao.NoteHomisDao;
 import com.example.calculadorainventario.DataBases.NoteHomisDataBase;
-import com.example.calculadorainventario.NoteProdDao;
-import com.example.calculadorainventario.NoteProducto;
-import com.example.calculadorainventario.NoteProductoRep;
 
 import java.util.List;
 

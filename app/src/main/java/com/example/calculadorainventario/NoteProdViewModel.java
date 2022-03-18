@@ -2,6 +2,8 @@ package com.example.calculadorainventario;
 
 import android.app.Application;
 
+import com.example.calculadorainventario.Constructores.NoteProducto;
+
 import java.util.List;
 
 import androidx.annotation.NonNull;

@@ -123,6 +123,7 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_weight="70"
+                    android:capitalize="words"
                     android:gravity="right|center_vertical"
                     android:text="(No Name)"
                     android:textAlignment="gravity"

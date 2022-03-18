@@ -3,8 +3,6 @@ package com.example.calculadorainventario.ViewModel;
 import android.app.Application;
 
 import com.example.calculadorainventario.Constructores.NoteHomis;
-import com.example.calculadorainventario.NoteProducto;
-import com.example.calculadorainventario.NoteProductoRep;
 import com.example.calculadorainventario.Repositorios.NoteHomiRepo;
 
 import java.util.List;

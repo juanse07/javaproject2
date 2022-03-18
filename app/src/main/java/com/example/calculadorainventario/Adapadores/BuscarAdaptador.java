@@ -93,7 +93,7 @@ public class BuscarAdaptador extends RecyclerView.Adapter<BuscarAdaptador.Viewho
         });
         if(row_index==position){
             holder.CardBusquedas.setCardBackgroundColor(holder.itemView.getResources().getColor(R.color.Turquesa));
-            holder.textBusquedas.setTextColor(holder.itemView.getResources().getColor(R.color.colorGrisoscuro));
+            holder.textBusquedas.setTextColor(holder.itemView.getResources().getColor(R.color.colorBlancox));
 
         }
         else

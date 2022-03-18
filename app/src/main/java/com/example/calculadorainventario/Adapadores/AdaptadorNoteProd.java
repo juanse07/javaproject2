@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.example.calculadorainventario.ClickInterface1;
 import com.example.calculadorainventario.NoteProdViewModel;
-import com.example.calculadorainventario.NoteProducto;
+import com.example.calculadorainventario.Constructores.NoteProducto;
 import com.example.calculadorainventario.R;
 
 import java.util.ArrayList;

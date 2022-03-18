@@ -1,5 +1,7 @@
 package com.example.calculadorainventario;
 
+import com.example.calculadorainventario.Constructores.NoteProducto;
+
 public interface ClickInterface1 {
     void onItemClick(int position);
     void onButtonAddClick(int position);
@@ -12,7 +14,7 @@ public interface ClickInterface1 {
     void Preferenciasingreo(int estado, String dias, String Tipo);
     void passingpositionk(int position);
     void PassTipoDoc(int position,CharSequence tipoDoc);
-    void PassnoteprodPosition(int position,String Producto,String Cantidad,String Precio,NoteProducto currentnote);
+    void PassnoteprodPosition(int position, String Producto, String Cantidad, String Precio, NoteProducto currentnote);
 
 
 

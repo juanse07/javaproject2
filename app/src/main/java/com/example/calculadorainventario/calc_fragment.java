@@ -29,7 +29,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.calculadorainventario.Constructores.NoteProducto;
 import com.example.calculadorainventario.Constructores.arrayconstructor;
+import com.example.calculadorainventario.ViewModel.SharedViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.PageSize;

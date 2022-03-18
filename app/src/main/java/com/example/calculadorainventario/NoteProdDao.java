@@ -1,6 +1,7 @@
 package com.example.calculadorainventario;
 
-import java.security.Key;
+import com.example.calculadorainventario.Constructores.NoteProducto;
+
 import java.util.List;
 
 import androidx.lifecycle.LiveData;

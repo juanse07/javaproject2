@@ -1,10 +1,16 @@
-package com.example.calculadorainventario;
+package com.example.calculadorainventario.ViewModel;
 
 import android.app.Application;
 
+import com.example.calculadorainventario.Constructores.NoteHomis;
 import com.example.calculadorainventario.Constructores.arrayconstructor;
 import com.example.calculadorainventario.Constructores.constcards;
 import com.example.calculadorainventario.Constructores.cuerospinner;
+import com.example.calculadorainventario.HomeNote;
+import com.example.calculadorainventario.MatrizLista;
+import com.example.calculadorainventario.Repositorio1;
+import com.example.calculadorainventario.constructornom2;
+import com.example.calculadorainventario.obtenerdrawer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +21,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 public class SharedViewModel extends AndroidViewModel  {
+    NoteHomisViewModel noteHomisViewModel;
     private Repositorio1 repositorio1;
     private MutableLiveData<CharSequence> text = new MutableLiveData<>();
     private MutableLiveData<CharSequence> precio = new MutableLiveData<>();
@@ -27,6 +34,7 @@ public class SharedViewModel extends AndroidViewModel  {
     private MutableLiveData<String> diasfinal=new MutableLiveData<>();
     private MutableLiveData<ArrayList<cuerospinner>>obtenerproductos;
     private MutableLiveData<ArrayList<constcards>>obtenerdatos;
+    private MutableLiveData<ArrayList<NoteHomis>>obtenerdatossql;
     private MutableLiveData<ArrayList<MatrizLista>>obtenerproductosguardados;
     private MutableLiveData<ArrayList<constructornom2>>obtenerclientes;
     private MutableLiveData<ArrayList<arrayconstructor>> UnidadesLista2;
@@ -36,6 +44,7 @@ public class SharedViewModel extends AndroidViewModel  {
     private LiveData<Integer>CountVentas;
     private LiveData<List<HomeNote>>allhomenotes;
     private MutableLiveData<String> Taxvalue=new MutableLiveData<>();
+    private MutableLiveData<String> Taxvalue2=new MutableLiveData<>();
     private MutableLiveData<String> Discountvalue=new MutableLiveData<>();
 
 
@@ -152,15 +161,16 @@ public  void init4(){
         obtenerproductos=Repositorio1.getInstance().getproductos();
     }
 
-    public LiveData<ArrayList<constcards>>getdatosql(){
-        return obtenerdatos;
+
+    public LiveData<ArrayList<NoteHomis>>getdatosql(){
+        return obtenerdatossql;
     }
-    //////controla recyclerview catalogo/////
+
     public void initsqlhome(){
-        if(obtenerdatos!=null){
+        if(obtenerdatossql!=null){
             return;
-        }
-        obtenerdatos=Repositorio1.getInstance().getHomesql();
+        } obtenerdatossql=Repositorio1.getInstance().getdatossql();
+
     }
 public LiveData<ArrayList<cuerospinner>>getproducto(){
         return obtenerproductos;
@@ -218,6 +228,10 @@ public LiveData<ArrayList<cuerospinner>>getproducto(){
     public LiveData<String> getTaxvalue(){return Taxvalue;}
     public void setTaxvalue(String Input10){
         Taxvalue.setValue(Input10);
+    }
+    public LiveData<String> getTaxvalue2(){return Taxvalue2;}
+    public void setTaxvalue2(String Input11){
+        Taxvalue2.setValue(Input11);
     }
     public LiveData<String> getboton() {
         return bottonradial;

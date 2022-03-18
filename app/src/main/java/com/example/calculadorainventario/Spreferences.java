@@ -17,6 +17,9 @@ public class Spreferences {
     protected final String LANG="lang";
     protected final String PDFPREFERENCE="pdfpreference";
     protected final String PDFPOSITION="pdfposition";
+    protected final String TAX1TX="tax1tx";
+    protected final String TAX2TX="tax2tx";
+    protected final String DISCOUNT="discount";
 
 
 
@@ -76,6 +79,12 @@ public class Spreferences {
     public String getCOMPANYEMAIL(){return sp.getString(COMPANYEMAIL,"Address");}
     public void setLANG(String lang){sp.edit().putString(LANG,lang).commit();}
     public String getLANG(){return sp.getString(LANG,"en");}
+    public  void setTAX1TX(String tax1tx){sp.edit().putString(TAX1TX,tax1tx).commit();}
+    public String getTAX1TX(){return sp.getString(TAX1TX,"20");}
+    public  void setTAX2TX(String tax2tx){sp.edit().putString(TAX2TX,tax2tx).commit();}
+    public String getTAX2TX(){return sp.getString(TAX2TX,"0");}
+    public  void setDISCOUNT(String discount){sp.edit().putString(DISCOUNT,discount).commit();}
+    public String getDISCOUNT(){return sp.getString(DISCOUNT,"0");}
 
 
 }

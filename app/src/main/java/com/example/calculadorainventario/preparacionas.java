@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 import com.example.calculadorainventario.Adapadores.AdaptadorProductoGuardado;
 import com.example.calculadorainventario.Constructores.arrayconstructor;
+import com.example.calculadorainventario.ViewModel.SharedViewModel;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
