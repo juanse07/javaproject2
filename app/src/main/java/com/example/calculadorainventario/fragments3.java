@@ -75,7 +75,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     List<NoteProducto> ListaProd1;
 
 
-    TextView txclientebotton, txproductobttom, txpreciobottom, title4, textView38, textview30, textView50, txSubtotal, txSubtotal2, txSubtotal3;
+    TextView txclientebotton,txSubtotal4, txproductobttom, txpreciobottom, title4, textView38, textview30, textView50, txSubtotal, txSubtotal2, txSubtotal3;
     String Radiob;
     TextView textovigilancia;
     CardView card_vigilancia;
@@ -110,6 +110,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         textView50 = findViewById(R.id.textView50);
         txSubtotal = findViewById(R.id.txsubtotal);
         txSubtotal2 = findViewById(R.id.txsubtotal2);
+        txSubtotal4 = findViewById(R.id.txsubtotal4);
 
         arrowchange = findViewById(R.id.arrowchange);
         //txproductobttom=findViewById(R.id.txproductobttom);
@@ -577,7 +578,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         sharedViewModel.getTaxvalue2().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-              taxesvisual(s,valorBruto,txSubtotal);
+              taxesvisual(s,valorBruto,txSubtotal4);
+
 //                if (s != null) {
 //                    DecimalFormat formatter = new DecimalFormat("###,###,##0");
 //                    TaxValue2 = s;
