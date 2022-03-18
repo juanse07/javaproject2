@@ -155,9 +155,10 @@ ArrayList<NoteProducto>notesProd;
         decreaseimp2=ingresoview.findViewById(R.id.decreaseimp2);
         increaseimp2=ingresoview.findViewById(R.id.increaseimp2);
         //we need to avoid null on these textviews
-        txtaxvisor.setText("20");
-        txdiscountvisor.setText("0");
-        tximp2.setText("0");
+
+        txtaxvisor.setText(Constants.getSP(ingresoview.getContext()).getTAX1TX());;
+        txdiscountvisor.setText(Constants.getSP(ingresoview.getContext()).getDISCOUNT());
+        tximp2.setText(Constants.getSP(ingresoview.getContext()).getTAX2TX());
 
         sharedViewModel = new ViewModelProvider((ViewModelStoreOwner) getActivity()).get(SharedViewModel.class);
         sharedViewModel.setTaxvalue(txtaxvisor.getText().toString());

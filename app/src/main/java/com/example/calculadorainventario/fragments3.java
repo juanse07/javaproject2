@@ -125,9 +125,8 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         textView38 = findViewById(R.id.textView38);
         textview30 = findViewById(R.id.textView30);
         txSubtotal3 = findViewById(R.id.txsubtotal3);
-        Valortax1 = Double.parseDouble(Constants.getSP(this).getTAX1TX());
-        Valortax2 = Double.parseDouble(Constants.getSP(this).getTAX2TX());
-        ValorDisc = Double.parseDouble(Constants.getSP(this).getDISCOUNT());
+
+
 
 
         TaxValue = "0";
@@ -156,11 +155,14 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                     txSubtotal.setText("0");
                     txSubtotal3.setText("0");
                     txSubtotal2.setText("0");
+                    txSubtotal4.setText("0");
                     Log.d("valordevb",String.valueOf(aDouble));
                 } else {
                     valorBruto = aDouble;
-                    String st=TaxValue;
-                    taxesvisual(st,valorBruto,txSubtotal);
+
+                   ValorImp= taxesvisual(TaxValue,valorBruto,txSubtotal);
+                   ValorDesc= Discountvisor(DiscountValue,valorBruto,txSubtotal2);
+                   ValorImp2= taxesvisual(TaxValue2,valorBruto,txSubtotal4);
                     DecimalFormat formatter = new DecimalFormat("###,###,##0");
                     String totalfac = String.valueOf(formatter.format(valorBruto));
 
@@ -513,61 +515,24 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         sharedViewModel.getDiscountValue().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                if (s != null) {
+                DiscountValue = s;
 
-                    DiscountValue = s;
-                    DecimalFormat formatter = new DecimalFormat("###,###,##0");
-
-
-                    Double disc = Double.parseDouble(s);
-                    Double disc2 = disc / 100;
-                    Double disc3 = 1 - disc2;
-                    ValorDesc = valorBruto * disc2;
-//                Double imp5= valorBruto*disc3;
-//                Double imp6=Double.parseDouble(TaxValue)/100;
-//                Double imp7=1-imp6;
-//                Double imp8=valorBruto*imp7;
+                  ValorDesc=Discountvisor(DiscountValue,valorBruto,txSubtotal2);
 
 
-                    String totalfac = String.valueOf(formatter.format(ValorDesc));
 
-
-//
-                    txSubtotal2.setText(totalfac);
-                }
             }
-//                Double DiscandImp= valorNeto*disc3;
-//                txSubtotal.setText(String.valueOf(formatter.format(imp5)));
-//                Double nuevoneto=valorBruto*Double.parseDouble(TaxValue);
-//
-//                txSubtotal2.setText(String.valueOf(formatter.format(imp8)));
+
 
 
         });
         sharedViewModel.getTaxvalue().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
+                TaxValue = s;
 
-                taxesvisual(s,valorBruto,txSubtotal);
-//                if (s != null) {
-//                    DecimalFormat formatter = new DecimalFormat("###,###,##0");
-//                    TaxValue = s;
-//
-//
-//                    Double imp = Double.parseDouble(s);
-//                    Double Imp2 = imp / 100;
-//                    Double Imp3 = 1 + Imp2;
-//                    Double Imp4 = valorBruto * Imp3;
-//                    ValorImp = valorBruto * Imp2;
-//                    tax1 = String.valueOf(formatter.format(ValorImp));
-//
-//
-//                    String totalfac = String.valueOf(formatter.format(Imp4));
-//
-//
-//                    txSubtotal.setText(tax1 + " + " + tax2);
-//
-//                }
+               ValorImp= taxesvisual(s,valorBruto,txSubtotal);
+
 
             }
 
@@ -578,27 +543,13 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         sharedViewModel.getTaxvalue2().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-              taxesvisual(s,valorBruto,txSubtotal4);
+                TaxValue2=s;
 
-//                if (s != null) {
-//                    DecimalFormat formatter = new DecimalFormat("###,###,##0");
-//                    TaxValue2 = s;
+                ValorImp2= taxesvisual(TaxValue2,valorBruto,txSubtotal4);
+
+
+
 //
-//
-//                    Double imp = Double.parseDouble(s);
-//                    Double Imp2 = imp / 100;
-//                    Double Imp3 = 1 + Imp2;
-//                    Double Imp4 = valorBruto * Imp3;
-//                    ValorImp2 = valorBruto * Imp2;
-//                    tax2 = String.valueOf(formatter.format(ValorImp2));
-//
-//
-//                    String totalfac2 = String.valueOf(formatter.format(Imp4));
-//
-//
-//                    txSubtotal.setText(tax1 + " + " + tax2);
-//
-//                }
             }
 
         });
@@ -689,6 +640,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     }
 
     public void guardarpreferencias3() {
+
 
 
         SharedPreferences creacion = getSharedPreferences
@@ -796,6 +748,9 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     }
 
     public void pdfbutton(Intent intent) {
+        Constants.getSP(this).setDISCOUNT(DiscountValue);
+        Constants.getSP(this).setTAX1TX(TaxValue);
+        Constants.getSP(this).setTAX2TX(TaxValue2);
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat fecc = new SimpleDateFormat("dd/MMM/yyyy");
 
@@ -823,7 +778,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         Double valornet;
 
         valorbr = noteProdViewModel.getSumTotal().getValue();
-        valornet = valorbr - ValorDesc + ValorImp;
+        valornet = valorbr - ValorDesc + ValorImp+ValorImp2;
 
         Log.d("valoto", String.valueOf(valornet));
         bundle.putSerializable("valorneto", valornet);
@@ -930,7 +885,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
 
     }
-    public void  taxesvisual(String s,Double valorBruto, TextView textView) {
+    public Double taxesvisual(String s,Double valorBruto, TextView textView) {
 
 
     Double ValorImp;
@@ -940,7 +895,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     if (s != null) {
 
         DecimalFormat formatter = new DecimalFormat("###,###,##0");
-        TaxValue = s;
+
 
 
         Double imp = Double.parseDouble(s);
@@ -951,15 +906,36 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
         String tax = String.valueOf(formatter.format(ValorImp));
 
 
-        String totalfac = String.valueOf(formatter.format(Imp4));
+
 
 //
         textView.setText(tax);
 
     }
 
+return ValorImp;
 
 
+    }
+    public Double Discountvisor(String s,Double valorBruto, TextView textview){
+        if (s != null) {
+
+
+            DecimalFormat formatter = new DecimalFormat("###,###,##0");
+
+
+            Double disc = Double.parseDouble(s);
+            Double disc2 = disc / 100;
+            ValorDesc = valorBruto * disc2;
+
+
+            String totalfac = String.valueOf(formatter.format(ValorDesc));
+
+
+//
+            textview.setText(totalfac);
+        }
+        return ValorDesc;
 
     }
     public void traerpreferences1(){
