@@ -36,6 +36,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPCellEvent;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfPTableEvent;
+import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.VerticalPositionMark;
 
@@ -75,7 +76,7 @@ public class Pdfstructuredclass extends Activity {
     DecimalFormat format = new DecimalFormat("###,###,##0");
     String SumaResultado;
     String Invoice,Receipt,Quote,Days,Terms,Customer,Product,Date,Due_Date,Total,Subtotal,Info_Fac,List_Products,
-            Quantity,Price,Tax;
+            Quantity,Price,Tax,Email,Address,City,Phone;
 
     StorageReference storageReference;
 
@@ -138,7 +139,7 @@ public class Pdfstructuredclass extends Activity {
                                     ArrayList<Double> List2, ArrayList<Double> List3, ArrayList<Double> List4, ByteArrayOutputStream outputStream,
 
                                     String mFilepath, Double ValorDesc,Double ValorImp,Double ValorImp2,Double DiscountValue, Double TaxValue,
-    Double TaxValue2)throws DocumentException {
+    Double TaxValue2, String pdfphone, String pdfemail, String pdfaddress, String pdfcity)throws DocumentException {
 
         Invoice=context.getResources().getString(R.string.Invoice);
         Receipt=context.getResources().getString(R.string.Receipts);
@@ -156,6 +157,10 @@ public class Pdfstructuredclass extends Activity {
         Quantity = context.getResources().getString(R.string.Quantity);
         Price=context.getResources().getString(R.string.Price);
         Tax=context.getResources().getString(R.string.Tax);
+        Email=context.getResources().getString(R.string.Email);
+        Phone=context.getResources().getString(R.string.Mobile_phone);
+        Address=context.getResources().getString(R.string.Address);
+        City=context.getResources().getString(R.string.City);
 
         //        BaseFont baseFont=null;
 //        try {
@@ -421,7 +426,7 @@ public class Pdfstructuredclass extends Activity {
             Paragraph nombre1 = new Paragraph(Customer+":", regularSub2);
             Paragraph vnombre = new Paragraph(nombreventas2,regularAddress);
             nombre1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
-            vnombre.setAlignment(Element.ALIGN_RIGHT);
+            vnombre.setAlignment(Element.ALIGN_MIDDLE);
 
 
 
@@ -443,6 +448,23 @@ public class Pdfstructuredclass extends Activity {
 //            Paragraph vhora1 = new Paragraph(horareal2,regularAddress);
             hora1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
 //            vhora1.setAlignment(Element.ALIGN_RIGHT);
+            Paragraph pdfemail1 = new Paragraph(Email+":", regularSub2);
+            Paragraph vpdfemail = new Paragraph(pdfemail,regularAddress);
+            pdfemail1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
+            vpdfemail.setAlignment(Element.ALIGN_RIGHT);
+
+            Paragraph pdfaddress1 = new Paragraph(Address+":", regularSub2);
+            Paragraph vpdfaddress = new Paragraph(pdfaddress,regularAddress);
+            pdfemail1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
+            vpdfemail.setAlignment(Element.ALIGN_RIGHT);
+            Paragraph pdfcity1 = new Paragraph(City+":", regularSub2);
+            Paragraph vpdfcity = new Paragraph(pdfcity,regularAddress);
+            pdfemail1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
+            vpdfemail.setAlignment(Element.ALIGN_RIGHT);
+            Paragraph pdfphone1 = new Paragraph(Phone+":", regularSub2);
+            Paragraph vpdfphone = new Paragraph(pdfphone,regularAddress);
+            pdfemail1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
+            vpdfemail.setAlignment(Element.ALIGN_RIGHT);
 
 
 
@@ -478,25 +500,57 @@ public class Pdfstructuredclass extends Activity {
             unidades1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
 //            vunidades.setAlignment(Element.ALIGN_RIGHT);
 
+            PdfPTable tableData=new PdfPTable(1);
+            tableData.setWidthPercentage(65);
+            tableData.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            PdfPCell nestedData=new PdfPCell();
+            nestedData.setBorder(Rectangle.NO_BORDER);
 
 
-
-            PdfPTable table1 = new PdfPTable(4);
-
-            table1.setTableEvent(new PdfPTableEvent() {
+            nestedData.setCellEvent(new PdfPCellEvent() {
                 @Override
-                public void tableLayout(PdfPTable table, float[][] widths, float[] heights, int headerRows, int rowStart, PdfContentByte[] canvases) {
-                    PdfContentByte cb = canvases[PdfPTable.LINECANVAS];
+                public void cellLayout(PdfPCell cell, Rectangle position, PdfContentByte[] canvases) {
+                    PdfContentByte cb = canvases[PdfPTable.BACKGROUNDCANVAS];
                     cb.roundRectangle(
-                            widths[0][0],heights[heights.length-1],widths[0][4]-widths[0][0],
-                            heights[0]-heights[heights.length-1],4
+                            position.getLeft() + 1.5f,
+                            position.getBottom() + 1.5f,
+                            position.getWidth() - 3,
+                            position.getHeight() - 3, 4
                     );
                     cb.stroke();
+
                 }
             });
 
+
+
+
+
+            PdfPTable table1 = new PdfPTable(2);
+
+//            tableData.setTableEvent(new PdfPTableEvent() {
+//                @Override
+//                public void tableLayout(PdfPTable table, float[][] widths, float[] heights, int headerRows, int rowStart, PdfContentByte[] canvases) {
+//                    PdfContentByte cb = canvases[PdfPTable.LINECANVAS];
+//                    cb.roundRectangle(
+//                            widths[0][0],heights[heights.length-1],widths[0][4]-widths[0][0],
+//                            heights[0]-heights[heights.length-1],4
+//                    );
+//                    cb.stroke();
+//                }
+//            });
+
             table1.setHorizontalAlignment(Element.ALIGN_LEFT);
-            table1.setWidthPercentage(50);
+            table1.setWidthPercentage(100);
+            PdfPTable table2=new PdfPTable(6);
+            table2.setHorizontalAlignment(Element.ALIGN_LEFT);
+            table2.setWidthPercentage(100);
+            PdfPTable table3=new PdfPTable(2);
+            table3.setHorizontalAlignment(Element.ALIGN_LEFT);
+            table3.setWidthPercentage(100);
+            PdfPTable table4=new PdfPTable(6);
+            table4.setHorizontalAlignment(Element.ALIGN_LEFT);
+            table4.setWidthPercentage(100);
             PdfPCell cellnombre = new PdfPCell();
             PdfPCell cellnombre2 = new PdfPCell();
             PdfPCell cellfecha = new PdfPCell();
@@ -515,6 +569,14 @@ public class Pdfstructuredclass extends Activity {
             PdfPCell cellvalor2 = new PdfPCell();
             PdfPCell duedate = new PdfPCell();
             PdfPCell duedate2 = new PdfPCell();
+            PdfPCell cellphone = new PdfPCell();
+            PdfPCell cellphone2 = new PdfPCell();
+            PdfPCell cellemail = new PdfPCell();
+            PdfPCell cellemail2 = new PdfPCell();
+            PdfPCell celladdress = new PdfPCell();
+            PdfPCell celladdress2 = new PdfPCell();
+            PdfPCell cellcity = new PdfPCell();
+            PdfPCell cellcity2 = new PdfPCell();
 
             cellnombre.addElement(nombre1);
 
@@ -540,8 +602,6 @@ public class Pdfstructuredclass extends Activity {
             cellnombre.setUseAscender(true);
             cellnombre.setVerticalAlignment(Element.ALIGN_TOP);
             cellnombre.setBorderColor(BaseColor.WHITE);
-
-
             cellnombre2.setBorderColor(BaseColor.WHITE);
             cellnombre2.setUseAscender(true);
             cellnombre2.setVerticalAlignment(Element.ALIGN_CENTER);
@@ -602,19 +662,67 @@ public class Pdfstructuredclass extends Activity {
             cellprecio2.setUseAscender(true);
             cellprecio2.setVerticalAlignment(Element.ALIGN_CENTER);
 
+            cellemail.setUseAscender(true);
+            cellemail.setVerticalAlignment(Element.ALIGN_TOP);
+            cellemail.setBorderColor(BaseColor.WHITE);
+            cellemail.addElement(pdfemail1);
+            cellemail2.setBorderColor(BaseColor.WHITE);
+            cellemail2.setUseAscender(true);
+            cellemail2.setVerticalAlignment(Element.ALIGN_CENTER);
+            cellemail2.addElement(vpdfemail);
+
+            cellphone.setUseAscender(true);
+            cellphone.setVerticalAlignment(Element.ALIGN_TOP);
+            cellphone.setBorderColor(BaseColor.WHITE);
+            cellphone.addElement(pdfphone1);
+            cellphone2.setBorderColor(BaseColor.WHITE);
+            cellphone2.setUseAscender(true);
+            cellphone2.setVerticalAlignment(Element.ALIGN_CENTER);
+            cellphone2.addElement(vpdfphone);
+
+            celladdress.setUseAscender(true);
+            celladdress.setVerticalAlignment(Element.ALIGN_TOP);
+            celladdress.setBorderColor(BaseColor.WHITE);
+            celladdress.addElement(pdfaddress1);
+            celladdress2.setBorderColor(BaseColor.WHITE);
+            celladdress2.setUseAscender(true);
+            celladdress2.setVerticalAlignment(Element.ALIGN_CENTER);
+            celladdress2.addElement(vpdfaddress);
+
+            cellcity.setUseAscender(true);
+            cellcity.setVerticalAlignment(Element.ALIGN_TOP);
+            cellcity.setBorderColor(BaseColor.WHITE);
+            cellcity.addElement(pdfcity1);
+            cellcity2.setBorderColor(BaseColor.WHITE);
+            cellcity2.setUseAscender(true);
+            cellcity2.setVerticalAlignment(Element.ALIGN_CENTER);
+            cellcity2.addElement(vpdfcity);
+
 
 
 
 
             table1.addCell(cellnombre);
-            table1.addCell(cellfecha);
-            table1.addCell(duedate);
-            table1.addCell(cellvalor);
-
             table1.addCell(cellnombre2);
-            table1.addCell(cellfecha2);
-            table1.addCell(duedate2);
-            table1.addCell(cellvalor2);
+            table2.addCell(cellphone);
+            table2.addCell(cellphone2);
+            table2.addCell(cellemail);
+            table2.addCell(cellemail2);
+            table2.addCell(cellcity);
+            table2.addCell(cellcity2);
+            table3.addCell(celladdress);
+            table3.addCell(celladdress2);
+           table4.addCell(cellfecha);
+            table4.addCell(cellfecha2);
+            table4.addCell(duedate);
+            table4.addCell(duedate2);
+            table4.addCell(cellvalor);
+            table4.addCell(cellvalor2);
+
+
+
+
+
 //            table1.addCell(cellhora2);
 //            table1.addCell(cellmedida);
 //            table1.addCell(cellunidades);
@@ -624,6 +732,10 @@ public class Pdfstructuredclass extends Activity {
 //            table1.addCell(cellmedida2);
 //            table1.addCell(cellunidades2);
 //            table1.addCell(cellprecio2);
+            nestedData.addElement(table1);
+            nestedData.addElement(table2);
+            nestedData.addElement(table3);
+            nestedData.addElement(table4);
 
 
 
@@ -633,8 +745,8 @@ public class Pdfstructuredclass extends Activity {
 
 
 
-            table1.setSpacingAfter(20);
-            mDoc.add(table1);
+            tableData.addCell(nestedData);
+            mDoc.add(tableData);
 
 
             PdfPTable pdfPtable = new PdfPTable(1);

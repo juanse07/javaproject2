@@ -8,7 +8,7 @@ public interface ClickInterface1 {
     void onButtonclienteClick(int position);
     void passingproductoClick(int position, CharSequence Producto, CharSequence Precio,CharSequence Cantidad);
     void passingprecio1Click(int position, CharSequence Precio);
-    void passingcliente2Click(int position, CharSequence Cliente);
+    void passingcliente2Click(int position, CharSequence Cliente,String phone,String Email,String Address, String City);
     void passfirebasekey(String key);
     void preferenciasacalculadora();
     void Preferenciasingreo(int estado, String dias, String Tipo);

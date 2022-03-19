@@ -1,4 +1,4 @@
-package com.example.calculadorainventario;
+package com.example.calculadorainventario.Adapadores;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,10 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
+import com.example.calculadorainventario.ClickInterface1;
+import com.example.calculadorainventario.R;
 import com.example.calculadorainventario.ViewModel.SharedViewModel;
+import com.example.calculadorainventario.constructornom2;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -44,8 +47,12 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 String Cliente=holder.txnombre45.getText().toString();
+                String Email=ListaClientes.get(position).getEmail();
+                String Phone=ListaClientes.get(position).getTel();
+                String Address=ListaClientes.get(position).getAddress();
+                String City=ListaClientes.get(position).getCity();
                 clickInterface1.onButtonclienteClick(position);
-                clickInterface1.passingcliente2Click(position,Cliente);
+                clickInterface1.passingcliente2Click(position,Cliente,Phone,Email,Address,City);
                 row_index=position;
                 notifyDataSetChanged();
             }

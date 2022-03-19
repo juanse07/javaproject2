@@ -55,7 +55,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
     LinearLayout linprod, lincli;
     Double ValorImp, ValorDesc,ValorImp2;
     Double valorBruto, valorNeto,valorBruto2,Valortax1,Valortax2,ValorDisc;
-    String PrecioL, ProductoL, ClienteL, TaxValue, DiscountValue,TaxValue2,tax2,tax1;
+    String PrecioL, ProductoL, ClienteL, TaxValue, DiscountValue,TaxValue2,tax2,tax1,pdfphone,pdfemail,pdfaddress,pdfcity,pdfcliente;
 
     ArrayList<String> Listapdf;
     ArrayList<String> ListaProd;
@@ -614,6 +614,31 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
             }
         });
+        sharedViewModel.getpdfaddress().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                pdfaddress=s;
+            }
+        });
+        sharedViewModel.getpdfemail().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                pdfemail=s;
+            }
+        });
+        sharedViewModel.getpdfphone().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                pdfphone=s;
+
+            }
+        });
+        sharedViewModel.getpdfcity().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                pdfcity=s;
+            }
+        });
 
         sharedViewModel.getdiasfinal().observe(this, new Observer<String>() {
             @Override
@@ -700,12 +725,13 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 
     }
 
-
     @Override
-    public void passingcliente2Click(int position, CharSequence Cliente) {
-        //sharedViewModel.setCliente2(Cliente);
+    public void passingcliente2Click(int position, CharSequence Cliente, String phone, String Email, String Address, String City) {
 
     }
+
+
+
 
     @Override
     public void passfirebasekey(String key) {
@@ -771,6 +797,10 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
 //
         bundle.putSerializable("Nombre1", ClienteL);
         bundle.putSerializable("Producto1", ProductoL);
+        bundle.putSerializable("pdfcity",pdfcity);
+        bundle.putSerializable("pdfaddress",pdfaddress);
+        bundle.putSerializable("pdfphone",pdfphone);
+        bundle.putSerializable("pdfemail",pdfemail);
         Double valorbr;
         Double valornet;
 

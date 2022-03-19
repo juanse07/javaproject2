@@ -525,9 +525,10 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
     }
 
     @Override
-    public void passingcliente2Click(int position, CharSequence Cliente) {
+    public void passingcliente2Click(int position, CharSequence Cliente, String phone, String Email, String Address, String City) {
 
     }
+
 
     @Override
     public void passfirebasekey(String key) {

@@ -123,7 +123,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
     double DiscountValue;
     double ValorImp2;
     double valorneto;
-  String fechaventas2;
+  String fechaventas2,pdfemail,pdfphone,pdfcity,pdfaddress;
    String estadoventas2;
 //    String horareal2;
   String diaspago,Fecha2;
@@ -231,6 +231,10 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
         TaxValue2=getIntent().getExtras().getDouble("impuesto2percent");
         DiscountValue=getIntent().getExtras().getDouble("descpercent");
         valorneto=getIntent().getExtras().getDouble("valorneto");
+        pdfphone=getIntent().getExtras().getString("pdfphone");
+        pdfemail= getIntent().getExtras().getString("pdfemail");
+        pdfaddress=getIntent().getExtras().getString("pdfaddress");
+        pdfcity=getIntent().getExtras().getString("pdfcity");
 //        SumaResultado=getIntent().getExtras().getString("Total1");
 
 
@@ -275,7 +279,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
                     pdfstructuredclass.createstructuredpdf(pdfviewer3.this,productoventas2,precioventas2,valorventas2,
                             valorbr,valorneto,fechaventas2,estadoventas2,diaspago,Fecha2,nombreventas2,
                             Lista7,List1,List2,List3,List4,outputStream, mFilepath,ValorDesc,ValorImp,ValorImp2,
-                            DiscountValue,TaxValue,TaxValue2);
+                            DiscountValue,TaxValue,TaxValue2,pdfphone,pdfemail,pdfaddress,pdfcity);
 
                  //   savepdf();
                 } catch (DocumentException e) {
@@ -539,7 +543,8 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
                   try {
                       pdfstructuredclass.createstructuredpdf(pdfviewer3.this,productoventas2,precioventas2,valorventas2,
                               valorbr,valorneto,fechaventas2,estadoventas2,diaspago,Fecha2,nombreventas2,
-                              Lista7,List1,List2,List3,List4,outputStream, mFilepath,ValorDesc,ValorImp,ValorImp2,DiscountValue,TaxValue,TaxValue2);
+                              Lista7,List1,List2,List3,List4,outputStream, mFilepath,ValorDesc,ValorImp,ValorImp2,DiscountValue,TaxValue,TaxValue2,
+                              pdfphone,pdfemail,pdfaddress,pdfcity);
 
                      // savepdf();
                     } catch (DocumentException e) {

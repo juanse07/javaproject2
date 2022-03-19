@@ -831,9 +831,11 @@ dcmbutton.setOnClickListener(new View.OnClickListener() {
     }
 
     @Override
-    public void passingcliente2Click(int position, CharSequence Cliente) {
+    public void passingcliente2Click(int position, CharSequence Cliente, String phone, String Email, String Address, String City) {
 
     }
+
+
 
     @Override
     public void passfirebasekey(String key) {

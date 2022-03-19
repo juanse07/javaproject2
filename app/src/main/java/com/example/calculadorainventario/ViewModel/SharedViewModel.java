@@ -46,6 +46,10 @@ public class SharedViewModel extends AndroidViewModel  {
     private MutableLiveData<String> Taxvalue=new MutableLiveData<>();
     private MutableLiveData<String> Taxvalue2=new MutableLiveData<>();
     private MutableLiveData<String> Discountvalue=new MutableLiveData<>();
+    private MutableLiveData<String> pdfemail=new MutableLiveData<>();
+    private MutableLiveData<String> pdfphone=new MutableLiveData<>();
+    private MutableLiveData<String> pdfaddress=new MutableLiveData<>();
+    private MutableLiveData<String> pdfcity=new MutableLiveData<>();
 
 
 
@@ -224,6 +228,22 @@ public LiveData<ArrayList<cuerospinner>>getproducto(){
     public LiveData<List<HomeNote>>getAllNotes (){
         return allhomenotes;
 
+    }
+    public LiveData<String> getpdfemail(){return pdfemail;}
+    public void setTpdfemail(String Input10){
+        pdfemail.setValue(Input10);
+    }
+    public LiveData<String> getpdfphone(){return pdfphone;}
+    public void setTpdfphone(String Input10){
+        pdfphone.setValue(Input10);
+    }
+    public LiveData<String> getpdfaddress(){return pdfaddress;}
+    public void setTpdfaddress(String Input10){
+        pdfaddress.setValue(Input10);
+    }
+    public LiveData<String> getpdfcity(){return pdfcity;}
+    public void setTpdfcity(String Input10){
+        pdfcity.setValue(Input10);
     }
     public LiveData<String> getTaxvalue(){return Taxvalue;}
     public void setTaxvalue(String Input10){

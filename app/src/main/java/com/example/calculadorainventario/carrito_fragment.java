@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.example.calculadorainventario.Adapadores.ClienteAdapter;
 import com.example.calculadorainventario.Constructores.NoteProducto;
 import com.example.calculadorainventario.ViewModel.SharedViewModel;
 import com.google.firebase.database.DatabaseReference;
@@ -46,6 +48,7 @@ public class carrito_fragment extends Fragment implements ClickInterface1  {
     SearchView edtbuscarcliente;
     private ClienteAdapter myadaptador3;
     private SharedViewModel sharedViewModel;
+    String pdfphone,pdfemail,pdfaddress,pdfcity,pdfcliente;
 
 
     // TODO: Rename and change types of parameters
@@ -214,12 +217,22 @@ public class carrito_fragment extends Fragment implements ClickInterface1  {
 
     }
 
-
-
     @Override
-    public void passingcliente2Click(int position, CharSequence Cliente) {
-        sharedViewModel.setCliente2(Cliente);
+    public void passingcliente2Click(int position, CharSequence Cliente, String phone, String Email, String Address, String City) {
+        sharedViewModel.setCliente2(Cliente.toString());
+        sharedViewModel.setTpdfemail(Email);
+        sharedViewModel.setTpdfphone(phone);
+        sharedViewModel.setTpdfaddress(Address);
+        sharedViewModel.setTpdfcity(City);
+        // ClienteL=Cliente.toString();
+                pdfaddress=Address;
+        pdfemail=Email;
+        pdfphone=phone;
+        pdfcity=City;
     }
+
+
+
 
     @Override
     public void passfirebasekey(String key) {
