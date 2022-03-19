@@ -316,7 +316,13 @@ public class Pdfstructuredclass extends Activity {
             String radiotipo= logopreference2.getString("logocheck2","no hay datos");
 
             PdfPCell factucell = new PdfPCell();
+            factucell.setBorder(Rectangle.NO_BORDER);
+            factucell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            factucell.setVerticalAlignment(Element.ALIGN_TOP);
             PdfPCell imagecell = new PdfPCell();
+            imagecell.setBorder(Rectangle.NO_BORDER);
+            PdfPCell spacecell=new PdfPCell();
+
 
             if (radiotipo.equals("Rectangular")&&estadoventas2.equals(context.getResources().getString(R.string.Sales))){
 //
@@ -352,71 +358,18 @@ public class Pdfstructuredclass extends Activity {
             }
             imagecell.setBorderColor(new BaseColor(255,255,255));
 
-            PdfPTable pdfPtableimage = new PdfPTable(2);
+            PdfPTable TableTitulo=new PdfPTable(2);
+            TableTitulo.setTotalWidth(new float[] {30, 70});
+            PdfPCell Logocell=new PdfPCell();
+            PdfPCell izcell=new PdfPCell();
+            //izcell.setFixedHeight(10f);
+
+            TableTitulo.setWidthPercentage(100);
+            TableTitulo.setHorizontalAlignment(Element.ALIGN_LEFT);
+
+            PdfPTable pdfPtableimage = new PdfPTable(1);
             pdfPtableimage.setWidthPercentage(100);
-            pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
-
-
-
-
-
-            pdfPtableimage.addCell(imagecell);
-            pdfPtableimage.addCell(factucell);
-
-            pdfPtableimage.setSpacingAfter(25);
-            mDoc.add(pdfPtableimage);
-            System.setProperty("http.agent", "Chrome");
-
-
-
-
-
-
-
-
-
-
-
-
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-            Toast.makeText(context, "Fallo c1", Toast.LENGTH_SHORT).show();
-        } catch (MalformedURLException ex) {
-            ex.printStackTrace();
-            Toast.makeText(context, "Fallo c2", Toast.LENGTH_SHORT).show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            Toast.makeText(context, "Fallo c3", Toast.LENGTH_SHORT).show();
-        } catch (BadElementException ex) {
-
-            ex.printStackTrace();
-            Toast.makeText(context, "Fallo c4", Toast.LENGTH_SHORT).show();
-        } catch (DocumentException ex) {
-            ex.printStackTrace();
-            Toast.makeText(context, "Fallo c5", Toast.LENGTH_SHORT).show();
-        }
-        try{
-            Paragraph pcompany = new Paragraph("PyMESoft®", regularReport);
-            pcompany.setAlignment(Element.ALIGN_RIGHT);
-            pcompany.setSpacingAfter(40);
-
-            Paragraph pdatosgenerales = new Paragraph(Info_Fac, regularReport2);
-            pdatosgenerales.setAlignment(Element.ALIGN_LEFT);
-            pdatosgenerales.setSpacingAfter(10);
-
-            Paragraph plista = new Paragraph(List_Products, regularReport2);
-            plista.setAlignment(Element.ALIGN_LEFT);
-            plista.setSpacingAfter(10);
-
-            PdfPTable pdfPtablea = new PdfPTable(1);
-            pdfPtablea.setWidthPercentage(100);
-            pdfPtablea.setHorizontalAlignment(Element.ALIGN_CENTER);
-            PdfPCell cell = new PdfPCell();
-            cell.setBackgroundColor(new BaseColor(114,133,165));
-            cell.setFixedHeight(2);
-            cell.setBorderColor(new BaseColor(114,133,165));
-            pdfPtablea.addCell(cell);
-            pdfPtablea.setSpacingAfter(5);
+            pdfPtableimage.setHorizontalAlignment(Element.ALIGN_LEFT);
 
 
 
@@ -501,8 +454,12 @@ public class Pdfstructuredclass extends Activity {
             unidades1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
 //            vunidades.setAlignment(Element.ALIGN_RIGHT);
 
+
             PdfPTable tableData=new PdfPTable(1);
-            tableData.setWidthPercentage(65);
+            PdfPTable tableiz=new PdfPTable(1);
+
+            tableData.setWidthPercentage(60);
+
             tableData.setHorizontalAlignment(Element.ALIGN_RIGHT);
             PdfPCell nestedData=new PdfPCell();
             nestedData.setBorder(Rectangle.NO_BORDER);
@@ -603,10 +560,12 @@ public class Pdfstructuredclass extends Activity {
             cellnombre.setUseAscender(true);
             cellnombre.setVerticalAlignment(Element.ALIGN_TOP);
             cellnombre.setBorder(Rectangle.BOTTOM);
+            cellnombre.setFixedHeight(20);
             cellnombre.setBorderColor(BaseColor.DARK_GRAY);
             cellnombre2.setBorderColor(BaseColor.WHITE);
             cellnombre2.setUseAscender(true);
             cellnombre2.setVerticalAlignment(Element.ALIGN_CENTER);
+            cellnombre2.setFixedHeight(20);
             cellnombre2.setBorder(Rectangle.BOTTOM);
             cellnombre2.setBorderColor(BaseColor.DARK_GRAY);
 
@@ -620,6 +579,7 @@ public class Pdfstructuredclass extends Activity {
             duedate.setUseAscender(true);
             duedate.setVerticalAlignment(Element.ALIGN_TOP);
             duedate.setBorder(Rectangle.BOTTOM);
+            duedate.setFixedHeight(20);
             duedate.setBorderColor(BaseColor.DARK_GRAY);
 
 
@@ -627,10 +587,12 @@ public class Pdfstructuredclass extends Activity {
             cellfecha2.setUseAscender(true);
             cellfecha2.setVerticalAlignment(Element.ALIGN_CENTER);
             cellfecha2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
+            cellfecha2.setFixedHeight(20);
             cellfecha2.setBorderColor(BaseColor.DARK_GRAY);
             duedate2.setBorderColor(BaseColor.WHITE);
             duedate2.setUseAscender(true);
             duedate2.setVerticalAlignment(Element.ALIGN_CENTER);
+            duedate2.setFixedHeight(20);
             duedate2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
             duedate2.setBorderColor(BaseColor.DARK_GRAY);
 
@@ -664,28 +626,34 @@ public class Pdfstructuredclass extends Activity {
             cellvalor.setBorder(Rectangle.BOTTOM);
             cellvalor.setBorderColor(BaseColor.DARK_GRAY);
             cellvalor.setUseAscender(true);
+            cellvalor.setFixedHeight(20);
             cellvalor.setVerticalAlignment(Element.ALIGN_TOP);
             cellvalor2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
             cellvalor2.setBorderColor(BaseColor.DARK_GRAY);
             cellvalor2.setUseAscender(true);
+            cellvalor2.setFixedHeight(20);
             cellvalor2.setBackgroundColor(BaseColor.WHITE);
             cellvalor2.setVerticalAlignment(Element.ALIGN_CENTER);
             cellprecio.setBorderColor(BaseColor.WHITE);
             cellprecio.setUseAscender(true);
+            cellprecio.setFixedHeight(20);
             cellprecio.setVerticalAlignment(Element.ALIGN_TOP);
             cellprecio2.setBorderColor(BaseColor.WHITE);
             cellprecio2.setUseAscender(true);
+            cellprecio2.setFixedHeight(20);
             cellprecio2.setVerticalAlignment(Element.ALIGN_CENTER);
 
             cellemail.setUseAscender(true);
             cellemail.setVerticalAlignment(Element.ALIGN_TOP);
             cellemail.addElement(pdfemail1);
             cellemail.setBorder(Rectangle.BOTTOM);
+            cellemail.setFixedHeight(20);
             cellemail.setBorderColor(BaseColor.DARK_GRAY);
             cellemail2.setUseAscender(true);
             cellemail2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
             cellemail2.setBorderColor(BaseColor.DARK_GRAY);
             cellemail2.setVerticalAlignment(Element.ALIGN_CENTER);
+            cellemail2.setFixedHeight(20);
             cellemail2.addElement(vpdfemail);
 
             cellphone.setUseAscender(true);
@@ -693,12 +661,14 @@ public class Pdfstructuredclass extends Activity {
             cellphone.setBorderColor(BaseColor.WHITE);
             cellphone.addElement(pdfphone1);
             cellphone.setBorder(Rectangle.BOTTOM);
+            cellphone.setFixedHeight(20);
             cellphone.setBorderColor(BaseColor.DARK_GRAY);
 
             cellphone2.setUseAscender(true);
             cellphone2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
             cellphone2.setBorderColor(BaseColor.DARK_GRAY);
             cellphone2.setVerticalAlignment(Element.ALIGN_CENTER);
+            cellphone2.setFixedHeight(20);
             cellphone2.addElement(vpdfphone);
 
             celladdress.setUseAscender(true);
@@ -706,23 +676,27 @@ public class Pdfstructuredclass extends Activity {
 
             celladdress.addElement(pdfaddress1);
             celladdress.setBorder(Rectangle.BOTTOM);
+            celladdress.setFixedHeight(20);
             celladdress.setBorderColor(BaseColor.DARK_GRAY);
 
             celladdress2.setUseAscender(true);
             celladdress2.setVerticalAlignment(Element.ALIGN_CENTER);
             celladdress2.addElement(vpdfaddress);
+            celladdress2.setFixedHeight(20);
             celladdress2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
             celladdress2.setBorderColor(BaseColor.DARK_GRAY);
 
             cellcity.setUseAscender(true);
             cellcity.setVerticalAlignment(Element.ALIGN_TOP);
             cellcity.setBorder(Rectangle.BOTTOM);
+            cellcity.setFixedHeight(20);
             cellcity.setBorderColor(BaseColor.DARK_GRAY);
             cellcity.addElement(pdfcity1);
 
             cellcity2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
             cellcity2.setBorderColor(BaseColor.DARK_GRAY);
             cellcity2.setUseAscender(true);
+            cellcity2.setFixedHeight(20);
             cellcity2.setVerticalAlignment(Element.ALIGN_CENTER);
 
             cellcity2.addElement(vpdfcity);
@@ -741,7 +715,7 @@ public class Pdfstructuredclass extends Activity {
             table2.addCell(cellcity2);
             table3.addCell(celladdress);
             table3.addCell(celladdress2);
-           table4.addCell(cellfecha);
+            table4.addCell(cellfecha);
             table4.addCell(cellfecha2);
             table4.addCell(duedate);
             table4.addCell(duedate2);
@@ -775,7 +749,109 @@ public class Pdfstructuredclass extends Activity {
 
 
             tableData.addCell(nestedData);
-            mDoc.add(tableData);
+
+
+            pdfPtableimage.addCell(imagecell);
+
+
+//            pdfPtableimage.setSpacingAfter(25);
+
+            Logocell.addElement(pdfPtableimage);
+            Logocell.setBorder(Rectangle.NO_BORDER);
+            Logocell.setVerticalAlignment(Element.ALIGN_CENTER);
+            Logocell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            spacecell.setBorder(Rectangle.NO_BORDER);
+
+
+            ;
+           // izcell.addElement(factucell);
+            //tableiz.addCell(factucell);
+//            izcell.addElement(factucell);
+
+            izcell.setBorder(Rectangle.NO_BORDER);
+            tableiz.setWidthPercentage(100);
+            tableiz.addCell(factucell);
+            tableiz.addCell(nestedData);
+            izcell.addElement(tableiz);
+
+
+            TableTitulo.addCell(Logocell);
+            TableTitulo.addCell(izcell);
+
+//            TableTitulo.addCell(izcell);
+
+           factucell.setBorderColor(BaseColor.WHITE);
+           izcell.setBorderColor(BaseColor.WHITE);
+
+
+
+
+           // TableTitulo.addCell(izcell);
+
+            TableTitulo.setSpacingAfter(25);
+            mDoc.add(TableTitulo);
+
+
+            System.setProperty("http.agent", "Chrome");
+
+
+
+
+
+
+
+
+
+
+
+
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+            Toast.makeText(context, "Fallo c1", Toast.LENGTH_SHORT).show();
+        } catch (MalformedURLException ex) {
+            ex.printStackTrace();
+            Toast.makeText(context, "Fallo c2", Toast.LENGTH_SHORT).show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            Toast.makeText(context, "Fallo c3", Toast.LENGTH_SHORT).show();
+        } catch (BadElementException ex) {
+
+            ex.printStackTrace();
+            Toast.makeText(context, "Fallo c4", Toast.LENGTH_SHORT).show();
+        } catch (DocumentException ex) {
+            ex.printStackTrace();
+            Toast.makeText(context, "Fallo c5", Toast.LENGTH_SHORT).show();
+        }
+        try{
+            Paragraph pcompany = new Paragraph("PyMESoft®", regularReport);
+            pcompany.setAlignment(Element.ALIGN_RIGHT);
+            pcompany.setSpacingAfter(40);
+
+            Paragraph pdatosgenerales = new Paragraph(Info_Fac, regularReport2);
+            pdatosgenerales.setAlignment(Element.ALIGN_LEFT);
+            pdatosgenerales.setSpacingAfter(10);
+
+            Paragraph plista = new Paragraph(List_Products, regularReport2);
+            plista.setAlignment(Element.ALIGN_LEFT);
+            plista.setSpacingAfter(10);
+
+            PdfPTable pdfPtablea = new PdfPTable(1);
+            pdfPtablea.setWidthPercentage(100);
+            pdfPtablea.setHorizontalAlignment(Element.ALIGN_CENTER);
+            PdfPCell cell = new PdfPCell();
+            cell.setBackgroundColor(new BaseColor(114,133,165));
+            cell.setFixedHeight(2);
+            cell.setBorderColor(new BaseColor(114,133,165));
+            pdfPtablea.addCell(cell);
+            pdfPtablea.setSpacingAfter(5);
+
+
+
+
+
+
+
+
 
 
             PdfPTable pdfPtable = new PdfPTable(1);
