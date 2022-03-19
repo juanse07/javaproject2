@@ -181,7 +181,8 @@ public class Pdfstructuredclass extends Activity {
         Font regularReportA = new Font(baseFont, 25, Font.BOLD, new BaseColor(114,133,165));
         Font regularReport2 = new Font(baseFont, 16, Font.BOLD, BaseColor.BLACK);
         Font regularName = new Font(Font.FontFamily.HELVETICA, 15, Font.BOLD, BaseColor.BLACK);
-        Font regularAddress = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL, BaseColor.BLACK);
+        Font regularAddress = new Font(Font.FontFamily.HELVETICA, 8, Font.NORMAL, BaseColor.BLACK);
+        Font regularAddress2 = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL, BaseColor.BLACK);
         Font regularSub = new Font(Font.FontFamily.COURIER, 6, Font.ITALIC, BaseColor.RED);
         Font regularTotal = new Font(Font.FontFamily.HELVETICA, 14, Font.ITALIC, BaseColor.BLACK);
         Font regularTotal2 = new Font(Font.FontFamily.HELVETICA, 11, Font.ITALIC, BaseColor.BLACK);
@@ -601,26 +602,38 @@ public class Pdfstructuredclass extends Activity {
 
             cellnombre.setUseAscender(true);
             cellnombre.setVerticalAlignment(Element.ALIGN_TOP);
-            cellnombre.setBorderColor(BaseColor.WHITE);
+            cellnombre.setBorder(Rectangle.BOTTOM);
+            cellnombre.setBorderColor(BaseColor.DARK_GRAY);
             cellnombre2.setBorderColor(BaseColor.WHITE);
             cellnombre2.setUseAscender(true);
             cellnombre2.setVerticalAlignment(Element.ALIGN_CENTER);
+            cellnombre2.setBorder(Rectangle.BOTTOM);
+            cellnombre2.setBorderColor(BaseColor.DARK_GRAY);
 
 
-            cellfecha.setBorderColor(BaseColor.WHITE);
+
             cellfecha.setUseAscender(true);
             cellfecha.setVerticalAlignment(Element.ALIGN_TOP);
+            cellfecha.setBorder(Rectangle.BOTTOM);
+            cellfecha.setBorderColor(BaseColor.DARK_GRAY);
             duedate.setBorderColor(BaseColor.WHITE);
             duedate.setUseAscender(true);
             duedate.setVerticalAlignment(Element.ALIGN_TOP);
+            duedate.setBorder(Rectangle.BOTTOM);
+            duedate.setBorderColor(BaseColor.DARK_GRAY);
 
 
             cellfecha2.setBorderColor(BaseColor.WHITE);
             cellfecha2.setUseAscender(true);
             cellfecha2.setVerticalAlignment(Element.ALIGN_CENTER);
+            cellfecha2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
+            cellfecha2.setBorderColor(BaseColor.DARK_GRAY);
             duedate2.setBorderColor(BaseColor.WHITE);
             duedate2.setUseAscender(true);
             duedate2.setVerticalAlignment(Element.ALIGN_CENTER);
+            duedate2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
+            duedate2.setBorderColor(BaseColor.DARK_GRAY);
+
             cellhora.setBorderColor(BaseColor.WHITE);
             cellhora.setUseAscender(true);
             cellhora.setVerticalAlignment(Element.ALIGN_TOP);
@@ -648,10 +661,12 @@ public class Pdfstructuredclass extends Activity {
             cellmedida2.setBorderColor(BaseColor.WHITE);
             cellmedida2.setUseAscender(true);
             cellmedida2.setVerticalAlignment(Element.ALIGN_CENTER);
-            cellvalor.setBorderColor(BaseColor.WHITE);
+            cellvalor.setBorder(Rectangle.BOTTOM);
+            cellvalor.setBorderColor(BaseColor.DARK_GRAY);
             cellvalor.setUseAscender(true);
             cellvalor.setVerticalAlignment(Element.ALIGN_TOP);
-            cellvalor2.setBorderColor(BaseColor.WHITE);
+            cellvalor2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
+            cellvalor2.setBorderColor(BaseColor.DARK_GRAY);
             cellvalor2.setUseAscender(true);
             cellvalor2.setBackgroundColor(BaseColor.WHITE);
             cellvalor2.setVerticalAlignment(Element.ALIGN_CENTER);
@@ -664,10 +679,12 @@ public class Pdfstructuredclass extends Activity {
 
             cellemail.setUseAscender(true);
             cellemail.setVerticalAlignment(Element.ALIGN_TOP);
-            cellemail.setBorderColor(BaseColor.WHITE);
             cellemail.addElement(pdfemail1);
-            cellemail2.setBorderColor(BaseColor.WHITE);
+            cellemail.setBorder(Rectangle.BOTTOM);
+            cellemail.setBorderColor(BaseColor.DARK_GRAY);
             cellemail2.setUseAscender(true);
+            cellemail2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
+            cellemail2.setBorderColor(BaseColor.DARK_GRAY);
             cellemail2.setVerticalAlignment(Element.ALIGN_CENTER);
             cellemail2.addElement(vpdfemail);
 
@@ -675,27 +692,39 @@ public class Pdfstructuredclass extends Activity {
             cellphone.setVerticalAlignment(Element.ALIGN_TOP);
             cellphone.setBorderColor(BaseColor.WHITE);
             cellphone.addElement(pdfphone1);
-            cellphone2.setBorderColor(BaseColor.WHITE);
+            cellphone.setBorder(Rectangle.BOTTOM);
+            cellphone.setBorderColor(BaseColor.DARK_GRAY);
+
             cellphone2.setUseAscender(true);
+            cellphone2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
+            cellphone2.setBorderColor(BaseColor.DARK_GRAY);
             cellphone2.setVerticalAlignment(Element.ALIGN_CENTER);
             cellphone2.addElement(vpdfphone);
 
             celladdress.setUseAscender(true);
             celladdress.setVerticalAlignment(Element.ALIGN_TOP);
-            celladdress.setBorderColor(BaseColor.WHITE);
+
             celladdress.addElement(pdfaddress1);
-            celladdress2.setBorderColor(BaseColor.WHITE);
+            celladdress.setBorder(Rectangle.BOTTOM);
+            celladdress.setBorderColor(BaseColor.DARK_GRAY);
+
             celladdress2.setUseAscender(true);
             celladdress2.setVerticalAlignment(Element.ALIGN_CENTER);
             celladdress2.addElement(vpdfaddress);
+            celladdress2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
+            celladdress2.setBorderColor(BaseColor.DARK_GRAY);
 
             cellcity.setUseAscender(true);
             cellcity.setVerticalAlignment(Element.ALIGN_TOP);
-            cellcity.setBorderColor(BaseColor.WHITE);
+            cellcity.setBorder(Rectangle.BOTTOM);
+            cellcity.setBorderColor(BaseColor.DARK_GRAY);
             cellcity.addElement(pdfcity1);
-            cellcity2.setBorderColor(BaseColor.WHITE);
+
+            cellcity2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
+            cellcity2.setBorderColor(BaseColor.DARK_GRAY);
             cellcity2.setUseAscender(true);
             cellcity2.setVerticalAlignment(Element.ALIGN_CENTER);
+
             cellcity2.addElement(vpdfcity);
 
 
