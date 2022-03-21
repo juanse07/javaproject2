@@ -322,28 +322,33 @@ public class Pdfstructuredclass extends Activity {
             PdfPCell imagecell = new PdfPCell();
             imagecell.setBorder(Rectangle.NO_BORDER);
             PdfPCell spacecell=new PdfPCell();
+            PdfPTable TableTitulo=new PdfPTable(2);
+            PdfPCell Logocell=new PdfPCell();
+            PdfPCell izcell=new PdfPCell();
 
 
             if (radiotipo.equals("Rectangular")&&estadoventas2.equals(context.getResources().getString(R.string.Sales))){
 //
                 TopSide(regularReportA,regularTotalBold,diaspago,Invoice,Days,factucell);
+                factudatatop(TableTitulo,40,60);
 
                 imagecell.addElement(LogoImage(160f,70f));
 
 //
             }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals(context.getResources().getString(R.string.Sales))) {
                 TopSide(regularReportA,regularTotalBold,diaspago,Invoice,Days,factucell);
+                factudatatop(TableTitulo,30,70);
 
                 imagecell.addElement(LogoImage(100f,100f));
             }
             if (radiotipo.equals("Rectangular")&&estadoventas2.equals(context.getResources().getString(R.string.Receipts))){
                 TopSide(regularReportA,regularTotalBold,diaspago,Receipt,Days,factucell);
-
+                factudatatop(TableTitulo,40,60);
                 imagecell.addElement(LogoImage(160f,70f));
 
             }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals(context.getResources().getString(R.string.Receipts))) {
                 TopSide(regularReportA,regularTotalBold,diaspago,Receipt,Days,factucell);
-
+                factudatatop(TableTitulo,30,70);
                 imagecell.addElement(LogoImage(100f,100f));
             }
             if (radiotipo.equals("Rectangular")&&estadoventas2.equals(context.getResources().getString(R.string.Draft))){
@@ -352,24 +357,19 @@ public class Pdfstructuredclass extends Activity {
                 imagecell.addElement(LogoImage(160f,70f));
             }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals(context.getResources().getString(R.string.Draft))) {
                 TopSide(regularReportA,regularTotalBold,diaspago,Quote,Days,factucell);
-
+                factudatatop(TableTitulo,30,70);
                 imagecell.addElement(LogoImage(100f,100f));
 
             }
             imagecell.setBorderColor(new BaseColor(255,255,255));
 
-            PdfPTable TableTitulo=new PdfPTable(2);
-            TableTitulo.setTotalWidth(new float[] {30, 70});
-            PdfPCell Logocell=new PdfPCell();
-            PdfPCell izcell=new PdfPCell();
-            //izcell.setFixedHeight(10f);
 
-            TableTitulo.setWidthPercentage(100);
-            TableTitulo.setHorizontalAlignment(Element.ALIGN_LEFT);
+
 
             PdfPTable pdfPtableimage = new PdfPTable(1);
-            pdfPtableimage.setWidthPercentage(100);
-            pdfPtableimage.setHorizontalAlignment(Element.ALIGN_LEFT);
+            pdfPtableimage.setWidthPercentage(90);
+            pdfPtableimage.setHorizontalAlignment(Element.ALIGN_CENTER);
+
 
 
 
@@ -380,7 +380,7 @@ public class Pdfstructuredclass extends Activity {
             Paragraph nombre1 = new Paragraph(Customer+":", regularSub2);
             Paragraph vnombre = new Paragraph(nombreventas2,regularAddress);
             nombre1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
-            vnombre.setAlignment(Element.ALIGN_MIDDLE);
+            vnombre.setAlignment(Element.ALIGN_MIDDLE|Element.ALIGN_LEFT);
 
 
 
@@ -391,51 +391,51 @@ public class Pdfstructuredclass extends Activity {
             Paragraph duefecha = new Paragraph(Due_Date+":", regularSub2);
             Paragraph duevfecha1 = new Paragraph(Fecha2,regularAddress);
             duefecha.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
-            duevfecha1.setAlignment(Element.ALIGN_RIGHT);
+            duevfecha1.setAlignment(Element.ALIGN_LEFT|Element.ALIGN_MIDDLE);
 
 
             fecha1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
-            vfecha1.setAlignment(Element.ALIGN_RIGHT);
+            vfecha1.setAlignment(Element.ALIGN_LEFT|Element.ALIGN_MIDDLE);
 
 
-            Paragraph hora1 = new Paragraph("Hora", regularSub2);
-//            Paragraph vhora1 = new Paragraph(horareal2,regularAddress);
-            hora1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
+//            Paragraph hora1 = new Paragraph("Hora", regularSub2);
+////            Paragraph vhora1 = new Paragraph(horareal2,regularAddress);
+//            hora1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
 //            vhora1.setAlignment(Element.ALIGN_RIGHT);
             Paragraph pdfemail1 = new Paragraph(Email+":", regularSub2);
             Paragraph vpdfemail = new Paragraph(pdfemail,regularAddress);
             pdfemail1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
-            vpdfemail.setAlignment(Element.ALIGN_RIGHT);
+            vpdfemail.setAlignment(Element.ALIGN_CENTER|Element.ALIGN_MIDDLE);
 
             Paragraph pdfaddress1 = new Paragraph(Address+":", regularSub2);
             Paragraph vpdfaddress = new Paragraph(pdfaddress,regularAddress);
-            pdfemail1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
-            vpdfemail.setAlignment(Element.ALIGN_RIGHT);
+            pdfaddress1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
+            vpdfaddress.setAlignment(Element.ALIGN_LEFT);
             Paragraph pdfcity1 = new Paragraph(City+":", regularSub2);
             Paragraph vpdfcity = new Paragraph(pdfcity,regularAddress);
-            pdfemail1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
-            vpdfemail.setAlignment(Element.ALIGN_RIGHT);
+            pdfcity1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
+            vpdfcity.setAlignment(Element.ALIGN_LEFT|Element.ALIGN_MIDDLE);
             Paragraph pdfphone1 = new Paragraph(Phone+":", regularSub2);
             Paragraph vpdfphone = new Paragraph(pdfphone,regularAddress);
-            pdfemail1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
-            vpdfemail.setAlignment(Element.ALIGN_RIGHT);
+            pdfphone1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
+            vpdfphone.setAlignment(Element.ALIGN_LEFT|Element.ALIGN_MIDDLE);
 
 
 
-            Paragraph producto1 = new Paragraph(Product+":", regularSub2);
-            Paragraph vproducto = new Paragraph(productoventas2,regularAddress);
-            producto1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
-            vproducto.setAlignment(Element.ALIGN_RIGHT);
+//            Paragraph producto1 = new Paragraph(Product+":", regularSub2);
+//            Paragraph vproducto = new Paragraph(productoventas2,regularAddress);
+//            producto1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
+//            vproducto.setAlignment(Element.ALIGN_RIGHT);
 
-            Paragraph precio1 = new Paragraph(Price+":", regularSub2);
-            Paragraph vprecio = new Paragraph(precioventas2,regularAddress);
-            precio1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
-            vprecio.setAlignment(Element.ALIGN_RIGHT);
-
-            Paragraph medida1 = new Paragraph("Medida:", regularSub2);
-//            Paragraph vpmedida = new Paragraph(medidaventas2,regularAddress);
-            medida1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
-//            vpmedida.setAlignment(Element.ALIGN_RIGHT);
+//            Paragraph precio1 = new Paragraph(Price+":", regularSub2);
+//            Paragraph vprecio = new Paragraph(precioventas2,regularAddress);
+//            precio1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
+//            vprecio.setAlignment(Element.ALIGN_RIGHT);
+//
+//            Paragraph medida1 = new Paragraph("Medida:", regularSub2);
+////            Paragraph vpmedida = new Paragraph(medidaventas2,regularAddress);
+//            medida1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
+////            vpmedida.setAlignment(Element.ALIGN_RIGHT);
 
 
 
@@ -445,14 +445,14 @@ public class Pdfstructuredclass extends Activity {
 
             Paragraph vvalor = new Paragraph(formatter.format(Double.parseDouble(String.valueOf(valorneto)))+" USD",regularAddress);
             valor1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
-            vvalor.setAlignment(Element.ALIGN_RIGHT);
+            vvalor.setAlignment(Element.ALIGN_CENTER|Element.ALIGN_MIDDLE);
 
 
-
-            Paragraph unidades1 = new Paragraph("Unidades - Promedio:", regularSub2);
-//            Paragraph vunidades = new Paragraph(unidadesventas2+"    "+"|"+"    "+horaventas2);
-            unidades1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
-//            vunidades.setAlignment(Element.ALIGN_RIGHT);
+//
+//            Paragraph unidades1 = new Paragraph("Unidades - Promedio:", regularSub2);
+////            Paragraph vunidades = new Paragraph(unidadesventas2+"    "+"|"+"    "+horaventas2);
+//            unidades1.setAlignment(Element.ALIGN_TOP|Element.ALIGN_LEFT);
+////            vunidades.setAlignment(Element.ALIGN_RIGHT);
 
 
             PdfPTable tableData=new PdfPTable(1);
@@ -484,7 +484,7 @@ public class Pdfstructuredclass extends Activity {
 
 
 
-            PdfPTable table1 = new PdfPTable(2);
+
 
 //            tableData.setTableEvent(new PdfPTableEvent() {
 //                @Override
@@ -497,16 +497,20 @@ public class Pdfstructuredclass extends Activity {
 //                    cb.stroke();
 //                }
 //            });
-
+            PdfPTable table1 = new PdfPTable(4);
+            table1.setTotalWidth(new float[] {15,35,15,35});
             table1.setHorizontalAlignment(Element.ALIGN_LEFT);
             table1.setWidthPercentage(100);
-            PdfPTable table2=new PdfPTable(6);
+            PdfPTable table2=new PdfPTable(4);
             table2.setHorizontalAlignment(Element.ALIGN_LEFT);
+            table2.setTotalWidth(new float[] {15,35,15,35});
             table2.setWidthPercentage(100);
-            PdfPTable table3=new PdfPTable(2);
+            PdfPTable table3=new PdfPTable(4);
             table3.setHorizontalAlignment(Element.ALIGN_LEFT);
+            table3.setTotalWidth(new float[] {15,35,15,35});
             table3.setWidthPercentage(100);
-            PdfPTable table4=new PdfPTable(6);
+            PdfPTable table4=new PdfPTable(4);
+            table4.setTotalWidth(new float[] {15,35,15,35});
             table4.setHorizontalAlignment(Element.ALIGN_LEFT);
             table4.setWidthPercentage(100);
             PdfPCell cellnombre = new PdfPCell();
@@ -536,170 +540,82 @@ public class Pdfstructuredclass extends Activity {
             PdfPCell cellcity = new PdfPCell();
             PdfPCell cellcity2 = new PdfPCell();
 
-            cellnombre.addElement(nombre1);
+//            cellnombre.addElement(nombre1);
+//
+//            cellnombre2.addElement(vnombre);
+//            cellfecha.addElement(fecha1);
+//            cellfecha2.addElement(vfecha1);
 
-            cellnombre2.addElement(vnombre);
-            cellfecha.addElement(fecha1);
-            cellfecha2.addElement(vfecha1);
-            cellhora.addElement(hora1);
-//            cellhora2.addElement(vhora1);
-            cellproducto.addElement(producto1);
-            cellproducto2.addElement(vproducto);
-            cellunidades.addElement(unidades1);
-//            cellunidades2.addElement(vunidades);
-            cellmedida.addElement(medida1);
-//            cellmedida2.addElement(vpmedida);
-            cellvalor.addElement(valor1);
+            PdfPCell Celdatituloemail;
+            Celdatituloemail=  CustomerDataCell(cellemail,pdfemail1,1,1,BaseColor.DARK_GRAY);
+            Celdatituloemail.setVerticalAlignment(Element.ALIGN_TOP);
+            Celdatituloemail.setBorder(Rectangle.BOTTOM);
+            Celdatituloemail.setFixedHeight(20);
 
-            cellvalor2.addElement(vvalor);
-            cellprecio.addElement(precio1);
-            cellprecio2.addElement(vprecio);
-            duedate.addElement(duefecha);
-            duedate2.addElement(duevfecha1);
-
-            cellnombre.setUseAscender(true);
-            cellnombre.setVerticalAlignment(Element.ALIGN_TOP);
-            cellnombre.setBorder(Rectangle.BOTTOM);
-            cellnombre.setFixedHeight(20);
-            cellnombre.setBorderColor(BaseColor.DARK_GRAY);
-            cellnombre2.setBorderColor(BaseColor.WHITE);
-            cellnombre2.setUseAscender(true);
-            cellnombre2.setVerticalAlignment(Element.ALIGN_CENTER);
-            cellnombre2.setFixedHeight(20);
-            cellnombre2.setBorder(Rectangle.BOTTOM);
-            cellnombre2.setBorderColor(BaseColor.DARK_GRAY);
+            PdfPCell CeldaValorEmail=  CustomerDataCell(cellemail2,vpdfemail,Element.ALIGN_LEFT,5,BaseColor.DARK_GRAY);
+            CeldaValorEmail.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
+            CeldaValorEmail.setFixedHeight(20);
 
 
+            PdfPCell PdfceldaTituloPhone=CustomerDataCell(cellphone,pdfphone1,Element.ALIGN_CENTER,Element.ALIGN_TOP,BaseColor.DARK_GRAY);
+            PdfceldaTituloPhone.setBorder(Rectangle.BOTTOM);
+            PdfceldaTituloPhone.setFixedHeight(20);
 
-            cellfecha.setUseAscender(true);
-            cellfecha.setVerticalAlignment(Element.ALIGN_TOP);
-            cellfecha.setBorder(Rectangle.BOTTOM);
-            cellfecha.setBorderColor(BaseColor.DARK_GRAY);
-            duedate.setBorderColor(BaseColor.WHITE);
-            duedate.setUseAscender(true);
-            duedate.setVerticalAlignment(Element.ALIGN_TOP);
-            duedate.setBorder(Rectangle.BOTTOM);
-            duedate.setFixedHeight(20);
-            duedate.setBorderColor(BaseColor.DARK_GRAY);
+            PdfPCell CeldaValorPhone=  CustomerDataCell(cellphone2,vpdfphone,Element.ALIGN_LEFT,5,BaseColor.DARK_GRAY);
+            CeldaValorPhone.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
+            CeldaValorPhone.setFixedHeight(20);
+
+            PdfPCell PdfceldaTituloAddress=CustomerDataCell(celladdress,pdfaddress1,Element.ALIGN_CENTER,Element.ALIGN_TOP,BaseColor.DARK_GRAY);
+            PdfceldaTituloAddress.setBorder(Rectangle.BOTTOM);
+            PdfceldaTituloAddress.setFixedHeight(20);
+
+            PdfPCell CeldaValorAddress=  CustomerDataCell(celladdress2,vpdfaddress,Element.ALIGN_LEFT,5,BaseColor.DARK_GRAY);
+            CeldaValorAddress.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
+            CeldaValorAddress.setFixedHeight(20);
+
+            PdfPCell PdfceldaTituloCity=CustomerDataCell(cellcity,pdfcity1,Element.ALIGN_CENTER,Element.ALIGN_TOP,BaseColor.DARK_GRAY);
+            PdfceldaTituloCity.setBorder(Rectangle.BOTTOM);
+            PdfceldaTituloAddress.setFixedHeight(20);
+
+            PdfPCell CeldaValorCity=  CustomerDataCell(cellcity2,vpdfcity,Element.ALIGN_LEFT,5,BaseColor.DARK_GRAY);
+            CeldaValorCity.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
+            CeldaValorAddress.setFixedHeight(20);
+
+            PdfPCell PdfceldaTituloName=CustomerDataCell(cellnombre,nombre1,Element.ALIGN_CENTER,Element.ALIGN_TOP,BaseColor.DARK_GRAY);
+            PdfceldaTituloName.setBorder(Rectangle.BOTTOM);
+            PdfceldaTituloName.setFixedHeight(20);
+
+            PdfPCell CeldaValorName=  CustomerDataCell(cellnombre2,vnombre,Element.ALIGN_LEFT,5,BaseColor.DARK_GRAY);
+            CeldaValorName.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
+            CeldaValorName.setFixedHeight(20);
+
+            PdfPCell PdfceldaTitulofecha1=CustomerDataCell(cellfecha,fecha1,Element.ALIGN_CENTER,Element.ALIGN_TOP,BaseColor.DARK_GRAY);
+            PdfceldaTitulofecha1.setBorder(Rectangle.BOTTOM);
+            PdfceldaTitulofecha1.setFixedHeight(20);
+
+            PdfPCell CeldaValorfecha1=  CustomerDataCell(cellfecha2,vfecha1,Element.ALIGN_LEFT,5,BaseColor.DARK_GRAY);
+            CeldaValorfecha1.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
+            CeldaValorfecha1.setFixedHeight(20);
+            PdfPCell PdfceldaTituloduefecha=CustomerDataCell(duedate,duefecha,Element.ALIGN_CENTER,Element.ALIGN_TOP,BaseColor.DARK_GRAY);
+            PdfceldaTituloduefecha.setBorder(Rectangle.BOTTOM);
+            PdfceldaTituloAddress.setFixedHeight(20);
+
+            PdfPCell CeldaValorduefecha=  CustomerDataCell(duedate2,duevfecha1,Element.ALIGN_LEFT,5,BaseColor.DARK_GRAY);
+            CeldaValorduefecha.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
+            CeldaValorduefecha.setFixedHeight(20);
+            PdfPCell PdfceldaTituloValue=CustomerDataCell(cellvalor,valor1,Element.ALIGN_CENTER,Element.ALIGN_TOP,BaseColor.DARK_GRAY);
+            PdfceldaTituloValue.setBorder(Rectangle.BOTTOM);
+            PdfceldaTituloValue.setFixedHeight(20);
+
+            PdfPCell CeldaValorValue=  CustomerDataCell(cellvalor2,vvalor,Element.ALIGN_LEFT,5,BaseColor.DARK_GRAY);
+            CeldaValorValue.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
+            CeldaValorValue.setFixedHeight(20);
 
 
-            cellfecha2.setBorderColor(BaseColor.WHITE);
-            cellfecha2.setUseAscender(true);
-            cellfecha2.setVerticalAlignment(Element.ALIGN_CENTER);
-            cellfecha2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
-            cellfecha2.setFixedHeight(20);
-            cellfecha2.setBorderColor(BaseColor.DARK_GRAY);
-            duedate2.setBorderColor(BaseColor.WHITE);
-            duedate2.setUseAscender(true);
-            duedate2.setVerticalAlignment(Element.ALIGN_CENTER);
-            duedate2.setFixedHeight(20);
-            duedate2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
-            duedate2.setBorderColor(BaseColor.DARK_GRAY);
 
-            cellhora.setBorderColor(BaseColor.WHITE);
-            cellhora.setUseAscender(true);
-            cellhora.setVerticalAlignment(Element.ALIGN_TOP);
-            cellhora2.setBorderColor(BaseColor.WHITE);
-            cellhora2.setUseAscender(true);
-            cellhora2.setVerticalAlignment(Element.ALIGN_CENTER);
-            cellproducto.setBorderColor(BaseColor.WHITE);
-            cellproducto.setUseAscender(true);
-            cellproducto.setVerticalAlignment(Element.ALIGN_TOP);
 
-            cellproducto2.setBorderColor(BaseColor.WHITE);
-            cellproducto2.setUseAscender(true);
-            cellproducto2.setVerticalAlignment(Element.ALIGN_CENTER);
-            cellunidades.setBorderColor(BaseColor.WHITE);
-            cellunidades.setUseAscender(true);
-            cellunidades.setVerticalAlignment(Element.ALIGN_TOP);
 
-            cellunidades2.setBorderColor(BaseColor.WHITE);
-            cellunidades2.setUseAscender(true);
-            cellunidades2.setVerticalAlignment(Element.ALIGN_CENTER);
-            cellmedida.setBorderColor(BaseColor.WHITE);
-            cellmedida.setUseAscender(true);
-            cellmedida.setVerticalAlignment(Element.ALIGN_TOP);
 
-            cellmedida2.setBorderColor(BaseColor.WHITE);
-            cellmedida2.setUseAscender(true);
-            cellmedida2.setVerticalAlignment(Element.ALIGN_CENTER);
-            cellvalor.setBorder(Rectangle.BOTTOM);
-            cellvalor.setBorderColor(BaseColor.DARK_GRAY);
-            cellvalor.setUseAscender(true);
-            cellvalor.setFixedHeight(20);
-            cellvalor.setVerticalAlignment(Element.ALIGN_TOP);
-            cellvalor2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
-            cellvalor2.setBorderColor(BaseColor.DARK_GRAY);
-            cellvalor2.setUseAscender(true);
-            cellvalor2.setFixedHeight(20);
-            cellvalor2.setBackgroundColor(BaseColor.WHITE);
-            cellvalor2.setVerticalAlignment(Element.ALIGN_CENTER);
-            cellprecio.setBorderColor(BaseColor.WHITE);
-            cellprecio.setUseAscender(true);
-            cellprecio.setFixedHeight(20);
-            cellprecio.setVerticalAlignment(Element.ALIGN_TOP);
-            cellprecio2.setBorderColor(BaseColor.WHITE);
-            cellprecio2.setUseAscender(true);
-            cellprecio2.setFixedHeight(20);
-            cellprecio2.setVerticalAlignment(Element.ALIGN_CENTER);
-
-            cellemail.setUseAscender(true);
-            cellemail.setVerticalAlignment(Element.ALIGN_TOP);
-            cellemail.addElement(pdfemail1);
-            cellemail.setBorder(Rectangle.BOTTOM);
-            cellemail.setFixedHeight(20);
-            cellemail.setBorderColor(BaseColor.DARK_GRAY);
-            cellemail2.setUseAscender(true);
-            cellemail2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
-            cellemail2.setBorderColor(BaseColor.DARK_GRAY);
-            cellemail2.setVerticalAlignment(Element.ALIGN_CENTER);
-            cellemail2.setFixedHeight(20);
-            cellemail2.addElement(vpdfemail);
-
-            cellphone.setUseAscender(true);
-            cellphone.setVerticalAlignment(Element.ALIGN_TOP);
-            cellphone.setBorderColor(BaseColor.WHITE);
-            cellphone.addElement(pdfphone1);
-            cellphone.setBorder(Rectangle.BOTTOM);
-            cellphone.setFixedHeight(20);
-            cellphone.setBorderColor(BaseColor.DARK_GRAY);
-
-            cellphone2.setUseAscender(true);
-            cellphone2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
-            cellphone2.setBorderColor(BaseColor.DARK_GRAY);
-            cellphone2.setVerticalAlignment(Element.ALIGN_CENTER);
-            cellphone2.setFixedHeight(20);
-            cellphone2.addElement(vpdfphone);
-
-            celladdress.setUseAscender(true);
-            celladdress.setVerticalAlignment(Element.ALIGN_TOP);
-
-            celladdress.addElement(pdfaddress1);
-            celladdress.setBorder(Rectangle.BOTTOM);
-            celladdress.setFixedHeight(20);
-            celladdress.setBorderColor(BaseColor.DARK_GRAY);
-
-            celladdress2.setUseAscender(true);
-            celladdress2.setVerticalAlignment(Element.ALIGN_CENTER);
-            celladdress2.addElement(vpdfaddress);
-            celladdress2.setFixedHeight(20);
-            celladdress2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
-            celladdress2.setBorderColor(BaseColor.DARK_GRAY);
-
-            cellcity.setUseAscender(true);
-            cellcity.setVerticalAlignment(Element.ALIGN_TOP);
-            cellcity.setBorder(Rectangle.BOTTOM);
-            cellcity.setFixedHeight(20);
-            cellcity.setBorderColor(BaseColor.DARK_GRAY);
-            cellcity.addElement(pdfcity1);
-
-            cellcity2.setBorder(Rectangle.BOTTOM|Rectangle.RIGHT);
-            cellcity2.setBorderColor(BaseColor.DARK_GRAY);
-            cellcity2.setUseAscender(true);
-            cellcity2.setFixedHeight(20);
-            cellcity2.setVerticalAlignment(Element.ALIGN_CENTER);
-
-            cellcity2.addElement(vpdfcity);
 
 
 
@@ -707,20 +623,22 @@ public class Pdfstructuredclass extends Activity {
 
             table1.addCell(cellnombre);
             table1.addCell(cellnombre2);
+            table1.addCell(cellvalor);
+            table1.addCell(cellvalor2);
             table2.addCell(cellphone);
             table2.addCell(cellphone2);
             table2.addCell(cellemail);
             table2.addCell(cellemail2);
-            table2.addCell(cellcity);
-            table2.addCell(cellcity2);
+
             table3.addCell(celladdress);
             table3.addCell(celladdress2);
+            table3.addCell(cellcity);
+            table3.addCell(cellcity2);
             table4.addCell(cellfecha);
             table4.addCell(cellfecha2);
             table4.addCell(duedate);
             table4.addCell(duedate2);
-            table4.addCell(cellvalor);
-            table4.addCell(cellvalor2);
+
 
 
 
@@ -1580,10 +1498,32 @@ public class Pdfstructuredclass extends Activity {
         Paragraph Plazo=new Paragraph(diaspago+" "+Days,regularTotalBold);
         Plazo.setAlignment(Element.ALIGN_RIGHT);
         factucell.addElement(factu);
+        factucell.setFixedHeight(80);
+
         factucell.setBorderColor(new BaseColor(255,255,255));
         factucell.addElement(Plazo1);
         factucell.addElement(Plazo);
 
 
     }
+    public void factudatatop(PdfPTable TableTitulo, float leftF,float Rightf) throws DocumentException {
+        TableTitulo.setTotalWidth(new float[] {leftF, Rightf});
+        TableTitulo.setSpacingBefore(10);
+        TableTitulo.setWidthPercentage(100);
+        TableTitulo.setHorizontalAlignment(Element.ALIGN_LEFT);
+
+    }
+    public PdfPCell CustomerDataCell(PdfPCell CustomerDataCell, Paragraph p,int AligmentH, int AligmentV,BaseColor color1){
+
+
+        CustomerDataCell.setUseAscender(true);
+        CustomerDataCell.setHorizontalAlignment(AligmentH);
+        CustomerDataCell.setBorderColor(color1);
+        CustomerDataCell.setVerticalAlignment(AligmentV);
+        CustomerDataCell.addElement(p);
+
+     return CustomerDataCell;
+    }
+
+
 }
