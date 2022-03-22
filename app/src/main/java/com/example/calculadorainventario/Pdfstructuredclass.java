@@ -56,70 +56,31 @@ import java.util.Map;
 
 public class Pdfstructuredclass extends Activity {
 
-    private PDFView pdfView;
-    ImageView back1;
+
+
     private File file;
-    pdfviewer3.RoundedBorder roundedBorder;
+
     PdfPCell cell;
     SharedPreferences logopreference2;
     String radiotipo;
 
-    TextView title6;
+
     BaseFont baseFont=null;
-    Uri pdfUri;
+
     PdfPTable tableFooter;
-    List<Note> Listadobles2;
-    ArrayList<arrayconstructor>Listadobles3;
-    Map<String,String> RecibirNoteprod;
-    ArrayList<Double> ListaCuero;
-    ArrayList<Double> listacuero3;
-    AdaptadorProductoGuardado adpt1=new AdaptadorProductoGuardado();
-    NoteProdViewModel noteProdViewModel;
-    DecimalFormat format = new DecimalFormat("###,###,##0");
-    String SumaResultado;
+
     String Invoice,Receipt,Quote,Days,Terms,Customer,Product,Date,Due_Date,Total,Subtotal,Info_Fac,List_Products,
             Quantity,Price,Tax,Email,Address,City,Phone;
 
-    StorageReference storageReference;
+
 
 
     PdfWriter writer1, writer2;
 
-    FirebaseDatabase mydatabase = FirebaseDatabase.getInstance();
 
-    //ShareViewModel2 shareViewModel2;
-    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-
-    //String fechaventas2;
     Document mDoc = new Document(PageSize.LETTER,36,36,53,56);
 
-    //   String horaventas2;
-    String productoventas2;
-    //    String unidadesventas2;
-    String precioventas2;
-    //    String medidaventas2;
-    String valorventas2;
-    double valorbr;
-    double ValorImp;
-    double ValorDesc;
-    double TaxValue;
-    double DiscountValue;
-    double valorneto;
-    String fechaventas2;
-    String estadoventas2;
-    //    String horareal2;
-    String diaspago,Fecha2;
-    DatabaseReference myrootDbaseref5;
-    FirebaseStorage mystorage;
-    FirebaseAuth mAuth;
-    NoteViewModel noteViewModel;
-    ArrayList<Note>noteArralist=new ArrayList<>();
-    ArrayList<String>List1,Lista7;
-    ArrayList<Double>List2,List3,List4;
-    byte[] outputstream2;
-    //Button btactualizarpdf;
-    String nombreventas2;
-    String CantProd;
+
     String pattern = "EEEEE MMMMM yyyy HH:mm:ss.SSSZ";
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "US"));
     String mFilename = simpleDateFormat.format(System.currentTimeMillis());
@@ -809,14 +770,14 @@ public class Pdfstructuredclass extends Activity {
             cellRELLENO.setBorder(Rectangle.NO_BORDER);
             cellRELLENO.setFixedHeight(18);
             cellRELLENO.addElement(RELLENO);
+            /////////////////////////////////////////////////////////
 
 
 
 
 
 
-//            cell.setBackgroundColor(BaseColor.WHITE);
-//
+
             for (int aw = 0; aw <List1.size(); aw++) {
                 // for (adpt.setNotes(allnotes3);;) {
                 //adpt1.notifyDataSetChanged();
@@ -870,85 +831,37 @@ public class Pdfstructuredclass extends Activity {
 
 
 
-                cell = new PdfPCell(p);
-                cell.setPaddingBottom(8);
-                cell.setPaddingTop(5);
-                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-//                cell.setBackgroundColor(BaseColor.WHITE);
-                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                cell = new PdfPCell();
+                cellbucle(cell,p,Element.ALIGN_MIDDLE,Element.ALIGN_RIGHT);
 
-//                if(cell.getBackgroundColor().equals(BaseColor.LIGHT_GRAY)){
-//                    cell.setBackgroundColor(BaseColor.WHITE);
-//
-//
-//               }else if(cell.getBackgroundColor().equals(BaseColor.WHITE)){
-//                    cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
-//                };
-                cell.setBorder( Rectangle.RIGHT);
+                PdfPCell cell1 = new PdfPCell();
+                cellbucle(cell1,p2,Element.ALIGN_MIDDLE,Element.ALIGN_RIGHT);
 
-                cell.setBorderColor(BaseColor.WHITE);
-                cell.setFixedHeight(20);
-                PdfPCell cell1 = new PdfPCell(p1);
-                cell1.setPaddingBottom(8);
-                cell1.setPaddingTop(5);
-                cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
-                cell1.setHorizontalAlignment(Element.ALIGN_RIGHT);
-                cell1.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
-//
-                cell1.setBorderColor(BaseColor.WHITE);
 
-                cell1.setFixedHeight(20);
-                PdfPCell cell2 = new PdfPCell(p2);
-                cell2.setPaddingBottom(8);
-                cell2.setPaddingTop(5);
-                cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                PdfPCell cell2 = new PdfPCell();
+                cellbucle(cell2,p2,Element.ALIGN_MIDDLE,Element.ALIGN_RIGHT);
 
-                cell2.setHorizontalAlignment(Element.ALIGN_RIGHT);
-                cell2.setBorder(Rectangle.LEFT |Rectangle.ALIGN_BOTTOM);
-//
-                cell2.setBorderColor(BaseColor.WHITE);
-                cell2.setFixedHeight(20);
-                PdfPCell cell3 = new PdfPCell(p3);
+                PdfPCell cell3 = new PdfPCell();
+                cellbucle(cell3,p3,Element.ALIGN_MIDDLE,Element.ALIGN_CENTER);
                 cell3.setPaddingBottom(8);
-                cell3.setPaddingTop(5);
-                cell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
-                cell3.setHorizontalAlignment(Element.ALIGN_MIDDLE);
-                cell3.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
 
-                cell3.setBorderColor(BaseColor.WHITE);
-                cell3.setFixedHeight(20);
-                PdfPCell cell4 = new PdfPCell(p4);
+                PdfPCell cell4 = new PdfPCell();
+                cellbucle(cell4,p4,Element.ALIGN_MIDDLE,Element.ALIGN_RIGHT);
                 cell4.setPaddingBottom(8);
-                cell4.setPaddingTop(5);
-                cell4.setVerticalAlignment(Element.ALIGN_MIDDLE);
-                cell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
-                cell4.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
 
-                cell4.setBorderColor(BaseColor.WHITE);
-                cell4.setFixedHeight(25);
-                PdfPCell cell5 = new PdfPCell(p5);
-                cell5.setPaddingBottom(8);
-                cell5.setPaddingTop(5);
-                cell5.setVerticalAlignment(Element.ALIGN_MIDDLE);
-                cell5.setHorizontalAlignment(Element.ALIGN_RIGHT);
-                cell5.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
-
-                cell5.setBorderColor(BaseColor.WHITE);
-                cell5.setFixedHeight(25);
+                PdfPCell cell5 = new PdfPCell();
+                cellbucle(cell5,p5,Element.ALIGN_MIDDLE,Element.ALIGN_RIGHT);
 
 
 
 
                 Atable.addCell(cell);
-
                 Atable.addCell(cell1);
                 Atable.addCell(cell4);
                 Atable.addCell(cell3);
                 Atable.addCell(cell2);
 
-                //      Atable.addCell(cell5);
 
-                //stamper.close();
 
             }
 
@@ -974,7 +887,7 @@ public class Pdfstructuredclass extends Activity {
 
             nestercell.addElement(Atable);
             nestercell2.addElement(Atable2);
-//            nestercell.addElement(Atable2);
+
             primarytable.addCell(nestercell);
             primarytable.addCell(nestercell2);
 
@@ -982,19 +895,14 @@ public class Pdfstructuredclass extends Activity {
 
 
 
-            //Atable.getDefaultCell().setBorder(Rectangle.NO_BORDER);
 
-
-            //  Atable.getDefaultCell().setBorderColor(BaseColor.WHITE);
 
 
             Atable.completeRow();
 
-//            mDoc.add(Atable);
-//           mDoc.add(Atable2);
             mDoc.add(primarytable);
 
-//            mDoc.close();
+
 
         } catch (Exception e) {
             Toast.makeText(context, "Fallo abc", Toast.LENGTH_SHORT).show();
@@ -1234,6 +1142,21 @@ public class Pdfstructuredclass extends Activity {
 
         return cellresumen;
 
+    }
+
+    public PdfPCell cellbucle(PdfPCell cellBucle,Paragraph p,int AlignmentV,int AlignmentH){
+        cellBucle.setPaddingBottom(8);
+        cellBucle.setPaddingTop(5);
+        cellBucle.setVerticalAlignment(AlignmentV);
+        cellBucle.setHorizontalAlignment(AlignmentH);
+        cellBucle.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
+//
+        cellBucle.setBorderColor(BaseColor.WHITE);
+
+        cellBucle.setFixedHeight(20);
+        cellBucle.addElement(p);
+
+        return cellBucle;
     }
 
 }
