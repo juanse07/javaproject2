@@ -149,7 +149,7 @@ public class Pdfstructuredclass extends Activity {
         Font regularAddress2 = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL, BaseColor.BLACK);
         Font regularSub = new Font(Font.FontFamily.COURIER, 6, Font.ITALIC, BaseColor.RED);
         Font regularTotal = new Font(Font.FontFamily.HELVETICA, 14, Font.ITALIC, BaseColor.BLACK);
-        Font regularTotal2 = new Font(Font.FontFamily.HELVETICA, 11, Font.ITALIC, BaseColor.BLACK);
+        Font regularTotal2 = new Font(Font.FontFamily.HELVETICA, 10, Font.ITALIC, BaseColor.BLACK);
         Font regularTotalBold = new Font(baseFont, 8, Font.BOLD, new BaseColor(128,128,128));
         Font regularTotalBold2 = new Font(baseFont, 8, Font.BOLD, new BaseColor(128,128,128));
         Font regularSub2 = new Font(Font.FontFamily.HELVETICA, 7, Font.NORMAL, BaseColor.GRAY);
@@ -832,34 +832,38 @@ public class Pdfstructuredclass extends Activity {
 
 
                 cell = new PdfPCell();
-                cellbucle(cell,p,Element.ALIGN_MIDDLE,Element.ALIGN_RIGHT);
+              PdfPCell  celda1= cellbucle(cell,p,Element.ALIGN_MIDDLE,Element.ALIGN_RIGHT);
+
 
                 PdfPCell cell1 = new PdfPCell();
-                cellbucle(cell1,p2,Element.ALIGN_MIDDLE,Element.ALIGN_RIGHT);
+                PdfPCell celda2= cellbucle(cell1,p2,Element.ALIGN_MIDDLE,Element.ALIGN_RIGHT);
+
 
 
                 PdfPCell cell2 = new PdfPCell();
-                cellbucle(cell2,p2,Element.ALIGN_MIDDLE,Element.ALIGN_RIGHT);
+                PdfPCell celda3=  cellbucle(cell2,p2,Element.ALIGN_MIDDLE,Element.ALIGN_RIGHT);
+
 
                 PdfPCell cell3 = new PdfPCell();
-                cellbucle(cell3,p3,Element.ALIGN_MIDDLE,Element.ALIGN_CENTER);
-                cell3.setPaddingBottom(8);
+                PdfPCell celda4=    cellbucle(cell3,p3,Element.ALIGN_MIDDLE,Element.ALIGN_CENTER);
+
+
 
                 PdfPCell cell4 = new PdfPCell();
-                cellbucle(cell4,p4,Element.ALIGN_MIDDLE,Element.ALIGN_RIGHT);
-                cell4.setPaddingBottom(8);
 
-                PdfPCell cell5 = new PdfPCell();
-                cellbucle(cell5,p5,Element.ALIGN_MIDDLE,Element.ALIGN_RIGHT);
+                PdfPCell celda5=  cellbucle(cell4,p4,Element.ALIGN_MIDDLE,Element.ALIGN_RIGHT);
 
 
 
 
-                Atable.addCell(cell);
-                Atable.addCell(cell1);
-                Atable.addCell(cell4);
-                Atable.addCell(cell3);
-                Atable.addCell(cell2);
+
+
+
+                Atable.addCell(celda1);
+                Atable.addCell(celda2);
+                Atable.addCell(celda5);
+                Atable.addCell(celda4);
+                Atable.addCell(celda3);
 
 
 
@@ -1145,13 +1149,12 @@ public class Pdfstructuredclass extends Activity {
     }
 
     public PdfPCell cellbucle(PdfPCell cellBucle,Paragraph p,int AlignmentV,int AlignmentH){
-        cellBucle.setPaddingBottom(8);
-        cellBucle.setPaddingTop(5);
+//        cellBucle.setPaddingBottom(8);
+//        cellBucle.setPaddingTop(5);
         cellBucle.setVerticalAlignment(AlignmentV);
         cellBucle.setHorizontalAlignment(AlignmentH);
-        cellBucle.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
+        cellBucle.setBorder(Rectangle.NO_BORDER);
 //
-        cellBucle.setBorderColor(BaseColor.WHITE);
 
         cellBucle.setFixedHeight(20);
         cellBucle.addElement(p);
