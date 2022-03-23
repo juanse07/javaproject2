@@ -26,22 +26,6 @@
     </com.github.barteksc.pdfviewer.PDFView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButtonv3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginEnd="29dp"
-        android:layout_marginRight="29dp"
-        android:layout_marginBottom="20dp"
-        android:clickable="true"
-        android:onClick="wzp"
-        app:backgroundTint="#3BE159"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButtonviewer"
-        app:srcCompat="@drawable/ic_whatsapp"
-        app:tint="@color/colorGrisclaro" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButtonviewer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

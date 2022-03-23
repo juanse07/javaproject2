@@ -75,45 +75,40 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
     private PDFView pdfView;
     ImageView back1;
     private File file;
-    RoundedBorder roundedBorder;
-    PdfPCell cell;
+    int comprobarpdf;
+
+
     Pdfstructuredclass pdfstructuredclass=new Pdfstructuredclass();
+    Pdfbasicclass pdfbasicclass=new Pdfbasicclass();
 
 
     TextView title6;
     BaseFont baseFont=null;
     Uri pdfUri;
-    PdfPTable tableFooter;
-    List<Note>Listadobles2;
-    ArrayList<arrayconstructor>Listadobles3;
-    Map<String,String>RecibirNoteprod;
-    ArrayList<Double> ListaCuero;
+
+
     ArrayList<Double> listacuero3;
-    AdaptadorProductoGuardado adpt1=new AdaptadorProductoGuardado();
+
     NoteProdViewModel noteProdViewModel;
     DecimalFormat format = new DecimalFormat("###,###,##0");
-    String SumaResultado;
-    String Invoice,Receipt,Quote,Days,Terms,Customer,Product,Date,Due_Date,Total,Subtotal,Info_Fac,List_Products,
-            Quantity,Price,Tax;
+
 
     StorageReference storageReference;
 
 
-    PdfWriter writer1, writer2;
 
-    FirebaseDatabase mydatabase = FirebaseDatabase.getInstance();
 
-    //ShareViewModel2 shareViewModel2;
+
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-    //String fechaventas2;
+
     Document mDoc = new Document(PageSize.LETTER,36,36,53,56);
 
-//   String horaventas2;
+//
     String productoventas2;
-//    String unidadesventas2;
+
     String precioventas2;
-//    String medidaventas2;
+
   String valorventas2;
   double valorbr;
     double ValorImp;
@@ -130,14 +125,12 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
     DatabaseReference myrootDbaseref5;
     FirebaseStorage mystorage;
     FirebaseAuth mAuth;
-    NoteViewModel noteViewModel;
-    ArrayList<Note>noteArralist=new ArrayList<>();
+
     ArrayList<String>List1,Lista7;
     ArrayList<Double>List2,List3,List4;
-    byte[] outputstream2;
-    //Button btactualizarpdf;
+
    String nombreventas2;
-   String CantProd;
+
     String pattern = "EEEEE MMMMM yyyy HH:mm:ss.SSSZ";
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "US"));
     String mFilename = simpleDateFormat.format(System.currentTimeMillis());
@@ -150,8 +143,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
     String hora2 = hora1.format(calendar.getTime());
  String mFilepath = Environment.getExternalStorageDirectory() +   File.separator+ "PyMESoft"+
   File.separator+"invoices"+File.separator +mFilename.toString().replaceAll(":",".");
- File filepath2;
-    File file2;
+
 
    // byte[] outputStream = new ByteArrayOutputStream();
     byte[] outputStream2;
@@ -177,87 +169,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
                 onBackPressed();
             }
         });
-//        noteViewModel=new ViewModelProvider(this).get(NoteViewModel.class);
-//        noteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
-//            @Override
-//            public void onChanged(List<Note> notes) {
-//                Listadobles2=notes;
-//            }
-//        });
-        Invoice=getResources().getString(R.string.Invoice);
-        Receipt=getResources().getString(R.string.Receipts);
-        Quote=getResources().getString(R.string.Quote);
-        Days=getResources().getString(R.string.Days);
-        Terms=getResources().getString(R.string.Payment_Term);
-        Customer=getResources().getString(R.string.Costumers);
-        Product=getResources().getString(R.string.Product_Name);
-        Date=getResources().getString(R.string.Date);
-        Due_Date=getResources().getString(R.string.Due_Date);
-        Total=getResources().getString(R.string.Total);
-        Subtotal=getResources().getString(R.string.Subtotal);
-        Info_Fac=getResources().getString(R.string.Invoice_info);
-        List_Products=getResources().getString(R.string.Doc_list);
-        Quantity = getResources().getString(R.string.Quantity);
-        Price=getResources().getString(R.string.Price);
-        Tax=getResources().getString(R.string.Tax);
 
-
-        listacuero3= (ArrayList<Double>) getIntent().getSerializableExtra("WLTP_list");
-
-       // gnombre2.setText(getIntent().getExtras().getString("Nombre1"));
-        nombreventas2=getIntent().getExtras().getString("Nombre1");
-//        RecibirNoteprod=(Map<String,String>).getSerializableExtra("mapa");
-
-
-        fechaventas2= getIntent().getExtras().getString("Fecha1").trim();
-
-//         horaventas2=getIntent().getExtras().getString("Hora1");
-
-        productoventas2=getIntent().getExtras().getString("Producto1");
-
-        List1= (ArrayList<String>) getIntent().getSerializableExtra("listaProd1");
-        List2= (ArrayList<Double>) getIntent().getSerializableExtra("listaPre1");
-        List3= (ArrayList<Double>) getIntent().getSerializableExtra("listaCant1");
-        List4= (ArrayList<Double>) getIntent().getSerializableExtra("listaResultado");
-//        List5= (ArrayList<Double>) getIntent().getSerializableExtra("ListaImp");
-//        List6=(ArrayList<Double>) getIntent().getSerializableExtra("ListaRimp");
-        Lista7=(ArrayList<String>) getIntent().getSerializableExtra("ListaDesc");
-
-        valorbr=getIntent().getExtras().getDouble("valorbruto");
-        ValorImp=getIntent().getExtras().getDouble("valorimp");
-        ValorImp2=getIntent().getExtras().getDouble("valorimp2");
-        ValorDesc=getIntent().getExtras().getDouble("valordesc");
-        TaxValue=getIntent().getExtras().getDouble("impuestopercent");
-        TaxValue2=getIntent().getExtras().getDouble("impuesto2percent");
-        DiscountValue=getIntent().getExtras().getDouble("descpercent");
-        valorneto=getIntent().getExtras().getDouble("valorneto");
-        pdfphone=getIntent().getExtras().getString("pdfphone");
-        pdfemail= getIntent().getExtras().getString("pdfemail");
-        pdfaddress=getIntent().getExtras().getString("pdfaddress");
-        pdfcity=getIntent().getExtras().getString("pdfcity");
-//        SumaResultado=getIntent().getExtras().getString("Total1");
-
-
-
-
-
-
-//        unidadesventas2=getIntent().getExtras().getString("Unidades1");
-
-       precioventas2=getIntent().getExtras().getString("Precio1");
-
-//       medidaventas2=getIntent().getExtras().getString("Medida1");
-//
-   valorventas2=getIntent().getExtras().getString("Total1");
-
-    estadoventas2=getIntent().getExtras().getString("Estado1");
-     Fecha2 =getIntent().getExtras().getString("Fecha2").trim();
-        //outputStream2=getIntent().getExtras().getByteArray("wpa");
-
-
-
-//        horareal2=hora2;
-   diaspago=Constants.getSP(this).getDIAS();
 
         myrootDbaseref5 = FirebaseDatabase.getInstance().getReference();
 
@@ -276,36 +188,31 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
             } else {
                 try {
+
+                    RecibirBundleFragment3();
+                        if(comprobarpdf==1){
+                            pdfbasicclass.createpdf(pdfviewer3.this,productoventas2,precioventas2,valorventas2,
+                                    valorbr,valorneto,fechaventas2,estadoventas2,diaspago,Fecha2,nombreventas2,
+                                    Lista7,List1,List2,List3,List4,outputStream, mFilepath,ValorDesc,ValorImp,ValorImp2,
+                                    DiscountValue,TaxValue,TaxValue2,pdfphone,pdfemail,pdfaddress,pdfcity);
+                        }
+                        else if(comprobarpdf==0){
                     pdfstructuredclass.createstructuredpdf(pdfviewer3.this,productoventas2,precioventas2,valorventas2,
                             valorbr,valorneto,fechaventas2,estadoventas2,diaspago,Fecha2,nombreventas2,
                             Lista7,List1,List2,List3,List4,outputStream, mFilepath,ValorDesc,ValorImp,ValorImp2,
                             DiscountValue,TaxValue,TaxValue2,pdfphone,pdfemail,pdfaddress,pdfcity);
+                        }
 
-                 //   savepdf();
+
                 } catch (DocumentException e) {
                     Toast.makeText(this, "no inicia", Toast.LENGTH_SHORT).show();
                 }
-//                Toast.makeText(this, "Fallo permiso", Toast.LENGTH_SHORT).show();
 
-
-//                try {
-//                    savepdf();
-//                } catch (DocumentException e) {
-//                    e.printStackTrace();
-//                    Toast.makeText(this, "Fallo a1", Toast.LENGTH_SHORT).show();
-//                }
 
             }
         } else {
 
-//            outputStream = new ByteArrayOutputStream();
-//
-//            try {
-//                savepdf();
-//            } catch (DocumentException e) {
-//                e.printStackTrace();
-//                Toast.makeText(this, "Fallo a2", Toast.LENGTH_SHORT).show();
-//            }
+
 
 
 
@@ -346,7 +253,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
 
 
-        //Intent intent=getIntent();
+
 
 
 
@@ -359,6 +266,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
 
     public void compartir(View view) throws IOException {
+        RecibirBundleFragment3();
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
                     PackageManager.PERMISSION_DENIED) {
@@ -368,25 +276,23 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
             } else {
 
-                //new PdfSave().execute();
+
 
 
             }
         } else {
 
-           // outputStream = new ByteArrayOutputStream();
 
 
 
 
-            //new PdfSave().execute();
+
+
 
 
         }
 
-       // OutputStream outputStream3 = new FileOutputStream (mFilepath);
-       // OutputStream outputStream4=outputStream2.
-       // outputStream2.writeTo(outputStream3);
+
 
 
 
@@ -408,12 +314,18 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
         }
 
+        if(comprobarpdf==1){
+            file=new File(pdfbasicclass.getfile2().getAbsolutePath());
 
-        File file=new File(pdfstructuredclass.getfile2().getAbsolutePath());
+        }else if(comprobarpdf==0){
+             file=new File(pdfstructuredclass.getfile2().getAbsolutePath());
+
+        }
+
         Uri pdfUri = Uri.fromFile(file);
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
-        //shareIntent.putExtra(Intent.EXTRA_TEXT, text);
+
         shareIntent.putExtra(Intent.EXTRA_STREAM, pdfUri);
         shareIntent.setType("application/pdf");
         shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -443,76 +355,6 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
     }
 
-    public void wzp(View view) {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                    PackageManager.PERMISSION_DENIED) {
-                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                requestPermissions(permissions, REQUEST_CODE_ASK_PERMISSIONS);
-
-
-            } else {
-
-                //new PdfSave().execute();
-
-
-
-            }
-        } else {
-
-            // outputStream = new ByteArrayOutputStream();
-
-
-
-
-            //new PdfSave().execute();
-
-
-        }
-
-
-        if (Build.VERSION.SDK_INT >= 24) {
-
-            try {
-
-                //For API's > 24, runtime exception occurs when a URI is exposed BEYOND this particular app that you are writing (AKA when user attempts to open in device/emulator
-
-                Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
-
-                m.invoke(null);
-
-            } catch (Exception e) {
-
-                e.printStackTrace();
-
-            }
-
-        }
-        File file=new File(pdfstructuredclass.getfile2().getAbsolutePath());
-
-        Uri pdfUri = Uri.fromFile(file);
-        Intent shareIntent = new Intent();
-        shareIntent.setAction(Intent.ACTION_SEND);
-        //shareIntent.putExtra(Intent.EXTRA_TEXT, text);
-        shareIntent.putExtra(Intent.EXTRA_STREAM, pdfUri);
-        shareIntent.setType("application/pdf");
-        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        shareIntent.setPackage("com.whatsapp");
-
-
-        try {
-
-            startActivity(Intent.createChooser(shareIntent, "share"));
-        } catch (ActivityNotFoundException e) {
-
-            // Instruct the user to install a PDF reader here, or something
-
-            //}
-
-
-        }
-
-    }
 
     @Override
     public void OnaddClick(double getinput) {
@@ -521,13 +363,13 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
     @Override
     public void outputClick(ArrayList<Double> Lista5) {
-        //ListaCuero=Lista5;
+
 
     }
 
     @Override
     public void streamclick(ByteArrayOutputStream outputStream) {
-        ///outputStream=outputStream2;
+
     }
 
 
@@ -541,12 +383,23 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
                     //new PdfSave().execute();
                   try {
-                      pdfstructuredclass.createstructuredpdf(pdfviewer3.this,productoventas2,precioventas2,valorventas2,
-                              valorbr,valorneto,fechaventas2,estadoventas2,diaspago,Fecha2,nombreventas2,
-                              Lista7,List1,List2,List3,List4,outputStream, mFilepath,ValorDesc,ValorImp,ValorImp2,DiscountValue,TaxValue,TaxValue2,
-                              pdfphone,pdfemail,pdfaddress,pdfcity);
+                      RecibirBundleFragment3();
+                      if(comprobarpdf==0){
+                          pdfstructuredclass.createstructuredpdf(pdfviewer3.this,productoventas2,precioventas2,valorventas2,
+                                  valorbr,valorneto,fechaventas2,estadoventas2,diaspago,Fecha2,nombreventas2,
+                                  Lista7,List1,List2,List3,List4,outputStream, mFilepath,ValorDesc,ValorImp,ValorImp2,DiscountValue,TaxValue,TaxValue2,
+                                  pdfphone,pdfemail,pdfaddress,pdfcity);
 
-                     // savepdf();
+
+                      }else if(comprobarpdf==1){
+                          pdfbasicclass.createpdf(pdfviewer3.this,productoventas2,precioventas2,valorventas2,
+                                  valorbr,valorneto,fechaventas2,estadoventas2,diaspago,Fecha2,nombreventas2,
+                                  Lista7,List1,List2,List3,List4,outputStream, mFilepath,ValorDesc,ValorImp,ValorImp2,DiscountValue,TaxValue,TaxValue2,
+                                  pdfphone,pdfemail,pdfaddress,pdfcity);
+
+                      }
+
+
                     } catch (DocumentException e) {
                         e.printStackTrace();
                     }
@@ -580,7 +433,16 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
     }
 
-    public void uploadpdf(Uri pdfUri) {
+    public void uploadpdf(File file) {
+
+
+        if(comprobarpdf==1){
+            file=new File(pdfbasicclass.getfile2().getAbsolutePath());
+
+        }else if(comprobarpdf==0){
+             file=new File(pdfstructuredclass.getfile2().getAbsolutePath());
+
+        }
 
         mAuth=FirebaseAuth.getInstance();
         String id=mAuth.getCurrentUser().getUid();
@@ -588,7 +450,7 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
 
 
        // pdfUri = Uri.fromFile(new File(pdfFile.getAbsolutePath()))
-        pdfUri = Uri.fromFile(pdfstructuredclass.getfile2());
+        pdfUri = Uri.fromFile(file);
 
 
 
@@ -663,13 +525,13 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
                 requestPermissions(permissions, REQUEST_CODE_ASK_PERMISSIONS_2);
 
             } else {
-                uploadpdf(pdfUri);
+                uploadpdf(file);
 
             }
 
 
         } else {
-            uploadpdf(pdfUri);
+            uploadpdf(file);
         }
 
 
@@ -680,22 +542,75 @@ public class pdfviewer3 extends AppCompatActivity  implements Interface2 {
         ///////////////////////
     }
 
+    public void RecibirBundleFragment3(){
 
-class RoundedBorder implements PdfPCellEvent{
+        comprobarpdf=Constants.getSP(this).getPDFPOSITION();
 
-    @Override
-    public void cellLayout(PdfPCell cell, Rectangle position, PdfContentByte[] canvases) {
-        PdfContentByte cb = canvases[PdfPTable.LINECANVAS];
-        cb.roundRectangle(
-                position.getLeft() + 1.5f,
-                position.getBottom() + 1.5f,
-                position.getWidth() - 3,
-                position.getHeight() - 3, 4
-        );
-        cb.stroke();
+
+        listacuero3= (ArrayList<Double>) getIntent().getSerializableExtra("WLTP_list");
+
+        // gnombre2.setText(getIntent().getExtras().getString("Nombre1"));
+        nombreventas2=getIntent().getExtras().getString("Nombre1");
+//        RecibirNoteprod=(Map<String,String>).getSerializableExtra("mapa");
+
+
+        fechaventas2= getIntent().getExtras().getString("Fecha1").trim();
+
+//         horaventas2=getIntent().getExtras().getString("Hora1");
+
+        productoventas2=getIntent().getExtras().getString("Producto1");
+
+        List1= (ArrayList<String>) getIntent().getSerializableExtra("listaProd1");
+        List2= (ArrayList<Double>) getIntent().getSerializableExtra("listaPre1");
+        List3= (ArrayList<Double>) getIntent().getSerializableExtra("listaCant1");
+        List4= (ArrayList<Double>) getIntent().getSerializableExtra("listaResultado");
+//        List5= (ArrayList<Double>) getIntent().getSerializableExtra("ListaImp");
+//        List6=(ArrayList<Double>) getIntent().getSerializableExtra("ListaRimp");
+        Lista7=(ArrayList<String>) getIntent().getSerializableExtra("ListaDesc");
+
+        valorbr=getIntent().getExtras().getDouble("valorbruto");
+        ValorImp=getIntent().getExtras().getDouble("valorimp");
+        ValorImp2=getIntent().getExtras().getDouble("valorimp2");
+        ValorDesc=getIntent().getExtras().getDouble("valordesc");
+        TaxValue=getIntent().getExtras().getDouble("impuestopercent");
+        TaxValue2=getIntent().getExtras().getDouble("impuesto2percent");
+        DiscountValue=getIntent().getExtras().getDouble("descpercent");
+        valorneto=getIntent().getExtras().getDouble("valorneto");
+        pdfphone=getIntent().getExtras().getString("pdfphone");
+        pdfemail= getIntent().getExtras().getString("pdfemail");
+        pdfaddress=getIntent().getExtras().getString("pdfaddress");
+        pdfcity=getIntent().getExtras().getString("pdfcity");
+//        SumaResultado=getIntent().getExtras().getString("Total1");
+
+
+
+
+
+
+//        unidadesventas2=getIntent().getExtras().getString("Unidades1");
+
+        precioventas2=getIntent().getExtras().getString("Precio1");
+
+//       medidaventas2=getIntent().getExtras().getString("Medida1");
+//
+        valorventas2=getIntent().getExtras().getString("Total1");
+
+        estadoventas2=getIntent().getExtras().getString("Estado1");
+        Fecha2 =getIntent().getExtras().getString("Fecha2").trim();
+        //outputStream2=getIntent().getExtras().getByteArray("wpa");
+
+
+
+//        horareal2=hora2;
+        diaspago=Constants.getSP(this).getDIAS();
+
+
+
     }
 
-}
+
+
+
 
 
 

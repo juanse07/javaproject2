@@ -204,19 +204,15 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
 
             } else {
-                try {
 
-                    //savepdf();
-                    RecibirBundleFragment3();
-                    pdfbasicclass.createpdf(pdfviewer2.this,productoventas2,precioventas2,valorventas2,
-                            valorbr,valorneto,fechaventas2,estadoventas2,diaspago,Fecha2,nombreventas2,
-                            Lista7,List1,List2,List3,List4,outputStream, mFilepath);
-                    String qaz="Yeahh";
-                    Log.d("Succesfull try!!!!",qaz);
-                } catch (DocumentException e) {
-                    Toast.makeText(this, "no inicia", Toast.LENGTH_SHORT).show();
-                }
-//                Toast.makeText(this, "Fallo permiso", Toast.LENGTH_SHORT).show();
+                //savepdf();
+                RecibirBundleFragment3();
+//                    pdfbasicclass.createpdf(pdfviewer2.this,productoventas2,precioventas2,valorventas2,
+//                            valorbr,valorneto,fechaventas2,estadoventas2,diaspago,Fecha2,nombreventas2,
+//                            Lista7,List1,List2,List3,List4,outputStream, mFilepath);
+                String qaz="Yeahh";
+                Log.d("Succesfull try!!!!",qaz);
+                //                Toast.makeText(this, "Fallo permiso", Toast.LENGTH_SHORT).show();
 
 
 //                try {
@@ -471,19 +467,15 @@ public class pdfviewer2 extends AppCompatActivity  implements Interface2 {
 
 
                     //new PdfSave().execute();
-                  try {
-//                       savepdf();
-                      RecibirBundleFragment3();
+                    //                       savepdf();
+                    RecibirBundleFragment3();
 
-
-                      pdfbasicclass.createpdf(pdfviewer2.this,productoventas2,precioventas2,valorventas2,
-                              valorbr,valorneto,fechaventas2,estadoventas2,diaspago,Fecha2,nombreventas2,
-                              Lista7,List1,List2,List3,List4,outputStream, mFilepath);
-                      String qaz="Yeahh";
-                      Log.d("Succesfull try!!!!",qaz);
-                    } catch (DocumentException e) {
-                        e.printStackTrace();
-                    }
+//
+//                      pdfbasicclass.createpdf(pdfviewer2.this,productoventas2,precioventas2,valorventas2,
+//                              valorbr,valorneto,fechaventas2,estadoventas2,diaspago,Fecha2,nombreventas2,
+//                              Lista7,List1,List2,List3,List4,outputStream, mFilepath);
+                    String qaz="Yeahh";
+                    Log.d("Succesfull try!!!!",qaz);
 
 
                     Toast.makeText(this, "Permiso concedido", Toast.LENGTH_SHORT).show();

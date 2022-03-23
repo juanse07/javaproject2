@@ -273,6 +273,7 @@ public class Pdfstructuredclass extends Activity {
             }
             if (radiotipo.equals("Rectangular")&&estadoventas2.equals(context.getResources().getString(R.string.Draft))){
                 TopSide(regularReportA,regularTotalBold,diaspago,Quote,Days,factucell);
+                factudatatop(TableTitulo,40,60);
 
                 imagecell.addElement(LogoImage(160f,70f));
             }else if(radiotipo.equals("Cuadrado")&&estadoventas2.equals(context.getResources().getString(R.string.Draft))) {
@@ -666,7 +667,7 @@ public class Pdfstructuredclass extends Activity {
             desc.setAlignment(Element.ALIGN_CENTER);
             Paragraph Netvalue=new Paragraph(Total,regularTotalBold);
             Netvalue.setAlignment(Element.ALIGN_MIDDLE);
-
+/////se crean los párrafos de la parte baja del total////
             Paragraph Total=new Paragraph(context.getResources().getString(R.string.Total),regularTotalBold);
             Paragraph Psubtotal=new Paragraph(context.getResources().getString(R.string.Subtotal),regularTotalBold);
             Paragraph Pdiscount=new Paragraph(context.getResources().getString(R.string.Discount)+" "+"("+DiscountValue+")"+"%",regularTotalBold);
@@ -674,7 +675,7 @@ public class Pdfstructuredclass extends Activity {
             Paragraph Ptx2=new Paragraph(context.getResources().getString(R.string.Tax2)+" "+"("+TaxValue2+"%"+")",regularTotalBold);
             String Valorfooter=valorventas2;
 
-/////se crean los párrafos de la parte baja del total////
+
             DecimalFormat formatter3 = new DecimalFormat("###,###,##0");
             Paragraph Totalvalue=new Paragraph(String.valueOf(formatter3.format(valorneto))+" USD",regularTotalBold);
             Totalvalue.setAlignment(Element.ALIGN_RIGHT);

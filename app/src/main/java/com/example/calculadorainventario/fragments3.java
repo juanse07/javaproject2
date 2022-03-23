@@ -419,22 +419,16 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
                             Log.d("valorde", Pdftipo);
 
 
-                            if (pdfposition == 1) {
-                                Intent intent;
-                                intent = new Intent(fragments3.this, pdfviewer2.class);
-                                pdfbutton(intent);
 
-                                startActivity(intent);
-
-                            } else if (pdfposition == 0) {
                                 Intent intent;
+
 
                                 intent = new Intent(fragments3.this, pdfviewer3.class);
                                 pdfbutton(intent);
 
                                 startActivity(intent);
 
-                            }
+
 
 
                         }
@@ -491,22 +485,7 @@ public class fragments3 extends AppCompatActivity implements ClickInterface1 {
             @Override
             public void onChanged(@Nullable String resultado) {
                 int i = Integer.parseInt(resultado);
-//                if(badgeDrawable.hasNumber()) {
 //
-//                    badgeDrawable.setVisible(true);
-//                    badgeDrawable.setNumber(ListaProd.size());
-//                    badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getApplicationContext(), R.color.mdtp_white));
-//
-//                    badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolor));
-//
-//
-//               }else {
-//
-//                    badgeDrawable.setVisible(false);
-////                    badgeDrawable.setNumber(i);
-////                    badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolotransparentr));
-////                    badgeDrawable.setBadgeTextColor(ContextCompat.getColor(getApplicationContext(), R.color.purplecolotransparentr));
-//             }
 //
 
 
