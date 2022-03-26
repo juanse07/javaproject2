@@ -658,11 +658,12 @@ public class Pdfbasicclass extends Activity {
 //
             Atable.setTotalWidth(new float[] { 27, 10,10,53,10 });
             Atable.setHorizontalAlignment(Element.ALIGN_LEFT);
-            Atable.setWidthPercentage(90);
+            Atable.setWidthPercentage(100);
             Atable.setSpacingAfter(10);
             PdfPTable Atable2 = new PdfPTable(2);
-            Atable2.setHorizontalAlignment(Element.ALIGN_LEFT);
-            Atable2.setWidthPercentage(90);
+            Atable2.setTotalWidth(new float[]{50,50});
+            Atable2.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            Atable2.setWidthPercentage(40);
             Atable2.setSpacingAfter(20);
 //            PdfPTable Atable3 = new PdfPTable(1);
 //            Atable3.setHorizontalAlignment(Element.ALIGN_RIGHT);
@@ -781,21 +782,21 @@ public class Pdfbasicclass extends Activity {
 
             PdfPCell cellDiscount = new PdfPCell();
             PdfPCell celdaDiscountT=cellresume(cellDiscount,Pdiscount);
-            celdaDiscountT.setBackgroundColor(new BaseColor(235,236,240));
+//            celdaDiscountT.setBackgroundColor(new BaseColor(235,236,240));
 
             PdfPCell cellDiscountV = new PdfPCell();
             PdfPCell celdaDiscountV=cellresume(cellDiscountV,DiscountValue2);
 
             PdfPCell cellTx1 = new PdfPCell();
             PdfPCell celdaTx1=cellresume(cellTx1,Ptx1);
-            celdaTx1.setBackgroundColor(new BaseColor(235,236,240));
+//            celdaTx1.setBackgroundColor(new BaseColor(235,236,240));
 
             PdfPCell cellTx1V = new PdfPCell();
             PdfPCell celdaTx1V=cellresume(cellTx1V,Tx1Value);
 
             PdfPCell cellTx2 = new PdfPCell();
             PdfPCell celdaTx2=cellresume(cellTx2,Ptx2);
-            celdaTx2.setBackgroundColor(new BaseColor(235,236,240));
+//            celdaTx2.setBackgroundColor(new BaseColor(235,236,240));
 
 
             PdfPCell cellTx2V = new PdfPCell();
@@ -1146,12 +1147,12 @@ public class Pdfbasicclass extends Activity {
 
     }
     public PdfPCell cellresume(PdfPCell cell1,Paragraph p){
-        cell1.setPaddingBottom(8);
-        cell1.setPaddingTop(5);
+//        cell1.setPaddingBottom(8);
+//        cell1.setPaddingTop(5);
         cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
-        cell1.setHorizontalAlignment(Element.ALIGN_LEFT);
+        cell1.setHorizontalAlignment(Element.ALIGN_RIGHT);
         cell1.setBorderColor(BaseColor.WHITE);
-        cell1.setFixedHeight(25);
+        cell1.setFixedHeight(18);
         cell1.addElement(p);
         return cell1;
     }

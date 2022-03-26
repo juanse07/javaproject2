@@ -1,8 +1,10 @@
 package com.example.calculadorainventario.Adapadores;
 
+import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.calculadorainventario.ClickInterface1;
@@ -21,7 +24,9 @@ import com.example.calculadorainventario.Downloadpdfclass;
 import com.example.calculadorainventario.HomeNote;
 import com.example.calculadorainventario.R;
 import com.example.calculadorainventario.Repositorio1;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -39,7 +44,9 @@ import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.view.menu.MenuView;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceadapterclass.ViewHolder>implements Filterable {
@@ -97,6 +104,13 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
     public void onBindViewHolder(@NonNull final homeinvoiceadapterclass.ViewHolder holder, final int position) {
 
         DecimalFormat formatter = new DecimalFormat("###,###,##0");
+        holder.cardhomely.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              ;
+                showdialog(holder.txinvdate2, holder.itemView,position);
+            }
+        });
 
         holder.txinvname.setText(listhome.get(position).getCliente());
         holder.txinvdate.setText(listhome.get(position).getFecha());
@@ -132,6 +146,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
         String inputString1 = fecc.format(calendar.getTimeInMillis());
         String inputString2 = listhome.get(position).getFechaparapago();
         String inputString3 = listhome.get(position).getFecha();
+
 
        // NumberFormat dc = NumberFormat.getCurrencyInstance(Locale.US);
         //dc.setMaximumFractionDigits(0);
@@ -427,6 +442,9 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
         CardView cvdate2,cvstate;
         String Fechapago,Fechaventa,tipodoc;
         MaterialCardView mtpdf;
+        LinearLayout cardhomely;
+
+
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -439,6 +457,8 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
             txinvstate=itemView.findViewById(R.id.txinvstate);
             cvdate2=itemView.findViewById(R.id.cvdate2);
             cvstate=itemView.findViewById(R.id.cvstate);
+            cardhomely=itemView.findViewById(R.id.cardhomely);
+
 //            imgvpdf=itemView.findViewById(R.id.imgvpdf);
             mtpdf=itemView.findViewById(R.id.mtpdf);
 
@@ -462,6 +482,41 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
         final String id = mAuth.getCurrentUser().getUid();
         ref = FirebaseDatabase.getInstance().getReference().child("VENTAS").child(id).child(key);
         ref.removeValue();
+
+    }
+    private  void showdialog(final TextView textview,View itemview,int position){
+        TextView txnombre,txdate1,txdate2,txestado,txdias,txtotal;
+        LinearLayout Dialogdeletely;
+        ImageView Deleteicon;
+        AlertDialog.Builder builder=new AlertDialog.Builder(itemview.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
+        ;
+        final View view=LayoutInflater.from(itemview.getContext()).inflate(R.layout.deleteandoptionsrecycler,(ConstraintLayout)itemview.findViewById(R.id.opconstraint));
+        builder.setView(view);
+
+        txnombre= view.findViewById(R.id.dialognametx);
+        txdate1=view.findViewById(R.id.dialogdatetx);
+        txdate2=view.findViewById(R.id.dialogddatetx);
+        txestado=view.findViewById(R.id.dialogtipetx);
+        txdias=view.findViewById(R.id.dialogdaystx);
+        txtotal=view.findViewById(R.id.dialogtotaltx);
+        Dialogdeletely=view.findViewById(R.id.dialogdeletely);
+        Deleteicon=view.findViewById(R.id.deleteicon);
+        txnombre.setText(listhome.get(position).getCliente());
+        txdate1.setText(listhome.get(position).getFecha());
+        txdate2.setText(listhome.get(position).getFechaparapago());
+        txestado.setText(listhome.get(position).getEstado());
+        txdias.setText(textview.getText());
+        txtotal.setText(listhome.get(position).getValor());
+        Deleteicon.setImageResource(R.drawable.ic_baseline_remove_circle_outline_18_red);
+
+
+
+        final AlertDialog alertDialog=builder.create();
+        if(alertDialog.getWindow() !=null){
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+
+        alertDialog.show();
 
     }
 
