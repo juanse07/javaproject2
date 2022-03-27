@@ -6,6 +6,7 @@
         <string name="Purchase">Compra</string>
         <string name="Discount">Descuento</string>
         <string name="Save">Guardar</string>
+        <string name="Delete">Eliminar</string>
 
         <string name="Invoice">Factura de Venta</string>
         <string name="Draft">Borrador</string>
@@ -99,6 +100,7 @@
         <string name="Close">Close</string>
         <string name="facebook_app_id">615672052643545</string>
         <string name="fb_login_protocol_scheme">fb615672052643545</string>
+
 
         <!-- TODO: Remove or change this placeholder text -->
         <string name="hello_blank_fragment">Hello blank fragment</string>

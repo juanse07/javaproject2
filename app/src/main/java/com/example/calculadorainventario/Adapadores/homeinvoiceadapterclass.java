@@ -17,6 +17,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.calculadorainventario.ClickInterface1;
 import com.example.calculadorainventario.Constructores.constcards;
@@ -104,11 +105,19 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
     public void onBindViewHolder(@NonNull final homeinvoiceadapterclass.ViewHolder holder, final int position) {
 
         DecimalFormat formatter = new DecimalFormat("###,###,##0");
+        holder.cardhomely.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                showdialog(holder.txinvdate2, holder.itemView,position);
+
+                return true;
+            }
+        });
         holder.cardhomely.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
               ;
-                showdialog(holder.txinvdate2, holder.itemView,position);
+               // showdialog(holder.txinvdate2, holder.itemView,position);
             }
         });
 
@@ -248,7 +257,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
         holder.mtpdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listhome.get(position).getKey();
+                listhome.get(position).getKey_fire();
 
 
 
@@ -478,20 +487,22 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
         listhome.get(position);
 
 
-        String key=listhome.get(position).getKey();
+        String key=listhome.get(position).getKey_fire();
         final String id = mAuth.getCurrentUser().getUid();
         ref = FirebaseDatabase.getInstance().getReference().child("VENTAS").child(id).child(key);
         ref.removeValue();
 
     }
-    private  void showdialog(final TextView textview,View itemview,int position){
+    private  void showdialog(final TextView textview, final View itemview, final int position){
         TextView txnombre,txdate1,txdate2,txestado,txdias,txtotal;
         LinearLayout Dialogdeletely;
         ImageView Deleteicon;
+        MaterialButton mtbdelete,mtbdismiss;
         AlertDialog.Builder builder=new AlertDialog.Builder(itemview.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
         ;
         final View view=LayoutInflater.from(itemview.getContext()).inflate(R.layout.deleteandoptionsrecycler,(ConstraintLayout)itemview.findViewById(R.id.opconstraint));
         builder.setView(view);
+        final AlertDialog alertDialog=builder.create();
 
         txnombre= view.findViewById(R.id.dialognametx);
         txdate1=view.findViewById(R.id.dialogdatetx);
@@ -499,19 +510,35 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
         txestado=view.findViewById(R.id.dialogtipetx);
         txdias=view.findViewById(R.id.dialogdaystx);
         txtotal=view.findViewById(R.id.dialogtotaltx);
-        Dialogdeletely=view.findViewById(R.id.dialogdeletely);
-        Deleteicon=view.findViewById(R.id.deleteicon);
+        mtbdelete=view.findViewById(R.id.mtbdelete);
+        mtbdismiss=view.findViewById(R.id.mtbdismiss);
+
         txnombre.setText(listhome.get(position).getCliente());
         txdate1.setText(listhome.get(position).getFecha());
         txdate2.setText(listhome.get(position).getFechaparapago());
         txestado.setText(listhome.get(position).getEstado());
         txdias.setText(textview.getText());
         txtotal.setText(listhome.get(position).getValor());
-        Deleteicon.setImageResource(R.drawable.ic_baseline_remove_circle_outline_18_red);
+       mtbdismiss.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               alertDialog.dismiss();
+
+           }
+       });
+       mtbdelete.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+
+               getposicion(position);
+               Toast.makeText(itemview.getContext(),"El registro e ha eliminado",Toast.LENGTH_SHORT).show();
+               alertDialog.dismiss();
+           }
+       });
 
 
 
-        final AlertDialog alertDialog=builder.create();
+
         if(alertDialog.getWindow() !=null){
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
         }

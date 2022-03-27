@@ -176,7 +176,7 @@ public class homeadapterclass extends RecyclerView.Adapter<homeadapterclass.View
                 Intent intent = new Intent(v.getContext(), reminderAc.class);
                 intent.putExtra("cliente", holder.cardcliente.getText().toString());
                 intent.putExtra("producto", holder.cardproducto.getText().toString());
-                intent.putExtra("key", listhome.get(position).getKey());
+                intent.putExtra("key", listhome.get(position).getKey_fire());
                 intent.putExtra("precio", holder.cardprecio.getText().toString());
                 intent.putExtra("medida", holder.cardmedida.getText().toString());
                 intent.putExtra("valor", holder.cardvalor.getText().toString());

@@ -14,7 +14,7 @@ public class constcards {
     String pdfurl;
     String Estado;
 
-    String Key;
+    String Key_fire;
 
 
     String Dias_plazo;
@@ -123,12 +123,12 @@ public class constcards {
     public void setEstado(String estado) {
         Estado = estado;
     }
-    public String getKey() {
-        return Key;
+    public String getKey_fire() {
+        return Key_fire;
     }
 
-    public void setKey(String key) {
-        Key = key;
+    public void setKey_fire(String key_fire) {
+        Key_fire = key_fire;
     }
 //String VENTAS_Cliente;
     //String VENTAS_Fecha;

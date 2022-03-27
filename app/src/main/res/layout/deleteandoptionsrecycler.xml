@@ -7,8 +7,15 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mtbox"
         android:layout_width="250dp"
         android:layout_height="300dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="200dp"
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,8 +50,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_weight="13"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="15"
                     android:background="#FFFFFF"
                     android:orientation="horizontal"
                     android:weightSum="100">
@@ -80,7 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="2dp"
-                    android:layout_weight="13"
+                    android:layout_weight="15"
                     android:background="#FFFFFF"
                     android:orientation="horizontal"
                     android:weightSum="100">
@@ -116,7 +123,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="2dp"
-                    android:layout_weight="13"
+                    android:layout_weight="15"
                     android:background="#FFFFFF"
                     android:orientation="horizontal"
                     android:weightSum="100">
@@ -152,7 +159,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="2dp"
-                    android:layout_weight="13"
+                    android:layout_weight="15"
                     android:background="#FFFFFF"
                     android:orientation="horizontal"
                     android:weightSum="100">
@@ -188,7 +195,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="2dp"
-                    android:layout_weight="13"
+                    android:layout_weight="15"
                     android:background="#FFFFFF"
                     android:orientation="horizontal"
                     android:weightSum="100">
@@ -224,7 +231,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="2dp"
-                    android:layout_weight="13"
+                    android:layout_weight="15"
                     android:background="#FFFFFF"
                     android:orientation="horizontal"
                     android:weightSum="100">
@@ -257,56 +264,50 @@
                 </LinearLayout>
 
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="40dp"
-                    android:layout_marginRight="40dp"
-                    android:layout_weight="13"
-                    app:cardCornerRadius="8dp">
-
-                    <LinearLayout
-                        android:id="@+id/dialogdeletely"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="2dp"
-                        android:layout_weight="12.5"
-                        android:background="#FFFFFF"
-                        android:orientation="horizontal"
-                        android:weightSum="100">
-
-
-                        <TextView
-                            android:id="@+id/textView56"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="80"
-                            android:gravity="center_horizontal|center_vertical"
-                            android:text="Delete"
-                            android:textStyle="bold"
-                            app:autoSizeMaxTextSize="20sp"
-                            app:autoSizeMinTextSize="16sp"
-                            app:autoSizeTextType="uniform" />
-
-                        <ImageView
-                            android:id="@+id/deleteicon"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_weight="20"
-                            tools:srcCompat="@drawable/ic_baseline_remove_circle_outline_18_red">
-
-                        </ImageView>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-
             </LinearLayout>
 
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mtbdelete"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="120dp"
+        android:text="@string/Delete"
+        app:backgroundTint="@color/colorGrisoscuro"
+        app:cornerRadius="5dp"
+        app:icon="@drawable/ic_baseline_remove_circle_outline_18_red"
+        app:iconTint="#9C0101"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/mtbdismiss"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mtbox">
+
+    </com.google.android.material.button.MaterialButton>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mtbdismiss"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="120dp"
+        android:text="@string/Cancel"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/mtbdelete"
+        app:layout_constraintTop_toBottomOf="@id/mtbox">
+
+    </com.google.android.material.button.MaterialButton>
 </androidx.constraintlayout.widget.ConstraintLayout>

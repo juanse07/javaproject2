@@ -31,6 +31,7 @@
     <string name="Days">Days</string>
     <string name="Sales">Sales</string>
     <string name="Receipts">Receipts</string>
+    <string name="Delete">Delete</string>
     ////
     <string name="Select">Select</string>
     <string name="Open_PDF">Open PDF</string>
@@ -125,6 +126,7 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
     <string name="title_activity_select_languaje">SelectLanguaje</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
