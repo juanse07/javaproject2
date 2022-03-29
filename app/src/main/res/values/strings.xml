@@ -64,6 +64,9 @@
     <string name="AccountInfo">Account Info</string>
     <string name="Tax2">Tax 2</string>
     <string name="Ritmo">Pace on Price</string>
+    <string name="Delitem">This action will delete this Item permanently</string>
+    <string name="rusure">Are you sure?</string>
+
 
 
 

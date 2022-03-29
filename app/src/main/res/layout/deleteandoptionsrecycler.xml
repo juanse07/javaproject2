@@ -57,7 +57,7 @@
                     android:weightSum="100">
 
                     <TextView
-                        android:id="@+id/textView77"
+                        android:id="@+id/tag1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="4dp"
@@ -93,7 +93,7 @@
                     android:weightSum="100">
 
                     <TextView
-                        android:id="@+id/textView78"
+                        android:id="@+id/tag2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="4dp"
@@ -129,7 +129,7 @@
                     android:weightSum="100">
 
                     <TextView
-                        android:id="@+id/textView79"
+                        android:id="@+id/tag3"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="4dp"
@@ -165,7 +165,7 @@
                     android:weightSum="100">
 
                     <TextView
-                        android:id="@+id/textView80"
+                        android:id="@+id/tag4"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="4dp"
@@ -201,7 +201,7 @@
                     android:weightSum="100">
 
                     <TextView
-                        android:id="@+id/textView81"
+                        android:id="@+id/tag5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="4dp"
@@ -237,7 +237,7 @@
                     android:weightSum="100">
 
                     <TextView
-                        android:id="@+id/textView82"
+                        android:id="@+id/tag6"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="4dp"

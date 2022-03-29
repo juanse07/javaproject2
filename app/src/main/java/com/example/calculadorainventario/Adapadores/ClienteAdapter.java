@@ -1,26 +1,41 @@
 package com.example.calculadorainventario.Adapadores;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.calculadorainventario.AlertDialogos.deletedialogo;
+import com.example.calculadorainventario.AlertDialogos.sionoalert;
 import com.example.calculadorainventario.ClickInterface1;
 import com.example.calculadorainventario.R;
 import com.example.calculadorainventario.ViewModel.SharedViewModel;
 import com.example.calculadorainventario.constructornom2;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHoldercliente> implements Filterable {
     private final ClickInterface1 clickInterface1;
+    String tag1,tag2,tag3,tag4,tag5,tag6,tx1,tx2,tx3,tx4,tx5,tx6;
+    deletedialogo deletedialogo;
+    sionoalert sionoalert;
+    FirebaseAuth mAuth;
     SharedViewModel sharedViewModel;
     int row_index=-1;
 
@@ -55,6 +70,53 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
                 clickInterface1.passingcliente2Click(position,Cliente,Phone,Email,Address,City);
                 row_index=position;
                 notifyDataSetChanged();
+            }
+        });
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                deletedialogo=new deletedialogo();
+                tag1=holder.itemView.getResources().getString(R.string.Customer_Name);
+                tag2=holder.itemView.getResources().getString(R.string.Email);
+                tag3=holder.itemView.getResources().getString(R.string.Mobile_phone);
+                tag4=holder.itemView.getResources().getString(R.string.Address);
+                tag5=holder.itemView.getResources().getString(R.string.City);
+                tx1=ListaClientes.get(position).getCliente_Nombre();
+                tx2=ListaClientes.get(position).getEmail();
+                tx3=ListaClientes.get(position).getTel();
+                tx4=ListaClientes.get(position).getAddress();
+                tx5=ListaClientes.get(position).getCity();
+
+
+                final AlertDialog dialogodelete=deletedialogo.DeleteDialogo(holder.itemView.getContext(),v,tag1,tag2,tag3,tag4,tag5,tag6,
+                        tx1,tx2,tx3,tx4,tx5,tx6);
+                deletedialogo.btndismiss(dialogodelete);
+                deletedialogo.btnokay().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogodelete.dismiss();
+                        sionoalert=new sionoalert();
+                        final AlertDialog confirmdialog= sionoalert.sionoalert(holder.itemView.getContext(),v);
+
+                        sionoalert.btncancel(confirmdialog,dialogodelete);
+                        sionoalert.btnokay().setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                getposicion(position);
+                                confirmdialog.dismiss();
+
+                            }
+                        });
+
+
+
+
+
+                    }
+                });
+
+                return true;
             }
         });
 
@@ -134,6 +196,18 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
             btaddcliente=itemView.findViewById(R.id.btaddcliente);
         }
     }
+
+//
+    public void getposicion(int position){
+        mAuth = FirebaseAuth.getInstance();
+        DatabaseReference ref;
+        ListaClientes.get(position);
+
+    String key=ListaClientes.get(position).getKey();
+    final String id = mAuth.getCurrentUser().getUid();
+    ref = FirebaseDatabase.getInstance().getReference().child("CLIENTE").child(id).child(key);
+        ref.removeValue();}
+
 
 
 }

@@ -16,6 +16,8 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.calculadorainventario.AlertDialogos.deletedialogo;
+import com.example.calculadorainventario.AlertDialogos.sionoalert;
 import com.example.calculadorainventario.ClickInterface1;
 import com.example.calculadorainventario.Crearproducto;
 import com.example.calculadorainventario.NoteProdViewModel;
@@ -47,8 +49,11 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
 
     private ArrayList<cuerospinner>productos;
     private ArrayList<cuerospinner>productosfull;
+    String tag1,tag2,tag3,tag4,tag5,tag6,tx1,tx2,tx3,tx4,tx5,tx6;
     NoteProducto noteProducto;
     NoteProdViewModel noteProdViewModel;
+    com.example.calculadorainventario.AlertDialogos.deletedialogo deletedialogo;
+    com.example.calculadorainventario.AlertDialogos.sionoalert sionoalert;
 
 
     private ClickInterface1 clickInterface1;
@@ -183,6 +188,69 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
             holder.buttonaddproducto.setTextColor(holder.itemView.getResources().getColor(R.color.colorPrimary));
             // holder.textBusquedas.setTextColor(holder.itemView.getResources().getColor(R.color.colorGris));
         }
+
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                deletedialogo=new deletedialogo();
+                tag1=holder.itemView.getResources().getString(R.string.Product_Name);
+                tag2=holder.itemView.getResources().getString(R.string.Price);
+                tag3=holder.itemView.getResources().getString(R.string.Ritmo);
+                tag4=holder.itemView.getResources().getString(R.string.Description);
+                tag5=holder.itemView.getResources().getString(R.string.Tax);
+                tx1=productos.get(position).getTIPO_CUERO();
+                tx2=productos.get(position).getPrecio();
+                tx3=productos.get(position).getRitmo();
+                tx4=productos.get(position).getImpuesto();
+                tx5=productos.get(position).getDescripcion();
+
+
+                final AlertDialog dialogodelete=deletedialogo.DeleteDialogo(holder.itemView.getContext(),v,tag1,tag2,tag3,tag4,tag5,tag6,
+                        tx1,tx2,tx3,tx4,tx5,tx6);
+                deletedialogo.btndismiss(dialogodelete);
+                deletedialogo.btnokay().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogodelete.dismiss();
+                        sionoalert=new sionoalert();
+                        final AlertDialog confirmdialog= sionoalert.sionoalert(holder.itemView.getContext(),v);
+
+                        sionoalert.btncancel(confirmdialog,dialogodelete);
+                        sionoalert.btnokay().setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                holder.getpos(position);
+                                confirmdialog.dismiss();
+
+                            }
+                        });
+
+
+
+
+
+                    }
+                });
+
+//                AlertDialog.Builder builder1=deletedialogo.getBuilder();
+//                View view1=deletedialogo.getiew();
+
+//                btndismiss=view1.findViewById(R.id.mtbdismiss);
+//                btndismiss.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        dialogodelete.dismiss();
+//                    }
+//                });
+
+
+
+
+                return true;
+            }
+        });
 
         holder.buttonaddproducto.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -396,18 +464,7 @@ private Filter FiltroProducto=new Filter() {
         textView.setText(valornuevosuma + "");
 
     }
-    public void getpos(int position){
-        mAuth = FirebaseAuth.getInstance();
-        DatabaseReference ref;
-        productos.get(position);
 
-
-        String key=productos.get(position).getKey();
-        final String id = mAuth.getCurrentUser().getUid();
-        ref = FirebaseDatabase.getInstance().getReference().child("PRODUCTOS").child(id).child(key);
-        ref.removeValue();
-
-    }
 
         private  void showdialog(final TextView textview, String input1,View itemview){
             AlertDialog.Builder builder=new AlertDialog.Builder(itemview.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
@@ -440,6 +497,20 @@ private Filter FiltroProducto=new Filter() {
                 }
             });
         }
+
+        public void getpos(int position){
+            mAuth = FirebaseAuth.getInstance();
+            DatabaseReference ref;
+            productos.get(position);
+
+
+            String key=productos.get(position).getKey();
+            final String id = mAuth.getCurrentUser().getUid();
+            ref = FirebaseDatabase.getInstance().getReference().child("PRODUCTOS").child(id).child(key);
+            ref.removeValue();
+
+        }
+
 
 
     }

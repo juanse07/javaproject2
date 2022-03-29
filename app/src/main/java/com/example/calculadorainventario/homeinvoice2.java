@@ -427,21 +427,6 @@ public class homeinvoice2 extends AppCompatActivity implements ClickInterface1 {
                 }
             }
         });
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
-            @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                return false;
-            }
-
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                myadaptador2.getposicion(viewHolder.getAdapterPosition());
-//                final String id = mAuth.getCurrentUser().getUid();
-//                ref = FirebaseDatabase.getInstance().getReference().child("VENTAS").child(id).child(Firekey);
-//                ref.removeValue();
-                Toast.makeText(homeinvoice2.this,"Deleted",Toast.LENGTH_SHORT).show();
-            }
-        }).attachToRecyclerView(recyclerview1);
 
 
         navigationView.setSelectedItemId(R.id.home);

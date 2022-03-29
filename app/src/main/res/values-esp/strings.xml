@@ -7,6 +7,8 @@
         <string name="Discount">Descuento</string>
         <string name="Save">Guardar</string>
         <string name="Delete">Eliminar</string>
+        <string name="Delitem">Esta acción borrará este elemento de manera permanente</string>
+        <string name="rusure">Está Seguro?</string>
 
         <string name="Invoice">Factura de Venta</string>
         <string name="Draft">Borrador</string>

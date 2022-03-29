@@ -19,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.calculadorainventario.AlertDialogos.deletedialogo;
+import com.example.calculadorainventario.AlertDialogos.sionoalert;
 import com.example.calculadorainventario.ClickInterface1;
 import com.example.calculadorainventario.Constructores.constcards;
 import com.example.calculadorainventario.Downloadpdfclass;
@@ -27,7 +29,6 @@ import com.example.calculadorainventario.R;
 import com.example.calculadorainventario.Repositorio1;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -45,13 +46,15 @@ import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.view.menu.MenuView;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceadapterclass.ViewHolder>implements Filterable {
     private ClickInterface1 clickInterface1;
+    deletedialogo deletedialogo;
+    String tag1,tag2,tag3,tag4,tag5,tag6,tx1,tx2,tx3,tx4,tx5,tx6;
+    sionoalert sionoalert;
     Repositorio1 repositorio1;
     //SharedViewModel sharedViewModel;
  Downloadpdfclass downloadpdfclass;
@@ -108,7 +111,47 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
         holder.cardhomely.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                showdialog(holder.txinvdate2, holder.itemView,position);
+                deletedialogo=new deletedialogo();
+                tag1=holder.itemView.getResources().getString(R.string.Customer_Name);
+                tag2=holder.itemView.getResources().getString(R.string.Date);
+                tag3=holder.itemView.getResources().getString(R.string.Due_Date);
+                tag4=holder.itemView.getResources().getString(R.string.Draft);
+                tag5=holder.itemView.getResources().getString(R.string.Total);
+                tx1=listhome.get(position).getCliente();
+                tx2=listhome.get(position).getFecha();
+                tx3=listhome.get(position).getFechaparapago();
+                tx4=listhome.get(position).getEstado();
+                tx5=listhome.get(position).getValor();
+
+
+                final AlertDialog dialogodelete=deletedialogo.DeleteDialogo(holder.itemView.getContext(),v,tag1,tag2,tag3,tag4,tag5,tag6,
+                        tx1,tx2,tx3,tx4,tx5,tx6);
+                deletedialogo.btndismiss(dialogodelete);
+                deletedialogo.btnokay().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogodelete.dismiss();
+                        sionoalert=new sionoalert();
+                        final AlertDialog confirmdialog= sionoalert.sionoalert(holder.itemView.getContext(),v);
+
+                        sionoalert.btncancel(confirmdialog,dialogodelete);
+                        sionoalert.btnokay().setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                getposicion(position);
+                                confirmdialog.dismiss();
+
+                            }
+                        });
+
+
+
+
+
+                    }
+                });
+
 
                 return true;
             }
@@ -493,59 +536,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
         ref.removeValue();
 
     }
-    private  void showdialog(final TextView textview, final View itemview, final int position){
-        TextView txnombre,txdate1,txdate2,txestado,txdias,txtotal;
-        LinearLayout Dialogdeletely;
-        ImageView Deleteicon;
-        MaterialButton mtbdelete,mtbdismiss;
-        AlertDialog.Builder builder=new AlertDialog.Builder(itemview.getContext(),R.style.Theme_MaterialComponents_Dialog_Alert);
-        ;
-        final View view=LayoutInflater.from(itemview.getContext()).inflate(R.layout.deleteandoptionsrecycler,(ConstraintLayout)itemview.findViewById(R.id.opconstraint));
-        builder.setView(view);
-        final AlertDialog alertDialog=builder.create();
 
-        txnombre= view.findViewById(R.id.dialognametx);
-        txdate1=view.findViewById(R.id.dialogdatetx);
-        txdate2=view.findViewById(R.id.dialogddatetx);
-        txestado=view.findViewById(R.id.dialogtipetx);
-        txdias=view.findViewById(R.id.dialogdaystx);
-        txtotal=view.findViewById(R.id.dialogtotaltx);
-        mtbdelete=view.findViewById(R.id.mtbdelete);
-        mtbdismiss=view.findViewById(R.id.mtbdismiss);
-
-        txnombre.setText(listhome.get(position).getCliente());
-        txdate1.setText(listhome.get(position).getFecha());
-        txdate2.setText(listhome.get(position).getFechaparapago());
-        txestado.setText(listhome.get(position).getEstado());
-        txdias.setText(textview.getText());
-        txtotal.setText(listhome.get(position).getValor());
-       mtbdismiss.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               alertDialog.dismiss();
-
-           }
-       });
-       mtbdelete.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-
-               getposicion(position);
-               Toast.makeText(itemview.getContext(),"El registro e ha eliminado",Toast.LENGTH_SHORT).show();
-               alertDialog.dismiss();
-           }
-       });
-
-
-
-
-        if(alertDialog.getWindow() !=null){
-            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-        }
-
-        alertDialog.show();
-
-    }
 
 
 
