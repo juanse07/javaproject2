@@ -74,7 +74,7 @@ ArrayList<NoteProducto>notesProd;
     RadioGroup grupotipo;
     RadioButton rbventa, rbcompra, rbborrador;
     ImageView logomini, pagomenos, pagomas,imagefrase,imgSignature11,imgSignature22;
-    MaterialCardView increasetax,increasediscount,discount,decreasetax,decreasediscount,increaseimp2,decreaseimp2;
+    MaterialCardView increasetax,increasediscount,discount,decreasetax,decreasediscount,increaseimp2,decreaseimp2,tax1box,Discountbox,tax2box;
     CardView card_operacion;
     View ingresoview;
     DatabaseReference ref;
@@ -154,6 +154,9 @@ ArrayList<NoteProducto>notesProd;
         txtaxvisor=ingresoview.findViewById(R.id.txtaxvisor);
         decreaseimp2=ingresoview.findViewById(R.id.decreaseimp2);
         increaseimp2=ingresoview.findViewById(R.id.increaseimp2);
+        tax1box=ingresoview.findViewById(R.id.tax1box);
+        Discountbox=ingresoview.findViewById(R.id.dicountbox);
+        tax2box= ingresoview.findViewById(R.id.tax2box);
         //we need to avoid null on these textviews
 
         txtaxvisor.setText(Constants.getSP(ingresoview.getContext()).getTAX1TX());;
@@ -338,39 +341,49 @@ decreasetax.setOnClickListener(new View.OnClickListener() {
     }
 });
 
-txtaxvisor.setOnClickListener(new View.OnClickListener() {
+tax1box.setOnLongClickListener(new View.OnLongClickListener() {
     @Override
-    public void onClick(View v) {
+    public boolean onLongClick(View v) {
         String inputtext;
         inputtext=getResources().getString(R.string.Tax);
         int keynumber1=2;
         int keydecimal=8192;
         int inputtype=keynumber1+keydecimal;
         AlertDialog(txtaxvisor,inputtext,inputtype);
+
+        return true;
     }
 });
-txdiscountvisor.setOnClickListener(new View.OnClickListener() {
+Discountbox.setOnLongClickListener(new View.OnLongClickListener() {
     @Override
-    public void onClick(View v) {
+    public boolean onLongClick(View v) {
         String inputtext;
         inputtext=getResources().getString(R.string.Discount);
         int keynumber1=2;
         int keydecimal=8192;
         int inputtype=keynumber1+keydecimal;
         AlertDialog(txdiscountvisor,inputtext,inputtype);
+
+        return true;
     }
 });
-tximp2.setOnClickListener(new View.OnClickListener() {
+
+tax2box.setOnLongClickListener(new View.OnLongClickListener() {
     @Override
-    public void onClick(View v) {
+    public boolean onLongClick(View v) {
         String inputtext;
         inputtext=getResources().getString(R.string.Tax2);
         int keynumber1=2;
         int keydecimal=8192;
         int inputtype=keynumber1+keydecimal;
         AlertDialog(tximp2,inputtext,inputtype);
+        return true;
     }
 });
+
+
+
+
 
         increasediscount.setOnClickListener(new View.OnClickListener() {
             @Override

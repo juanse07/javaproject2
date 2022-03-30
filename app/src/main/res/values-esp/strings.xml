@@ -9,7 +9,7 @@
         <string name="Delete">Eliminar</string>
         <string name="Delitem">Esta acción borrará este elemento de manera permanente</string>
         <string name="rusure">Está Seguro?</string>
-
+        <string name="Edit">Editar</string>
         <string name="Invoice">Factura de Venta</string>
         <string name="Draft">Borrador</string>
         <string name="Customer_Name">Nombre del Cliente</string>
@@ -68,6 +68,7 @@
         <string name="AccountInfo">Información de la Cuenta</string>
         <string name="Tax2">Impuesto 2</string>
         <string name="Ritmo">Ritmo en Precio</string>
+        <string name="Category">Categoría</string>
 
 
         <string name="_1">1</string>

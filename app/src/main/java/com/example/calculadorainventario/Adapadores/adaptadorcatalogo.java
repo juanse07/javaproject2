@@ -227,25 +227,8 @@ public class adaptadorcatalogo extends RecyclerView.Adapter<adaptadorcatalogo.Vi
                             }
                         });
 
-
-
-
-
                     }
                 });
-
-//                AlertDialog.Builder builder1=deletedialogo.getBuilder();
-//                View view1=deletedialogo.getiew();
-
-//                btndismiss=view1.findViewById(R.id.mtbdismiss);
-//                btndismiss.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        dialogodelete.dismiss();
-//                    }
-//                });
-
-
 
 
                 return true;

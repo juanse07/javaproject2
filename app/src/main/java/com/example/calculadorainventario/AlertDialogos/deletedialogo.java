@@ -41,14 +41,14 @@ public class deletedialogo {
         txdate2 = view.findViewById(R.id.dialogddatetx);
         txestado = view.findViewById(R.id.dialogtipetx);
         txdias = view.findViewById(R.id.dialogdaystx);
-        txtotal = view.findViewById(R.id.dialogtotaltx);
+//        txtotal = view.findViewById(R.id.dialogtotaltx);
         mtbdelete = view.findViewById(R.id.mtbdelete);
         tag1 = view.findViewById(R.id.tag1);
         tag2 = view.findViewById(R.id.tag2);
         tag3 = view.findViewById(R.id.tag3);
         tag4 = view.findViewById(R.id.tag4);
         tag5 = view.findViewById(R.id.tag5);
-        tag6 = view.findViewById(R.id.tag6);
+//        tag6 = view.findViewById(R.id.tag6);
 
         mtbdismiss = view.findViewById(R.id.mtbdismiss);
 
@@ -57,13 +57,13 @@ public class deletedialogo {
         tag3.setText(stag3);
         tag4.setText(stag4);
         tag5.setText(stag5);
-        tag6.setText(stag6);
+//        tag6.setText(stag6);
         txnombre.setText(stx1);
         txdate1.setText(stx2);
         txdate2.setText(stx3);
         txestado.setText(stx4);
         txdias.setText(stx5);
-        txtotal.setText(stx6);
+//        txtotal.setText(stx6);
 
         if (alertDialog.getWindow() != null) {
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
@@ -109,6 +109,12 @@ public class deletedialogo {
         btnokay = view.findViewById(R.id.mtbdelete);
 
         return btnokay;
+    }
+    public MaterialButton btnEdit(){
+        MaterialButton btnEdit;
+        View view=getiew();
+        btnEdit=view.findViewById(R.id.mtbedit);
+        return btnEdit;
     }
 
 

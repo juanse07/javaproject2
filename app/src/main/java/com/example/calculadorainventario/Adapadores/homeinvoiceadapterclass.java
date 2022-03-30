@@ -115,7 +115,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
                 tag1=holder.itemView.getResources().getString(R.string.Customer_Name);
                 tag2=holder.itemView.getResources().getString(R.string.Date);
                 tag3=holder.itemView.getResources().getString(R.string.Due_Date);
-                tag4=holder.itemView.getResources().getString(R.string.Draft);
+                tag4=holder.itemView.getResources().getString(R.string.Category);
                 tag5=holder.itemView.getResources().getString(R.string.Total);
                 tx1=listhome.get(position).getCliente();
                 tx2=listhome.get(position).getFecha();
@@ -127,6 +127,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
                 final AlertDialog dialogodelete=deletedialogo.DeleteDialogo(holder.itemView.getContext(),v,tag1,tag2,tag3,tag4,tag5,tag6,
                         tx1,tx2,tx3,tx4,tx5,tx6);
                 deletedialogo.btndismiss(dialogodelete);
+                deletedialogo.btnEdit().setVisibility(View.GONE);
                 deletedialogo.btnokay().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -144,6 +145,7 @@ public class homeinvoiceadapterclass extends RecyclerView.Adapter<homeinvoiceada
 
                             }
                         });
+
 
 
 

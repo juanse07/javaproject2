@@ -51,7 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="15"
+                    android:layout_weight="18"
                     android:background="#FFFFFF"
                     android:orientation="horizontal"
                     android:weightSum="100">
@@ -87,7 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="2dp"
-                    android:layout_weight="15"
+                    android:layout_weight="18"
                     android:background="#FFFFFF"
                     android:orientation="horizontal"
                     android:weightSum="100">
@@ -123,7 +123,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="2dp"
-                    android:layout_weight="15"
+                    android:layout_weight="18"
                     android:background="#FFFFFF"
                     android:orientation="horizontal"
                     android:weightSum="100">
@@ -159,7 +159,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="2dp"
-                    android:layout_weight="15"
+                    android:layout_weight="18"
                     android:background="#FFFFFF"
                     android:orientation="horizontal"
                     android:weightSum="100">
@@ -195,7 +195,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="2dp"
-                    android:layout_weight="15"
+                    android:layout_weight="18"
                     android:background="#FFFFFF"
                     android:orientation="horizontal"
                     android:weightSum="100">
@@ -215,42 +215,6 @@
 
                     <TextView
                         android:id="@+id/dialogtipetx"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginLeft="4dp"
-                        android:layout_weight="70"
-                        android:gravity="center_vertical"
-                        android:text="TextView"
-                        app:autoSizeMaxTextSize="14sp"
-                        app:autoSizeMinTextSize="12sp"
-                        app:autoSizeTextType="uniform" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_weight="15"
-                    android:background="#FFFFFF"
-                    android:orientation="horizontal"
-                    android:weightSum="100">
-
-                    <TextView
-                        android:id="@+id/tag6"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginLeft="4dp"
-                        android:layout_weight="30"
-                        android:gravity="start|top"
-                        android:text="@string/Total"
-                        app:autoSizeMaxTextSize="9sp"
-                        app:autoSizeMinTextSize="6sp"
-                        app:autoSizeTextType="uniform" />
-
-                    <TextView
-                        android:id="@+id/dialogtotaltx"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="4dp"
@@ -308,6 +272,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/mtbdelete"
         app:layout_constraintTop_toBottomOf="@id/mtbox">
+
+    </com.google.android.material.button.MaterialButton>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mtbedit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cornerRadius="5dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginRight="130dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/Edit"
+        app:backgroundTint="@color/colorAccent"
+        app:icon="@drawable/ic_baseline_edit_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mtbdismiss">>
 
     </com.google.android.material.button.MaterialButton>
 </androidx.constraintlayout.widget.ConstraintLayout>
